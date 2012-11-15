@@ -11,7 +11,7 @@
 - The **right picture** gives the user the option to update the app.
 - You can configure this option in **Harpy.h**.
  
-![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update")
+![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update") 
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions:
