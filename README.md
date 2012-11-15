@@ -30,6 +30,7 @@
 	- You can remove the ***#warning*** after filling these two in  
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch) file
 1. In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
+
 <pre>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
