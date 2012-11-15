@@ -102,7 +102,7 @@
 
         switch (buttonIndex) {
                 
-            case 0:{ // Cancel
+            case 0:{ // Cancel / Not now
         
                 // Do nothing
                 

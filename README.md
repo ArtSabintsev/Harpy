@@ -3,7 +3,16 @@
 ## Notify users that a new version of your app is available in the AppStore
 
 ### About
-**Harpy** is a utility that checks a user's currently installed version of your IOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
+**Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
+
+### Pictures
+
+- The **left picture** forces the user to update the app.
+- The **right picture** gives the user the option to update the app.
+- You can configure this option in **Harpy.h**.
+ 
+![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update")
+![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions:
 
@@ -11,13 +20,14 @@
 	1. Harpy.h
 	1. Harpy.m
 1. Configure the static variables in **Harpy.h**
-	1. ***appID***: NSString that holds your Application's AppID (this can be found in iTunes Connect)
-	1. ***forceUpdate***: BOOL that decides if a user has the option to update the application at a later point
-		1. If ***forceUpdate*** is set to ***YES***, a user will be presented with a UIAlertView that has 1 button
+	- ***appID***: NSString that holds your Application's AppID (this can be found in iTunes Connect)
+	- ***forceUpdate***: BOOL that decides if a user has the option to update the application at a later point
+		- If ***forceUpdate*** is set to ***YES***, a user will be presented with a UIAlertView that has 1 button
 			1. Update button = Launches the AppStore app
-		1. If ***forceUpdate*** is set to ***NO***, a user will be presented with a UIAlertView with 2 buttons
+		- If ***forceUpdate*** is set to ***NO***, a user will be presented with a UIAlertView with 2 buttons
 			1. Cancel button = Dismisses the UIAlertView
 			1. Update buton = Launches the AppStore app 
+	- You can remove the ***#warning*** after filling these two in  
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch) file
 1. In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
 <pre>
