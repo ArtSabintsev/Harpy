@@ -31,6 +31,7 @@
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch) file
 1. In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
 <pre>
+<code>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// Customization on application launch
@@ -46,6 +47,7 @@
 	*/
 	[Harpy checkVersion] 
 }
+</code>
 </pre>
 
 And you're all set!
