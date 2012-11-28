@@ -36,17 +36,26 @@
             dispatch_async(dispatch_get_main_queue(), ^{
             
                 // AppStore version
-                NSString *appStoreVersion = [[[appData valueForKey:@"results"] valueForKey:@"version"] objectAtIndex:0];
+                NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
                 
-                // Installed version
-                NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+                BOOL inTheAppStore = versionsInAppStore && ([versionsInAppStore count] != 0);
                 
-                if ( ![currentVersion isEqualToString:appStoreVersion] ) {
+                if (!inTheAppStore) {
+                    return;
+                }
+                else {
+                    NSString *appStoreVersion = [versionsInAppStore objectAtIndex:0];
                     
-                    [Harpy showAlertWithAppStoreVersion:appStoreVersion];
+                    // Installed version
+                    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
+                    
+                    if ( ![currentVersion isEqualToString:appStoreVersion] ) {
+                        
+                        [Harpy showAlertWithAppStoreVersion:appStoreVersion];
+                        
+                    }
                     
                 }
-                
             });
 
         }
