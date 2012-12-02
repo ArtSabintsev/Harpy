@@ -53,7 +53,29 @@
 
 And you're all set!
 
-###  Release Notes (v1.0.0):
+### Important Note on AppStore Submissions
+#### The Problem
+A lot of users, including myself, use the **[Semantic Versioning](http://www.semver.org)** system. 
+
+- This makes it hard for Harpy to compare versions as floats. Therefore, versions are compared as strings. 
+
+Another problem arises with the the JSON results that Apple returns
+
+- Apple only contains the current publicly available version of your app 
+- E.g., if version 1.2.5 is the newest version, only that version will be returned inside the JSON results 
+
+Submitting a new version of your App to the store causes Harpy to pop the UIAlertView to the App reviewier. 
+
+#### The Solution
+
+When submitting an update to your app to the App Store, make sure to put the **[Harpy checkVersion]** code inside an NSDate conditional, and set the NSDate for sometime in the future (usually 2 weeks after you submit your app). This will allow you to get this code to your end-users without annoying the Apple reviewer.
+
+###  Release Notes (v1.0.1):
+- Added a bugfix for unreleased apps (Thanks to [Pius Uzamere](https://github.com/pius))
+- Augmented ReadMe section: *Important Note on AppStore Submissions*
+
+###  Previous Release Notes
+#### v1.0.0:
 - Initial Release
 
 ### Recognition:

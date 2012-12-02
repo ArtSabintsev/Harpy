@@ -8,6 +8,8 @@
 
 #import "Harpy.h"
 
+#define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
+
 @interface Harpy ()
 
 + (void)showAlertWithAppStoreVersion:(NSString*)appStoreVersion;
@@ -29,44 +31,42 @@
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
        
-        if ( [data length] > 0 && error == nil ) {
+        if ( [data length] > 0 && !error ) { // Success
             
             NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
             dispatch_async(dispatch_get_main_queue(), ^{
-            
-                // AppStore version
+                
+                // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
                 
-                BOOL inTheAppStore = versionsInAppStore && ([versionsInAppStore count] != 0);
-                
-                if (!inTheAppStore) {
+                if ( ![versionsInAppStore count] ) { // No versions of app in AppStore
+                    
                     return;
-                }
-                else {
-                    NSString *appStoreVersion = [versionsInAppStore objectAtIndex:0];
                     
-                    // Installed version
-                    NSString *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey];
-                    
-                    if ( ![currentVersion isEqualToString:appStoreVersion] ) {
-                        
-                        [Harpy showAlertWithAppStoreVersion:appStoreVersion];
-                        
-                    }
-                    
-                }
-            });
+                } else {
 
+                    NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+
+                    if ( [kHarpyCurrentVersion isEqualToString:currentAppStoreVersion] ) {
+            
+                        // Current installed version is the newest public version
+                
+                    } else {
+                    
+                        [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
+                    
+                    }
+                }
+              
+            });
         }
         
     }];
-
 }
 
-
 // Private Methods
-+ (void)showAlertWithAppStoreVersion:(NSString *)appStoreVersion
++ (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
  
     // App name
@@ -75,7 +75,7 @@
     if ( forceUpdate ) { // Force user to update app
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, appStoreVersion]
+                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:@"Update"
                                                   otherButtonTitles:nil, nil];
@@ -86,7 +86,7 @@
 
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@.", appName, appStoreVersion]
+                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@.", appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:@"Not now"
                                                   otherButtonTitles:@"Update", nil];
