@@ -9,6 +9,7 @@
 #import "Harpy.h"
 
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
+#define kSecondsInOneDay 86400
 
 @interface Harpy ()
 
@@ -21,6 +22,10 @@
 // Public Methods
 + (void)checkVersion
 {
+    NSTimeInterval timeToWaitBeforeAlertingUser = kDaysToWaitBeforeAlertingUser * kSecondsInOneDay;
+    BOOL shouldCheckVersion = [self buildDateWasLongerAgoThanTimeInterval:timeToWaitBeforeAlertingUser];
+    
+    if (shouldCheckVersion == NO) return;
 
     // Asynchronously query iTunes AppStore for publically available version
     NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID];
@@ -66,6 +71,32 @@
 }
 
 // Private Methods
++ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval {
+    
+    // Get the build date (__DATE__) into an NSDate object
+    NSString *compileDateString = [NSString stringWithUTF8String:__DATE__];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *buildLocale = [[NSLocale alloc] initWithLocaleIdentifier:kCurrentLocale];
+
+    dateFormatter.dateFormat = @"MMM d yyyy";
+    dateFormatter.locale = buildLocale;
+
+    [dateFormatter setLocale:buildLocale];
+    
+    NSDate *buildDate = [dateFormatter dateFromString:compileDateString];
+    
+    // Get the current day at midnight into an NSDate object
+    NSDate *today = [NSDate date];
+    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
+    today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:today]];
+
+    // Compare them
+    NSTimeInterval timeSinceBuildDate = [today timeIntervalSinceDate:buildDate];
+    
+    return (timeSinceBuildDate >= interval);
+}
+
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
  
