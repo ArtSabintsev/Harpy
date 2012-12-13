@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define kCurrentLocale @"en_US" // set this to the locale where you're building your app
+// Don't do anything until it's been this many days since the app was built.  Set to 0 to always check.
+#define kDaysToWaitBeforeAlertingUser 14
+
 #warning Please customize these Harpy variables
 static NSString *appID = @"556665733";  // Found on iTunes Connect
 static BOOL forceUpdate = YES;           // YES forces the user to update on app launch. No gives the user the option to update or to continue using the app for that session.
