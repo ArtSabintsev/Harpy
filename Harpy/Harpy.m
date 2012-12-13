@@ -94,7 +94,7 @@
     // Compare them
     NSTimeInterval timeSinceBuildDate = [today timeIntervalSinceDate:buildDate];
     
-    return (timeSinceBuildDate > interval);
+    return (timeSinceBuildDate >= interval);
 }
 
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
