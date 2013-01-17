@@ -65,15 +65,15 @@ Submitting a new version of your App to the store causes Harpy to pop the UIAler
 
 #### The Solution (Updated in v1.5.0)
 
-- Set the value of **kDaysToWaitBeforeAlertingUser** in **Harpy.h** to a value greater than the number of days than you think your app will be in review. A few days after the date stated at [ShinyDevelopment's ReviewTimes site](http://reviewtimes.shinydevelopment.com) is usually a safe bet. 
+- Set the value of **kDaysToWaitBeforeAlertingUser** in **Harpy.h** to a value greater than the number of days that you think your app will be in review. A few days after the date stated at [ShinyDevelopment's ReviewTimes site](http://reviewtimes.shinydevelopment.com) is usually a safe bet. 
 - By default, this value is set to **14** in the application.
-- Setting this value to 0 pops the the alertView on each launch of the application
+- Setting this value to 0 pops the the alertView on each launch of your application
 
 ###  Release Notes (v1.5.0):
 - Smarter submission system for bypassing Apple's reviewers during the review process 
 	- Thanks to [Aaron Brager](http://www.github.com/getaaron)
 
-###  Previous Release Notes
+###  Previous Release Notes:
 #### v1.0.1
 - Added a bugfix for unreleased apps 
 	- Thanks to [Pius Uzamere](https://github.com/pius)
