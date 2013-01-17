@@ -22,10 +22,12 @@
 // Public Methods
 + (void)checkVersion
 {
+    
+    // Check to see if enough time has passed between TODAY and the application's BUILD/COMPILED date
     NSTimeInterval timeToWaitBeforeAlertingUser = kDaysToWaitBeforeAlertingUser * kSecondsInOneDay;
     BOOL shouldCheckVersion = [self buildDateWasLongerAgoThanTimeInterval:timeToWaitBeforeAlertingUser];
-    
-    if (shouldCheckVersion == NO) return;
+    if (shouldCheckVersion == NO)
+        return;
 
     // Asynchronously query iTunes AppStore for publically available version
     NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID];
@@ -73,7 +75,7 @@
 // Private Methods
 + (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval {
     
-    // Get the build date (__DATE__) into an NSDate object
+    // Get the app's build date (e.g., __DATE__), and instantiate an NSDate object
     NSString *compileDateString = [NSString stringWithUTF8String:__DATE__];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *buildLocale = [[NSLocale alloc] initWithLocaleIdentifier:kCurrentLocale];
@@ -85,13 +87,13 @@
     
     NSDate *buildDate = [dateFormatter dateFromString:compileDateString];
     
-    // Get the current day at midnight into an NSDate object
+    // Instiatiate today's date (at Midnight), and instantiate it as an NSDate object
     NSDate *today = [NSDate date];
     NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
     NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
     today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:today]];
 
-    // Compare them
+    // Compare the dates (e.g., time elapsed since current build of application was compiled)
     NSTimeInterval timeSinceBuildDate = [today timeIntervalSinceDate:buildDate];
     
     return (timeSinceBuildDate >= interval);

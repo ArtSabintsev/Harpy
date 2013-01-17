@@ -8,13 +8,31 @@
 
 #import <Foundation/Foundation.h>
 
-#define kCurrentLocale @"en_US" // set this to the locale where you're building your app
-// Don't do anything until it's been this many days since the app was built.  Set to 0 to always check.
-#define kDaysToWaitBeforeAlertingUser 14
+#warning Please customize Harpy's static variables
 
-#warning Please customize these Harpy variables
-static NSString *appID = @"556665733";  // Found on iTunes Connect
-static BOOL forceUpdate = YES;           // YES forces the user to update on app launch. No gives the user the option to update or to continue using the app for that session.
+// Your AppID - found in iTunes Connect
+static NSString *appID = @"556665733";      
+
+// Set to your region's local
+#define kCurrentLocale  @"en_US"
+
+/*
+ 
+ -FOR PRODUCTION-
+ To sneak in this feature through Apple's reviewers, change this number ON THE DAY you build and submit this app to the iTunes Store.
+ The number 14 (e.g., 2 weeks) is a safe bet most times of the year. To double check, check the following site for AppStore review times and add some buffer: http://reviewtimes.shinydevelopment.com/
+ 
+ -FOR DEVELOPMENT-
+ Set the number to 0 to debug this feature
+ 
+ */
+#define kDaysToWaitBeforeAlertingUser   14
+
+/*
+ YES forces your users to update your app every time they launch a new session of your app.
+ NO gives the user the option to update or to continue using the app for that session.
+*/
+static BOOL forceUpdate = YES;
 
 @interface Harpy : NSObject <UIAlertViewDelegate>
 
