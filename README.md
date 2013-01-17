@@ -70,19 +70,20 @@ Submitting a new version of your App to the store causes Harpy to pop the UIAler
 - Setting this value to 0 pops the the alertView on each launch of the application
 
 ###  Release Notes (v1.5.0):
-- Smarter submission system (for bypassing Apple's reviewers during the review process)
+- Smarter submission system for bypassing Apple's reviewers during the review process 
+	- Thanks to [Aaron Brager](http://www.github.com/getaaron)
 
 ###  Previous Release Notes
 #### v1.0.1
-- Added a bugfix for unreleased apps (Thanks to [Pius Uzamere](https://github.com/pius))
-- Augmented ReadMe section: *Important Note on AppStore Submissions*
+- Added a bugfix for unreleased apps 
+	- Thanks to [Pius Uzamere](https://github.com/pius)
 
 #### v1.0.0:
 - Initial Release
 
 ### Contributors
 
-- [Aaron Brage](http://www.github.com/getaaron) (in v1.5)
+- [Aaron Brager](http://www.github.com/getaaron) (in v1.5)
 - [Pius Uzamere](https://github.com/pius) (in v1.0.1)
 
 ### Recognition:
