@@ -22,7 +22,7 @@
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch) file
 		
-1. Configure the **4** static variables in **Harpy.h*
+1. Configure the **4** static variables in **Harpy.h**
 	- ***appID***
 	- ***kCurrentLocale***
 	- ***kDaysToWaitBeforeAlertingUser***
