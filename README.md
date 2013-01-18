@@ -23,15 +23,12 @@
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch) file
 		
 1. Configure the **4** static variables in **Harpy.h*
-  
 	- ***appID***
 	- ***kCurrentLocale***
 	- ***kDaysToWaitBeforeAlertingUser***
 	- ***forceUpdate***
 	- You can remove the ***#warning*** in **Harpy.h** after customizing those variables. 
-
-
-1. In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
+1.  In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
 
 <pre>
 
