@@ -13,13 +13,14 @@
 
 @interface Harpy ()
 
++ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval;
 + (void)showAlertWithAppStoreVersion:(NSString*)appStoreVersion;
 
 @end
 
 @implementation Harpy
 
-// Public Methods
+#pragma mark - Public Methods
 + (void)checkVersion
 {
     
@@ -72,8 +73,9 @@
     }];
 }
 
-// Private Methods
-+ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval {
+#pragmamark - Private Methods
++ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval
+{
     
     // Get the app's build date (e.g., __DATE__), and instantiate an NSDate object
     NSString *compileDateString = [NSString stringWithUTF8String:__DATE__];
@@ -102,7 +104,6 @@
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
  
-    // App name
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     
     if ( forceUpdate ) { // Force user to update app
@@ -142,7 +143,7 @@
         
     } else {
 
-        switch (buttonIndex) {
+        switch ( buttonIndex ) {
                 
             case 0:{ // Cancel / Not now
         
