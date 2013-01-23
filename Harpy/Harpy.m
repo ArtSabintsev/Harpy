@@ -73,7 +73,7 @@
     }];
 }
 
-#pragmamark - Private Methods
+#pragma mark - Private Methods
 + (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval
 {
     
