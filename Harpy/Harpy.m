@@ -104,14 +104,12 @@
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
  
-    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
-    
     if ( forceUpdate ) { // Force user to update app
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                            message:alertMessage
                                                            delegate:self
-                                                  cancelButtonTitle:@"Update"
+                                                  cancelButtonTitle:updateTitle
                                                   otherButtonTitles:nil, nil];
         
         [alertView show];
@@ -119,11 +117,11 @@
     } else { // Allow user option to update next time user launches your app
 
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@.", appName, currentAppStoreVersion]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
+                                                            message:alertMessage
                                                            delegate:self
-                                                  cancelButtonTitle:@"Not now"
-                                                  otherButtonTitles:@"Update", nil];
+                                                  cancelButtonTitle:cancelTitle
+                                                  otherButtonTitles:updateTitle, nil];
         
         [alertView show];
         
