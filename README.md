@@ -66,11 +66,15 @@ Submitting a new version of your App to the store causes Harpy to pop the UIAler
 - By default, this value is set to **14** in the application.
 - Setting this value to 0 pops the the alertView on each launch of your application
 
-###  Release Notes (v1.5.0):
+###  Release Notes (v1.5.1):
+- Added canOpenURL verification 
+	- Thanks to [Alex Rupérez](https://github.com/alexruperez)
+
+###  Previous Release Notes:
+#### v1.5.0
 - Smarter submission system for bypassing Apple's reviewers during the review process 
 	- Thanks to [Aaron Brager](http://www.github.com/getaaron)
 
-###  Previous Release Notes:
 #### v1.0.1
 - Added a bugfix for unreleased apps 
 	- Thanks to [Pius Uzamere](https://github.com/pius)
@@ -80,6 +84,7 @@ Submitting a new version of your App to the store causes Harpy to pop the UIAler
 
 ### Contributors
 
+- [Alex Rupérez](https://github.com/alexruperez) (in v1.5.1)
 - [Aaron Brager](http://www.github.com/getaaron) (in v1.5)
 - [Pius Uzamere](https://github.com/pius) (in v1.0.1)
 

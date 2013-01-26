@@ -62,7 +62,8 @@
                 
                     } else {
                     
-                        [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
+												if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"https://itunes.apple.com"]])
+                        		[Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
                     
                     }
                 }
