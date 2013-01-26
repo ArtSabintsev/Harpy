@@ -1,0 +1,12 @@
+//
+//  Harpy.strings
+//  Harpy
+//
+//  Created by Alejandro Rupérez Hernando on 01/26/13.
+//  Copyright (c) 2013 Alejandro Rupérez Hernando. All rights reserved.
+//
+"Update Available" = "Update Available";
+"A new version of %@ is available. Please update to version %@ now." = "A new version of %@ is available. Please update to version %@ now.";
+"Update" = "Update";
+"A new version of %@ is available. Please update to version %@." = "A new version of %@ is available. Please update to version %@.";
+"Not now" = "Not now";
