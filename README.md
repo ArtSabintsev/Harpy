@@ -68,6 +68,8 @@ Submitting a new version of your App to the store causes Harpy to pop the UIAler
 
 ###  Release Notes (v1.5.1):
 - Added canOpenURL verification 
+- Added NSLocalizedStringFromTable method for make translations easier 
+- Added spanish translation 
 	- Thanks to [Alex Rupérez](https://github.com/alexruperez)
 
 ###  Previous Release Notes:

@@ -109,10 +109,10 @@
     
     if ( forceUpdate ) { // Force user to update app
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Update Available", NSStringFromClass([self class]), nil)
+                                                            message:[NSString stringWithFormat:NSLocalizedStringFromTable(@"A new version of %@ is available. Please update to version %@ now.", NSStringFromClass([self class]), nil), appName, currentAppStoreVersion]
                                                            delegate:self
-                                                  cancelButtonTitle:@"Update"
+                                                  cancelButtonTitle:NSLocalizedStringFromTable(@"Update", NSStringFromClass([self class]), nil)
                                                   otherButtonTitles:nil, nil];
         
         [alertView show];
@@ -120,11 +120,11 @@
     } else { // Allow user option to update next time user launches your app
 
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Update Available"
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@.", appName, currentAppStoreVersion]
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(@"Update Available", NSStringFromClass([self class]), nil)
+                                                            message:[NSString stringWithFormat:NSLocalizedStringFromTable(@"A new version of %@ is available. Please update to version %@.", NSStringFromClass([self class]), nil), appName, currentAppStoreVersion]
                                                            delegate:self
-                                                  cancelButtonTitle:@"Not now"
-                                                  otherButtonTitles:@"Update", nil];
+                                                  cancelButtonTitle:NSLocalizedStringFromTable(@"Not now", NSStringFromClass([self class]), nil)
+                                                  otherButtonTitles:NSLocalizedStringFromTable(@"Update", NSStringFromClass([self class]), nil), nil];
         
         [alertView show];
         
