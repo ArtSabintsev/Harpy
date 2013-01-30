@@ -56,15 +56,17 @@
 
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
 
-                    if ( [kHarpyCurrentVersion isEqualToString:currentAppStoreVersion] ) {
-            
-                        // Current installed version is the newest public version
-                
-                    } else {
-                    
+                    if ([kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+		                
                         [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
-                    
+	                
                     }
+                    else {
+		            
+                        // Current installed version is the newest public version or newer	
+	                
+                    }
+
                 }
               
             });
