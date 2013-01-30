@@ -9,11 +9,9 @@
 #import "Harpy.h"
 
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
-#define kSecondsInOneDay 86400
 
 @interface Harpy ()
 
-+ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval;
 + (void)showAlertWithAppStoreVersion:(NSString*)appStoreVersion;
 
 @end
@@ -23,15 +21,9 @@
 #pragma mark - Public Methods
 + (void)checkVersion
 {
-    
-    // Check to see if enough time has passed between TODAY and the application's BUILD/COMPILED date
-    NSTimeInterval timeToWaitBeforeAlertingUser = kDaysToWaitBeforeAlertingUser * kSecondsInOneDay;
-    BOOL shouldCheckVersion = [self buildDateWasLongerAgoThanTimeInterval:timeToWaitBeforeAlertingUser];
-    if (shouldCheckVersion == NO)
-        return;
 
     // Asynchronously query iTunes AppStore for publically available version
-    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID];
+    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", kHarpyAppID];
     NSURL *storeURL = [NSURL URLWithString:storeString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
@@ -76,68 +68,43 @@
 }
 
 #pragma mark - Private Methods
-+ (BOOL)buildDateWasLongerAgoThanTimeInterval:(NSTimeInterval)interval
-{
-    
-    // Get the app's build date (e.g., __DATE__), and instantiate an NSDate object
-    NSString *compileDateString = [NSString stringWithUTF8String:__DATE__];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *buildLocale = [[NSLocale alloc] initWithLocaleIdentifier:kCurrentLocale];
-
-    dateFormatter.dateFormat = @"MMM d yyyy";
-    dateFormatter.locale = buildLocale;
-
-    [dateFormatter setLocale:buildLocale];
-    
-    NSDate *buildDate = [dateFormatter dateFromString:compileDateString];
-    
-    // Instiatiate today's date (at Midnight), and instantiate it as an NSDate object
-    NSDate *today = [NSDate date];
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    NSUInteger preservedComponents = (NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit);
-    today = [calendar dateFromComponents:[calendar components:preservedComponents fromDate:today]];
-
-    // Compare the dates (e.g., time elapsed since current build of application was compiled)
-    NSTimeInterval timeSinceBuildDate = [today timeIntervalSinceDate:buildDate];
-    
-    return (timeSinceBuildDate >= interval);
-}
-
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
- 
-    if ( forceUpdate ) { // Force user to update app
+    
+    NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    
+    if ( harpyForceUpdate ) { // Force user to update app
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                            message:alertMessage
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
                                                            delegate:self
-                                                  cancelButtonTitle:updateTitle
+                                                  cancelButtonTitle:kHarpyUpdateButtonTitle
                                                   otherButtonTitles:nil, nil];
         
         [alertView show];
         
     } else { // Allow user option to update next time user launches your app
-
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:alertTitle
-                                                            message:alertMessage
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
                                                            delegate:self
-                                                  cancelButtonTitle:cancelTitle
-                                                  otherButtonTitles:updateTitle, nil];
+                                                  cancelButtonTitle:kHarpyCancelButtonTitle
+                                                  otherButtonTitles:kHarpyUpdateButtonTitle, nil];
         
         [alertView show];
         
     }
-
+    
 }
 
 #pragma mark - UIAlertViewDelegate Methods
 + (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    if ( forceUpdate ) {
+    if ( harpyForceUpdate ) {
 
-        NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", appID];
+        NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
         NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
         [[UIApplication sharedApplication] openURL:iTunesURL];
         
@@ -153,7 +120,7 @@
                 
             case 1:{ // Update
                 
-                NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", appID];
+                NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
                 NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
                 [[UIApplication sharedApplication] openURL:iTunesURL];
                 
