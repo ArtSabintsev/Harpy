@@ -34,6 +34,14 @@ static NSString *appID = @"556665733";
 */
 static BOOL forceUpdate = YES;
 
+/*
+ Customize the alert title, message, and button titles.
+ */
+static NSString *alertTitle = @"Update Available";
+static NSString *alertMessage = @"A new version of <app> is available. Would you like to update now?";
+static NSString *cancelTitle = @"Not now";
+static NSString *updateTitle = @"Update";
+
 @interface Harpy : NSObject <UIAlertViewDelegate>
 
 /*
