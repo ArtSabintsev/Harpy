@@ -8,23 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#warning Please customize Harpy's static variables
-
-/*
- Option 1: YES forces user to update app on launch. 
- Option 2: NO gives user option to update during next session launch\
-*/
-static BOOL harpyForceUpdate = NO;
-
-// 2. Your AppID (found in iTunes Connect)
-#define kHarpyAppID         @"573293275"
-
-
-// 3. Customize the alert title and action buttons
-#define kHarpyAlertViewTitle      @"Update Available"
-#define kHarpyCancelButtonTitle   @"Not now"
-#define kHarpyUpdateButtonTitle   @"Update"
-
 @interface Harpy : NSObject <UIAlertViewDelegate>
 
 /*

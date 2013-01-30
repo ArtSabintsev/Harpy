@@ -7,6 +7,7 @@
 //
 
 #import "Harpy.h"
+#import "HarpyConstants.h"
 
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 

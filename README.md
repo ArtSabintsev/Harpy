@@ -22,12 +22,7 @@
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
-1. Configure the **5** static variables in **Harpy.h**
-	- ***harpyForceUpdate***
-	- ***kHarpyAppID***
-	- ***kHarpyAlertViewTitle***
-	- ***kHarpyCancelButtonTitle***
-	- ***kHarpyUpdateButtonTitle***
+1. Configure the **5** static variables in **HarpyConstants.h**
 	- You can remove the ***#warning*** in **Harpy.h** after customizing those variables. 
 1.  In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
 
@@ -56,9 +51,8 @@ And you're all set!
 ### Important Note on AppStore Submissions
 - As of 2.0.0, no extra configuraiton needs be performed to avoid having the AppStore reviewer see the alert. 
 
-###  Release Notes (v2.0.0):
-- Began using version-checking code
-- Added macros for UIAlertView customization (title, cancel button, and update button)
+###  Release Notes (v2.0.1):
+- Moved customizable strings to new file, ***HarpyConstants.h***
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
