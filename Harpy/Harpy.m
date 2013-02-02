@@ -10,7 +10,6 @@
 #import "HarpyConstants.h"
 #import "JSONKit.h"
 
-@class JKDictionary;
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 
 
