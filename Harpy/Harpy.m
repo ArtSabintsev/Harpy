@@ -42,26 +42,27 @@
             if (![jsonResult isKindOfClass:[NSMutableDictionary class]]) {
                 return;
             }
-            NSNumber *resultCount = [jsonResult objectForKey:@"resultCount"];
-            if (![resultCount intValue]) {
+            id resultCount = [jsonResult objectForKey:@"resultCount"];
+            if (![resultCount isKindOfClass:[NSNumber class]] || ![resultCount intValue]) {
                 return;
             }
-            NSArray *results = [jsonResult objectForKey:@"results"];
-            if (![results count]) {
+            id results = [jsonResult objectForKey:@"results"];
+            if (![results isKindOfClass:[NSArray class]] || ![results count]) {
                 return;
             }
-            NSDictionary *latestVersionDescription = [results objectAtIndex:0];
+            id latestVersionDescription = [results objectAtIndex:0];
             if (![latestVersionDescription isKindOfClass:[NSMutableDictionary class]]) {
                 return;
             }
-            NSString *currentAppStoreVersion = [latestVersionDescription objectForKey:@"version"];
-            if ([kHarpyCurrentVersion compare:currentAppStoreVersion
-                                      options:NSNumericSearch] != NSOrderedAscending) {
+            id currentAppStoreVersion = [latestVersionDescription objectForKey:@"version"];
+            if (![currentAppStoreVersion isKindOfClass:[NSString class]] ||
+                    [kHarpyCurrentVersion compare:currentAppStoreVersion
+                                          options:NSNumericSearch] != NSOrderedAscending) {
                 return;
             }
             dispatch_async(dispatch_get_main_queue(), ^
             {
-              [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
+                [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
             });
         }
         @catch (NSException *exception) {
