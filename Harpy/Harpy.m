@@ -13,9 +13,19 @@
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
 
 
-@interface Harpy ()
+@interface Harpy () <UIAlertViewDelegate>
+
++ (NSURL *)requestURL;
 
 + (void)showAlertWithAppStoreVersion:(NSString *)appStoreVersion;
+
++ (void)showUpdateAlertWithCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
+                                          appName:(NSString *)appName;
+
++ (void)showForceUpdateAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+                                        appName:(NSString *)appName;
+
++ (void)openITunes;
 
 @end
 
@@ -23,13 +33,6 @@
 @implementation Harpy
 
 #pragma mark - Public Methods
-
-+ (NSURL *)requestURL
-{
-    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",
-                                                       kHarpyAppID];
-    return [NSURL URLWithString:storeString];
-}
 
 + (void)checkVersion
 {
@@ -74,24 +77,31 @@
 
 
 #pragma mark - Private Methods
+
++ (NSURL *)requestURL
+{
+    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",
+                                                       kHarpyAppID];
+    return [NSURL URLWithString:storeString];
+}
+
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *) kCFBundleNameKey];
     if (harpyForceUpdate) { // Force user to update app
-
-        UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                             message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.",
-                                                                                                appName,
-                                                                                                currentAppStoreVersion]
-                                                            delegate:self
-                                                   cancelButtonTitle:kHarpyUpdateButtonTitle
-                                                   otherButtonTitles:nil,
-                                                                     nil] autorelease];
-        [alertView show];
+        [self showForceUpdateAlertWithAppStoreVersion:currentAppStoreVersion
+                                              appName:appName];
     }
     else { // Allow user option to update next time user launches your app
+        [self showUpdateAlertWithCurrentAppStoreVersion:currentAppStoreVersion
+                                                appName:appName];
+    }
+}
 
-        UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
++ (void)showUpdateAlertWithCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
+                                          appName:(NSString *)appName
+{
+    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
                                                              message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.",
                                                                                                 appName,
                                                                                                 currentAppStoreVersion]
@@ -99,9 +109,31 @@
                                                    cancelButtonTitle:kHarpyCancelButtonTitle
                                                    otherButtonTitles:kHarpyUpdateButtonTitle,
                                                                      nil] autorelease];
-        [alertView show];
-    }
+    [alertView show];
 }
+
++ (void)showForceUpdateAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+                                        appName:(NSString *)appName
+{
+    UIAlertView *alertView = [[[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                             message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.",
+                                                                                                appName,
+                                                                                                currentAppStoreVersion]
+                                                            delegate:self
+                                                   cancelButtonTitle:kHarpyUpdateButtonTitle
+                                                   otherButtonTitles:nil,
+                                                                     nil] autorelease];
+    [alertView show];
+}
+
++ (void)openITunes
+{
+    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@",
+                                                        kHarpyAppID];
+    NSURL    *iTunesURL    = [NSURL URLWithString:iTunesString];
+    [[UIApplication sharedApplication] openURL:iTunesURL];
+}
+
 
 #pragma mark - UIAlertViewDelegate Methods
 + (void)   alertView:(UIAlertView *)alertView
@@ -123,13 +155,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     }
 }
 
-+ (void)openITunes
-{
-    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@",
-                                                        kHarpyAppID];
-    NSURL    *iTunesURL    = [NSURL URLWithString:iTunesString];
-    [[UIApplication sharedApplication] openURL:iTunesURL];
-}
 
 
 @end
