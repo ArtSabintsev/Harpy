@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Harpy : NSObject <UIAlertViewDelegate>
+@interface Harpy : NSObject
 
 /*
   Checks the installed version of your application against the version currently available on the iTunes store.

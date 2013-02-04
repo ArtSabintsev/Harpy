@@ -1,0 +1,3 @@
+[submodule "Harpy/JSONKit"]
+	path = Harpy/JSONKit
+	url = https://herrsorgenfrei@github.com/johnezang/JSONKit.git
