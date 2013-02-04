@@ -18,6 +18,7 @@ static BOOL harpyForceUpdate = NO;
 #define kHarpyAppID                 @"573293275"
 
 // 3. Customize the alert title and action buttons
-#define kHarpyAlertViewTitle        @"Update Available"
-#define kHarpyCancelButtonTitle     @"Not now"
-#define kHarpyUpdateButtonTitle     @"Update"
+#define kHarpyAlertViewTitle        NSLocalizedString(@"Update Available",@"")
+#define kHarpyCancelButtonTitle     NSLocalizedString(@"Not now",@"")
+#define kHarpyUpdateButtonTitle     NSLocalizedString(@"Update",@"")
+#define kHarpyIgnoreButtonTitle     NSLocalizedString(@"Don't tell me again",@"")
