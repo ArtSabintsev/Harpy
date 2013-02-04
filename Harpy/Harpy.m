@@ -8,8 +8,10 @@
 
 #import "Harpy.h"
 #import "HarpyConstants.h"
+#import "VersionComparator.h"
 
 #define kHarpyCurrentVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleVersionKey]
+#define kHarpyIgnoreUpdateKey @"HarpyIgnoreUpdateKey"
 
 @interface Harpy ()
 
@@ -18,6 +20,8 @@
 @end
 
 @implementation Harpy
+
+static NSString* currentAppStoreVersion;
 
 #pragma mark - Public Methods
 + (void)checkVersion
@@ -47,10 +51,17 @@
                     
                 } else {
 
-                    NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                  
+                    // Don't ask again if user ignored previous message
+                    if ( [[[NSUserDefaults standardUserDefaults] objectForKey:kHarpyIgnoreUpdateKey] isEqualToString:currentAppStoreVersion] ) {
+                        return;
+                    }
 
-                    if ([kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+                    NSString* currentVersion = kHarpyCurrentVersion;
+                    if ( [VersionComparator isVersion:currentAppStoreVersion greaterThanVersion:currentVersion] ) {
 		                
+                        [currentAppStoreVersion retain];
                         [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
 	                
                     }
@@ -77,21 +88,20 @@
     if ( harpyForceUpdate ) { // Force user to update app
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                            message:[NSString stringWithFormat:NSLocalizedString(@"A new version of %@ is available. Please update to version %@ now.",@""), appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:kHarpyUpdateButtonTitle
                                                   otherButtonTitles:nil, nil];
         
         [alertView show];
-        
+      
     } else { // Allow user option to update next time user launches your app
-        
-        
+              
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                            message:[NSString stringWithFormat:NSLocalizedString(@"A new version of %@ is available. Please update to version %@ now.", @""), appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:kHarpyCancelButtonTitle
-                                                  otherButtonTitles:kHarpyUpdateButtonTitle, nil];
+                                                  otherButtonTitles:kHarpyUpdateButtonTitle, kHarpyIgnoreButtonTitle, nil];
         
         [alertView show];
         
@@ -126,14 +136,18 @@
                 [[UIApplication sharedApplication] openURL:iTunesURL];
                 
             } break;
-                
+            
+            case 2: { // Ignore
+                [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:kHarpyIgnoreUpdateKey];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            } break;
             default:
                 break;
         }
         
     }
-
-    
+    [currentAppStoreVersion release];
+    currentAppStoreVersion = nil;
 }
 
 @end
