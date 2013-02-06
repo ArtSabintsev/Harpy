@@ -11,7 +11,7 @@
 #warning Please customize Harpy's static variables
 
 // Your AppID - found in iTunes Connect
-static NSString *appID = @"556665733";      
+static NSString * __attribute__((unused)) appID = @"556665733";      
 
 // Set to your region's local
 #define kCurrentLocale  @"en_US"
@@ -32,7 +32,7 @@ static NSString *appID = @"556665733";
  YES forces your users to update your app every time they launch a new session of your app.
  NO gives the user the option to update or to continue using the app for that session.
 */
-static BOOL forceUpdate = YES;
+static BOOL __attribute__((unused)) forceUpdate = YES;
 
 @interface Harpy : NSObject <UIAlertViewDelegate>
 
