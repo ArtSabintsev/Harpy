@@ -66,7 +66,7 @@
 And you're all set!
 
 ### Important Note on AppStore Submissions
-- The AppStore reviewer **not** see the alert. 
+- The AppStore reviewer will **not** see the alert. 
 
 ###  Release Notes (v2.1.0):
 - Added version check support for apps that are backgrounded for extended peridos of time 
