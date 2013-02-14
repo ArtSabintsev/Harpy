@@ -24,6 +24,7 @@
 		
 1. Configure the **5** static variables in **HarpyConstants.h**
 	- You can remove the ***#warning*** in **Harpy.h** after customizing those variables. 
+	
 1.  In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
 
 <pre>
@@ -51,8 +52,8 @@ And you're all set!
 ### Important Note on AppStore Submissions
 - As of 2.0.0, no extra configuraiton needs be performed to avoid having the AppStore reviewer see the alert. 
 
-###  Release Notes (v2.0.1):
-- Moved customizable strings to new file, ***HarpyConstants.h***
+###  Release Notes (v2.0.2):
+- Version checking now performed using CFBundleShortVersionString
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
