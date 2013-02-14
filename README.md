@@ -26,7 +26,6 @@
 	- You can remove the ```#warning``` in **Harpy.h** after customizing those variables. 
 	
 1.  In your **AppDelegate.m**, add **only one** of the following methods:
-	
 	- ```[Harpy checkVersion]``` after makeKeyAndVisible is called on your UIWindow iVar in ```application:didFinishLaunchingWithOptions:```
 	- ```[Harpy checkVersionDaily]``` in ```applicationDidBecomeActive:```
 	- ```[Harpy checkVersionWeekly]``` in ```applicationDidBecomeActive:```
