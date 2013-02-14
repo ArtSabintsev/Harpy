@@ -16,20 +16,17 @@
 
 ### Installation Instructions:
 
-1. Copy the 'Harpy' folder into your Xcode project. The following files will be added:
-	1. Harpy.h
-	1. Harpy.m
+1. Copy the 'Harpy' folder into your Xcode project.
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
-1. Configure the **5** static variables in **HarpyConstants.h**
-	- You can remove the ```#warning``` in **Harpy.h** after customizing those variables. 
+1. Configure the static variables in **HarpyConstants.h**, and remove the ```#warning``` after customizing those variables. 
 	
 1.  In your **AppDelegate.m**, add **only one** of the following methods:
 	- ```[Harpy checkVersion]``` after makeKeyAndVisible is called on your UIWindow iVar in ```application:didFinishLaunchingWithOptions:```
 	- ```[Harpy checkVersionDaily]``` in ```applicationDidBecomeActive:```
 	- ```[Harpy checkVersionWeekly]``` in ```applicationDidBecomeActive:```
-	- ***NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. using multiple methods will result in multiple UIAlertViews to pop.***
+	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. using multiple methods will result in multiple UIAlertViews to pop.**
 	
 <pre>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
