@@ -69,7 +69,7 @@ And you're all set!
 - The AppStore reviewer will **not** see the alert. 
 
 ###  Release Notes (v2.1.0):
-- Added version check support for apps that are backgrounded for extended peridos of time 
+- Added version check support for apps that are backgrounded for extended periods of time 
 	- Daily check performed with ```checkVersionDaily```
 	- Weekly check performed with ```checkVersionWeekly```
 
