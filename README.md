@@ -23,37 +23,59 @@
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
 1. Configure the **5** static variables in **HarpyConstants.h**
-	- You can remove the ***#warning*** in **Harpy.h** after customizing those variables. 
+	- You can remove the ```#warning``` in **Harpy.h** after customizing those variables. 
 	
-1.  In your **AppDelegate.m**, add ***[Harpy checkVersion]*** after calling ***makeKeyAndVisible***:
-
+1.  In your **AppDelegate.m**, add **only one** of the following methods:
+	
+	- ```[Harpy checkVersion]``` after makeKeyAndVisible is called on your UIWindow iVar in ```application:didFinishLaunchingWithOptions:```
+	- ```[Harpy checkVersionDaily]``` in ```applicationDidBecomeActive:```
+	- ```[Harpy checkVersionWeekly]``` in ```applicationDidBecomeActive:```
+	- ***NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. using multiple methods will result in multiple UIAlertViews to pop.***
+	
 <pre>
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-	// Customization on application launch
-	
-	…
-	
-	// Present Window
+
+	// Present Window before calling Harpy
 	[self.window makeKeyAndVisible]
 	
-	/*  
-		Check AppStore for your application's current version. If newer version exists, prompt user.
-		Declare immediatley after you call makeKeyAndVisible on your UIWindow iVar
-	*/
+	// Perform check for new version of your app 
 	[Harpy checkVersion] 
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+
+	/*
+	 Perform daily check for new version of your app
+	 Useful if user returns to you app from background after extended period of time
+ 	 Place in applicationDidBecomeActive:
+ 	 
+ 	 Also, performs version check on first launch.
+ 	*/
+	[Harpy checkVersionDaily];
+
+	/*
+	 Perform weekly check for new version of your app
+	 Useful if user returns to you app from background after extended period of time
+	 Place in applicationDidBecomeActive:
+	 
+	 Also, performs version check on first launch.
+	 */
+	[Harpy checkVersionWeekly];
+    
+}
 </pre>
 
 And you're all set!
 
 ### Important Note on AppStore Submissions
-- As of 2.0.0, no extra configuraiton needs be performed to avoid having the AppStore reviewer see the alert. 
+- The AppStore reviewer **not** see the alert. 
 
-###  Release Notes (v2.0.2):
-- Version checking now performed using CFBundleShortVersionString
+###  Release Notes (v2.1.0):
+- Added version check support for apps that are backgrounded for extended peridos of time 
+	- Daily check performed with ```checkVersionDaily```
+	- Weekly check performed with ```checkVersionWeekly```
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0

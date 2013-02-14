@@ -11,8 +11,11 @@
 
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 
+static NSDate *lastVersionCheckPerformedOnDate;
+
 @interface Harpy ()
 
++ (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate;
 + (void)showAlertWithAppStoreVersion:(NSString*)appStoreVersion;
 
 @end
@@ -37,6 +40,9 @@
             NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
             dispatch_async(dispatch_get_main_queue(), ^{
+                
+                // Store version comparison date
+                lastVersionCheckPerformedOnDate = [NSDate date];
                 
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
@@ -68,7 +74,70 @@
     }];
 }
 
++ (void)checkVersionDaily
+{
+    
+    /*
+     On app's first launch, lastVersionCheckPerformedOnDate isn't set.
+     Avoid false-positive fulfilment of second condition in this method.
+     Also, performs version check on first launch.
+     */
+    if ( !lastVersionCheckPerformedOnDate ) {
+        
+        // Set Initial Date
+        lastVersionCheckPerformedOnDate = [NSDate date];
+        
+        // Perform First Launch Check
+        [Harpy checkVersion];
+        
+    }
+    
+    // If daily condition is satisfied, perform version check
+    if ( [Harpy numberOfDaysElapsedBetweenILastVersionCheckDate] > 1 ) {
+        
+        [Harpy checkVersion];
+        
+    }
+}
+
++ (void)checkVersionWeekly
+{
+    
+    /*
+     On app's first launch, lastVersionCheckPerformedOnDate isn't set.
+     Avoid false-positive fulfilment of second condition in this method.
+     Also, performs version check on first launch.
+     */
+    if ( !lastVersionCheckPerformedOnDate ) {
+        
+        // Set Initial Date
+        lastVersionCheckPerformedOnDate = [NSDate date];
+        
+        // Perform First Launch Check
+        [Harpy checkVersion];
+        
+    }
+    
+    // If weekly condition is satisfied, perform version check 
+    if ( [Harpy numberOfDaysElapsedBetweenILastVersionCheckDate] > 7 ) {
+        
+        [Harpy checkVersion];
+        
+    }
+}
+
 #pragma mark - Private Methods
++ (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate
+{
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [currentCalendar components:kCFCalendarUnitDay
+                                                      fromDate:lastVersionCheckPerformedOnDate
+                                                        toDate:[NSDate date]
+                                                       options:0];
+    
+    return [components day];
+}
+
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     
