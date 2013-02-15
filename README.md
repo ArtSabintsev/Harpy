@@ -27,10 +27,11 @@
 	- Note: `kHarpyAlertType` is set to `AlertType_Option` by default. 
 	- To force the user to update your app on launch, set `kHarpyAlertType` to `AlertType_Force`
 	- To allow the user to forego seeing alerts for current AppStore version, set `kHarpyAlertType` to `AlertType_Skip`
-	- To have an alert pop up each time the application launches from a full shutdown (e.g., no background), keep the default setting (`KHarpyAlertType == AlertType_Option`).  
+	- To have an alert pop up each time the application launches from a full shutdown (e.g., not background), keep the default setting (`KHarpyAlertType == AlertType_Option`).  
 
 1.  In your **AppDelegate.m**, add **only one** of the following methods:
-	- `[Harpy checkVersion]` after makeKeyAndVisible is called on your UIWindow iVar in `application:didFinishLaunchingWithOptions:`
+
+	- `[Harpy checkVersion]` after makeKeyAndVisible is called in `application:didFinishLaunchingWithOptions:`
 	- `[Harpy checkVersionDaily]` in `applicationDidBecomeActive:`
 	- `[Harpy checkVersionWeekly]` in `applicationDidBecomeActive:`
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
