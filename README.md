@@ -8,11 +8,13 @@
 ### Screenshots
 
 - The **left picture** forces the user to update the app.
-- The **right picture** gives the user the option to update the app.
+- The **center picture** gives the user the option to update the app.
+- The **right picture** gives the user the skip the current update.
 - This option is configurable in **Harpy.h**.
  
 ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update") 
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
+![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/picSkippedUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions:
 
@@ -20,13 +22,18 @@
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
-1. Configure the static variables in **HarpyConstants.h**, and remove the ```#warning``` after customizing those variables. 
-	
+1. Configure the static variables in **HarpyConstants.h**, and remove the ```#warning``` after customizing said variables. 
+
+	- Note: `kHarpyAlertType` is set to `AlertType_Option` by default. 
+	- To force the user to update your app on launch, set `kHarpyAlertType` to `AlertType_Force`
+	- To allow the user to forego seeing alerts for current AppStore version, set `kHarpyAlertType` to `AlertType_Skip`
+	- To have an alert pop up each time the application launches from a full shutdown (e.g., no background), keep the default setting (`KHarpyAlertType == AlertType_Option`).  
+
 1.  In your **AppDelegate.m**, add **only one** of the following methods:
-	- ```[Harpy checkVersion]``` after makeKeyAndVisible is called on your UIWindow iVar in ```application:didFinishLaunchingWithOptions:```
-	- ```[Harpy checkVersionDaily]``` in ```applicationDidBecomeActive:```
-	- ```[Harpy checkVersionWeekly]``` in ```applicationDidBecomeActive:```
-	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. using multiple methods will result in multiple UIAlertViews to pop.**
+	- `[Harpy checkVersion]` after makeKeyAndVisible is called on your UIWindow iVar in `application:didFinishLaunchingWithOptions:`
+	- `[Harpy checkVersionDaily]` in `applicationDidBecomeActive:`
+	- `[Harpy checkVersionWeekly]` in `applicationDidBecomeActive:`
+	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
 <pre>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -68,10 +75,8 @@ And you're all set!
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.1.0):
-- Added version check support for apps that are backgrounded for extended periods of time 
-	- Daily check performed with ```checkVersionDaily```
-	- Weekly check performed with ```checkVersionWeekly```
+###  Release Notes (v2.2.0):
+- Added third option that allows users to skip seeing alerts for current AppStore version
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0

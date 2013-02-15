@@ -16,6 +16,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
 @interface Harpy ()
 
 + (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate;
++ (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString*)currentAppStoreVersion;
 + (void)showAlertWithAppStoreVersion:(NSString*)appStoreVersion;
 
 @end
@@ -25,7 +26,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
 #pragma mark - Public Methods
 + (void)checkVersion
 {
-
+    
     // Asynchronously query iTunes AppStore for publically available version
     NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", kHarpyAppID];
     NSURL *storeURL = [NSURL URLWithString:storeString];
@@ -34,11 +35,11 @@ static NSDate *lastVersionCheckPerformedOnDate;
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-       
+        
         if ( [data length] > 0 && !error ) { // Success
             
             NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 // Store version comparison date
@@ -52,22 +53,21 @@ static NSDate *lastVersionCheckPerformedOnDate;
                     return;
                     
                 } else {
-
+                    
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-
-                    if ([kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
-		                
-                        [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
-	                
+                    
+                    if ( [kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending ) {
+                        
+                        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+                        
+                    } else {
+                        
+                        // Current installed version is the newest public version or newer (e.g., dev version)	
+                        
                     }
-                    else {
-		            
-                        // Current installed version is the newest public version or newer	
-	                
-                    }
-
+                    
                 }
-              
+                
             });
         }
         
@@ -122,7 +122,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
     if ( [Harpy numberOfDaysElapsedBetweenILastVersionCheckDate] > 7 ) {
         
         [Harpy checkVersion];
-        
+
     }
 }
 
@@ -138,32 +138,80 @@ static NSDate *lastVersionCheckPerformedOnDate;
     return [components day];
 }
 
++ (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
+{
+    // Check if user decided to skip this version in the past
+    BOOL shouldSkipVersionUpdate = [[NSUserDefaults standardUserDefaults] boolForKey:kHarpyDefaultShouldSkipVersion];
+    NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:kHarpyDefaultSkippedVersion];
+    
+    if ( !shouldSkipVersionUpdate ) {
+        
+        [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
+        
+    } else if ( shouldSkipVersionUpdate && ![storedSkippedVersion isEqualToString:currentAppStoreVersion] ) {
+        
+        [Harpy showAlertWithAppStoreVersion:currentAppStoreVersion];
+        
+    } else {
+        
+        // Don't show alert.
+        return;
+        
+    }
+}
+
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     
+    // Reference App's name
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     
-    if ( harpyForceUpdate ) { // Force user to update app
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
-                                                           delegate:self
-                                                  cancelButtonTitle:kHarpyUpdateButtonTitle
-                                                  otherButtonTitles:nil, nil];
-        
-        [alertView show];
-        
-    } else { // Allow user option to update next time user launches your app
-        
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
-                                                           delegate:self
-                                                  cancelButtonTitle:kHarpyCancelButtonTitle
-                                                  otherButtonTitles:kHarpyUpdateButtonTitle, nil];
-        
-        [alertView show];
-        
+    switch ( kHarpyAlertType ) {
+            
+        case AlertType_Force: {
+            
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                               delegate:self
+                                                      cancelButtonTitle:kHarpyUpdateButtonTitle
+                                                      otherButtonTitles:nil, nil];
+            
+            [alertView show];
+
+            
+        } break;
+            
+        case AlertType_Option: {
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                               delegate:self
+                                                      cancelButtonTitle:kHarpyCancelButtonTitle
+                                                      otherButtonTitles:kHarpyUpdateButtonTitle, nil];
+            
+            [alertView show];
+            
+        } break;
+            
+        case AlertType_Skip: {
+            
+            // Store currentAppStoreVersion in case user pushes skip
+            [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:kHarpyDefaultSkippedVersion];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
+                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                               delegate:self
+                                                      cancelButtonTitle:kHarpySkipButtonTitle
+                                                      otherButtonTitles:kHarpyUpdateButtonTitle, kHarpyCancelButtonTitle, nil];
+            
+            [alertView show];
+            
+        } break;
+            
+        default:
+            break;
     }
     
 }
@@ -172,35 +220,58 @@ static NSDate *lastVersionCheckPerformedOnDate;
 + (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    if ( harpyForceUpdate ) {
-
-        NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
-        NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-        [[UIApplication sharedApplication] openURL:iTunesURL];
-        
-    } else {
-
-        switch ( buttonIndex ) {
-                
-            case 0:{ // Cancel / Not now
-        
-                // Do nothing
-                
-            } break;
-                
-            case 1:{ // Update
+    
+    switch ( kHarpyAlertType ) {
+            
+        case AlertType_Force: { // Launch App Store.app
+            
+            NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
+            NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+            [[UIApplication sharedApplication] openURL:iTunesURL];
+            
+        } break;
+            
+        case AlertType_Option: {
+            
+            if ( 1 == buttonIndex ) { // Launch App Store.app
                 
                 NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
                 NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
                 [[UIApplication sharedApplication] openURL:iTunesURL];
                 
-            } break;
+            } else { // Ask user on next launch
                 
-            default:
-                break;
-        }
-        
+                // Do nothing
+                
+            }
+            
+        } break;
+            
+        case AlertType_Skip: {
+            
+            if ( 0 == buttonIndex ) { // Skip current version in AppStore
+            
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHarpyDefaultShouldSkipVersion];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                
+            } else if ( 1 == buttonIndex ) { // Launch App Store.app
+                
+                NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", kHarpyAppID];
+                NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+                [[UIApplication sharedApplication] openURL:iTunesURL];
+                
+            } else if ( 2 == buttonIndex) { // Ask user on next launch
+                
+                // Do nothing
+                
+            }
+            
+        } break;
+            
+        default:
+            break;
     }
+    
 
     
 }
