@@ -22,18 +22,11 @@
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
-1. Configure the static variables in **HarpyConstants.h**, and remove the ```#warning``` after customizing said variables. 
+1. Configure the static variables in **HarpyConstants.h**, and remove the `#warning` after customizing said variables. 
 
-1. Choose the approriate alert display by modifying ```kHarpyAlertType``` (default: ``kAlertType_Option```) in **HarpyConstants.h**.
+1. Choose the approriate alert display by modifying `kHarpyAlertType` (default: ``kAlertType_Option```) in **HarpyConstants.h**.
 
-1.  In your **AppDelegate.m**, add **only one** of the following methods:
-
-	- ```[Harpy checkVersion]``` after makeKeyAndVisible is called in *application:didFinishLaunchingWithOptions:*
-	
-	- ```[Harpy checkVersionDaily]``` in *applicationDidBecomeActive:*
-	
-	- ```[Harpy checkVersionWeekly]``` in *applicationDidBecomeActive:*
-	
+1.  In your **AppDelegate.m**, add **only one** of the `checkVersion` methods.	
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
 <pre>
