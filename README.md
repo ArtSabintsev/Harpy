@@ -31,9 +31,9 @@
 
 1.  In your **AppDelegate.m**, add **only one** of the following methods:
 
-	- `[Harpy checkVersion]` after makeKeyAndVisible is called in `application:didFinishLaunchingWithOptions:`
-	- `[Harpy checkVersionDaily]` in `applicationDidBecomeActive:`
-	- `[Harpy checkVersionWeekly]` in `applicationDidBecomeActive:`
+	- `[Harpy checkVersion]` after makeKeyAndVisible is called in *application:didFinishLaunchingWithOptions:*
+	- `[Harpy checkVersionDaily]` in *applicationDidBecomeActive:*
+	- `[Harpy checkVersionWeekly]` in *applicationDidBecomeActive:*
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
 <pre>
