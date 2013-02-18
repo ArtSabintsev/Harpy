@@ -17,7 +17,7 @@
 ![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/picSkippedUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions:
-**Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab**.
+**Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab if your project doesn't use ARC**.
 
 1. Copy the 'Harpy' folder into your Xcode project.
 
@@ -25,7 +25,7 @@
 		
 1. Configure the static variables in **HarpyConstants.h**, and remove the `#warning` after customizing said variables. 
 
-1. Choose the approriate alert display by modifying `kHarpyAlertType` (default: ``kAlertType_Option```) in **HarpyConstants.h**.
+1. Choose the approriate alert display by modifying `kHarpyAlertType` (default: `kAlertType_Option`) in **HarpyConstants.h**.
 
 1.  In your **AppDelegate.m**, add **only one** of the `checkVersion` methods.	
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
