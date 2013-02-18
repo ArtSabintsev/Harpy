@@ -17,10 +17,9 @@
 ![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/picSkippedUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions:
+**Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab**.
 
 1. Copy the 'Harpy' folder into your Xcode project.
-	- Harpy utilizes ARC. 
-	- Add the ***-fobjc-arc*** compiler flag in the build phases tab
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 		
