@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, AlertType)
 /************************/
 
 /// 1. Alert Type (Force, Option, or Skip)
-#ifndef kHarpyAppID
+#ifndef kHarpyAlertType
     #define kHarpyAlertType                     AlertType_Option // Choose between AlertType_Force, AlertType_Option, or AlertType_Skip
 #endif
 
