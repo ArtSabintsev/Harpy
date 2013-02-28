@@ -62,7 +62,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
                         
                     } else {
                         
-                        // Current installed version is the newest public version or newer (e.g., dev version)	
+                        // Current installed version is the newest public version or newer (e.g., dev version)
                         
                     }
                     
@@ -118,11 +118,11 @@ static NSDate *lastVersionCheckPerformedOnDate;
         
     }
     
-    // If weekly condition is satisfied, perform version check 
+    // If weekly condition is satisfied, perform version check
     if ( [Harpy numberOfDaysElapsedBetweenILastVersionCheckDate] > 7 ) {
         
         [Harpy checkVersion];
-
+        
     }
 }
 
@@ -162,6 +162,25 @@ static NSDate *lastVersionCheckPerformedOnDate;
 
 + (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
+    // Proper translator
+    NSString *(^localizedStringForKey)(NSString *, NSString *) = ^NSString*(NSString * key, NSString *defaultString){
+        static NSBundle *bundle = nil;
+        if (bundle == nil) {
+            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"];
+            bundle = [NSBundle bundleWithPath:bundlePath] ?: [NSBundle mainBundle];
+            for (NSString *language in [NSLocale preferredLanguages]) {
+                if ([[bundle localizations] containsObject:language]) {
+                    bundlePath = [bundle pathForResource:language ofType:@"lproj"];
+                    bundle = [NSBundle bundleWithPath:bundlePath];
+                    break;
+                }
+            }
+        }
+        defaultString = [bundle localizedStringForKey:key value:defaultString table:nil];
+        NSString *finalString = [[NSBundle mainBundle] localizedStringForKey:key value:defaultString table:nil];
+        return finalString;
+    };
+    
     
     // Reference App's name
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
@@ -170,25 +189,24 @@ static NSDate *lastVersionCheckPerformedOnDate;
             
         case AlertType_Force: {
             
-            
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:localizedStringForKey(harpyAlertViewTitleKey, @"Update Available")
+                                                                message:[NSString stringWithFormat:localizedStringForKey(harpyAlertViewMessageKey, @"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyUpdateButtonTitle
+                                                      cancelButtonTitle:localizedStringForKey(harpyUpdateButtonTitleKey, @"Update")
                                                       otherButtonTitles:nil, nil];
             
             [alertView show];
-
+            
             
         } break;
             
         case AlertType_Option: {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:localizedStringForKey(harpyAlertViewTitleKey, @"Update Available")
+                                                                message:[NSString stringWithFormat:localizedStringForKey(harpyAlertViewMessageKey, @"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyCancelButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, nil];
+                                                      cancelButtonTitle:localizedStringForKey(harpyCancelButtonTitleKey, @"Next time")
+                                                      otherButtonTitles:localizedStringForKey(harpyUpdateButtonTitleKey, @"Update"), nil];
             
             [alertView show];
             
@@ -200,11 +218,11 @@ static NSDate *lastVersionCheckPerformedOnDate;
             [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:kHarpyDefaultSkippedVersion];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:localizedStringForKey(harpyAlertViewTitleKey, @"Update Available")
+                                                                message:[NSString stringWithFormat:localizedStringForKey(harpyAlertViewMessageKey, @"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpySkipButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, kHarpyCancelButtonTitle, nil];
+                                                      cancelButtonTitle:localizedStringForKey(harpySkipButtonTitleKey, @"Skip this version")
+                                                      otherButtonTitles:localizedStringForKey(harpyUpdateButtonTitleKey, @"Update"), localizedStringForKey(harpyCancelButtonTitleKey, @"Next time"), nil];
             
             [alertView show];
             
@@ -250,7 +268,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
         case AlertType_Skip: {
             
             if ( 0 == buttonIndex ) { // Skip current version in AppStore
-            
+                
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHarpyDefaultShouldSkipVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
@@ -272,7 +290,7 @@ static NSDate *lastVersionCheckPerformedOnDate;
             break;
     }
     
-
+    
     
 }
 

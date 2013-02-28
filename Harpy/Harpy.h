@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+// Translation keys
+static NSString *const harpyAlertViewTitleKey = @"kHarpyAlertViewTitle";
+static NSString *const harpyCancelButtonTitleKey = @"kHarpyCancelButtonTitle";
+static NSString *const harpySkipButtonTitleKey = @"kHarpySkipButtonTitle";
+static NSString *const harpyUpdateButtonTitleKey = @"kHarpyUpdateButtonTitle";
+static NSString *const harpyAlertViewMessageKey = @"kHarpyAlertViewMessage";
+
 @interface Harpy : NSObject <UIAlertViewDelegate>
 
 /**
