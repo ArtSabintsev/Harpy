@@ -26,19 +26,16 @@ typedef NS_ENUM(NSUInteger, AlertType)
 /** BEGIN CUSTOMIZATION */
 /************************/
 
-#warning Please customize Harpy's static variables
-
 /// 1. Alert Type (Force, Option, or Skip)
-#define kHarpyAlertType                     AlertType_Option // Choose between AlertType_Force, AlertType_Option, or AlertType_Skip
+#ifndef kHarpyAlertType
+    #define kHarpyAlertType                     AlertType_Option // Choose between AlertType_Force, AlertType_Option, or AlertType_Skip
+#endif
 
 /// 2. Your AppID (found in iTunes Connect)
-#define kHarpyAppID                         @"573293275"
-
-/// 3. Customize the alert title and action buttons
-#define kHarpyAlertViewTitle                @"Update Available"
-#define kHarpyCancelButtonTitle             @"Next time"
-#define kHarpySkipButtonTitle               @"Skip this version"
-#define kHarpyUpdateButtonTitle             @"Update"
+#ifndef kHarpyAppID
+    #warning Please re-define kHarpyAppID macro in your pch file
+    #define kHarpyAppID                         @"573293275"
+#endif
 
 /************************/
 /** END CUSTOMIZATION ***/

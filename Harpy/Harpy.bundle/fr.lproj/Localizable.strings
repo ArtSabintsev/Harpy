@@ -1,0 +1,15 @@
+/* A new version of %1$@ is available. Please update to version %2$@ now. */
+"kHarpyAlertViewMessage" = "Une nouvelle version de %1$@ est disponible. Veuillez effectuer la mise à jour %2$@.";
+
+/* Update Available */
+"kHarpyAlertViewTitle" = "Mise à jour disponible";
+
+/* Next time */
+"kHarpyCancelButtonTitle" = "Plus tard";
+
+/* Skip this version */
+"kHarpySkipButtonTitle" = "Non, merci";
+
+/* Update */
+"kHarpyUpdateButtonTitle" = "Mettre à jour";
+
