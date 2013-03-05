@@ -8,7 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+#import "HarpyConstants.h"
+
 @interface Harpy : NSObject <UIAlertViewDelegate>
+
+/**
+  Allows the constants to be set without altering HarpyConstants.h.  Useful if adding Harpy as a submodule.
+ */
++ (void)withAlertType:(AlertType)alertType AppID:(NSString *)appID cancelTitle:(NSString *)cancleTitle skipTitle:(NSString *)skipTitle updateTitle:(NSString *)updateTitle;
 
 /**
   Checks the installed version of your application against the version currently available on the iTunes store.
