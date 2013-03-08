@@ -22,23 +22,24 @@
 1. Copy the 'Harpy' folder into your Xcode project.
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
-		
-1. Configure the static variables in **HarpyConstants.h**, and remove the `#warning` after customizing said variables. 
 
-1. Choose the approriate alert display by modifying `kHarpyAlertType` (default: `kAlertType_Option`) in **HarpyConstants.h**.
+1. In your **AppDelegate.m**, set the app id for your app: `[[Harpy sharedInstance] setAppID:@"<app_id>"]`.
 
-1.  In your **AppDelegate.m**, add **only one** of the `checkVersion` methods.	
+1.  In your **AppDelegate.m**, add **only one** of the `[[Harpy sharedInstance] checkVersion]` methods.	
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
-<pre>
+``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
 	// Present Window before calling Harpy
 	[self.window makeKeyAndVisible]
 	
+	// Set the app id for your app
+	[[Harpy sharedInstance] setAppID:@"app_id"];
+	
 	// Perform check for new version of your app 
-	[Harpy checkVersion] 
+	[[Harpy sharedInstance] checkVersion] 
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -51,7 +52,7 @@
  	 
  	 Also, performs version check on first launch.
  	*/
-	[Harpy checkVersionDaily];
+	[[Harpy sharedInstance] checkVersionDaily];
 
 	/*
 	 Perform weekly check for new version of your app
@@ -60,10 +61,10 @@
 	 
 	 Also, performs version check on first launch.
 	 */
-	[Harpy checkVersionWeekly];
+	[[Harpy sharedInstance] checkVersionWeekly];
     
 }
-</pre>
+```
 
 And you're all set!
 
