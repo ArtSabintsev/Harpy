@@ -72,7 +72,7 @@
                 } else {
                     
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    
+                    currentAppStoreVersion = @"3.0";
                     if ( [kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending ) {
                         
                         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
@@ -233,6 +233,12 @@
     
 }
 
+- (void)launchAppStore{
+    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
+    NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+    [[UIApplication sharedApplication] openURL:iTunesURL];
+}
+
 #pragma mark - UIAlertViewDelegate Methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -241,10 +247,8 @@
     switch ( self.alertType ) {
             
         case HarpyAlertTypeForce: { // Launch App Store.app
-            
-            NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
-            NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-            [[UIApplication sharedApplication] openURL:iTunesURL];
+
+            [self launchAppStore];
             
         } break;
             
@@ -252,9 +256,7 @@
             
             if ( 1 == buttonIndex ) { // Launch App Store.app
                 
-                NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
-                NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-                [[UIApplication sharedApplication] openURL:iTunesURL];
+                [self launchAppStore];
                 
             } else { // Ask user on next launch
                 
@@ -273,9 +275,7 @@
                 
             } else if ( 1 == buttonIndex ) { // Launch App Store.app
                 
-                NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
-                NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-                [[UIApplication sharedApplication] openURL:iTunesURL];
+                [self launchAppStore];
                 
             } else if ( 2 == buttonIndex) { // Ask user on next launch
                 
