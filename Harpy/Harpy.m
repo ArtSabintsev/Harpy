@@ -72,7 +72,7 @@
                 } else {
                     
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    currentAppStoreVersion = @"3.0";
+
                     if ( [kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending ) {
                         
                         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
