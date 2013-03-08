@@ -19,9 +19,19 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 
 @interface Harpy : NSObject
 
+/**
+ The app id of your app.
+ */
 @property (strong, nonatomic) NSString *appID;
+
+/**
+ The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
+ */
 @property (nonatomic) enum HarpyAlertType alertType;
 
+/**
+ The shared Harpy instance.
+ */
 + (id)sharedInstance;
 
 /**
