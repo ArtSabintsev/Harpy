@@ -8,12 +8,14 @@
 
 #import "Harpy.h"
 
-/// NSUserDefault Macro to store user's preferences for AlertType_Skip
+/// NSUserDefault Macro to store user's preferences for HarpyAlertTypeSkip
 #define kHarpyDefaultShouldSkipVersion      @"Harpy Should Skip Version Boolean"
 #define kHarpyDefaultSkippedVersion         @"Harpy User Decided To Skip Version Update Boolean"
 
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
-#define HarpyLocalizedString(stringKey) [[NSBundle mainBundle] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
+#define kHarpyBundle [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
+#define HarpyLocalizedString(stringKey) \
+    [[NSBundle bundleWithPath:kHarpyBundle] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
 
 @interface Harpy()
 <UIAlertViewDelegate>
