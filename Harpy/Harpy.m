@@ -12,13 +12,8 @@
 #define kHarpyDefaultShouldSkipVersion      @"Harpy Should Skip Version Boolean"
 #define kHarpyDefaultSkippedVersion         @"Harpy User Decided To Skip Version Update Boolean"
 
-/// 3. Customize the alert title and action buttons
-#define kHarpyAlertViewTitle                @"Update Available"
-#define kHarpyCancelButtonTitle             @"Next time"
-#define kHarpySkipButtonTitle               @"Skip this version"
-#define kHarpyUpdateButtonTitle             @"Update"
-
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+#define HarpyLocalizedString(stringKey) [[NSBundle mainBundle] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
 
 @interface Harpy()
 <UIAlertViewDelegate>
@@ -193,10 +188,10 @@
         case HarpyAlertTypeForce: {
             
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
+                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyUpdateButtonTitle
+                                                      cancelButtonTitle:HarpyLocalizedString(@"Update")
                                                       otherButtonTitles:nil, nil];
             
             [alertView show];
@@ -206,11 +201,11 @@
             
         case HarpyAlertTypeOption: {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
+                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyCancelButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, nil];
+                                                      cancelButtonTitle:HarpyLocalizedString(@"Next time")
+                                                      otherButtonTitles:HarpyLocalizedString(@"Update"), nil];
             
             [alertView show];
             
@@ -222,11 +217,11 @@
             [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:kHarpyDefaultSkippedVersion];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
+                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpySkipButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, kHarpyCancelButtonTitle, nil];
+                                                      cancelButtonTitle:HarpyLocalizedString(@"Skip this version")
+                                                      otherButtonTitles:HarpyLocalizedString(@"Update"), HarpyLocalizedString(@"Next time"), nil];
             
             [alertView show];
             

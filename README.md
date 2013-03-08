@@ -23,9 +23,9 @@
 
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 
-1. In your **AppDelegate.m**, set the app id for your app: `[[Harpy sharedInstance] setAppID:@"<app_id>"]`.
+1. In your `AppDelegate`, set the app id for your app: `[[Harpy sharedInstance] setAppID:@"<app_id>"]`.
 
-1.  In your **AppDelegate.m**, add **only one** of the `[[Harpy sharedInstance] checkVersion]` methods.	
+1.  In your `AppDelegate`, add **only one** of the `[[Harpy sharedInstance] checkVersion]` methods.	
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
 ``` obj-c
