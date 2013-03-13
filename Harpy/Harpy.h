@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol HarpyDelegate <NSObject>
+
+@optional
+- (void)harpyDidShowUpdateDialog;
+- (void)harpyUserDidLaunchAppStore;
+- (void)harpyUserDidSkipVersion;
+- (void)harpyUserDidCancel;
+
+@end
+
 typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
 
@@ -18,6 +28,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 };
 
 @interface Harpy : NSObject
+
+/**
+ The harpy delegate can be used to know when the update dialog is shown and which action a user took.
+ See the @protocol declaration above.
+ */
+@property (weak, nonatomic) id<HarpyDelegate> delegate;
 
 /**
  The app id of your app.

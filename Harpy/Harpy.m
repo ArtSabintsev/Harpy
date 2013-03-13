@@ -232,6 +232,10 @@
         default:
             break;
     }
+
+    if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+        [self.delegate harpyDidShowUpdateDialog];
+    }
     
 }
 
@@ -239,6 +243,10 @@
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
+
+    if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
+        [self.delegate harpyUserDidLaunchAppStore];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate Methods
@@ -251,7 +259,7 @@
         case HarpyAlertTypeForce: { // Launch App Store.app
 
             [self launchAppStore];
-            
+
         } break;
             
         case HarpyAlertTypeOption: {
@@ -262,7 +270,9 @@
                 
             } else { // Ask user on next launch
                 
-                // Do nothing
+                if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
+                    [self.delegate harpyUserDidCancel];
+                }
                 
             }
             
@@ -274,14 +284,20 @@
             
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHarpyDefaultShouldSkipVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
+
+                if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
+                    [self.delegate harpyUserDidSkipVersion];
+                }
                 
             } else if ( 1 == buttonIndex ) { // Launch App Store.app
                 
                 [self launchAppStore];
                 
             } else if ( 2 == buttonIndex) { // Ask user on next launch
-                
-                // Do nothing
+
+                if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
+                    [self.delegate harpyUserDidCancel];
+                }
                 
             }
             
