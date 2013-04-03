@@ -34,11 +34,7 @@ typedef NS_ENUM(NSUInteger, AlertType)
 /// 2. Your AppID (found in iTunes Connect)
 #define kHarpyAppID                         @"573293275"
 
-/// 3. Customize the alert title and action buttons
-#define kHarpyAlertViewTitle                @"Update Available"
-#define kHarpyCancelButtonTitle             @"Next time"
-#define kHarpySkipButtonTitle               @"Skip this version"
-#define kHarpyUpdateButtonTitle             @"Update"
+/// 3. Customize the alert title and action buttons in Harpy.strings file
 
 /************************/
 /** END CUSTOMIZATION ***/

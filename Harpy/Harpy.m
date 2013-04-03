@@ -10,6 +10,11 @@
 #import "HarpyConstants.h"
 
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+#define kHarpyAlertMessage                  @"A new version of %@ is available. Please update to version %@ now."
+#define kHarpyAlertViewTitle                @"Update Available"
+#define kHarpyCancelButtonTitle             @"Next time"
+#define kHarpySkipButtonTitle               @"Skip this version"
+#define kHarpyUpdateButtonTitle             @"Update"
 
 static NSDate *lastVersionCheckPerformedOnDate;
 
@@ -171,10 +176,10 @@ static NSDate *lastVersionCheckPerformedOnDate;
         case AlertType_Force: {
             
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(kHarpyAlertViewTitle, @"Harpy", @"")
+                                                                message:[NSString stringWithFormat:NSLocalizedStringFromTable(kHarpyAlertMessage, @"Harpy", @"") , appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyUpdateButtonTitle
+                                                      cancelButtonTitle:NSLocalizedStringFromTable(kHarpyUpdateButtonTitle, @"Harpy", @"")
                                                       otherButtonTitles:nil, nil];
             
             [alertView show];
@@ -184,11 +189,11 @@ static NSDate *lastVersionCheckPerformedOnDate;
             
         case AlertType_Option: {
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(kHarpyAlertViewTitle, @"Harpy", @"")
+                                                                message:[NSString stringWithFormat:NSLocalizedStringFromTable(kHarpyAlertMessage, @"Harpy", @""), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpyCancelButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, nil];
+                                                      cancelButtonTitle:NSLocalizedStringFromTable(kHarpyCancelButtonTitle, @"Harpy", @"")
+                                                      otherButtonTitles:NSLocalizedStringFromTable(kHarpyUpdateButtonTitle, @"Harpy", @""), nil];
             
             [alertView show];
             
@@ -200,11 +205,11 @@ static NSDate *lastVersionCheckPerformedOnDate;
             [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:kHarpyDefaultSkippedVersion];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                                message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedStringFromTable(kHarpyAlertViewTitle, @"Harpy", @"")
+                                                                message:[NSString stringWithFormat:NSLocalizedStringFromTable(kHarpyAlertMessage, @"Harpy", @""), appName, currentAppStoreVersion]
                                                                delegate:self
-                                                      cancelButtonTitle:kHarpySkipButtonTitle
-                                                      otherButtonTitles:kHarpyUpdateButtonTitle, kHarpyCancelButtonTitle, nil];
+                                                      cancelButtonTitle:NSLocalizedStringFromTable(kHarpySkipButtonTitle, @"Harpy", @"")
+                                                      otherButtonTitles:NSLocalizedStringFromTable(kHarpyUpdateButtonTitle, @"Harpy", @""), NSLocalizedStringFromTable(kHarpyCancelButtonTitle, @"Harpy", @""), nil];
             
             [alertView show];
             

@@ -1,0 +1,15 @@
+
+/* Update alert message: A new version of {APP NAME} is available. Please update to version {NEW VERSION} now.*/
+"A new version of %@ is available. Please update to version %@ now." = "A new version of %@ is available. Please update to version %@ now.";
+
+/* Update alert title */
+"Update Available" = "Update Available";
+
+/* Update alert dismiss button title */
+"Next time" = "Next time";
+
+/* Update alert skip button title */
+"Skip this version" = "Skip this version";
+
+/* Update alert skip button title */
+"Update" = "Update";
