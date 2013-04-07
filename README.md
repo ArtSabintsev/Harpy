@@ -93,7 +93,7 @@ And you're all set!
 ### Optinonal Delegate and Delegate Method
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
 
-```	
+```	obj-c
 
 	// User presented with update dialog
 	- (void)harpyDidShowUpdateDialog;
