@@ -46,7 +46,7 @@
 1.  In your `AppDelegate`, add **only one** of the `[[Harpy sharedInstance] checkVersion]` methods.	
 	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
 	
-```
+``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
