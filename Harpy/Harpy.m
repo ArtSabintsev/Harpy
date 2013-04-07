@@ -19,12 +19,16 @@
 
 @interface Harpy()
 <UIAlertViewDelegate>
+
 @property (strong, nonatomic) NSDate *lastVersionCheckPerformedOnDate;
+
 @end
 
 @implementation Harpy
 
-+ (id)sharedInstance{
+#pragma mark - Initialization Methods
++ (id)sharedInstance
+{
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -37,7 +41,7 @@
 {
     self = [super init];
     if (self) {
-        self.alertType = HarpyAlertTypeOption;
+        _alertType = HarpyAlertTypeOption;
     }
     return self;
 }

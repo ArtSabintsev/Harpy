@@ -11,10 +11,10 @@
 @protocol HarpyDelegate <NSObject>
 
 @optional
-- (void)harpyDidShowUpdateDialog;
-- (void)harpyUserDidLaunchAppStore;
-- (void)harpyUserDidSkipVersion;
-- (void)harpyUserDidCancel;
+- (void)harpyDidShowUpdateDialog;       // User presented with update dialog
+- (void)harpyUserDidLaunchAppStore;     // User did click on button that launched App Store.app
+- (void)harpyUserDidSkipVersion;        // User did click on button that skips version update
+- (void)harpyUserDidCancel;             // User did click on button that cancels update dialog
 
 @end
 
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 /**
  The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
  */
-@property (nonatomic) enum HarpyAlertType alertType;
+@property (assign, nonatomic) enum HarpyAlertType alertType;
 
 /**
  The shared Harpy instance.
