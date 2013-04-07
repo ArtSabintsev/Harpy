@@ -8,10 +8,11 @@
 
 #import "Harpy.h"
 
-/// NSUserDefault Macro to store user's preferences for HarpyAlertTypeSkip
+/// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
 #define kHarpyDefaultShouldSkipVersion      @"Harpy Should Skip Version Boolean"
 #define kHarpyDefaultSkippedVersion         @"Harpy User Decided To Skip Version Update Boolean"
 
+/// i18n/l10n macros
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 #define kHarpyBundle [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
 #define HarpyLocalizedString(stringKey) \
@@ -21,6 +22,8 @@
 <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSDate *lastVersionCheckPerformedOnDate;
+
+- (void)launchAppStore;
 
 @end
 
@@ -49,7 +52,6 @@
 #pragma mark - Public Methods
 - (void)checkVersion
 {
-    
     // Asynchronously query iTunes AppStore for publically available version
     NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", self.appID];
     NSURL *storeURL = [NSURL URLWithString:storeString];
@@ -99,7 +101,6 @@
 
 - (void)checkVersionDaily
 {
-    
     /*
      On app's first launch, lastVersionCheckPerformedOnDate isn't set.
      Avoid false-positive fulfilment of second condition in this method.
@@ -125,7 +126,6 @@
 
 - (void)checkVersionWeekly
 {
-    
     /*
      On app's first launch, lastVersionCheckPerformedOnDate isn't set.
      Avoid false-positive fulfilment of second condition in this method.
@@ -179,13 +179,11 @@
         
         // Don't show alert.
         return;
-        
     }
 }
 
 - (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
-    
     // Reference App's name
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     
@@ -240,10 +238,10 @@
     if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
         [self.delegate harpyDidShowUpdateDialog];
     }
-    
 }
 
-- (void)launchAppStore{
+- (void)launchAppStore
+{
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
@@ -256,8 +254,6 @@
 #pragma mark - UIAlertViewDelegate Methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
-    
     switch ( self.alertType ) {
             
         case HarpyAlertTypeForce: { // Launch App Store.app
@@ -310,9 +306,6 @@
         default:
             break;
     }
-    
-
-    
 }
 
 @end
