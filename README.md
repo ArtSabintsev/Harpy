@@ -7,7 +7,8 @@
 
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
-- Localized for 11 languages
+- Optional delegate and delegate methods (see **Optional Delegate** section)
+- Localized for 12 languages
 	- Chinese (Simplified)
 	- Chinese (Traditional)
 	- Danish
@@ -17,9 +18,9 @@
 	- German
 	- Italian
 	- Japanese
+	- Portuguese
 	- Russian
 	- Spanish
-- Optional delegate and delegate methods (see **Optional Delegate** section)
 
 ### Screenshots
 
@@ -112,21 +113,8 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.0):
-- Huge thanks to [David Keegan](https://github.com/kgn) for doing the bulk of the heavy lifting on this version.
-- Internationalization and Localization for 10 languages
-	- Chinese (Simplified)
-	- Chinese (Traditional)
-	- Danish
-	- Dutch
-	- French
-	- German
-	- Italian
-	- Japanese
-	- Russian
-	- Spanish
-- Harpy is now a Singleton
-- Optional delegate and delegate methods added
+###  Release Notes (v2.3.1):
+- Internationalization and Localization the the Portuguese language, thanks to [Rui Perese](https://github.com/RuiAAPeres).
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
@@ -134,6 +122,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 - [David Keegan](https://github.com/kgn) in v2.3.0
 - [Josh T. Brown](https://github.com/joshuatbrown) in v2.0.0
 - [Pius Uzamere](https://github.com/pius) in v1.0.1
+- [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
 
 ### Recognition:
 
