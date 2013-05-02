@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 /**
  The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
  */
-@property (assign, nonatomic) enum HarpyAlertType alertType;
+@property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
  The shared Harpy instance.
@@ -60,7 +60,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  USING MULTIPLE METHODS WILL CAUSE MULTIPLE UIALERTVIEWS TO POP UP.
  */
 
-/* 
+/*
  Perform check for new version of your app
  Place in application:didFinishLaunchingWithOptions: AFTER calling makeKeyAndVisible on your UIWindow iVar
  */
