@@ -8,6 +8,7 @@
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
+- Cocoapods Support
 - Localized for 12 languages
 	- Chinese (Simplified)
 	- Chinese (Traditional)
@@ -113,14 +114,15 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.1):
-- Internationalization and Localization the the Portuguese language, thanks to [Rui Perese](https://github.com/RuiAAPeres).
+###  Release Notes (v2.3.2):
+- Cocoapods support added, thanks to [Mark Rickert](https://github.com/markrickert).
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
 - [Claas Lange](https://github.com/claaslange) in v2.0.0
 - [David Keegan](https://github.com/kgn) in v2.3.0
 - [Josh T. Brown](https://github.com/joshuatbrown) in v2.0.0
+- [Mark Rickert](https://github.com/markrickert) in v2.3.2
 - [Pius Uzamere](https://github.com/pius) in v1.0.1
 - [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
 
