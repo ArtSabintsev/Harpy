@@ -118,7 +118,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ###  Release Notes (v2.3.3)
 - Korena localization added, thanks to [Erick)(https://github.com/dexcell])
 
-### Contributors) 
+### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
 - [Erick](https://github.com/dexcell0) in v2.3.3
 - [Claas Lange](https://github.com/claaslange) in v2.0.0
@@ -128,10 +128,8 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 - [Pius Uzamere](https://github.com/pius) in v1.0.1
 - [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
 
-### Recognition:
-
-Created by [Arthur Ariel Sabintsev](http://www.sabintsev.co  
-
+### Recognition
+Created by [Arthur Ariel Sabintsev](http://www.sabintsev.com)
 
 ### License
 The MIT License (MIT)
