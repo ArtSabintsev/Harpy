@@ -9,7 +9,7 @@
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Cocoapods Support
-- Localized for 12 languages
+- Localized for 13 languages
 	- Chinese (Simplified)
 	- Chinese (Traditional)
 	- Danish
@@ -19,6 +19,7 @@
 	- German
 	- Italian
 	- Japanese
+	- Korean
 	- Portuguese
 	- Russian
 	- Spanish
@@ -34,7 +35,7 @@
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
 ![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/picSkippedUpdate.png?raw=true "Optional Update")
 
-### Installation Instructions:
+### Installation Instructions
 **Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab if your project doesn't use ARC**.
 
 1. Copy the 'Harpy' folder into your Xcode project.
@@ -92,7 +93,7 @@
 
 And you're all set!
 
-### Optinonal Delegate and Delegate Method
+### Optinonal Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
 
 ```	obj-c
@@ -114,11 +115,12 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.2):
-- Cocoapods support added, thanks to [Mark Rickert](https://github.com/markrickert).
+###  Release Notes (v2.3.3)
+- Korena localization added, thanks to [Erick)(https://github.com/dexcell])
 
-### Contributors
+### Contributors) 
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
+- [Erick](https://github.com/dexcell0) in v2.3.3
 - [Claas Lange](https://github.com/claaslange) in v2.0.0
 - [David Keegan](https://github.com/kgn) in v2.3.0
 - [Josh T. Brown](https://github.com/joshuatbrown) in v2.0.0
@@ -128,7 +130,8 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 
 ### Recognition:
 
-Created by [Arthur Ariel Sabintsev](http://www.sabintsev.com)  
+Created by [Arthur Ariel Sabintsev](http://www.sabintsev.co  
+
 
 ### License
 The MIT License (MIT)
