@@ -9,7 +9,8 @@
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Cocoapods Support
-- Localized for 13 languages
+- Localized for 14 languages
+	- Basque
 	- Chinese (Simplified)
 	- Chinese (Traditional)
 	- Danish
