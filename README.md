@@ -116,11 +116,12 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.3)
-- Korena localization added, thanks to [Erick](https://github.com/dexcell)
+###  Release Notes (v2.3.4)
+- Basque localization added, thanks to [Ercillagorka](https://github.com/ercillagorka)
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
+- [Ercillagorka](https://github.com/ercillagorka) in v2.3.4
 - [Erick](https://github.com/dexcell0) in v2.3.3
 - [Claas Lange](https://github.com/claaslange) in v2.0.0
 - [David Keegan](https://github.com/kgn) in v2.3.0
