@@ -45,6 +45,8 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
 
+@property (copy, nonatomic) NSString *storeStringTemplate;
+
 /**
  The shared Harpy instance.
  */

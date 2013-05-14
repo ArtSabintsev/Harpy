@@ -45,6 +45,7 @@
     self = [super init];
     if (self) {
         _alertType = HarpyAlertTypeOption;
+        self.storeStringTemplate = @"http://itunes.apple.com/lookup?id=%@";
     }
     return self;
 }
@@ -53,7 +54,7 @@
 - (void)checkVersion
 {
     // Asynchronously query iTunes AppStore for publically available version
-    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", self.appID];
+    NSString *storeString = [NSString stringWithFormat:self.storeStringTemplate, self.appID];
     NSURL *storeURL = [NSURL URLWithString:storeString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
