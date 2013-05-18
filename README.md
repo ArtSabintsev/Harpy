@@ -1,7 +1,9 @@
 # Harpy
+### Notify users that a new version of your app is available in the App Store
+#### Current release: v2.3.5
+#### Created by [Arthur Ariel Sabintsev](http://www.sabintsev.com)
 
-## Notify users that a new version of your app is available in the AppStore
-
+---
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
@@ -116,8 +118,8 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.4)
-- Basque localization added, thanks to [Ercillagorka](https://github.com/ercillagorka)
+###  Release Notes (v2.3.5)
+- Cocoapods fix, thanks to [TrentW](https://github.com/trentw)
 
 ### Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
@@ -129,9 +131,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 - [Mark Rickert](https://github.com/markrickert) in v2.3.2
 - [Pius Uzamere](https://github.com/pius) in v1.0.1
 - [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
-
-### Recognition
-Created by [Arthur Ariel Sabintsev](http://www.sabintsev.com)
+- [TrentW](https://github.com/trentw) in v2.3.5
 
 ### License
 The MIT License (MIT)
