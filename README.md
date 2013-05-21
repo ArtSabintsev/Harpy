@@ -48,7 +48,7 @@
 	[[Harpy sharedInstance] setAlertType:<alert_type>];
 	
 	// Perform check for new version of your app 
-	[[Harpy sharedInstance] checkVersion] 
+	[[Harpy sharedInstance] checkVersion]; 
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
