@@ -1,31 +1,15 @@
 # Harpy
-### Notify users that a new version of your app is available in the App Store
-#### Current release: v2.3.5
-#### Created by [Arthur Ariel Sabintsev](http://www.sabintsev.com)
+### Notify users when a new version of your iOS app is available, and prompt them with the App Store link.
 
 ---
-### About
+### About (current release: v2.3.5)
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Cocoapods Support
-- Localized for 14 languages
-	- Basque
-	- Chinese (Simplified)
-	- Chinese (Traditional)
-	- Danish
-	- Dutch
-	- English
-	- French
-	- German
-	- Italian
-	- Japanese
-	- Korean
-	- Portuguese
-	- Russian
-	- Spanish
+- Localized for 14 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Spanish
 
 ### Screenshots
 
@@ -42,15 +26,12 @@
 **Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab if your project doesn't use ARC**.
 
 1. Copy the 'Harpy' folder into your Xcode project.
-
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
-
-1. In your `AppDelegate`, set the `appID` for your app: `[[Harpy sharedInstance] setAppID:@"<app_id>"]`.
-
-1. In your `AppDelegate`, set the `alertType` for your app: `[[Harpy sharedInstance] setAlertType:<alert_type>]`.
-
-1.  In your `AppDelegate`, add **only one** of the `[[Harpy sharedInstance] checkVersion]` methods.	
-	- **NOTE: Call only one of the Harpy methods, as they all perform a check on your application's first launch. Using multiple methods will result in multiple UIAlertViews to pop.**
+1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
+1. In your `AppDelegate`, call **only one** of the `checkVersion` methods, as all three perform a check on your application's first launch. Use either:
+    - `checkVersion` in `application:didFinishLaunchingWithOptions`
+    - `checkVersionDaily` in `applicationDidBecomeActive`.
+    - `checkVersionWeekly` in `applicationDidBecomeActive`.
 	
 ``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -121,7 +102,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ###  Release Notes (v2.3.5)
 - Cocoapods fix, thanks to [TrentW](https://github.com/trentw)
 
-### Contributors
+### Project Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
 - [Ercillagorka](https://github.com/ercillagorka) in v2.3.4
 - [Erick](https://github.com/dexcell0) in v2.3.3
