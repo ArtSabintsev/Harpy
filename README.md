@@ -29,9 +29,9 @@
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
 1. In your `AppDelegate`, call **only one** of the `checkVersion` methods, as all three perform a check on your application's first launch. Use either:
-    - `checkVersion` in `application:didFinishLaunchingWithOptions`
-    - `checkVersionDaily` in `applicationDidBecomeActive`.
-    - `checkVersionWeekly` in `applicationDidBecomeActive`.
+    - `checkVersion` in `application:didFinishLaunchingWithOptions:`
+    - `checkVersionDaily` in `applicationDidBecomeActive:`.
+    - `checkVersionWeekly` in `applicationDidBecomeActive:`.
 	
 ``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
