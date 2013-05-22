@@ -114,6 +114,9 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 - [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
 - [TrentW](https://github.com/trentw) in v2.3.5
 
+### Created and maintained by
+- [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
+
 ### License
 The MIT License (MIT)
 Copyright (c) 2012-2013 Arthur Ariel Sabintsev
