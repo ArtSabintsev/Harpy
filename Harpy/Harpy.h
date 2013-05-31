@@ -46,6 +46,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
+ The country code to use when querying the iTunes store. This
+ is required when the application is not availabe in the U.S. Store.
+ */
+@property (copy, nonatomic) NSString *countryCode;
+
+/**
  The shared Harpy instance.
  */
 + (id)sharedInstance;
