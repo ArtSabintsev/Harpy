@@ -2,7 +2,7 @@
 ### Notify users when a new version of your iOS app is available, and prompt them with the App Store link.
 
 ---
-### About (current release: v2.3.5)
+### About (current release: v2.3.6)
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
 ### Features
@@ -46,6 +46,11 @@
 	/* (Optional) Set the Alert Type for your app 
 	 By default, the Singleton is initialized to HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<alert_type>];
+	
+	/* (OPTIONAL) If your application is not availabe in the U.S. Store, you must specify the two-letter 
+ 	country code for the region in which your applicaiton is available in. */
+	
+	[[Harpy sharedInstance] setCountryCode:@"<countryCode>"]; 
 	
 	// Perform check for new version of your app 
 	[[Harpy sharedInstance] checkVersion]; 
@@ -99,8 +104,8 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Important Note on AppStore Submissions
 - The AppStore reviewer will **not** see the alert. 
 
-###  Release Notes (v2.3.5)
-- Cocoapods fix, thanks to [TrentW](https://github.com/trentw)
+###  Release Notes (v2.3.6)
+- Now works with app not listed in the US [Jamie Ly](https://github.com/jamiely)
 
 ### Project Contributors
 - [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
@@ -108,6 +113,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 - [Erick](https://github.com/dexcell0) in v2.3.3
 - [Claas Lange](https://github.com/claaslange) in v2.0.0
 - [David Keegan](https://github.com/kgn) in v2.3.0
+- [Jamie Ly](http://github,com/jamiely) in v2.3.6
 - [Josh T. Brown](https://github.com/joshuatbrown) in v2.0.0
 - [Mark Rickert](https://github.com/markrickert) in v2.3.2
 - [Pius Uzamere](https://github.com/pius) in v1.0.1

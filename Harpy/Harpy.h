@@ -20,11 +20,9 @@
 
 typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
-
     HarpyAlertTypeForce,    // Forces user to update your app
     HarpyAlertTypeOption,   // (DEFAULT) Presents user with option to update app now or at next launch
     HarpyAlertTypeSkip      // Presents User with option to update the app now, at next launch, or to skip this version all together
-
 };
 
 @interface Harpy : NSObject
@@ -41,13 +39,13 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
- The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
+ (OPTIONAL) The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
- The country code to use when querying the iTunes store. This
- is required when the application is not availabe in the U.S. Store.
+ (OPTIONAL) If your application is not availabe in the U.S. Store, you must specify the two-letter 
+ country code for the region in which your applicaiton is available in.
  */
 @property (copy, nonatomic) NSString *countryCode;
 
