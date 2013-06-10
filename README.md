@@ -47,9 +47,8 @@
 	 By default, the Singleton is initialized to HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<alert_type>];
 	
-	/* (OPTIONAL) If your application is not availabe in the U.S. Store, you must specify the two-letter 
- 	country code for the region in which your applicaiton is available in. */
-	
+	/* (Optional) If your application is not availabe in the U.S. Store, you must specify the two-letter
+	 country code for the region in which your applicaiton is available in. */
 	[[Harpy sharedInstance] setCountryCode:@"<countryCode>"]; 
 	
 	// Perform check for new version of your app 
