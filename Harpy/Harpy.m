@@ -49,12 +49,23 @@
     return self;
 }
 
+- (NSString*) storeString {
+    NSString *storeString;
+    
+    if(self.countryCode) {
+        storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@&country=%@", self.appID, self.countryCode];
+    } else {
+        storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", self.appID];
+    }
+    
+    return storeString;
+}
+
 #pragma mark - Public Methods
 - (void)checkVersion
 {
     // Asynchronously query iTunes AppStore for publically available version
-    NSString *storeString = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", self.appID];
-    NSURL *storeURL = [NSURL URLWithString:storeString];
+    NSURL *storeURL = [NSURL URLWithString: [self storeString]];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
