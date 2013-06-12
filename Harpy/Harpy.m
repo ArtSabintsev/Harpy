@@ -22,12 +22,13 @@
 #define kAppStoreLinkUniversal              @"http://itunes.apple.com/lookup?id=%@"
 #define kAppStoreLinkCountrySpecific        @"http://itunes.apple.com/lookup?id=%@&country=%@"
 
-
-@interface Harpy()
-<UIAlertViewDelegate>
+@interface Harpy() <UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSDate *lastVersionCheckPerformedOnDate;
 
+- (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate;
+- (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion;
+- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion;
 - (void)launchAppStore;
 
 @end

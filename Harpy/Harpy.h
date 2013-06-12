@@ -50,37 +50,31 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (copy, nonatomic) NSString *countryCode;
 
 /**
- The shared Harpy instance.
+ Haroy's Singleton method.
  */
 + (id)sharedInstance;
 
 /**
-  Checks the installed version of your application against the version currently available on the iTunes store.
-  If a newer version exists in the AppStore, Harpy prompts your user to update their copy of your app.
- */
-
-/**
- NOTE: ONLY USE ONE OF THE METHODS BELOW, AS THEY ALL PERFORM A CHECK ON YOUR APPLICATION'S FIRST LAUNCH
- USING MULTIPLE METHODS WILL CAUSE MULTIPLE UIALERTVIEWS TO POP UP.
- */
-
-/*
- Perform check for new version of your app
- Place in application:didFinishLaunchingWithOptions: AFTER calling makeKeyAndVisible on your UIWindow iVar
+ Checks the installed version of your application against the version currently available on the iTunes store.
+ If a newer version exists in the AppStore, Harpy prompts your user to update their copy of your app.
+ Place in application:didFinishLaunchingWithOptions: AFTER calling makeKeyAndVisible on your UIWindow iVar.
+ Do not use this method if you are using checkVersionDaily or checkVersionWeekly.
  */
 - (void)checkVersion;
 
-/*
- Perform daily check for new version of your app
- Useful if user returns to you app from background after extended period of time
- Place in applicationDidBecomeActive:
+/**
+ Perform daily check for new version of your app.
+ Useful if user returns to you app from background after extended period of time.
+ Place in applicationDidBecomeActive:.
+ Do not use this method if you are using checkVersion or checkVersionWeekly.
  */
 - (void)checkVersionDaily;
 
-/*
- Perform weekly check for new version of your app
- Useful if user returns to you app from background after extended period of time
- Place in applicationDidBecomeActive:
+/**
+ Perform weekly check for new version of your app.
+ Useful if user returns to you app from background after extended period of time.
+ Place in applicationDidBecomeActive:.
+ Do not use this method if you are using checkVersion or checkVersionDaily.
  */
 - (void)checkVersionWeekly;
 
