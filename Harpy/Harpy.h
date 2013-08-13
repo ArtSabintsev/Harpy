@@ -39,6 +39,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
+ (OPTIONAL) An optional name for the app that is displayed in the alert
+ */
+@property (strong, nonatomic) NSString *appName;
+
+/**
  (OPTIONAL) The alert type to present to the user when there is an update. See the `HarpyAlertType` enum above.
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
