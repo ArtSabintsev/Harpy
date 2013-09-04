@@ -43,6 +43,11 @@
 	// Set the App ID for your app
 	[[Harpy sharedInstance] setAppID:@"<app_id>"];
 	
+	/* (Optional) Set an alternative name for your app
+	 This might be useful if the bundle is just an abreviation for example.
+	 By default, the application bundle name will be used. */
+	[[Harpy sharedInstance] setAppName:@"<app_name>"];
+	
 	/* (Optional) Set the Alert Type for your app 
 	 By default, the Singleton is initialized to HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<alert_type>];
