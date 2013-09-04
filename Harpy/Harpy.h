@@ -29,7 +29,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 
 /**
  The harpy delegate can be used to know when the update dialog is shown and which action a user took.
- See the @protocol declaration above.
+ See the protocol declaration above.
  */
 @property (weak, nonatomic) id<HarpyDelegate> delegate;
 
@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
- (OPTIONAL) An optional name for the app that is displayed in the alert
+ (OPTIONAL) The preferred name for the app. This name will be displayed in the UIAlertView in place of the bundle name.
  */
 @property (strong, nonatomic) NSString *appName;
 
@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (copy, nonatomic) NSString *countryCode;
 
 /**
- Haroy's Singleton method.
+ Harpy's Singleton method.
  */
 + (id)sharedInstance;
 

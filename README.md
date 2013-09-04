@@ -1,9 +1,14 @@
 # Harpy
-### Notify users when a new version of your iOS app is available, and prompt them with the App Store link.
+### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
 ---
-### About (current release: v2.3.7)
-**Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the AppStore. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
+### About
+**Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
+
+### Changelog (v2.3.8)
+- Added *optional* ability to change the name of that will be displayed in the UIAlertView instance.
+- Minor stylistic tweaks to codebase.
+- Updated README.
 
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
@@ -43,9 +48,7 @@
 	// Set the App ID for your app
 	[[Harpy sharedInstance] setAppID:@"<app_id>"];
 	
-	/* (Optional) Set an alternative name for your app
-	 This might be useful if the bundle is just an abreviation for example.
-	 By default, the application bundle name will be used. */
+	// (Optional) Set the App Name for your app
 	[[Harpy sharedInstance] setAppName:@"<app_name>"];
 	
 	/* (Optional) Set the Alert Type for your app 
@@ -105,24 +108,33 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 
 ```
 
-### Important Note on AppStore Submissions
-- The AppStore reviewer will **not** see the alert. 
-
-###  Release Notes (v2.3.7)
-- Xcode 5 can now properly displays header-file method comments in quick-help window. You must manually enable *-Weverything* to see these comments.  
+### Important Note on App Store Submissions
+- The App Store reviewer will **not** see the alert. 
 
 ### Project Contributors
-- [Aaron Brager](http://www.github.com/getaaron) in v1.5.0
-- [Ercillagorka](https://github.com/ercillagorka) in v2.3.4
-- [Erick](https://github.com/dexcell0) in v2.3.3
-- [Claas Lange](https://github.com/claaslange) in v2.0.0
-- [David Keegan](https://github.com/kgn) in v2.3.0
-- [Jamie Ly](http://github,com/jamiely) in v2.3.6
-- [Josh T. Brown](https://github.com/joshuatbrown) in v2.0.0
-- [Mark Rickert](https://github.com/markrickert) in v2.3.2
-- [Pius Uzamere](https://github.com/pius) in v1.0.1
-- [Rui Perese](https://github.com/RuiAAPeres) in v2.3.1
-- [TrentW](https://github.com/trentw) in v2.3.5
+- **v1.0.1**
+	- [Pius Uzamere](https://github.com/pius)
+- **v1.5.0**
+	- [Aaron Brager](http://www.github.com/getaaron)
+- **v2.0.0**
+	- [Claas Lange](https://github.com/claaslange)
+	- [Josh T. Brown](https://github.com/joshuatbrown)
+- **v2.3.0**
+	- [David Keegan](https://github.com/kgn)
+- **v2.3.1**
+	- [Rui Perese](https://github.com/RuiAAPeres)
+- **v2.3.2**
+	- [Mark Rickert](https://github.com/markrickert)
+- **v2.3.3**
+	- [Erick](https://github.com/dexcell0)
+- **v2.3.4**
+	- [Ercillagorka](https://github.com/ercillagorka)
+- **v2.3.5**
+	- [TrentW](https://github.com/trentw)
+- **v2.3.6**
+	- [Jamie Ly](http://github,com/jamiely)
+- **v2.3.8**
+	- [Thomas Hempel](https://github.com/thomashempel)
 
 ### Created and maintained by
 - [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 

@@ -59,7 +59,6 @@
 - (void)checkVersion
 {
     // Asynchronously query iTunes AppStore for publically available version
-    
     NSString *storeString = nil;
     if ( [self countryCode] ) {
         storeString = [NSString stringWithFormat:kAppStoreLinkCountrySpecific, self.appID, self.countryCode];
@@ -198,13 +197,7 @@
 - (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     // Reference App's name
-	NSString *appName;
-	if ( self.appName && ![self.appName isEqualToString:@""] ) {
-		appName = self.appName;
-	} else {
-		appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
-	}
-    
+    NSString *appName = ([self appName]) ? [self appName] : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
     
     switch ( self.alertType ) {
             
@@ -261,7 +254,7 @@
 
 - (void)launchAppStore
 {
-    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
+    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
 
