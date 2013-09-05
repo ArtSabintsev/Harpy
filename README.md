@@ -20,8 +20,8 @@
 
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
-- The **right picture** gives the user the skip the current update.
-- This option is based on the `HarpyAlertType` struct that is found in `Harpy.h`.
+- The **right picture** gives the user the option to skip the current update.
+- These options are controlled by the `HarpyAlertType` struct that is found in `Harpy.h`.
  
 ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update") 
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
@@ -55,8 +55,8 @@
 	 By default, the Singleton is initialized to HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<alert_type>];
 	
-	/* (Optional) If your application is not availabe in the U.S. Store, you must specify the two-letter
-	 country code for the region in which your applicaiton is available in. */
+	/* (Optional) If your application is not availabe in the U.S. App Store, you must specify the two-letter
+	 country code for the region in which your applicaiton is available. */
 	[[Harpy sharedInstance] setCountryCode:@"<countryCode>"]; 
 	
 	// Perform check for new version of your app 
@@ -77,7 +77,7 @@
 
 	/*
 	 Perform weekly check for new version of your app
-	 Useful if user returns to you app from background after extended period of time
+	 Useful if you user returns to your app from background after extended period of time
 	 Place in applicationDidBecomeActive:
 	 
 	 Also, performs version check on first launch.
