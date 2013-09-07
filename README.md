@@ -38,7 +38,7 @@
     - `checkVersionDaily` in `applicationDidBecomeActive:`.
     - `checkVersionWeekly` in `applicationDidBecomeActive:`.
 	
-``` smalltalk
+``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
@@ -92,7 +92,7 @@ And you're all set!
 ### Optinonal Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
 
-```	smalltalk
+```	obj-c
 
 	// User presented with update dialog
 	- (void)harpyDidShowUpdateDialog;
