@@ -5,10 +5,8 @@
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
-### Changelog (v2.3.8)
-- Added *optional* ability to change the name of that will be displayed in the UIAlertView instance.
-- Minor stylistic tweaks to codebase.
-- Updated README.
+### Changelog (v2.3.9)
+- Fixed warning by replacing `kCFCalendarUnitDay` with `NSCalendarUnitDay`.
 
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
