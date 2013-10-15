@@ -162,7 +162,7 @@
 - (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate
 {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [currentCalendar components:NSCalendarUnitDay
+    NSDateComponents *components = [currentCalendar components:NSDayCalendarUnit
                                                       fromDate:self.lastVersionCheckPerformedOnDate
                                                         toDate:[NSDate date]
                                                        options:0];
