@@ -2,6 +2,17 @@
 This fork introduces the possibility to check, not only on the _App Store_ but also on your own server. It's quite useful if you are developing an enterprise app, or a _beta_ / _alpha_, so your testers have always the last version at their disposal. 
 The use I'm giving for this can be seen on my [blog](http://blog.lordzepto.net/2013/08/how-to-distribute-your-ios-betas-over-the-air/)
 
+```obj-c
+	/* if you want to use with your own server, set the name of the ipa or plist
+	 I usually use #define kAppBundleDisplayName [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
+	 [[Harpy sharedInstance] setAppID:kAppBundleDisplayName]; 	 */
+	[[Harpy sharedInstance] setAppID:@"<app_id>"]; 
+	
+	// If you are using harpy against your own server, set the serverURL without trailing slash
+	[[Harpy sharedInstance] setServerURL:@"<server_url>"];
+
+```
+
 ---
 # Harpy
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
