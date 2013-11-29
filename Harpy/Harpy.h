@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 
 /**
  The app id of your app.
+ IF you are using harpy with your own server, this string should be your ipa / plist name.
  */
 @property (strong, nonatomic) NSString *appID;
 
@@ -53,6 +54,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  country code for the region in which your applicaiton is available in.
  */
 @property (copy, nonatomic) NSString *countryCode;
+
+/**
+ (OPTIONAL) If you are developing an Ad-hoc or enterprise, or beta testing app, you should be using your own server, not itunes
+ */
+@property (copy, nonatomic) NSString *serverURL;
 
 /**
  Harpy's Singleton method.

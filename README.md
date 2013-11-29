@@ -1,3 +1,8 @@
+### About this Fork
+This fork introduces the possibility to check, not only on the _App Store_ but also on your own server. It's quite useful if you are developing an enterprise app, or a _beta_ / _alpha_, so your testers have always the last version at their disposal. 
+The use I'm giving for this can be seen on my [blog](http://blog.lordzepto.net/2013/08/how-to-distribute-your-ios-betas-over-the-air/)
+
+---
 # Harpy
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 

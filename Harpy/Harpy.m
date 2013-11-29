@@ -16,7 +16,7 @@
 #define kHarpyCurrentVersion [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 #define kHarpyBundle [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
 #define HarpyLocalizedString(stringKey) \
-    [[NSBundle bundleWithPath:kHarpyBundle] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
+[[NSBundle bundleWithPath:kHarpyBundle] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
 
 /// App Store Link
 #define kAppStoreLinkUniversal              @"http://itunes.apple.com/lookup?id=%@"
@@ -62,6 +62,8 @@
     NSString *storeString = nil;
     if ([self countryCode]) {
         storeString = [NSString stringWithFormat:kAppStoreLinkCountrySpecific, self.appID, self.countryCode];
+    } else if ( [self serverURL] ) {
+        storeString = [NSString stringWithFormat:@"%@/%@.plist", self.serverURL, self.appID];
     } else {
         storeString = [NSString stringWithFormat:kAppStoreLinkUniversal, self.appID];
     }
@@ -75,37 +77,74 @@
         
         if ([data length] > 0 && !error) { // Success
             
-            NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self serverURL]) {
+                NSString *error;
+                NSPropertyListFormat format;
+                NSDictionary *plist = [NSPropertyListSerialization propertyListFromData:data
+                                                                       mutabilityOption:NSPropertyListImmutable
+                                                                                 format:&format
+                                                                       errorDescription:&error];
+                if(!plist){
+                    NSLog(@"Error: %@", error);
+                }
                 
-                // Store version comparison date
-                self.lastVersionCheckPerformedOnDate = [NSDate date];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    // Store version comparison date
+                    self.lastVersionCheckPerformedOnDate = [NSDate date];
+                    NSArray *versionInServer = [[[plist valueForKey:@"items"] valueForKey:@"metadata"] valueForKey:@"bundle-version"];
+                    
+                    // Uncomment if you want to log out the versions
+                    NSLog(@"The version residing in the server is: %@", [versionInServer objectAtIndex:0]);
+                    NSLog(@"The installed version of the app is: %@", kHarpyCurrentVersion);
+                    
+                    if (![versionInServer count]) { // No versions of app in AppStore
+                        NSLog(@"No plist found on the server, or malformed.");
+                        return;
+                    } else {
+                        NSString *currentVersion = [versionInServer objectAtIndex:0];
+                        if ([kHarpyCurrentVersion compare:currentVersion options:NSNumericSearch] == NSOrderedAscending) {
+                            [self showAlertIfCurrentAppStoreVersionNotSkipped:currentVersion];
+                        } else {
+                            // Current installed version is the newest public version or newer (e.g., dev version)
+                        }
+                    }
+                });
                 
-                // All versions that have been uploaded to the AppStore
-                NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
+            } else {
                 
-                if (0 == [versionsInAppStore count]) { // No versions of app in AppStore
+                NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    return;
+                    // Store version comparison date
+                    self.lastVersionCheckPerformedOnDate = [NSDate date];
                     
-                } else {
+                    // All versions that have been uploaded to the AppStore
+                    NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
                     
-                    NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-
-                    if ([kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+                    if (0 == [versionsInAppStore count]) { // No versions of app in AppStore
                         
-                        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+                        return;
                         
                     } else {
                         
-                        // Current installed version is the newest public version or newer (e.g., dev version)	
+                        NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                        
+                        if ([kHarpyCurrentVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+                            
+                            [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+                            
+                        } else {
+                            
+                            // Current installed version is the newest public version or newer (e.g., dev version)
+                            
+                        }
                         
                     }
                     
-                }
-                
-            });
+                });
+            }
         }
         
     }];
@@ -152,7 +191,7 @@
         [self checkVersion];
     }
     
-    // If weekly condition is satisfied, perform version check 
+    // If weekly condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 7) {
         [self checkVersion];
     }
@@ -199,20 +238,20 @@
         case HarpyAlertTypeForce: {
             
             alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
-                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HarpyLocalizedString(@"Update")
-                                                      otherButtonTitles:nil, nil];
+                                                   message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
+                                                  delegate:self
+                                         cancelButtonTitle:HarpyLocalizedString(@"Update")
+                                         otherButtonTitles:nil, nil];
             
         } break;
             
         case HarpyAlertTypeOption: {
             
-           alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
-                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HarpyLocalizedString(@"Next time")
-                                                      otherButtonTitles:HarpyLocalizedString(@"Update"), nil];
+            alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
+                                                   message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
+                                                  delegate:self
+                                         cancelButtonTitle:HarpyLocalizedString(@"Next time")
+                                         otherButtonTitles:HarpyLocalizedString(@"Update"), nil];
             
         } break;
             
@@ -223,16 +262,16 @@
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             alertView = [[UIAlertView alloc] initWithTitle:HarpyLocalizedString(@"Update Available")
-                                                                message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HarpyLocalizedString(@"Skip this version")
-                                                      otherButtonTitles:HarpyLocalizedString(@"Update"), HarpyLocalizedString(@"Next time"), nil];
+                                                   message:[NSString stringWithFormat:HarpyLocalizedString(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
+                                                  delegate:self
+                                         cancelButtonTitle:HarpyLocalizedString(@"Skip this version")
+                                         otherButtonTitles:HarpyLocalizedString(@"Update"), HarpyLocalizedString(@"Next time"), nil];
             
         } break;
     }
     
     [alertView show];
-
+    
     if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
         [self.delegate harpyDidShowUpdateDialog];
     }
@@ -240,10 +279,10 @@
 
 - (void)launchAppStore
 {
-    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
-    NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-    [[UIApplication sharedApplication] openURL:iTunesURL];
-
+    NSString *updatedAppString = (self.serverURL) ? self.serverURL : [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", self.appID];
+    NSURL *updatedAppURL = [NSURL URLWithString:updatedAppString];
+    [[UIApplication sharedApplication] openURL:updatedAppURL];
+    
     if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
         [self.delegate harpyUserDidLaunchAppStore];
     }
@@ -255,9 +294,9 @@
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: { // Launch App Store.app
-
+            
             [self launchAppStore];
-
+            
         } break;
             
         case HarpyAlertTypeOption: {
@@ -275,10 +314,10 @@
         case HarpyAlertTypeSkip: {
             
             if (0 == buttonIndex) { // Skip current version in AppStore
-            
+                
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kHarpyDefaultShouldSkipVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-
+                
                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                     [self.delegate harpyUserDidSkipVersion];
                 }
