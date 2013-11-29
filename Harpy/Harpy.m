@@ -95,8 +95,8 @@
                     NSArray *versionInServer = [[[plist valueForKey:@"items"] valueForKey:@"metadata"] valueForKey:@"bundle-version"];
                     
                     // Uncomment if you want to log out the versions
-                    NSLog(@"The version residing in the server is: %@", [versionInServer objectAtIndex:0]);
-                    NSLog(@"The installed version of the app is: %@", kHarpyCurrentVersion);
+                    // NSLog(@"The version residing in the server is: %@", [versionInServer objectAtIndex:0]);
+                    // NSLog(@"The installed version of the app is: %@", kHarpyCurrentVersion);
                     
                     if (![versionInServer count]) { // No versions of app in AppStore
                         NSLog(@"No plist found on the server, or malformed.");
