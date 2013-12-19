@@ -112,7 +112,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Supported Devices Compatibility
 Every new release of iOS deprecates support for one or more older device models. As of v2.4.0, Harpy checks to make sure that a user's current device supports the new version of your app. If it it does, the `UIAlertView	` pops up as usual. If it does not, no alert is shown. This extra check was added into Harpy after a [lengthy discussion](https://github.com/ArtSabintsev/Harpy/issues/35).
 
-A new helper utility, [UIDevice+SupprtedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.
+A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.
 
 ### Important Note on App Store Submissions
 - The App Store reviewer will **not** see the alert. 
