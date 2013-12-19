@@ -5,14 +5,17 @@
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
-### Changelog (v2.3.9)
-- Fixed warning by replacing `kCFCalendarUnitDay` with `NSCalendarUnitDay`.
+### Changelog (v2.4.0)
+- Added Slovenian localization (thanks to [Borut Tomažin](https://github.com/borut-t))
+- Added ability for Harpy to check if current device can install new version of app (see ** Supported Devices Compatibility** section)
+	- This adds a dependency to a custom built category, `UIDevice+SupportedDevices` 
 
 ### Features
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
+- Check for Supported Devices (see **Supported Devices Compatibility** section)
 - Cocoapods Support
-- Localized for 14 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Spanish
+- Localized for 15 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Spanish
 
 ### Screenshots
 
@@ -21,9 +24,9 @@
 - The **right picture** gives the user the option to skip the current update.
 - These options are controlled by the `HarpyAlertType` struct that is found in `Harpy.h`.
  
-![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/picForcedUpdate.png?raw=true "Forced Update") 
-![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/picOptionalUpdate.png?raw=true "Optional Update")
-![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/picSkippedUpdate.png?raw=true "Optional Update")
+![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
+![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
+![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
 
 ### Installation Instructions
 **Note: Harpy utilizes ARC. Add the *-fobjc-arc* compiler flag in the build phases tab if your project doesn't use ARC**.
@@ -106,6 +109,11 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 
 ```
 
+### Supported Devices Compatibility
+Every new release of iOS deprecates support for one or more older device models. As of v2.4.0, Harpy checks to make sure that a user's current device supports the new version of your app. If it it does, the `UIAlertView	` pops up as usual. If it does not, no alert is shown. This extra check was added into Harpy after a [lengthy discussion](https://github.com/ArtSabintsev/Harpy/issues/35).
+
+A new helper utility, [UIDevice+SupprtedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.
+
 ### Important Note on App Store Submissions
 - The App Store reviewer will **not** see the alert. 
 
@@ -133,13 +141,16 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 	- [Jamie Ly](http://github,com/jamiely)
 - **v2.3.8**
 	- [Thomas Hempel](https://github.com/thomashempel)
+- **v2.4.0**
+	- [Aaron Brager](http://www.github.com/getaaron)
+	- [Borut Tomažin](https://github.com/borut-t)
 
 ### Created and maintained by
 - [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
 
 ### License
 The MIT License (MIT)
-Copyright (c) 2012-2013 Arthur Ariel Sabintsev
+Copyright (c) 2012-2014 Arthur Ariel Sabintsev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

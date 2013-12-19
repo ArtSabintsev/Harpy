@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name         = "Harpy"
-  s.version      = "2.3.9"
+  s.version      = “2.4.90
   s.summary      = "Notify users that a new version of your iOS app is available, and prompt them with the AppStore link."
   s.homepage     = "https://github.com/ArtSabintsev/Harpy"
   s.author       = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com" }
-  s.source       = { :git => "https://github.com/ArtSabintsev/Harpy.git", :tag => "2.3.9" }
+  s.source       = { :git => "https://github.com/ArtSabintsev/Harpy.git", :tag => “2.4.0” }
   s.platform     = :ios, '5.0'
   s.source_files = 'Harpy/*.{h,m}'
   s.resources    = 'Harpy/Harpy.bundle'
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
 
   s.license      = {
      :type => 'MIT',
-     :text => %Q{The MIT License (MIT) Copyright (c) 2012 - 2013 Arthur Ariel Sabintsev
+     :text => %Q{The MIT License (MIT) Copyright (c) 2012 - 2014 Arthur Ariel Sabintsev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
