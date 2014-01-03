@@ -5,10 +5,9 @@
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
-### Changelog (v2.5.0)
-- Added ability to override system default language with localization of choice (see **Force Localization** section))
-- Modified Slovenian Localization
-- Improved Documentation with more Doxygen qualifier 
+### Changelog (v2.5.1)
+- Fixed `checkVersionDaily` and `checkVersionWeekly` methods
+- Fixed Podspec
 - Updated Readme
 
 ### Features
@@ -17,6 +16,7 @@
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Check for Supported Devices (see **Supported Devices Compatibility** section)
 - Localized for 15 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Spanish
+	- Optional ability to override an iOS device's default language to force the localization of your choice (see **Force Localization** section)
 
 ### Screenshots
 
@@ -71,7 +71,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-
+	 
 	/*
 	 Perform daily check for new version of your app
 	 Useful if user returns to you app from background after extended period of time
@@ -113,7 +113,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41)). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the systems default lanuage for the Harpy alert dialogs.
+There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41)). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the system's default lanuage for the Harpy alert dialogs.
 
 ``` obj-c 
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
@@ -156,7 +156,8 @@ A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintse
 	- [Borut Tomažin](https://github.com/borut-t)
 - **v2.5.0**
 	- [Borut Tomažin](https://github.com/borut-t)
-	
+- **v2.5.0**
+	- [Bertie Liu](https://github.com/https://github.com/aceisScope)	
 ### Created and maintained by
 - [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
 

@@ -12,6 +12,7 @@
 /// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
 #define HARPY_DEFAULT_SHOULD_SKIP_VERSION           @"Harpy Should Skip Version Boolean"
 #define HARPY_DEFAULT_SKIPPED_VERSION               @"Harpy User Decided To Skip Version Update Boolean"
+#define HARPY_DEFAULT_STORED_VERSION_CHECK_DATE     @"Harpy Stored Date From Last Version Check"
 
 /// i18n/l10n macros
 #define HARPY_CURRENT_VERSION                       [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
@@ -69,6 +70,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     self = [super init];
     if (self) {
         _alertType = HarpyAlertTypeOption;
+        _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
     }
     return self;
 }
@@ -99,6 +101,8 @@ NSString * const HarpyLanguageSpanish = @"es";
                 
                 // Store version comparison date
                 self.lastVersionCheckPerformedOnDate = [NSDate date];
+                [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
+                [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
@@ -107,7 +111,7 @@ NSString * const HarpyLanguageSpanish = @"es";
                     
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
                     [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
-                    
+                
                 }
             });
         }
@@ -128,14 +132,11 @@ NSString * const HarpyLanguageSpanish = @"es";
         
         // Perform First Launch Check
         [self checkVersion];
-        
     }
     
     // If daily condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 1) {
-        
         [self checkVersion];
-        
     }
 }
 
@@ -166,7 +167,7 @@ NSString * const HarpyLanguageSpanish = @"es";
 {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [currentCalendar components:NSCalendarUnitDay
-                                                      fromDate:self.lastVersionCheckPerformedOnDate
+                                                      fromDate:[self lastVersionCheckPerformedOnDate]
                                                         toDate:[NSDate date]
                                                        options:0];
     return [components day];
