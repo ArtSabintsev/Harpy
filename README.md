@@ -5,16 +5,17 @@
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
-### Changelog (v2.4.0)
-- Added Slovenian localization (thanks to [Borut Tomažin](https://github.com/borut-t))
-- Added ability for Harpy to check if current device can install new version of app (see ** Supported Devices Compatibility** section)
-	- This adds a dependency to a custom built category, `UIDevice+SupportedDevices` 
+### Changelog (v2.5.0)
+- Added ability to override system default language with localization of choice (see **Force Localization** section))
+- Modified Slovenian Localization
+- Improved Documentation with more Doxygen qualifier 
+- Updated Readme
 
 ### Features
+- Cocoapods Support
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Check for Supported Devices (see **Supported Devices Compatibility** section)
-- Cocoapods Support
 - Localized for 15 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Spanish
 
 ### Screenshots
@@ -47,18 +48,22 @@
 	[self.window makeKeyAndVisible]
 	
 	// Set the App ID for your app
-	[[Harpy sharedInstance] setAppID:@"<app_id>"];
+	[[Harpy sharedInstance] setAppID:@"<#app_id#>"];
 	
 	// (Optional) Set the App Name for your app
-	[[Harpy sharedInstance] setAppName:@"<app_name>"];
+	[[Harpy sharedInstance] setAppName:@"<#app_name#>"];
 	
 	/* (Optional) Set the Alert Type for your app 
 	 By default, the Singleton is initialized to HarpyAlertTypeOption */
-	[[Harpy sharedInstance] setAlertType:<alert_type>];
+	[[Harpy sharedInstance] setAlertType:<#alert_type#>];
 	
 	/* (Optional) If your application is not availabe in the U.S. App Store, you must specify the two-letter
 	 country code for the region in which your applicaiton is available. */
-	[[Harpy sharedInstance] setCountryCode:@"<countryCode>"]; 
+	[[Harpy sharedInstance] setCountryCode:@"<#country_code#>"]; 
+	
+	/* (Optional) Overides system language to predefined language. 
+	 Please use the HarpyLanguage constants defined inHarpy.h. */
+	[[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 	
 	// Perform check for new version of your app 
 	[[Harpy sharedInstance] checkVersion]; 
@@ -90,11 +95,10 @@
 
 And you're all set!
 
-### Optinonal Delegate and Delegate Methods
+### Optional Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
 
 ```	obj-c
-
 	// User presented with update dialog
 	- (void)harpyDidShowUpdateDialog;
 	
@@ -106,7 +110,13 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 	
 	// User did click on button that cancels update dialog
 	- (void)harpyUserDidCancel;
+```
 
+### Force Localization
+There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the systems default lanuage for the Harpy alert dialogs.
+
+``` obj-c 
+[[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
 ### Supported Devices Compatibility
@@ -144,7 +154,8 @@ A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintse
 - **v2.4.0**
 	- [Aaron Brager](http://www.github.com/getaaron)
 	- [Borut Tomažin](https://github.com/borut-t)
-
+- **v2.5.0**
+	- [Borut Tomažin](https://github.com/borut-t)
 ### Created and maintained by
 - [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
 

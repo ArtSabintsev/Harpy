@@ -15,15 +15,34 @@
 
 /// i18n/l10n macros
 #define HARPY_CURRENT_VERSION                       [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
-#define HARPY_BUNDLE                                [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
-#define HARPY_LOCALIZED_STRING(stringKey)           [[NSBundle bundleWithPath:HARPY_BUNDLE] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
+#define HARPY_BUNDLE_PATH                           [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
+#define HARPY_LOCALIZED_STRING(stringKey)           [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
+#define HARPY_FORCED_BUNDLE_PATH                    [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"]
+#define HARPY_FORCED_LOCALIZED_STRING(stringKey)    [[NSBundle bundleWithPath:HARPY_FORCED_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
 
 /// App Store links
 #define HARPY_APP_STORE_LINK_UNIVERSAL              @"http://itunes.apple.com/lookup?id=%@"
 #define HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC       @"http://itunes.apple.com/lookup?id=%@&country=%@"
 
-/// JSON Parsing
+/// JSON parsing
 #define HARPY_APP_STORE_RESULTS                     [self.appData valueForKey:@"results"]
+
+/// i18n/l10n constants
+NSString * const HarpyLanguageBasque = @"eu";
+NSString * const HarpyLanguageChineseSimplified = @"zh-Hans";
+NSString * const HarpyLanguageChineseTraditional = @"zh-Hant";
+NSString * const HarpyLanguageDanish = @"da";
+NSString * const HarpyLanguageDutch = @"nl";
+NSString * const HarpyLanguageEnglish = @"en";
+NSString * const HarpyLanguageFrench = @"fr";
+NSString * const HarpyLanguageGerman = @"de";
+NSString * const HarpyLanguageItalian = @"it";
+NSString * const HarpyLanguageJapanese = @"ja";
+NSString * const HarpyLanguageKorean = @"ko";
+NSString * const HarpyLanguagePortuguese = @"pt";
+NSString * const HarpyLanguageRussian = @"ru";
+NSString * const HarpyLanguageSlovenian = @"sl";
+NSString * const HarpyLanguageSpanish = @"es";
 
 @interface Harpy() <UIAlertViewDelegate>
 
@@ -34,7 +53,7 @@
 
 @implementation Harpy
 
-#pragma mark - Initialization Methods
+#pragma mark - Initialization
 + (id)sharedInstance
 {
     static id sharedInstance = nil;
@@ -54,7 +73,7 @@
     return self;
 }
 
-#pragma mark - Public Methods
+#pragma mark - Public
 - (void)checkVersion
 {
     // Asynchronously query iTunes AppStore for publically available version
@@ -142,7 +161,7 @@
     }
 }
 
-#pragma mark - Private Methods
+#pragma mark - Private
 - (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate
 {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
@@ -195,7 +214,23 @@
 - (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     // Reference App's name
-    NSString *appName = ([self appName]) ? [self appName] : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
+    NSString *appName = ([self appName]) ? [self appName] : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    
+    // Force localization if _forceLanguageLocalization is set
+    NSString *updateAvailableMessage, *newVersionMessage, *updateButtonText, *nextTimeButtonText, *skipButtonText;
+    if ([self forceLanguageLocalization]) {
+        updateAvailableMessage = HARPY_FORCED_LOCALIZED_STRING(@"Update Available");
+        newVersionMessage = [NSString stringWithFormat:HARPY_FORCED_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion];
+        updateButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Update");
+        nextTimeButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Next time");
+        skipButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Skip this version");
+    } else {
+        updateAvailableMessage = HARPY_LOCALIZED_STRING(@"Update Available");
+        newVersionMessage = [NSString stringWithFormat:HARPY_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion];
+        updateButtonText = HARPY_LOCALIZED_STRING(@"Update");
+        nextTimeButtonText = HARPY_LOCALIZED_STRING(@"Next time");
+        skipButtonText = HARPY_LOCALIZED_STRING(@"Skip this version");
+    }
     
     // Initialize UIAlertView
     UIAlertView *alertView;
@@ -205,21 +240,21 @@
             
         case HarpyAlertTypeForce: {
             
-            alertView = [[UIAlertView alloc] initWithTitle:HARPY_LOCALIZED_STRING(@"Update Available")
-                                                                message:[NSString stringWithFormat:HARPY_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HARPY_LOCALIZED_STRING(@"Update")
-                                                      otherButtonTitles:nil, nil];
+            alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
+                                                   message:newVersionMessage
+                                                  delegate:self
+                                         cancelButtonTitle:updateAvailableMessage
+                                         otherButtonTitles:nil, nil];
             
         } break;
             
         case HarpyAlertTypeOption: {
             
-           alertView = [[UIAlertView alloc] initWithTitle:HARPY_LOCALIZED_STRING(@"Update Available")
-                                                                message:[NSString stringWithFormat:HARPY_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HARPY_LOCALIZED_STRING(@"Next time")
-                                                      otherButtonTitles:HARPY_LOCALIZED_STRING(@"Update"), nil];
+           alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
+                                                  message:newVersionMessage
+                                                 delegate:self
+                                        cancelButtonTitle:nextTimeButtonText
+                                        otherButtonTitles:updateButtonText, nil];
             
         } break;
             
@@ -229,11 +264,11 @@
             [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
-            alertView = [[UIAlertView alloc] initWithTitle:HARPY_LOCALIZED_STRING(@"Update Available")
-                                                                message:[NSString stringWithFormat:HARPY_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), appName, currentAppStoreVersion]
-                                                               delegate:self
-                                                      cancelButtonTitle:HARPY_LOCALIZED_STRING(@"Skip this version")
-                                                      otherButtonTitles:HARPY_LOCALIZED_STRING(@"Update"), HARPY_LOCALIZED_STRING(@"Next time"), nil];
+            alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
+                                                   message:newVersionMessage
+                                                  delegate:self
+                                         cancelButtonTitle:skipButtonText
+                                         otherButtonTitles:updateButtonText, nextTimeButtonText, nil];
             
         } break;
     }
@@ -256,7 +291,7 @@
     }
 }
 
-#pragma mark - UIAlertViewDelegate Methods
+#pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch ([self alertType]) {
