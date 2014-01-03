@@ -156,6 +156,7 @@ A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintse
 	- [Borut Tomažin](https://github.com/borut-t)
 - **v2.5.0**
 	- [Borut Tomažin](https://github.com/borut-t)
+	
 ### Created and maintained by
 - [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
 
