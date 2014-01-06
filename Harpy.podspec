@@ -1,15 +1,14 @@
 Pod::Spec.new do |s|
   s.name         = "Harpy"
-  s.version      = “2.5.2”
+  s.version      = "2.5.2"
   s.summary      = "Notify users that a new version of your iOS app is available, and prompt them with the AppStore link."
   s.homepage     = "https://github.com/ArtSabintsev/Harpy"
-  s.author       = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com" }
-  s.source       = { :git => "https://github.com/ArtSabintsev/Harpy.git", :tag => “2.5.2” }
-  s.platform     = :ios, '5.0'
+  s.platform     = :ios, '5.0'  
+  s.source       = { :git => "https://github.com/ArtSabintsev/Harpy.git", :tag => "2.5.2" }
   s.source_files = 'Harpy/*.{h,m}'
   s.resources    = 'Harpy/Harpy.bundle'
   s.requires_arc = true
-
+  s.author       = { "Arthur Ariel Sabintsev" => "arthur@sabintsev.com" }
   s.license      = {
      :type => 'MIT',
      :text => %Q{The MIT License (MIT) Copyright (c) 2012 - 2014 Arthur Ariel Sabintsev
