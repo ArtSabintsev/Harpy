@@ -36,7 +36,9 @@ pod 'Harpy'
 
 #### Manual Installation
 
-1. Copy the 'Harpy' folder into your Xcode project.
+Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files.
+
+### Setup Instructions	
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
 1. In your `AppDelegate`, call **only one** of the `checkVersion` methods, as all three perform a check on your application's first launch. Use either:
@@ -44,7 +46,7 @@ pod 'Harpy'
     - `checkVersionDaily` in `applicationDidBecomeActive:`.
     - `checkVersionWeekly` in `applicationDidBecomeActive:`.
 
-### Setup Instructions	
+
 ``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
