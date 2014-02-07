@@ -43,7 +43,8 @@ pod 'Harpy'
     - `checkVersion` in `application:didFinishLaunchingWithOptions:`
     - `checkVersionDaily` in `applicationDidBecomeActive:`.
     - `checkVersionWeekly` in `applicationDidBecomeActive:`.
-	
+
+### Setup Instructions	
 ``` obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
