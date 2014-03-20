@@ -21,7 +21,7 @@
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
 - The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `HarpyAlertType` struct that is found in `Harpy.h`.
+- These options are controlled by the `HarpyAlertType` typede that is found in `Harpy.h`.
  
 ![Forced Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true "Forced Update") 
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
@@ -132,7 +132,7 @@ Every new release of iOS deprecates support for one or more older device models.
 A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.
 
 ### Important Note on App Store Submissions
-- The App Store reviewer will **not** see the alert. 
+The App Store reviewer will **not** see the alert. 
 
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
