@@ -63,7 +63,7 @@
     else if ([machineName isEqualToString:@"iPhone3,1"]) deviceName = @"iPhone4";           // iPhone 4 GSM
     else if ([machineName isEqualToString:@"iPhone3,2"]) deviceName = @"iPhone4";           // iPhone 4 GSM Rev A
     else if ([machineName isEqualToString:@"iPhone3,3"]) deviceName = @"iPhone4";           // iPhone 4 CDMA
-    else if ([machineName isEqualToString:@"iPhone4,1"]) deviceName = @"iPhone4s";          // iPhone 4S
+    else if ([machineName isEqualToString:@"iPhone4,1"]) deviceName = @"iPhone4S";          // iPhone 4S
     else if ([machineName isEqualToString:@"iPhone5,1"]) deviceName = @"iPhone5";           // iPhone 5 GSM
     else if ([machineName isEqualToString:@"iPhone5,2"]) deviceName = @"iPhone5";           // iPhone 5 GSM+CDMA
     else if ([machineName isEqualToString:@"iPhone5,3"]) deviceName = @"iPhone5c";          // iPhone 5c GSM
