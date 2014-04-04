@@ -5,8 +5,8 @@
 ### About
 **Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
 
-### Changelog (v2.5.2)
-- Updated Slovenian Localization
+### Changelog (v2.5.3)
+- Removed direct dependency of [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices) (it's now a Cocoapods dependency)
 
 ### Features
 - Cocoapods Support
@@ -36,7 +36,7 @@ pod 'Harpy'
 
 #### Manual Installation
 
-Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files.
+Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files. Also, there's a dependency on [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), so you'll need to download that library as well, if you don't use Cocoapods.
 
 ### Setup Instructions	
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
