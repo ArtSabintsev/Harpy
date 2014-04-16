@@ -55,7 +55,7 @@ NSString * const HarpyLanguageSpanish = @"es";
 @implementation Harpy
 
 #pragma mark - Initialization
-+ (id)sharedInstance
++ (Harpy *)sharedInstance
 {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
