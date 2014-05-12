@@ -50,9 +50,18 @@ NSString * const HarpyLanguageSpanish = @"es";
 @property (strong, nonatomic) NSDictionary *appData;
 @property (strong, nonatomic) NSDate *lastVersionCheckPerformedOnDate;
 
+- (void)didFinishCheckingWithoutUpdate;
+
 @end
 
 @implementation Harpy
+
+- (void)didFinishCheckingWithoutUpdate
+{
+    if ([self.delegate respondsToSelector:@selector(harpyDidFinishCheckingWithoutUpdate)]) {
+        [self.delegate harpyDidFinishCheckingWithoutUpdate];
+    }
+}
 
 #pragma mark - Initialization
 + (Harpy *)sharedInstance
@@ -112,8 +121,12 @@ NSString * const HarpyLanguageSpanish = @"es";
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
                     [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
                 
+                } else {
+                    [self didFinishCheckingWithoutUpdate];
                 }
             });
+        } else {
+            [self didFinishCheckingWithoutUpdate];
         }
     }];
 }
@@ -192,7 +205,11 @@ NSString * const HarpyLanguageSpanish = @"es";
             [currentDeviceName isEqualToString:[UIDevice simulatorNamePad]] ||
             [currentDeviceName isEqualToString:[UIDevice simulatorNamePhone]]) {
             [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+        } else {
+            [self didFinishCheckingWithoutUpdate];
         }
+    } else {
+        [self didFinishCheckingWithoutUpdate];
     }
 }
 
@@ -208,6 +225,7 @@ NSString * const HarpyLanguageSpanish = @"es";
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else {
         // Don't show alert.
+        [self didFinishCheckingWithoutUpdate];
         return;
     }
 }

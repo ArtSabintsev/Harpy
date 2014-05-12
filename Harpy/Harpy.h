@@ -28,6 +28,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
 @protocol HarpyDelegate <NSObject>
 
 @optional
+- (void)harpyDidFinishCheckingWithoutUpdate;
 - (void)harpyDidShowUpdateDialog;       // User presented with update dialog
 - (void)harpyUserDidLaunchAppStore;     // User did click on button that launched App Store.app
 - (void)harpyUserDidSkipVersion;        // User did click on button that skips version update
