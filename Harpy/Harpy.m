@@ -69,7 +69,9 @@ NSString * const HarpyLanguageSpanish = @"es";
 {
     self = [super init];
     if (self) {
-        _alertType = HarpyAlertTypeOption;
+        _patchUpdateAlertType = HarpyAlertTypeSkip;
+        _minorUpdateAlertType = HarpyAlertTypeOption;
+        _majorUpdateAlertType = HarpyAlertTypeForce;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
     }
     return self;
@@ -233,6 +235,24 @@ NSString * const HarpyLanguageSpanish = @"es";
         skipButtonText = HARPY_LOCALIZED_STRING(@"Skip this version");
     }
     
+    // Check what version the update is, major, minor or a patch
+    NSArray *versionChunks = [currentAppStoreVersion componentsSeparatedByString: @"."];
+
+    if ([versionChunks count] == 3 && ![versionChunks[2] isEqualToString:@"0"]) {
+        [self setAlertType:[self patchUpdateAlertType]]; // 2.3.4
+    }
+    else if ([versionChunks count] == 3 && [versionChunks[2] isEqualToString:@"0"]){
+        if ([versionChunks[1] isEqualToString:@"0"]) {
+            [self setAlertType:[self majorUpdateAlertType]]; //2.3.0
+        }
+        else {
+            [self setAlertType:[self minorUpdateAlertType]]; //2.0.0
+        }
+    }
+    else {
+        [self setAlertType:[self majorUpdateAlertType]]; //2.0
+    }
+
     // Initialize UIAlertView
     UIAlertView *alertView;
     

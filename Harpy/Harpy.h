@@ -65,6 +65,22 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
+ @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. version 2.1.3). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType patchUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. version 2.1.0). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. version 2.0). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
+
+
+/**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter
  country code for the region in which your applicaiton is available in.
  */
