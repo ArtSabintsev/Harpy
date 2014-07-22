@@ -66,7 +66,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	[[Harpy sharedInstance] setAppName:@"<#app_name#>"];
 	
 	/* (Optional) Set the Alert Type for your app 
-	 By default, Harpy is conffigured to use HarpyAlertTypeOption */
+	 By default, Harpy is configured to use HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<#alert_type#>];
 	
 	/* (Optional) If your application is not availabe in the U.S. App Store, you must specify the two-letter
