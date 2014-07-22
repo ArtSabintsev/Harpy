@@ -36,9 +36,9 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
 
 typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
-    HarpyAlertTypeForce,    // Forces user to update your app
-    HarpyAlertTypeOption,   // (DEFAULT) Presents user with option to update app now or at next launch
-    HarpyAlertTypeSkip      // Presents User with option to update the app now, at next launch, or to skip this version all together
+    HarpyAlertTypeForce = 1,    // Forces user to update your app
+    HarpyAlertTypeOption,       // (DEFAULT) Presents user with option to update app now or at next launch
+    HarpyAlertTypeSkip          // Presents User with option to update the app now, at next launch, or to skip this version all together
 };
 
 @interface Harpy : NSObject
@@ -63,6 +63,22 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType patchUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
+
 
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter

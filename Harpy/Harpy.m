@@ -178,9 +178,12 @@ NSString * const HarpyLanguageSpanish = @"es";
     // Current installed version is the newest public version or newer (e.g., dev version)
     if ([HARPY_CURRENT_VERSION compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
         
+        // Reset _alertType if patch, minor, or major iVars are set
+        [self alertTypeForVersion:currentAppStoreVersion];
+        
         /*
          This conditional checks to see if the current device is supported.
-         If the current device is supported, or if the current device is one of the simualtors,
+         If the current device is supported, or if the current device is one of the simulators,
          the update notification alert will be presented to the user. However, if the the device is
          not supported, no alert will be shown, as the current version of the app no longer works on the current device.
          */
@@ -232,7 +235,7 @@ NSString * const HarpyLanguageSpanish = @"es";
         nextTimeButtonText = HARPY_LOCALIZED_STRING(@"Next time");
         skipButtonText = HARPY_LOCALIZED_STRING(@"Skip this version");
     }
-    
+
     // Initialize UIAlertView
     UIAlertView *alertView;
     
@@ -292,6 +295,24 @@ NSString * const HarpyLanguageSpanish = @"es";
     }
 }
 
+- (void)alertTypeForVersion:(NSString *)currentAppStoreVersion
+{
+    
+    // Check what version the update is, major, minor or a patch
+    NSArray *oldVersionComponents = [HARPY_CURRENT_VERSION componentsSeparatedByString:@"."];
+    NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
+    
+    if ([oldVersionComponents count] == 3 && [newVersionComponents count] == 3) {
+        if ([newVersionComponents[0] integerValue] > [oldVersionComponents[0] integerValue]) { // A.b.c
+            if (_majorUpdateAlertType) _alertType = _majorUpdateAlertType;
+        } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c
+            if (_minorUpdateAlertType) _alertType = _minorUpdateAlertType;
+        } else if ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue]) { // a.b.C
+           if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+        }
+    }
+}
+
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -305,7 +326,7 @@ NSString * const HarpyLanguageSpanish = @"es";
             
         case HarpyAlertTypeOption: {
             
-            if (1 == buttonIndex) { // Launch App Store.app
+            if (buttonIndex == 1) { // Launch App Store.app
                 [self launchAppStore];
             } else { // Ask user on next launch
                 if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
@@ -317,7 +338,7 @@ NSString * const HarpyLanguageSpanish = @"es";
             
         case HarpyAlertTypeSkip: {
             
-            if (0 == buttonIndex) { // Skip current version in AppStore
+            if (buttonIndex == 0) { // Skip current version in AppStore
             
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
                 [[NSUserDefaults standardUserDefaults] synchronize];
@@ -326,9 +347,9 @@ NSString * const HarpyLanguageSpanish = @"es";
                     [self.delegate harpyUserDidSkipVersion];
                 }
                 
-            } else if (1 == buttonIndex) { // Launch App Store.app
+            } else if (buttonIndex == 1) { // Launch App Store.app
                 [self launchAppStore];
-            } else if (2 == buttonIndex) { // Ask user on next launch
+            } else if (buttonIndex == 2) { // Ask user on next launch
                 if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
                     [self.delegate harpyUserDidCancel];
                 }

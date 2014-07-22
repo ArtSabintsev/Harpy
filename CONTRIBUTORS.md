@@ -34,3 +34,5 @@
 	- [Bertie Liu](https://github.com/https://github.com/aceisScope)
 - **v2.5.2**
 	- [Borut Tomažin](https://github.com/borut-t)
+- **v2.6.0**
+	- [Rahul Jiresal](https://github.com/rahuljiresal)

@@ -3,10 +3,15 @@
 
 ---
 ### About
-**Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application.
+**Harpy** is a utility that checks a user's currently installed version of your iOS application against the version that is currently available in the App Store. If a new version is available, an instance of UIAlertView is presented to the user informing them of the newer version, and giving them the option to update the application. 
 
-### Changelog (v2.5.4)
-- Minor code change
+This library is built to work with the [Semantic Versioning](http://semver.org/) system.
+
+### Changelog (v2.6.0)
+- Added ability to set different alert types for patch/minor/major updates:
+	- Added new section to README: **Differentiated Alerts for Patch, Minor, and Major Updates**
+	- Thanks to [Rahul Jiresal](https://github.com/rahuljiresal) for the idea!
+- Updated screenshots 
 
 ### Features
 - Cocoapods Support
@@ -52,7 +57,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 {
 
 	// Present Window before calling Harpy
-	[self.window makeKeyAndVisible]
+	[self.window makeKeyAndVisible];
 	
 	// Set the App ID for your app
 	[[Harpy sharedInstance] setAppID:@"<#app_id#>"];
@@ -61,7 +66,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	[[Harpy sharedInstance] setAppName:@"<#app_name#>"];
 	
 	/* (Optional) Set the Alert Type for your app 
-	 By default, the Singleton is initialized to HarpyAlertTypeOption */
+	 By default, Harpy is conffigured to use HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<#alert_type#>];
 	
 	/* (Optional) If your application is not availabe in the U.S. App Store, you must specify the two-letter
@@ -101,6 +106,20 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 ```
 
 And you're all set!
+
+### Differentiated Alerts for Patch, Minor, and Major Updates
+If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following lines in your setup *before* calling any of the `checkVersion` methods:
+
+``` obj-c
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+	/*  By default, Harpy is configured to use HarpyAlertTypeOption for all version updates */
+
+	[[Harpy sharedInstance] setPatchAlertType:<#alert_type#>]; // (Optional) Set the Patch Alert Type
+	[[Harpy sharedInstance] setMinorAlertType:<#alert_type#>]; // (Optional) Set the Minor Alert Type
+	[[Harpy sharedInstance] setMajorAlertType:<#alert_type#>]; // (Optional) Set the Major Alert Type
+}
+
 
 ### Optional Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
