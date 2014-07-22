@@ -108,18 +108,14 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 And you're all set!
 
 ### Differentiated Alerts for Patch, Minor, and Major Updates
-If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following lines in your setup *before* calling any of the `checkVersion` methods:
+If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling any of the `checkVersion` methods:
 
 ``` obj-c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	/*  By default, Harpy is configured to use HarpyAlertTypeOption for all version updates */
-
-	[[Harpy sharedInstance] setPatchAlertType:<#alert_type#>]; // (Optional) Set the Patch Alert Type
-	[[Harpy sharedInstance] setMinorAlertType:<#alert_type#>]; // (Optional) Set the Minor Alert Type
-	[[Harpy sharedInstance] setMajorAlertType:<#alert_type#>]; // (Optional) Set the Major Alert Type
-}
-
+	/* By default, Harpy is configured to use HarpyAlertTypeOption for all version updates */
+	[[Harpy sharedInstance] setPatchAlertType:<#alert_type#>]; 
+	[[Harpy sharedInstance] setMinorAlertType:<#alert_type#>];
+	[[Harpy sharedInstance] setMajorAlertType:<#alert_type#>];
+```
 
 ### Optional Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
