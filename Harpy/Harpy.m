@@ -90,12 +90,22 @@ NSString * const HarpyLanguageSpanish = @"es";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+
+    if (self.enableDebug) {
+        NSLog(@"[Harpy] Requesting storeURL: %@",storeURL);
+    }
+
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
         if ([data length] > 0 && !error) { // Success
             
             self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+
+            if (self.enableDebug) {
+               // NSString* jsonString = [NSString stringWithUTF8String:[data bytes]];
+                NSLog(@"[Harpy] Result store JSON: %@",self.appData);
+            }
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -107,11 +117,18 @@ NSString * const HarpyLanguageSpanish = @"es";
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
                 
-                if ([versionsInAppStore count]) { // No versions of app in AppStore
+                // Force an Alert
+                if (self.forceAlert) {
+                    NSString *currentAppStoreVersion = @"FORCEDVERSION";
+                    [self showAlertWithAppStoreVersion:currentAppStoreVersion];
+
+                } else {
+                    if ([versionsInAppStore count]) { // No versions of app in AppStore
+
+                        NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                        [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
                     
-                    NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
-                
+                    }
                 }
             });
         }
@@ -275,6 +292,9 @@ NSString * const HarpyLanguageSpanish = @"es";
                                          otherButtonTitles:updateButtonText, nextTimeButtonText, nil];
             
         } break;
+
+        case HarpyAlertTypeNone: { // Do Nothing
+        } break;
     }
     
     [alertView show];
@@ -354,6 +374,9 @@ NSString * const HarpyLanguageSpanish = @"es";
                     [self.delegate harpyUserDidCancel];
                 }
             }
+        } break;
+
+        case HarpyAlertTypeNone: { // Do nothing
         } break;
     }
 }
