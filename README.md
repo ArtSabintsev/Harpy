@@ -112,9 +112,9 @@ If you would like to set a different type of alert for patch, minor, and/or majo
 
 ``` obj-c
 	/* By default, Harpy is configured to use HarpyAlertTypeOption for all version updates */
-	[[Harpy sharedInstance] setPatchAlertType:<#alert_type#>]; 
-	[[Harpy sharedInstance] setMinorAlertType:<#alert_type#>];
-	[[Harpy sharedInstance] setMajorAlertType:<#alert_type#>];
+	[[Harpy sharedInstance] setPatchUpdateAlertType:<#alert_type#>]; 
+	[[Harpy sharedInstance] setMinorUpdateAlertType:<#alert_type#>];
+	[[Harpy sharedInstance] setMajorUpdateAlertType:<#alert_type#>];
 ```
 
 ### Optional Delegate and Delegate Methods
