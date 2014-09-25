@@ -38,7 +38,8 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
     HarpyAlertTypeForce = 1,    // Forces user to update your app
     HarpyAlertTypeOption,       // (DEFAULT) Presents user with option to update app now or at next launch
-    HarpyAlertTypeSkip          // Presents User with option to update the app now, at next launch, or to skip this version all together
+    HarpyAlertTypeSkip,          // Presents User with option to update the app now, at next launch, or to skip this version all together
+    HarpyAlertTypeNone,         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
 };
 
 @interface Harpy : NSObject
@@ -58,6 +59,16 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
  */
 @property (strong, nonatomic) NSString *appName;
+
+/**
+ @b OPTIONAL: Ability to Force Alert
+ */
+@property (assign, nonatomic) BOOL forceAlert;
+
+/**
+ @b OPTIONAL: Log Debug information
+ */
+@property (assign, nonatomic) BOOL enableDebug;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.

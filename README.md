@@ -107,6 +107,13 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 And you're all set!
 
+### Alert Types
+
+- HarpyAlertTypeForce = 1,    // Forces user to update your app
+- HarpyAlertTypeOption,       // (DEFAULT) Presents user with option to update app now or at next launch
+- HarpyAlertTypeSkip,          // Presents User with option to update the app now, at next launch, or to skip this version all together
+- HarpyAlertTypeNone,         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
+
 ### Differentiated Alerts for Patch, Minor, and Major Updates
 If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling any of the `checkVersion` methods:
 
@@ -137,7 +144,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ### Force Localization
 There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41)). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the system's default lanuage for the Harpy alert dialogs.
 
-``` obj-c 
+``` obj-c
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
@@ -148,6 +155,18 @@ A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintse
 
 ### Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert. 
+
+### Testing and debugging info
+To enable debug information (like the iTunes query and results)
+``` obj-c
+[[Harpy sharedInstance] setEnableDebug:TRUE];
+```
+
+To force an Alert: when you are testing for an app that is not yet in the appstore f.i.
+
+``` obj-c
+[[Harpy sharedInstance] setForceAlert:TRUE];
+```
 
 ### Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
