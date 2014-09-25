@@ -36,3 +36,5 @@
 	- [Borut Tomažin](https://github.com/borut-t)
 - **v2.6.0**
 	- [Rahul Jiresal](https://github.com/rahuljiresal)
+- **v2.7.0**
+	- [Patrick Debois](https://github.com/jedi4ever)
