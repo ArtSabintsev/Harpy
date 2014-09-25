@@ -148,6 +148,7 @@ Every new release of iOS deprecates support for one or more older device models.
 As of **v2.7.0**, this check is turned off by default, as Apple has yet to provide values for the iPhone 6 and iPhone 6+ in the supportedDevices key in the JSON response from the iTunes store. To turn it on, please add the following line of code before calling any of the `checkVersion` methods:
 
 ```obj-c
+[[]Harpy sharedInstance] setDebugEnabled:YES];
 
 ```
 
