@@ -61,14 +61,14 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appName;
 
 /**
- @b OPTIONAL: Ability to Force Alert
- */
-@property (assign, nonatomic) BOOL forceAlert;
-
-/**
  @b OPTIONAL: Log Debug information
  */
-@property (assign, nonatomic) BOOL enableDebug;
+@property (assign, nonatomic, getter=isDebugEnabled) BOOL debugEnabled;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
@@ -86,10 +86,10 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c). See the @c HarpyAlertType enum above.
+ @b OPTIONAL: Checks if the user's device is compatible with the current version of the app.
+ @discussion Default is set to @b NO, as the iPhone 6 and iPhone 6+ are not listed in the supportedDevices key in the response JSON as of September 25, 2014.
  */
-@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
-
+@property (assign, nonatomic, getter=isDeviceCompatible) BOOL deviceCompatible;
 
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter

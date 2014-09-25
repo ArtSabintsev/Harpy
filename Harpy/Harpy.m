@@ -71,6 +71,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     if (self) {
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
+        _deviceCompatible = NO;
     }
     return self;
 }
@@ -81,9 +82,9 @@ NSString * const HarpyLanguageSpanish = @"es";
     // Asynchronously query iTunes AppStore for publically available version
     NSString *storeString = nil;
     if ([self countryCode]) {
-        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC, self.appID, self.countryCode];
+        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC, _appID, _countryCode];
     } else {
-        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, self.appID];
+        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, _appID];
     }
     
     NSURL *storeURL = [NSURL URLWithString:storeString];
@@ -91,10 +92,9 @@ NSString * const HarpyLanguageSpanish = @"es";
     [request setHTTPMethod:@"GET"];
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
-    if (self.enableDebug) {
-        NSLog(@"[Harpy] Requesting storeURL: %@",storeURL);
+    if ([self isDebugEnabled]) {
+        NSLog(@"[Harpy]: storeURL: %@", storeURL);
     }
-
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         
@@ -102,9 +102,8 @@ NSString * const HarpyLanguageSpanish = @"es";
             
             self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
-            if (self.enableDebug) {
-               // NSString* jsonString = [NSString stringWithUTF8String:[data bytes]];
-                NSLog(@"[Harpy] Result store JSON: %@",self.appData);
+            if ([self isDebugEnabled]) {
+                NSLog(@"[Harpy]: JSON Results: %@", _appData);
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -117,17 +116,13 @@ NSString * const HarpyLanguageSpanish = @"es";
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
                 
-                // Force an Alert
-                if (self.forceAlert) {
-                    NSString *currentAppStoreVersion = @"FORCEDVERSION";
-                    [self showAlertWithAppStoreVersion:currentAppStoreVersion];
+                if ([versionsInAppStore count]) { // No versions of app in AppStore
 
-                } else {
-                    if ([versionsInAppStore count]) { // No versions of app in AppStore
-
-                        NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    if ([self isDeviceCompatible]) {
                         [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
-                    
+                    } else {
+                        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
                     }
                 }
             });
@@ -376,7 +371,8 @@ NSString * const HarpyLanguageSpanish = @"es";
             }
         } break;
 
-        case HarpyAlertTypeNone: { // Do nothing
+        case HarpyAlertTypeNone: {
+            // Do nothing
         } break;
     }
 }
