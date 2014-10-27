@@ -121,7 +121,7 @@ NSString * const HarpyLanguageSpanish = @"es";
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
                     if ([self isDeviceCompatible]) {
                         [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
-                    } else {
+                    } else if ([HARPY_CURRENT_VERSION compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
                         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
                     }
                 }
