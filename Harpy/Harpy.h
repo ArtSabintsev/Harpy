@@ -86,12 +86,6 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
 
 /**
- @b OPTIONAL: Checks if the user's device is compatible with the current version of the app.
- @discussion Default is set to @b NO, as the iPhone 6 and iPhone 6+ are not listed in the supportedDevices key in the response JSON as of September 25, 2014.
- */
-@property (assign, nonatomic, getter=isDeviceCompatible) BOOL deviceCompatible;
-
-/**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter
  country code for the region in which your applicaiton is available in.
  */

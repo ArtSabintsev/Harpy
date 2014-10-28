@@ -7,18 +7,15 @@
 
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
-### Changelog (v2.7.0)
-- Device compatiblity check is now off by default, due to  the iPhone 6 and 6+ not being listed in the `supportedDevices` key.
-- Added HarpyAlertTypeNone
-	- Thanks to [Patrick Debois](https://github.com/jedi4ever) for the idea!
-- Added Debug option that prints out logs into the console if enabled
-	- Thanks to [Patrick Debois](https://github.com/jedi4ever) for the idea!
+### Changelog (v2.7.1)
+- Removed device compatiblity check and dependency on [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), as Apple seems to have stopped updating the `supportedDevices` hash in the JSON results from the iTunes Lookup API route.
+- Fixed issue thar caused alert not to be displayed with certain settings.
 
 ### Features
 - Cocoapods Support
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
-- Check for Supported Devices (see **Supported Devices Compatibility** section)
+- ~~Check for Supported Devices (see **Supported Devices Compatibility** section)~~
 - Localized for 15 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Spanish
 	- Optional ability to override an iOS device's default language to force the localization of your choice (see **Force Localization** section)
 
@@ -42,8 +39,7 @@ pod 'Harpy'
 
 #### Manual Installation
 
-Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files. Also, there's a dependency on [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), so you'll need to download that library as well, if you don't use Cocoapods.
-
+Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files. 
 ### Setup Instructions	
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
@@ -143,14 +139,11 @@ There are some situations where a developer may want to the update dialog to *al
 ```
 
 ### Supported Devices Compatibility
-Every new release of iOS deprecates support for one or more older device models. Harpy checks to make sure that a user's current device supports the new version of your app. If it it does, the `UIAlertView` pops up as usual. If it does not, no alert is shown. This extra check was added into Harpy after a [lengthy discussion](https://github.com/ArtSabintsev/Harpy/issues/35). A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.
+As of **v2.7.1**, this feature was removed, as Apple has stopped updating the `supportedDevices` key in the iTunes Lookup API route.
 
-As of **v2.7.0**, this check is turned off by default, as Apple has yet to provide values for the iPhone 6 and iPhone 6+ in the supportedDevices key in the JSON response from the iTunes store. To turn it on, please add the following line of code before calling any of the `checkVersion` methods:
+<del>Every new release of iOS deprecates support for one or more older device models. Harpy checks to make sure that a user's current device supports the new version of your app. If it it does, the `UIAlertView` pops up as usual. If it does not, no alert is shown. This extra check was added into Harpy after a [lengthy discussion](https://github.com/ArtSabintsev/Harpy/issues/35). A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.</del>
 
-```obj-c
-[[Harpy sharedInstance] setDeviceCompatible:YES];
-
-```
+<del>As of **v2.7.0**, this check is turned off by default, as Apple has yet to provide values for the iPhone 6 and iPhone 6+ in the supportedDevices key in the JSON response from the iTunes store. To turn it on, please add the following line of code before calling any of the `checkVersion` methods:</del>
 
 ### Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert. 

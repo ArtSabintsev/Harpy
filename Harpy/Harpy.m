@@ -7,7 +7,6 @@
 //
 
 #import "Harpy.h"
-#import "UIDevice+SupportedDevices.h"
 
 /// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
 #define HARPY_DEFAULT_SHOULD_SKIP_VERSION           @"Harpy Should Skip Version Boolean"
@@ -71,7 +70,6 @@ NSString * const HarpyLanguageSpanish = @"es";
     if (self) {
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
-        _deviceCompatible = NO;
     }
     return self;
 }
@@ -93,7 +91,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
     if ([self isDebugEnabled]) {
-        NSLog(@"[Harpy]: storeURL: %@", storeURL);
+        NSLog(@"[Harpy] storeURL: %@", storeURL);
     }
     
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -103,7 +101,7 @@ NSString * const HarpyLanguageSpanish = @"es";
             self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
             if ([self isDebugEnabled]) {
-                NSLog(@"[Harpy]: JSON Results: %@", _appData);
+                NSLog(@"[Harpy] JSON Results: %@", _appData);
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -116,14 +114,9 @@ NSString * const HarpyLanguageSpanish = @"es";
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
                 
-                if ([versionsInAppStore count]) { // No versions of app in AppStore
-
+                if ([versionsInAppStore count]) {
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    if ([self isDeviceCompatible]) {
-                        [self checkIfDeviceIsSupportedInCurrentAppStoreVersion:currentAppStoreVersion];
-                    } else {
-                        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
-                    }
+                    [self checkIfAppStoreVersionIsNewestVersion:currentAppStoreVersion];
                 }
             });
         }
@@ -147,7 +140,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     }
     
     // If daily condition is satisfied, perform version check
-    if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 1) {
+    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
         [self checkVersion];
     }
 }
@@ -169,13 +162,13 @@ NSString * const HarpyLanguageSpanish = @"es";
     }
     
     // If weekly condition is satisfied, perform version check 
-    if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 7) {
+    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
         [self checkVersion];
     }
 }
 
 #pragma mark - Private
-- (NSUInteger)numberOfDaysElapsedBetweenILastVersionCheckDate
+- (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate
 {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [currentCalendar components:NSCalendarUnitDay
@@ -185,29 +178,12 @@ NSString * const HarpyLanguageSpanish = @"es";
     return [components day];
 }
 
-- (void)checkIfDeviceIsSupportedInCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
+- (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion
 {
     // Current installed version is the newest public version or newer (e.g., dev version)
     if ([HARPY_CURRENT_VERSION compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
-        
-        // Reset _alertType if patch, minor, or major iVars are set
         [self alertTypeForVersion:currentAppStoreVersion];
-        
-        /*
-         This conditional checks to see if the current device is supported.
-         If the current device is supported, or if the current device is one of the simulators,
-         the update notification alert will be presented to the user. However, if the the device is
-         not supported, no alert will be shown, as the current version of the app no longer works on the current device.
-         */
-        
-        NSArray *supportedDevices = [HARPY_APP_STORE_RESULTS valueForKey:@"supportedDevices"][0];
-        NSString *currentDeviceName = [UIDevice supportedDeviceName];
-        
-        if ([supportedDevices containsObject:currentDeviceName] ||
-            [currentDeviceName isEqualToString:[UIDevice simulatorNamePad]] ||
-            [currentDeviceName isEqualToString:[UIDevice simulatorNamePhone]]) {
-            [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
-        }
+        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
     }
 }
 
