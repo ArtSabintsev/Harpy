@@ -32,7 +32,6 @@ NSString * const HarpyLanguageBasque = @"eu";
 NSString * const HarpyLanguageChineseSimplified = @"zh-Hans";
 NSString * const HarpyLanguageChineseTraditional = @"zh-Hant";
 NSString * const HarpyLanguageDanish = @"da";
-NSString * const HarpyLanguageSwedish = @"sv";
 NSString * const HarpyLanguageDutch = @"nl";
 NSString * const HarpyLanguageEnglish = @"en";
 NSString * const HarpyLanguageFrench = @"fr";
@@ -43,6 +42,7 @@ NSString * const HarpyLanguageKorean = @"ko";
 NSString * const HarpyLanguagePortuguese = @"pt";
 NSString * const HarpyLanguageRussian = @"ru";
 NSString * const HarpyLanguageSlovenian = @"sl";
+NSString * const HarpyLanguageSwedish = @"sv";
 NSString * const HarpyLanguageSpanish = @"es";
 
 @interface Harpy() <UIAlertViewDelegate>
@@ -249,11 +249,14 @@ NSString * const HarpyLanguageSpanish = @"es";
     UIAlertView *alertView;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
                                                                              message:_theNewVersionMessage
-                                                                      preferredStyle:UIAlertControllerStyleAlert];;
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    if (_alertControllerTintColor) {
+        [alertController.view setTintColor:_alertControllerTintColor];
+    }
     
     // Get current version
     NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    NSUInteger currentOSVersion = [[versionCompatibility objectAtIndex:0] intValue];
+    NSUInteger currentOSVersion = [[versionCompatibility objectAtIndex:0] integerValue];
     
     // Show Appropriate UIAlertView
     switch ([self alertType]) {

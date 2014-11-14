@@ -8,6 +8,11 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
+#### 3.1.0
+- Added Swedish localization support (Issue #62 - Thanks [Jon Andersen](https://github.com/jonandersen))
+- Added property for customizing UIAlertController tintColor (Issue #60)
+- Updated README with more information regarding the Forced Update option (Issue #61)
+
 #### 3.0.0
 - Added support for `UIAlertController` for devices running iOS 8. 
 	- If iOS 7 is installed, `UIAlertView` is used.
@@ -15,20 +20,16 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 	- If this value is not set, an NSLog will be fired, and the Harpy will not continue the version checking process.
 - Fixed a potential issue with developers who used the **Skip** setting.
 
-#### 2.7.1
-As I have made another large change in the last 24 hours, I have retained the changes from the previous update, v2.7.1, in this README file.
-
-- Removed device compatiblity check and dependency on [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), as Apple seems to have stopped updating the `supportedDevices` hash in the JSON results from the iTunes Lookup API route.
-- Fixed issue thar caused alert not to be displayed with certain settings.
-
 ### Features
 - Cocoapods Support
+- SUpport for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
+- Localized for 16 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, and Spanish
+	- Optional ability to override an iOS device's default language to force the localization of your choice 
+	- Refer to the **Force Localization** section
 - ~~Check for Supported Devices~~
 	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
-- Localized for 15 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Spanish
-	- Optional ability to override an iOS device's default language to force the localization of your choice (see **Force Localization** section)
 
 ### Screenshots
 
@@ -73,6 +74,9 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	// Set the UIViewController that will present an instance of UIAlertController
 	[[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 	
+	// OPTIONAL: The tintColor for the alertController
+	[[Harpy sharedInstance] setAlertControllerTintColor:@"<#alert_controller_tint_color#>"];
+	
 	// (Optional) Set the App Name for your app
 	[[Harpy sharedInstance] setAppName:@"<#app_name#>"];
 	
@@ -114,6 +118,21 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	[[Harpy sharedInstance] checkVersionWeekly];
     
 }
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+	/*
+	 Perform check for new version of your app
+	 Useful if user returns to you app from background after being sent tot he App Store, 
+	 but doesn't update their app before coming back to your app.
+ 	 
+ 	 ONLY USE THIS IF YOU ARE USING *HarpyAlertTypeForce* 
+ 	 
+ 	 Also, performs version check on first launch.
+ 	*/
+	[[Harpy sharedInstance] checkVersion];    
+}
+
 ```
 
 And you're all set!

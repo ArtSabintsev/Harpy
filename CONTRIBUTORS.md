@@ -38,3 +38,5 @@
 	- [Rahul Jiresal](https://github.com/rahuljiresal)
 - **v2.7.0**
 	- [Patrick Debois](https://github.com/jedi4ever)
+- **v3.1.0**
+	- [Jon Andersen](https://github.com/jonandersen)
