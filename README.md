@@ -8,24 +8,15 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
-#### 3.1.0
-- Added Swedish localization support (Issue #62 - Thanks [Jon Andersen](https://github.com/jonandersen))
-- Added property for customizing UIAlertController tintColor (Issue #60)
-- Updated README with more information regarding the Forced Update option (Issue #61)
-
-#### 3.0.0
-- Added support for `UIAlertController` for devices running iOS 8. 
-	- If iOS 7 is installed, `UIAlertView` is used.
-	- Due to addition of `UIAlertController`, a new mandatory property must be set, `presentingViewController`.
-	- If this value is not set, an NSLog will be fired, and the Harpy will not continue the version checking process.
-- Fixed a potential issue with developers who used the **Skip** setting.
+#### 3.1.1
+- Added Turkish localization support (Issue #63 - Thanks [burakkilic](https://github.com/burakkilic))
 
 ### Features
 - Cocoapods Support
 - SUpport for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
-- Localized for 16 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, and Spanish
+- Localized for 17 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
 	- Optional ability to override an iOS device's default language to force the localization of your choice 
 	- Refer to the **Force Localization** section
 - ~~Check for Supported Devices~~

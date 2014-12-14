@@ -40,3 +40,5 @@
 	- [Patrick Debois](https://github.com/jedi4ever)
 - **v3.1.0**
 	- [Jon Andersen](https://github.com/jonandersen)
+- **v3.1.1**
+	- [burakkilic](https://github.com/burakkilic)
