@@ -42,3 +42,5 @@
 	- [Jon Andersen](https://github.com/jonandersen)
 - **v3.1.1**
 	- [burakkilic](https://github.com/burakkilic)
+- **v3.1.2**
+	- [Daniel](https://github.com/danieltskv)

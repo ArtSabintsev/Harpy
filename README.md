@@ -8,15 +8,15 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
-#### 3.1.1
-- Added Turkish localization support (Issue #63 - Thanks [burakkilic](https://github.com/burakkilic))
+#### 3.1.2
+- Added Hebrew localization support (Issue [#64](https://github.com/ArtSabintsev/Harpy/pull/64) - Thanks [Daniel](https://github.com/danieltskv))
 
 ### Features
 - Cocoapods Support
 - SUpport for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
-- Localized for 17 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+- Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
 	- Optional ability to override an iOS device's default language to force the localization of your choice 
 	- Refer to the **Force Localization** section
 - ~~Check for Supported Devices~~
