@@ -13,7 +13,7 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 
 ### Features
 - Cocoapods Support
-- SUpport for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
+- Support for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
 - Three types of alerts to present to the end-user (see **Screenshots** section)
 - Optional delegate and delegate methods (see **Optional Delegate** section)
 - Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
@@ -65,7 +65,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	// Set the UIViewController that will present an instance of UIAlertController
 	[[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 	
-	// OPTIONAL: The tintColor for the alertController
+	// (Optional) The tintColor for the alertController
 	[[Harpy sharedInstance] setAlertControllerTintColor:@"<#alert_controller_tint_color#>"];
 	
 	// (Optional) Set the App Name for your app
