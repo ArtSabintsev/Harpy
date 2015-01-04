@@ -8,8 +8,8 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
-#### 3.1.3
-- Hebrew and Turkish localization were missing from the list of HarpyLanguage static strings - issue has noe been remedied.
+#### 3.2.0
+- Replaced NSURLConnection code with NSURLSession code.
 
 ### Features
 - Cocoapods Support

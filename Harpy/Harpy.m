@@ -91,55 +91,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
         NSLog(@"[Harpy]: Please make sure that you have set _appID and _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly");
     
     } else {
-    
-        // Create storeString for iTunes Lookup API request
-        NSString *storeString = nil;
-        if ([self countryCode]) {
-            storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC, _appID, _countryCode];
-        } else {
-            storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, _appID];
-        }
-        
-        // Initialize storeURL with storeString, and create request object
-        NSURL *storeURL = [NSURL URLWithString:storeString];
-        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
-        [request setHTTPMethod:@"GET"];
-        NSOperationQueue *queue = [NSOperationQueue new];
-        
-        if ([self isDebugEnabled]) {
-            NSLog(@"[Harpy] storeURL: %@", storeURL);
-        }
-        
-        // Asynchronously query iTunes AppStore for publically available version
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:queue
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-            
-                                   if ([data length] > 0 && !error) { // Success
-                
-                                       self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-                
-                                       if ([self isDebugEnabled]) {
-                                           NSLog(@"[Harpy] JSON Results: %@", _appData);
-                                       }
-                
-                                       dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                                           // Store version comparison date
-                                           self.lastVersionCheckPerformedOnDate = [NSDate date];
-                                           [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
-                                           [[NSUserDefaults standardUserDefaults] synchronize];
-                    
-                                           // All versions that have been uploaded to the AppStore
-                                           NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
-                    
-                                           if ([versionsInAppStore count]) {
-                                               _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                                               [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
-                                           }
-                                       });
-                                   }
-                               }];
+        [self performVersionCheck];
     }
 }
 
@@ -188,6 +140,60 @@ NSString * const HarpyLanguageTurkish = @"tr";
 }
 
 #pragma mark - Private
+- (void)performVersionCheck
+{
+    // Create storeString for iTunes Lookup API request
+    NSString *storeString = nil;
+    if ([self countryCode]) {
+        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC, _appID, _countryCode];
+    } else {
+        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, _appID];
+    }
+    
+    // Initialize storeURL with storeString, and create request object
+    NSURL *storeURL = [NSURL URLWithString:storeString];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:storeURL];
+    [request setHTTPMethod:@"GET"];
+
+    if ([self isDebugEnabled]) {
+        NSLog(@"[Harpy] storeURL: %@", storeURL);
+    }
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
+                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                if ([data length] > 0 && !error) { // Success
+            
+                                                    self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+            
+                                                    if ([self isDebugEnabled]) {
+                                                        NSLog(@"[Harpy] JSON Results: %@", _appData);
+                                                    }
+            
+                                                    dispatch_async(dispatch_get_main_queue(), ^{
+                
+                                                        // Store version comparison date
+                                                        self.lastVersionCheckPerformedOnDate = [NSDate date];
+                                                        [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
+                                                        [[NSUserDefaults standardUserDefaults] synchronize];
+                
+                                                        /**
+                                                         Current version that has been uploaded to the AppStore.
+                                                         Used to contain all versions, but now only contains the latest version.
+                                                         Still returns an instance of NSArray.
+                                                         */
+                                                        NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
+                
+                                                        if ([versionsInAppStore count]) {
+                                                            _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                                                            [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
+                                                        }
+                                                    });
+                                                }
+                                            }];
+    [task resume];
+}
+
 - (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate
 {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
