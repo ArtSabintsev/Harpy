@@ -36,6 +36,7 @@ NSString * const HarpyLanguageDutch = @"nl";
 NSString * const HarpyLanguageEnglish = @"en";
 NSString * const HarpyLanguageFrench = @"fr";
 NSString * const HarpyLanguageGerman = @"de";
+NSString * const HarpyLanguageHebrew = @"he";
 NSString * const HarpyLanguageItalian = @"it";
 NSString * const HarpyLanguageJapanese = @"ja";
 NSString * const HarpyLanguageKorean = @"ko";
@@ -44,6 +45,7 @@ NSString * const HarpyLanguageRussian = @"ru";
 NSString * const HarpyLanguageSlovenian = @"sl";
 NSString * const HarpyLanguageSwedish = @"sv";
 NSString * const HarpyLanguageSpanish = @"es";
+NSString * const HarpyLanguageTurkish = @"tr";
 
 @interface Harpy() <UIAlertViewDelegate>
 

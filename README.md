@@ -8,8 +8,8 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
-#### 3.1.2
-- Added Hebrew localization support (Issue [#64](https://github.com/ArtSabintsev/Harpy/pull/64) - Thanks [Daniel](https://github.com/danieltskv))
+#### 3.1.3
+- Hebrew and Turkish localization were missing from the list of HarpyLanguage static strings - issue has noe been remedied.
 
 ### Features
 - Cocoapods Support
