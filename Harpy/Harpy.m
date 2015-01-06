@@ -9,7 +9,6 @@
 #import "Harpy.h"
 
 /// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
-#define HARPY_DEFAULT_SHOULD_SKIP_VERSION           @"Harpy Should Skip Version Boolean"
 #define HARPY_DEFAULT_SKIPPED_VERSION               @"Harpy User Decided To Skip Version Update Boolean"
 #define HARPY_DEFAULT_STORED_VERSION_CHECK_DATE     @"Harpy Stored Date From Last Version Check"
 
@@ -217,12 +216,9 @@ NSString * const HarpyLanguageTurkish = @"tr";
 - (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
 {
     // Check if user decided to skip this version in the past
-    BOOL shouldSkipVersionUpdate = [[NSUserDefaults standardUserDefaults] boolForKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
     NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_SKIPPED_VERSION];
     
-    if (!shouldSkipVersionUpdate) {
-        [self showAlertWithAppStoreVersion:currentAppStoreVersion];
-    } else if (shouldSkipVersionUpdate && ![storedSkippedVersion isEqualToString:currentAppStoreVersion]) {
+    if (![storedSkippedVersion isEqualToString:currentAppStoreVersion]) {
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else {
         // Don't show alert.
@@ -410,7 +406,6 @@ NSString * const HarpyLanguageTurkish = @"tr";
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
                                                                 [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
-                                                                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
                                                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                                                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                                                                     [self.delegate harpyUserDidSkipVersion];
@@ -447,7 +442,6 @@ NSString * const HarpyLanguageTurkish = @"tr";
                 [self launchAppStore];
             } else if (buttonIndex == 1) { // Launch App Store.app
                 [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                     [self.delegate harpyUserDidSkipVersion];

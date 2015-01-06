@@ -8,8 +8,8 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Changelog
-#### 3.2.0
-- Replaced NSURLConnection code with NSURLSession code.
+#### 3.2.1
+- Removed unnecessary code for determining if user had clicked *Skip Version*
 
 ### Features
 - Cocoapods Support
