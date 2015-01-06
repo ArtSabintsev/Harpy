@@ -44,6 +44,7 @@ NSString * const HarpyLanguagePortuguese = @"pt";
 NSString * const HarpyLanguageRussian = @"ru";
 NSString * const HarpyLanguageSlovenian = @"sl";
 NSString * const HarpyLanguageSpanish = @"es";
+NSString * const HarpyLanguageTurkish = @"tr";
 
 @interface Harpy() <UIAlertViewDelegate>
 
@@ -86,7 +87,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     } else {
         storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, _appID];
     }
-    
+
     NSURL *storeURL = [NSURL URLWithString:storeString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
@@ -95,27 +96,27 @@ NSString * const HarpyLanguageSpanish = @"es";
     if ([self isDebugEnabled]) {
         NSLog(@"[Harpy]: storeURL: %@", storeURL);
     }
-    
+
     [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        
+
         if ([data length] > 0 && !error) { // Success
-            
+
             self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
             if ([self isDebugEnabled]) {
                 NSLog(@"[Harpy]: JSON Results: %@", _appData);
             }
-            
+
             dispatch_async(dispatch_get_main_queue(), ^{
-                
+
                 // Store version comparison date
                 self.lastVersionCheckPerformedOnDate = [NSDate date];
                 [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                
+
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
-                
+
                 if ([versionsInAppStore count]) { // No versions of app in AppStore
 
                     NSString *currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
@@ -138,14 +139,14 @@ NSString * const HarpyLanguageSpanish = @"es";
      Also, performs version check on first launch.
      */
     if (![self lastVersionCheckPerformedOnDate]) {
-        
+
         // Set Initial Date
         self.lastVersionCheckPerformedOnDate = [NSDate date];
-        
+
         // Perform First Launch Check
         [self checkVersion];
     }
-    
+
     // If daily condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 1) {
         [self checkVersion];
@@ -160,15 +161,15 @@ NSString * const HarpyLanguageSpanish = @"es";
      Also, performs version check on first launch.
      */
     if (![self lastVersionCheckPerformedOnDate]) {
-        
+
         // Set Initial Date
         self.lastVersionCheckPerformedOnDate = [NSDate date];
-        
+
         // Perform First Launch Check
         [self checkVersion];
     }
-    
-    // If weekly condition is satisfied, perform version check 
+
+    // If weekly condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenILastVersionCheckDate] > 7) {
         [self checkVersion];
     }
@@ -189,20 +190,20 @@ NSString * const HarpyLanguageSpanish = @"es";
 {
     // Current installed version is the newest public version or newer (e.g., dev version)
     if ([HARPY_CURRENT_VERSION compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
-        
+
         // Reset _alertType if patch, minor, or major iVars are set
         [self alertTypeForVersion:currentAppStoreVersion];
-        
+
         /*
          This conditional checks to see if the current device is supported.
          If the current device is supported, or if the current device is one of the simulators,
          the update notification alert will be presented to the user. However, if the the device is
          not supported, no alert will be shown, as the current version of the app no longer works on the current device.
          */
-        
+
         NSArray *supportedDevices = [HARPY_APP_STORE_RESULTS valueForKey:@"supportedDevices"][0];
         NSString *currentDeviceName = [UIDevice supportedDeviceName];
-        
+
         if ([supportedDevices containsObject:currentDeviceName] ||
             [currentDeviceName isEqualToString:[UIDevice simulatorNamePad]] ||
             [currentDeviceName isEqualToString:[UIDevice simulatorNamePhone]]) {
@@ -216,7 +217,7 @@ NSString * const HarpyLanguageSpanish = @"es";
     // Check if user decided to skip this version in the past
     BOOL shouldSkipVersionUpdate = [[NSUserDefaults standardUserDefaults] boolForKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
     NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_SKIPPED_VERSION];
-    
+
     if (!shouldSkipVersionUpdate) {
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else if (shouldSkipVersionUpdate && ![storedSkippedVersion isEqualToString:currentAppStoreVersion]) {
@@ -231,7 +232,7 @@ NSString * const HarpyLanguageSpanish = @"es";
 {
     // Reference App's name
     NSString *appName = ([self appName]) ? [self appName] : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
-    
+
     // Force localization if _forceLanguageLocalization is set
     NSString *updateAvailableMessage, *newVersionMessage, *updateButtonText, *nextTimeButtonText, *skipButtonText;
     if ([self forceLanguageLocalization]) {
@@ -250,48 +251,48 @@ NSString * const HarpyLanguageSpanish = @"es";
 
     // Initialize UIAlertView
     UIAlertView *alertView;
-    
+
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
-            
+
         case HarpyAlertTypeForce: {
-            
+
             alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
                                                    message:newVersionMessage
                                                   delegate:self
                                          cancelButtonTitle:updateAvailableMessage
                                          otherButtonTitles:nil, nil];
-            
+
         } break;
-            
+
         case HarpyAlertTypeOption: {
-            
+
            alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
                                                   message:newVersionMessage
                                                  delegate:self
                                         cancelButtonTitle:nextTimeButtonText
                                         otherButtonTitles:updateButtonText, nil];
-            
+
         } break;
-            
+
         case HarpyAlertTypeSkip: {
-            
+
             // Store currentAppStoreVersion in case user pushes skip
             [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
             [[NSUserDefaults standardUserDefaults] synchronize];
-            
+
             alertView = [[UIAlertView alloc] initWithTitle:updateAvailableMessage
                                                    message:newVersionMessage
                                                   delegate:self
                                          cancelButtonTitle:skipButtonText
                                          otherButtonTitles:updateButtonText, nextTimeButtonText, nil];
-            
+
         } break;
 
         case HarpyAlertTypeNone: { // Do Nothing
         } break;
     }
-    
+
     [alertView show];
 
     if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
@@ -312,11 +313,11 @@ NSString * const HarpyLanguageSpanish = @"es";
 
 - (void)alertTypeForVersion:(NSString *)currentAppStoreVersion
 {
-    
+
     // Check what version the update is, major, minor or a patch
     NSArray *oldVersionComponents = [HARPY_CURRENT_VERSION componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
-    
+
     if ([oldVersionComponents count] == 3 && [newVersionComponents count] == 3) {
         if ([newVersionComponents[0] integerValue] > [oldVersionComponents[0] integerValue]) { // A.b.c
             if (_majorUpdateAlertType) _alertType = _majorUpdateAlertType;
@@ -332,15 +333,15 @@ NSString * const HarpyLanguageSpanish = @"es";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     switch ([self alertType]) {
-            
+
         case HarpyAlertTypeForce: { // Launch App Store.app
 
             [self launchAppStore];
 
         } break;
-            
+
         case HarpyAlertTypeOption: {
-            
+
             if (buttonIndex == 1) { // Launch App Store.app
                 [self launchAppStore];
             } else { // Ask user on next launch
@@ -348,20 +349,20 @@ NSString * const HarpyLanguageSpanish = @"es";
                     [self.delegate harpyUserDidCancel];
                 }
             }
-            
+
         } break;
-            
+
         case HarpyAlertTypeSkip: {
-            
+
             if (buttonIndex == 0) { // Skip current version in AppStore
-            
+
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:HARPY_DEFAULT_SHOULD_SKIP_VERSION];
                 [[NSUserDefaults standardUserDefaults] synchronize];
 
                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                     [self.delegate harpyUserDidSkipVersion];
                 }
-                
+
             } else if (buttonIndex == 1) { // Launch App Store.app
                 [self launchAppStore];
             } else if (buttonIndex == 2) { // Ask user on next launch

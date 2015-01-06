@@ -24,6 +24,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguese;
 FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 
 @protocol HarpyDelegate <NSObject>
 
@@ -111,7 +112,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Checks the installed version of your application against the version currently available on the iTunes store.
  If a newer version exists in the AppStore, Harpy prompts your user to update their copy of your app.
  Place in @c application:didFinishLaunchingWithOptions: @b AFTER calling @c makeKeyAndVisible on your @c UIWindow iVar.
- 
+
  Do not use this method if you are using checkVersionDaily or checkVersionWeekly.
  */
 - (void)checkVersion;
@@ -120,7 +121,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Perform daily check for new version of your app.
  Useful if user returns to you app from background after extended period of time.
  Place in @c applicationDidBecomeActive:.
- 
+
  Do not use this method if you are using @c checkVersion or @c checkVersionWeekly.
  */
 - (void)checkVersionDaily;
@@ -129,7 +130,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Perform weekly check for new version of your app.
  Useful if user returns to you app from background after extended period of time.
  Place in @c applicationDidBecomeActive:.
- 
+
  Do not use this method if you are using @c checkVersion or @c checkVersionDaily.
  */
 - (void)checkVersionWeekly;
