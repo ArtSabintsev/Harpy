@@ -15,14 +15,12 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 - Removed unnecessary code for determining if user had clicked *Skip Version*
 
 ### Features
-- Cocoapods Support
-- Support for UIAlertController (iOS 8+) and UIAlertView (Older versions of iOS)
-- Three types of alerts to present to the end-user (see **Screenshots** section)
-- Optional delegate and delegate methods (see **Optional Delegate** section)
-- Localized for 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
-	- Optional ability to override an iOS device's default language to force the localization of your choice 
-	- Refer to the **Force Localization** section
-- ~~Check for Supported Devices~~
+- [x] CocoaPods Support
+- [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
+- [x] Three types of alerts (see **Screenshots & Alert Types**)
+- [x] Optional delegate methods (see **Optional Delegate** section)
+- [x] Localized for 18 languages
+- [x] ~~Check for Supported Devices~~
 	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
 
 ### Screenshots
