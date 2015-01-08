@@ -7,6 +7,9 @@
 
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
+### Swift Support
+[Aaron Brager](http://twitter.com/GetAaron) and I have put together a Swift port of Harpy. We've called it [Siren](http://github.com/ArtSabintseb/Siren) and it can be found [here](http://github.com/ArtSabintseb/Siren).
+
 ### Changelog
 #### 3.2.1
 - Removed unnecessary code for determining if user had clicked *Skip Version*
