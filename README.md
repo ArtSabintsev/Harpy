@@ -163,6 +163,9 @@ There are some situations where a developer may want to the update dialog to *al
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
+### How to test Harpy?
+If you want to see Harpy running before submission, temporarily change the version string in Xcode to an older version than the one that's in the App Store.
+
 ### Supported Devices Compatibility
 As of **v2.7.1**, this feature was removed, as Apple  stopped updating the `supportedDevices` key in the iTunes Lookup API route.
 
