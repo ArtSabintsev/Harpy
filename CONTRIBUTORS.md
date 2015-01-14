@@ -44,3 +44,6 @@
 	- [burakkilic](https://github.com/burakkilic)
 - **v3.1.2**
 	- [Daniel](https://github.com/danieltskv)
+- **v3.3.0**
+	- [frranck](https://github.com/frranck)
+	

@@ -9,41 +9,32 @@
 #import "Harpy.h"
 
 /// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
-#define HARPY_DEFAULT_SKIPPED_VERSION               @"Harpy User Decided To Skip Version Update Boolean"
-#define HARPY_DEFAULT_STORED_VERSION_CHECK_DATE     @"Harpy Stored Date From Last Version Check"
+NSString * const HarpyDefaultSkippedVersion         = @"Harpy User Decided To Skip Version Update Boolean";
+NSString * const HarpyDefaultStoredVersionCheckDate = @"Harpy Stored Date From Last Version Check";
 
-/// i18n/l10n macros
-#define HARPY_CURRENT_VERSION                       [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
-#define HARPY_BUNDLE_PATH                           [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
-#define HARPY_LOCALIZED_STRING(stringKey)           ([[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey)
-#define HARPY_FORCED_BUNDLE_PATH                    [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"]
-#define HARPY_FORCED_LOCALIZED_STRING(stringKey)    [[NSBundle bundleWithPath:HARPY_FORCED_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
 /// App Store links
-#define HARPY_APP_STORE_LINK_UNIVERSAL              @"http://itunes.apple.com/lookup?id=%@"
-#define HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC       @"http://itunes.apple.com/lookup?id=%@&country=%@"
-
-/// JSON parsing
-#define HARPY_APP_STORE_RESULTS                     [self.appData valueForKey:@"results"]
+NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/lookup?id=%@";
+NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?id=%@&country=%@";
 
 /// i18n/l10n constants
-NSString * const HarpyLanguageBasque = @"eu";
-NSString * const HarpyLanguageChineseSimplified = @"zh-Hans";
-NSString * const HarpyLanguageChineseTraditional = @"zh-Hant";
-NSString * const HarpyLanguageDanish = @"da";
-NSString * const HarpyLanguageDutch = @"nl";
-NSString * const HarpyLanguageEnglish = @"en";
-NSString * const HarpyLanguageFrench = @"fr";
-NSString * const HarpyLanguageGerman = @"de";
-NSString * const HarpyLanguageHebrew = @"he";
-NSString * const HarpyLanguageItalian = @"it";
-NSString * const HarpyLanguageJapanese = @"ja";
-NSString * const HarpyLanguageKorean = @"ko";
-NSString * const HarpyLanguagePortuguese = @"pt";
-NSString * const HarpyLanguageRussian = @"ru";
-NSString * const HarpyLanguageSlovenian = @"sl";
-NSString * const HarpyLanguageSwedish = @"sv";
-NSString * const HarpyLanguageSpanish = @"es";
-NSString * const HarpyLanguageTurkish = @"tr";
+NSString * const HarpyLanguageBasque                = @"eu";
+NSString * const HarpyLanguageChineseSimplified     = @"zh-Hans";
+NSString * const HarpyLanguageChineseTraditional    = @"zh-Hant";
+NSString * const HarpyLanguageDanish                = @"da";
+NSString * const HarpyLanguageDutch                 = @"nl";
+NSString * const HarpyLanguageEnglish               = @"en";
+NSString * const HarpyLanguageFrench                = @"fr";
+NSString * const HarpyLanguageGerman                = @"de";
+NSString * const HarpyLanguageHebrew                = @"he";
+NSString * const HarpyLanguageItalian               = @"it";
+NSString * const HarpyLanguageJapanese              = @"ja";
+NSString * const HarpyLanguageKorean                = @"ko";
+NSString * const HarpyLanguagePortuguese            = @"pt";
+NSString * const HarpyLanguageRussian               = @"ru";
+NSString * const HarpyLanguageSlovenian             = @"sl";
+NSString * const HarpyLanguageSwedish               = @"sv";
+NSString * const HarpyLanguageSpanish               = @"es";
+NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy() <UIAlertViewDelegate>
 
@@ -76,7 +67,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
     self = [super init];
     if (self) {
         _alertType = HarpyAlertTypeOption;
-        _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
+        _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
     }
     return self;
 }
@@ -143,9 +134,9 @@ NSString * const HarpyLanguageTurkish = @"tr";
     // Create storeString for iTunes Lookup API request
     NSString *storeString = nil;
     if ([self countryCode]) {
-        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC, _appID, _countryCode];
+        storeString = [NSString stringWithFormat:HarpyAppStoreLinkCountrySpecific, _appID, _countryCode];
     } else {
-        storeString = [NSString stringWithFormat:HARPY_APP_STORE_LINK_UNIVERSAL, _appID];
+        storeString = [NSString stringWithFormat:HarpyAppStoreLinkUniversal, _appID];
     }
     
     // Initialize storeURL with storeString, and create request object
@@ -172,7 +163,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
                 
                                                         // Store version comparison date
                                                         self.lastVersionCheckPerformedOnDate = [NSDate date];
-                                                        [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HARPY_DEFAULT_STORED_VERSION_CHECK_DATE];
+                                                        [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
                                                         [[NSUserDefaults standardUserDefaults] synchronize];
                 
                                                         /**
@@ -180,7 +171,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
                                                          Used to contain all versions, but now only contains the latest version.
                                                          Still returns an instance of NSArray.
                                                          */
-                                                        NSArray *versionsInAppStore = [HARPY_APP_STORE_RESULTS valueForKey:@"version"];
+                                                        NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
                 
                                                         if ([versionsInAppStore count]) {
                                                             _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
@@ -205,7 +196,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
 - (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion
 {
     // Current installed version is the newest public version or newer (e.g., dev version)
-    if ([HARPY_CURRENT_VERSION compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+    if ([[self currentVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
         [self alertTypeForVersion:currentAppStoreVersion];
         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
@@ -215,7 +206,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
 - (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
 {
     // Check if user decided to skip this version in the past
-    NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HARPY_DEFAULT_SKIPPED_VERSION];
+    NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultSkippedVersion];
     
     if (![storedSkippedVersion isEqualToString:currentAppStoreVersion]) {
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
@@ -232,17 +223,17 @@ NSString * const HarpyLanguageTurkish = @"tr";
     
     // Force localization if _forceLanguageLocalization is set
     if (_forceLanguageLocalization) {
-        _updateAvailableMessage = HARPY_FORCED_LOCALIZED_STRING(@"Update Available");
-        _theNewVersionMessage = [NSString stringWithFormat:HARPY_FORCED_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), _appName, currentAppStoreVersion];
-        _updateButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Update");
-        _nextTimeButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Next time");
-        _skipButtonText = HARPY_FORCED_LOCALIZED_STRING(@"Skip this version");
+        _updateAvailableMessage = [self forcedLocalizedStringForKey:@"Update Available"];
+        _theNewVersionMessage = [NSString stringWithFormat:[self forcedLocalizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
+        _updateButtonText = [self forcedLocalizedStringForKey:@"Update"];
+        _nextTimeButtonText = [self forcedLocalizedStringForKey:@"Next time"];
+        _skipButtonText = [self forcedLocalizedStringForKey:@"Skip this version"];
     } else {
-        _updateAvailableMessage = HARPY_LOCALIZED_STRING(@"Update Available");
-        _theNewVersionMessage = [NSString stringWithFormat:HARPY_LOCALIZED_STRING(@"A new version of %@ is available. Please update to version %@ now."), _appName, currentAppStoreVersion];
-        _updateButtonText = HARPY_LOCALIZED_STRING(@"Update");
-        _nextTimeButtonText = HARPY_LOCALIZED_STRING(@"Next time");
-        _skipButtonText = HARPY_LOCALIZED_STRING(@"Skip this version");
+        _updateAvailableMessage = [self localizedStringForKey:@"Update Available"];
+        _theNewVersionMessage = [NSString stringWithFormat:[self localizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
+        _updateButtonText = [self localizedStringForKey:@"Update"];
+        _nextTimeButtonText = [self localizedStringForKey:@"Next time"];
+        _skipButtonText = [self localizedStringForKey:@"Skip this version"];
     }
 }
 
@@ -312,7 +303,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
             if (currentOSVersion > 7) {
             
                 // Store currentAppStoreVersion in case user pushes skip
-                [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
+                [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 
                 [alertController addAction:[self skipAlertAction]];
@@ -360,7 +351,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
 - (void)alertTypeForVersion:(NSString *)currentAppStoreVersion
 {
     // Check what version the update is, major, minor or a patch
-    NSArray *oldVersionComponents = [HARPY_CURRENT_VERSION componentsSeparatedByString:@"."];
+    NSArray *oldVersionComponents = [[self currentVersion] componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
     
     if ([oldVersionComponents count] == 3 && [newVersionComponents count] == 3) {
@@ -372,6 +363,28 @@ NSString * const HarpyLanguageTurkish = @"tr";
            if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
         }
     }
+}
+
+#pragma mark - NSBundle Strings
+- (NSString *)currentVersion
+{
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)bundlePath
+{
+    return [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"];
+}
+
+- (NSString *)localizedStringForKey:(NSString *)stringKey
+{
+    return ([[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:[self bundlePath]] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey);
+}
+
+- (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey
+{
+    NSString *path = [[NSBundle bundleWithPath:[self bundlePath]] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"];
+    return [[NSBundle bundleWithPath:path] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
 }
 
 #pragma mark - UIAlertActions
@@ -404,7 +417,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
     UIAlertAction *skipAlertAction = [UIAlertAction actionWithTitle:_skipButtonText
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
-                                                                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
+                                                                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                                                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                                                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                                                                     [self.delegate harpyUserDidSkipVersion];
@@ -440,7 +453,7 @@ NSString * const HarpyLanguageTurkish = @"tr";
             if (buttonIndex == 0) { // Skip current version in AppStore
                 [self launchAppStore];
             } else if (buttonIndex == 1) { // Launch App Store.app
-                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HARPY_DEFAULT_SKIPPED_VERSION];
+                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                     [self.delegate harpyUserDidSkipVersion];
