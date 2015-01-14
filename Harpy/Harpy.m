@@ -15,10 +15,9 @@
 /// i18n/l10n macros
 #define HARPY_CURRENT_VERSION                       [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
 #define HARPY_BUNDLE_PATH                           [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"]
-#define HARPY_LOCALIZED_STRING(stringKey)           [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
+#define HARPY_LOCALIZED_STRING(stringKey)           ([[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey)
 #define HARPY_FORCED_BUNDLE_PATH                    [[NSBundle bundleWithPath:HARPY_BUNDLE_PATH] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"]
 #define HARPY_FORCED_LOCALIZED_STRING(stringKey)    [[NSBundle bundleWithPath:HARPY_FORCED_BUNDLE_PATH] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"]
-
 /// App Store links
 #define HARPY_APP_STORE_LINK_UNIVERSAL              @"http://itunes.apple.com/lookup?id=%@"
 #define HARPY_APP_STORE_LINK_COUNTRY_SPECIFIC       @"http://itunes.apple.com/lookup?id=%@&country=%@"
