@@ -11,9 +11,10 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 [Aaron Brager](http://twitter.com/GetAaron) and I have ported Harpy to Swift. We've called it [Siren](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.0
-- Removed all macros in favor of static strings and methods.
-- Addressed issue with NSBundle and projects containing multiple targets (thanks to [frranck](https://github.com/frranck)).
+#### 3.3.1
+- Addressed issue with skip button logic not properly 
+	- More info here: https://github.com/ArtSabintsev/Harpy/issues/71 
+	- Thanks to [Nathan Hosselton](https://github.com/nathanhosselton).
 
 ### Features
 - [x] CocoaPods Support

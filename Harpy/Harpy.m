@@ -302,10 +302,6 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             
             if (currentOSVersion > 7) {
             
-                // Store currentAppStoreVersion in case user pushes skip
-                [[NSUserDefaults standardUserDefaults] setObject:currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                
                 [alertController addAction:[self skipAlertAction]];
                 [alertController addAction:[self nextTimeAlertAction]];
                 [alertController addAction:[self updateAlertAction]];
