@@ -165,7 +165,7 @@ There are some situations where a developer may want to the update dialog to *al
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
-### How to test Harpy?
+### How to test Harpy
 Temporarily change the version string in Xcode to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
 ### Supported Devices Compatibility
