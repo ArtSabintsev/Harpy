@@ -8,20 +8,18 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Swift Support
-[Aaron Brager](http://twitter.com/GetAaron) and I have ported Harpy to Swift. We've called it [Siren](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
+Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.1
-- Addressed issue with skip button logic not properly 
-	- More info here: https://github.com/ArtSabintsev/Harpy/issues/71 
-	- Thanks to [Nathan Hosselton](https://github.com/nathanhosselton).
+#### 3.3.2
+- Added Polish localization (thanks to [Jędrek Kostecki](https://github.com/jedrekk))
 
 ### Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x] Localized for 18 languages
+- [x] Localized for 19 languages
 - [x] ~~Check for Supported Devices~~
 	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
 
@@ -159,7 +157,11 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-There are some situations where a developer may want to the update dialog to *always* appear in a certain language, irrespective of the devices/system default language (e.g. apps released in a specific country). As of v2.5.0, this feature has been added to Harpy (see [Issue #41](https://github.com/ArtSabintsev/Harpy/issues/41)). Please set the `forceLanguageLocalization` property using the `HarpyLanugage` string constants defined in `Harpy.h` if you would like override the system's default lanuage for the Harpy alert dialogs.
+Harpy supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+
+You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
+
+You can enable it like this:
 
 ``` obj-c 
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];

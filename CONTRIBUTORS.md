@@ -47,4 +47,6 @@
 - **v3.3.0**
 	- [frranck](https://github.com/frranck)
 - **v3.3.1**
-	- [Nathan Hosselton](https://github.com/nathanhosselton)	 
+	- [Nathan Hosselton](https://github.com/nathanhosselton)
+- **v3.3.2**
+	- [Jędrek Kostecki](https://github.com/jedrekk)

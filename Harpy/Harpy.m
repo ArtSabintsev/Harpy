@@ -29,6 +29,7 @@ NSString * const HarpyLanguageHebrew                = @"he";
 NSString * const HarpyLanguageItalian               = @"it";
 NSString * const HarpyLanguageJapanese              = @"ja";
 NSString * const HarpyLanguageKorean                = @"ko";
+NSString * const HarpyLanguagePolish                = @"pl";
 NSString * const HarpyLanguagePortuguese            = @"pt";
 NSString * const HarpyLanguageRussian               = @"ru";
 NSString * const HarpyLanguageSlovenian             = @"sl";
