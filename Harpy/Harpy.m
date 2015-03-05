@@ -31,6 +31,7 @@ NSString * const HarpyLanguageJapanese              = @"ja";
 NSString * const HarpyLanguageKorean                = @"ko";
 NSString * const HarpyLanguagePolish                = @"pl";
 NSString * const HarpyLanguagePortuguese            = @"pt";
+NSString * const HarpyLanguagePortuguesePortugal    = @"pt-PT";
 NSString * const HarpyLanguageRussian               = @"ru";
 NSString * const HarpyLanguageSlovenian             = @"sl";
 NSString * const HarpyLanguageSwedish               = @"sv";
@@ -77,9 +78,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)checkVersion
 {
     if (!_appID || !_presentingViewController) {
-       
+        
         NSLog(@"[Harpy]: Please make sure that you have set _appID and _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly");
-    
+        
     } else {
         [self performVersionCheck];
     }
@@ -123,7 +124,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         [self checkVersion];
     }
     
-    // If weekly condition is satisfied, perform version check 
+    // If weekly condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
         [self checkVersion];
     }
@@ -144,7 +145,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSURL *storeURL = [NSURL URLWithString:storeString];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:storeURL];
     [request setHTTPMethod:@"GET"];
-
+    
     if ([self isDebugEnabled]) {
         NSLog(@"[Harpy] storeURL: %@", storeURL);
     }
@@ -153,27 +154,27 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if ([data length] > 0 && !error) { // Success
-            
+                                                    
                                                     self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            
+                                                    
                                                     if ([self isDebugEnabled]) {
                                                         NSLog(@"[Harpy] JSON Results: %@", _appData);
                                                     }
-            
+                                                    
                                                     dispatch_async(dispatch_get_main_queue(), ^{
-                
+                                                        
                                                         // Store version comparison date
                                                         self.lastVersionCheckPerformedOnDate = [NSDate date];
                                                         [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
                                                         [[NSUserDefaults standardUserDefaults] synchronize];
-                
+                                                        
                                                         /**
                                                          Current version that has been uploaded to the AppStore.
                                                          Used to contain all versions, but now only contains the latest version.
                                                          Still returns an instance of NSArray.
                                                          */
                                                         NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
-                
+                                                        
                                                         if ([versionsInAppStore count]) {
                                                             _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
                                                             [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
@@ -302,7 +303,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         case HarpyAlertTypeSkip: {
             
             if (currentOSVersion > 7) {
-            
+                
                 [alertController addAction:[self skipAlertAction]];
                 [alertController addAction:[self nextTimeAlertAction]];
                 [alertController addAction:[self updateAlertAction]];
@@ -311,7 +312,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                     [_presentingViewController presentViewController:alertController animated:YES completion:nil];
                 }
                 
-
+                
             } else {
                 
                 alertView = [[UIAlertView alloc] initWithTitle:_updateAvailableMessage
@@ -322,13 +323,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             }
             
         } break;
-
+            
         case HarpyAlertTypeNone: { // Do Nothing
         } break;
     }
     
     [alertView show];
-
+    
     if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
         [self.delegate harpyDidShowUpdateDialog];
     }
@@ -339,7 +340,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
-
+    
     if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
         [self.delegate harpyUserDidLaunchAppStore];
     }
@@ -357,7 +358,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c
             if (_minorUpdateAlertType) _alertType = _minorUpdateAlertType;
         } else if ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue]) { // a.b.C
-           if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+            if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
         }
     }
 }
@@ -461,7 +462,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                 }
             }
         } break;
-
+            
         case HarpyAlertTypeNone: {
             // Do nothing
         } break;
