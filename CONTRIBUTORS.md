@@ -50,3 +50,5 @@
 	- [Nathan Hosselton](https://github.com/nathanhosselton)
 - **v3.3.2**
 	- [Jędrek Kostecki](https://github.com/jedrekk)
+- **v3.3.3**
+	- [ipedro](https://github.com/ipedro)

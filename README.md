@@ -11,15 +11,15 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.2
-- Added Polish localization (thanks to [Jędrek Kostecki](https://github.com/jedrekk))
+#### 3.3.3
+- Added Brazilian Portuguese localization (thanks to [ipedro](https://github.com/ipedro))
 
 ### Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x] Localized for 19 languages
+- [x] Localized for 20 languages
 - [x] ~~Check for Supported Devices~~
 	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
 
@@ -157,7 +157,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-Harpy supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese, Russian, Slovenian, Swedish, Spanish, and Turkish.
+Harpy supports 18 languages: Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
