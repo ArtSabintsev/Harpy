@@ -167,8 +167,12 @@ You can enable it like this:
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
-### How to test Harpy
-Temporarily change the version string in Xcode to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+### Testing Harpy
+Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+
+If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (376771144), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
+
+For your convenience, you may turn on `NSLog()` debugging statements by setting `debugEnabled = true` before calling any of the `checkVersion()` methods.
 
 ### Supported Devices Compatibility
 As of **v2.7.1**, this feature was removed, as Apple  stopped updating the `supportedDevices` key in the iTunes Lookup API route.
