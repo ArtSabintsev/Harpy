@@ -111,7 +111,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 /**
  Harpy's Singleton method
  */
-+ (Harpy *)sharedInstance;
++ (instancetype)sharedInstance;
 
 /**
  Checks the installed version of your application against the version currently available on the iTunes store.
