@@ -17,9 +17,11 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageDutch;
 FOUNDATION_EXPORT NSString * const HarpyLanguageEnglish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageFrench;
 FOUNDATION_EXPORT NSString * const HarpyLanguageGerman;
+FOUNDATION_EXPORT NSString * const HarpyLanguageHebrew;
 FOUNDATION_EXPORT NSString * const HarpyLanguageItalian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageJapanese;
 FOUNDATION_EXPORT NSString * const HarpyLanguageKorean;
+FOUNDATION_EXPORT NSString * const HarpyLanguageLithuanian;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePolish;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazilian;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguesePortugal;
@@ -27,6 +29,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSwedish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 
 @protocol HarpyDelegate <NSObject>
 

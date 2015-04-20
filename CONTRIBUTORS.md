@@ -52,3 +52,5 @@
 	- [Jędrek Kostecki](https://github.com/jedrekk)
 - **v3.3.3**
 	- [ipedro](https://github.com/ipedro)
+- **v3.3.4**
+	- [Jaroslav_](https://github.com/jaroslavas)
