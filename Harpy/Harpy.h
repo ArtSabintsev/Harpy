@@ -144,4 +144,15 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 - (void)checkVersionWeekly;
 
+/**
+ Just tell if a new version is available.
+ Use the value stored in NSUserDefaults if a new one from the web is not available.
+ */
+- (BOOL)newVersionAvailable;
+
+/**
+ Launch the AppStore page for the app.
+ */
+- (void)launchAppStore;
+
 @end
