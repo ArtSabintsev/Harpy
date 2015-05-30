@@ -67,6 +67,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
+ For enterprise distribution of apps, the pList URL, and update URL of your app.
+ */
+@property (strong, nonatomic) NSString *pListURL;
+@property (strong, nonatomic) NSString *updateURL;
+
+/**
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
  */
 @property (strong, nonatomic) NSString *appName;
@@ -143,5 +149,16 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Do not use this method if you are using @c checkVersion or @c checkVersionDaily.
  */
 - (void)checkVersionWeekly;
+
+/**
+ Just tell if a new version is available. 
+ Use the value stored in NSUserDefaults if a new one from the web is not available.
+ */
+- (BOOL)newVersionAvailable;
+
+/**
+ Launch the AppStore page for the app.
+ */
+- (void)launchUpdateLocation;
 
 @end

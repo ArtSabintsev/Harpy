@@ -11,6 +11,7 @@
 /// NSUserDefault macros to store user's preferences for HarpyAlertTypeSkip
 NSString * const HarpyDefaultSkippedVersion         = @"Harpy User Decided To Skip Version Update Boolean";
 NSString * const HarpyDefaultStoredVersionCheckDate = @"Harpy Stored Date From Last Version Check";
+NSString * const HarpyCurrentLatestAppStoreVersion  = @"Harpy Current Latest AppStore Version";
 
 /// App Store links
 NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/lookup?id=%@";
@@ -78,12 +79,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 #pragma mark - Public
 - (void)checkVersion
 {
-    if (!_appID || !_presentingViewController) {
-       
-        NSLog(@"[Harpy]: Please make sure that you have set _appID and _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly");
-    
-    } else {
-        [self performVersionCheck];
+    if ((_appID || (_pListURL && _updateURL)) && _presentingViewController) {
+        if (_appID) {
+            [self performAppStoreVersionCheck];
+        }
+        else if (_pListURL) {
+            [self performEnterpriseVersionCheck];
+        }
+    }
+    else {
+        NSLog(@"[Harpy]: Please make sure that you have set _presentationViewController and either of _appID (for AppStore apps) or _pListURL (for Enterprise apps) before calling checkVersion, checkVersionDaily, or checkVersionWeekly");
     }
 }
 
@@ -132,7 +137,30 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 }
 
 #pragma mark - Private
-- (void)performVersionCheck
+
+- (void)performEnterpriseVersionCheck {
+    NSDictionary* dictionary = [NSDictionary dictionaryWithContentsOfURL:[NSURL URLWithString:_pListURL]];
+    
+    if (!dictionary) {
+        NSLog(@"[Harpy] Error! The URL doesn't represent a dictionary");
+        return;
+    }
+    @try {
+        _currentAppStoreVersion = [[[[dictionary objectForKey:@"items"] firstObject] objectForKey:@"metadata"] objectForKey:@"bundle-version"];
+        if (_currentAppStoreVersion.length > 0) {
+            [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyCurrentLatestAppStoreVersion];
+            [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"[Harpy] Exception: %@", exception.description);
+    }
+    @finally {
+        return;
+    }
+}
+
+- (void)performAppStoreVersionCheck
 {
     // Create storeString for iTunes Lookup API request
     NSString *storeString = nil;
@@ -178,6 +206,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                 
                                                         if ([versionsInAppStore count]) {
                                                             _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                                                            [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyCurrentLatestAppStoreVersion];
                                                             [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
                                                         }
                                                     });
@@ -217,6 +246,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         // Don't show alert.
         return;
     }
+}
+
+- (BOOL)newVersionAvailable {
+    if (!_currentAppStoreVersion) {
+        _currentAppStoreVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyCurrentLatestAppStoreVersion];
+    }
+    return [[self currentVersion] compare:_currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending;
 }
 
 - (void)localizeAlertStringsForCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
@@ -336,6 +372,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)launchUpdateLocation {
+    if (_pListURL) {
+        NSURL* url = [NSURL URLWithString:_updateURL];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else if (_appID) {
+        [self launchAppStore];
+    }
+}
+
 - (void)launchAppStore
 {
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
@@ -392,7 +438,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     UIAlertAction *updateAlertAction = [UIAlertAction actionWithTitle:_updateButtonText
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction *action) {
-                                                                  [self launchAppStore];
+                                                                  [self launchUpdateLocation];
                                                               }];
     
     return updateAlertAction;
@@ -432,13 +478,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: { // Launch App Store.app
-            [self launchAppStore];
+            [self launchUpdateLocation];
         } break;
             
         case HarpyAlertTypeOption: {
             
             if (buttonIndex == 1) { // Launch App Store.app
-                [self launchAppStore];
+                [self launchUpdateLocation];
             } else { // Ask user on next launch
                 if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
                     [self.delegate harpyUserDidCancel];
@@ -450,7 +496,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         case HarpyAlertTypeSkip: {
             
             if (buttonIndex == 0) { // Skip current version in AppStore
-                [self launchAppStore];
+                [self launchUpdateLocation];
             } else if (buttonIndex == 1) { // Launch App Store.app
                 [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
