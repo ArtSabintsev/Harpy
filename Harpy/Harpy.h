@@ -67,9 +67,10 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
- For enterprise distribution of apps, the pList URL of your app.
+ For enterprise distribution of apps, the pList URL, and update URL of your app.
  */
 @property (strong, nonatomic) NSString *pListURL;
+@property (strong, nonatomic) NSString *updateURL;
 
 /**
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
@@ -158,6 +159,6 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 /**
  Launch the AppStore page for the app.
  */
-- (void)launchAppStore;
+- (void)launchUpdateLocation;
 
 @end

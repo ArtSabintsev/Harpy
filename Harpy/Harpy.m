@@ -79,7 +79,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 #pragma mark - Public
 - (void)checkVersion
 {
-    if ((_appID || _pListURL) && _presentingViewController) {
+    if ((_appID || (_pListURL && _updateURL)) && _presentingViewController) {
         if (_appID) {
             [self performAppStoreVersionCheck];
         }
@@ -372,6 +372,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)launchUpdateLocation {
+    if (_pListURL) {
+        NSURL* url = [NSURL URLWithString:_updateURL];
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else if (_appID) {
+        [self launchAppStore];
+    }
+}
+
 - (void)launchAppStore
 {
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
@@ -428,7 +438,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     UIAlertAction *updateAlertAction = [UIAlertAction actionWithTitle:_updateButtonText
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction *action) {
-                                                                  [self launchAppStore];
+                                                                  [self launchUpdateLocation];
                                                               }];
     
     return updateAlertAction;
@@ -468,13 +478,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: { // Launch App Store.app
-            [self launchAppStore];
+            [self launchUpdateLocation];
         } break;
             
         case HarpyAlertTypeOption: {
             
             if (buttonIndex == 1) { // Launch App Store.app
-                [self launchAppStore];
+                [self launchUpdateLocation];
             } else { // Ask user on next launch
                 if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
                     [self.delegate harpyUserDidCancel];
@@ -486,7 +496,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         case HarpyAlertTypeSkip: {
             
             if (buttonIndex == 0) { // Skip current version in AppStore
-                [self launchAppStore];
+                [self launchUpdateLocation];
             } else if (buttonIndex == 1) { // Launch App Store.app
                 [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                 [[NSUserDefaults standardUserDefaults] synchronize];
