@@ -157,7 +157,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-Harpy has localizations for Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
+Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
