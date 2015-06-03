@@ -11,16 +11,15 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.4
-- Added Lithuanian localization (thanks to [Jaroslav_](https://github.com/jaroslavas))
-- Added missing declaration for Hebrew, Polish, and Turkish localizations to `Harpy.h`
+#### 3.3.5
+- Added Arabic localization
 
 ### Features
 - [x] CocoaPods Support
 - [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x] Localized for 21 languages
+- [x] Localized for 20+ languages
 - [x] ~~Check for Supported Devices~~
 	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
 

@@ -17,6 +17,7 @@ NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/
 NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?id=%@&country=%@";
 
 /// i18n/l10n constants
+NSString * const HarpyLanguageArabic                = @"ar";
 NSString * const HarpyLanguageBasque                = @"eu";
 NSString * const HarpyLanguageChineseSimplified     = @"zh-Hans";
 NSString * const HarpyLanguageChineseTraditional    = @"zh-Hant";
