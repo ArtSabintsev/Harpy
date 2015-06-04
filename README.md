@@ -11,8 +11,8 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.5
-- Added Arabic localization
+#### 3.3.6
+- Fixed issue with Arabic localization `.lproj` file.
 
 ### Features
 - [x] CocoaPods Support
