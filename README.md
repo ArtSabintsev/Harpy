@@ -8,7 +8,7 @@
 This library is built to work with the [Semantic Versioning](http://semver.org/) system.
 
 ### Swift Support
-Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
+Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
 #### 3.3.7
