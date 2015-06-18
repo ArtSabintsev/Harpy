@@ -58,7 +58,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (weak, nonatomic) id<HarpyDelegate> delegate;
 
 /**
- The UIViewController that will present an instance of UIAlertController
+ @b OPTIONAL: The UIViewController that will present an instance of UIAlertController
  */
 @property (strong, nonatomic) UIViewController *presentingViewController;
 
