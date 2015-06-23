@@ -72,6 +72,8 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     if (self) {
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
+
+        self.bundlePath = [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"];
     }
     return self;
 }
@@ -371,14 +373,21 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 }
 
-- (NSString *)bundlePath
-{
-    return [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"];
-}
-
 - (NSString *)localizedStringForKey:(NSString *)stringKey
 {
-    return ([[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:[self bundlePath]] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey);
+    NSBundle *languageBundle = [self languageBundle];
+
+    if(!languageBundle)
+    {
+        return stringKey;
+    }
+
+    return [languageBundle localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
+}
+
+- (NSBundle *)languageBundle
+{
+    return [NSBundle bundleWithPath:[self bundlePath]];
 }
 
 - (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey
