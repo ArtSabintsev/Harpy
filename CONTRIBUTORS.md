@@ -54,3 +54,6 @@
 	- [ipedro](https://github.com/ipedro)
 - **v3.3.4**
 	- [Jaroslav_](https://github.com/jaroslavas)
+- **v3.3.8**
+	- [Parnsind Hantrakool](https://github.com/kong707)
+	 

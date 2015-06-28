@@ -11,8 +11,8 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myelf and [Aaron Brager](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.7
-- Updated Podspec to set minimum supported version of iOS to iOS 7.
+#### 3.3.8
+- Added Thai localization (thanks to [Parnsind Hantrakool](https://github.com/kong707))
 
 ### Features
 - [x] CocoaPods Support
@@ -157,7 +157,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, and Turkish.
+Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
@@ -170,7 +170,7 @@ You can enable it like this:
 ### Testing Harpy
 Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
 
-If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (376771144), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
+If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
 
 For your convenience, you may turn on `NSLog()` debugging statements by setting `debugEnabled = true` before calling any of the `checkVersion()` methods.
 

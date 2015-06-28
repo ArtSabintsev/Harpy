@@ -30,6 +30,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSwedish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageThai;
 FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 
 @protocol HarpyDelegate <NSObject>

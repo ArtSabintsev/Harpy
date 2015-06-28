@@ -38,6 +38,7 @@ NSString * const HarpyLanguageRussian               = @"ru";
 NSString * const HarpyLanguageSlovenian             = @"sl";
 NSString * const HarpyLanguageSwedish               = @"sv";
 NSString * const HarpyLanguageSpanish               = @"es";
+NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy() <UIAlertViewDelegate>
