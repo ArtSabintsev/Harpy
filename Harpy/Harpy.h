@@ -115,6 +115,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) UIColor *alertControllerTintColor;
 
 /**
+@b OPTIONAL: Use your own language bundle file
+*/
+@property(nonatomic, copy) NSString *bundlePath;
+
+/**
  Harpy's Singleton method
  */
 + (Harpy *)sharedInstance;
