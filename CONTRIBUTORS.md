@@ -56,4 +56,6 @@
 	- [Jaroslav_](https://github.com/jaroslavas)
 - **v3.3.8**
 	- [Parnsind Hantrakool](https://github.com/kong707)
+- **v3.3.9**
+	- [Tibor Molnár](https://github.com/fatalaa)
 	 
