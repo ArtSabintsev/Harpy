@@ -354,13 +354,22 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSArray *oldVersionComponents = [[self currentVersion] componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
     
-    if ([oldVersionComponents count] == 3 && [newVersionComponents count] == 3) {
+    BOOL typeUpdated = NO;
+    if (oldVersionComponents.count > 0 && newVersionComponents.count > 0) {
         if ([newVersionComponents[0] integerValue] > [oldVersionComponents[0] integerValue]) { // A.b.c
             if (_majorUpdateAlertType) _alertType = _majorUpdateAlertType;
-        } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c
+            typeUpdated = YES;
+        }
+    }
+    if (!typeUpdated && oldVersionComponents.count > 1 && newVersionComponents.count > 1) {
+        if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c
             if (_minorUpdateAlertType) _alertType = _minorUpdateAlertType;
-        } else if ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue]) { // a.b.C
-           if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+            typeUpdated = YES;
+        }
+    }
+    if (!typeUpdated && oldVersionComponents.count > 2 && newVersionComponents.count > 2) {
+        if ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue]) { // a.b.C
+            if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
         }
     }
 }
