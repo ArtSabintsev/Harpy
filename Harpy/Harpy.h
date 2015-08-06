@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 /// i18n/l10n constants
+FOUNDATION_EXPORT NSString * const HarpyLanguageArabic;
 FOUNDATION_EXPORT NSString * const HarpyLanguageBasque;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseSimplified;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseTraditional;
@@ -17,6 +18,8 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageDutch;
 FOUNDATION_EXPORT NSString * const HarpyLanguageEnglish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageFrench;
 FOUNDATION_EXPORT NSString * const HarpyLanguageGerman;
+FOUNDATION_EXPORT NSString * const HarpyLanguageHebrew;
+FOUNDATION_EXPORT NSString * const HarpyLanguageHungarian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageItalian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageJapanese;
 FOUNDATION_EXPORT NSString * const HarpyLanguageKorean;
@@ -28,6 +31,8 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSwedish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageThai;
+FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 
 @protocol HarpyDelegate <NSObject>
 

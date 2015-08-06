@@ -52,3 +52,10 @@
 	- [Jędrek Kostecki](https://github.com/jedrekk)
 - **v3.3.3**
 	- [ipedro](https://github.com/ipedro)
+- **v3.3.4**
+	- [Jaroslav_](https://github.com/jaroslavas)
+- **v3.3.8**
+	- [Parnsind Hantrakool](https://github.com/kong707)
+- **v3.3.9**
+	- [Tibor Molnár](https://github.com/fatalaa)
+	 

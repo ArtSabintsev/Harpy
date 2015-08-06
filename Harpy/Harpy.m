@@ -17,6 +17,7 @@ NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/
 NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?id=%@&country=%@";
 
 /// i18n/l10n constants
+NSString * const HarpyLanguageArabic                = @"ar";
 NSString * const HarpyLanguageBasque                = @"eu";
 NSString * const HarpyLanguageChineseSimplified     = @"zh-Hans";
 NSString * const HarpyLanguageChineseTraditional    = @"zh-Hant";
@@ -26,10 +27,12 @@ NSString * const HarpyLanguageEnglish               = @"en";
 NSString * const HarpyLanguageFrench                = @"fr";
 NSString * const HarpyLanguageGerman                = @"de";
 NSString * const HarpyLanguageHebrew                = @"he";
+NSString * const HarpyLanguageHungarian             = @"hu";
 NSString * const HarpyLanguageItalian               = @"it";
 NSString * const HarpyLanguageJapanese              = @"ja";
 NSString * const HarpyLanguageKorean                = @"ko";
 NSString * const HarpyLanguageLithuanian            = @"lt";
+NSString * const HarpyLanguageLithuanian            = @"he";
 NSString * const HarpyLanguagePolish                = @"pl";
 NSString * const HarpyLanguagePortugueseBrazil      = @"pt";
 NSString * const HarpyLanguagePortuguesePortugal    = @"pt-PT";
@@ -37,6 +40,7 @@ NSString * const HarpyLanguageRussian               = @"ru";
 NSString * const HarpyLanguageSlovenian             = @"sl";
 NSString * const HarpyLanguageSwedish               = @"sv";
 NSString * const HarpyLanguageSpanish               = @"es";
+NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy() <UIAlertViewDelegate>
