@@ -1,6 +1,6 @@
  Pod::Spec.new do |s|
   s.name         = "Harpy"
-  s.version      = "3.3.9"
+  s.version      = "3.3.10"
   s.summary      = "Notify users that a new version of your iOS app is available, and prompt them with the AppStore link."
   s.homepage     = "https://github.com/ArtSabintsev/Harpy"
   s.platform     = :ios, '7.0'

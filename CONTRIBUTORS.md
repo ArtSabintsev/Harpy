@@ -58,4 +58,6 @@
 	- [Parnsind Hantrakool](https://github.com/kong707)
 - **v3.3.9**
 	- [Tibor Molnár](https://github.com/fatalaa)
+- **v3.3.10**
+	- [Jaroslav_](https://github.com/jaroslavas)
 	 

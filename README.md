@@ -11,8 +11,8 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.9
-- Added Hungarian localization (thanks to [Tibor Molnár](https://github.com/fatalaa))
+#### 3.3.10
+- Added Latvian and Estonian localization (thanks to [Jaroslav_](https://github.com/jaroslavas))
 
 ### Features
 - [x] CocoaPods Support
@@ -157,7 +157,7 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 ```
 
 ### Force Localization
-Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
+Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
 
