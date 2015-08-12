@@ -59,5 +59,6 @@
 - **v3.3.9**
 	- [Tibor Molnár](https://github.com/fatalaa)
 - **v3.3.10**
+	- [Tanel Suurhans](https://github.com/tanelsuurhans) 
 	- [Jaroslav_](https://github.com/jaroslavas)
 	 

@@ -12,7 +12,7 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 
 ### Changelog
 #### 3.3.10
-- Added Latvian and Estonian localization (thanks to [Jaroslav_](https://github.com/jaroslavas))
+- Added Latvian and Estonian localization (thanks to  [Tanel Suurhans](https://github.com/tanelsuurhans) and [Jaroslav_](https://github.com/jaroslavas))
 
 ### Features
 - [x] CocoaPods Support
