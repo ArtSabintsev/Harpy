@@ -54,6 +54,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 @property (nonatomic, copy) NSString *updateButtonText;
 @property (nonatomic, copy) NSString *nextTimeButtonText;
 @property (nonatomic, copy) NSString *skipButtonText;
+@property (nonatomic, copy) void (^checkVersionBlock)(NSString *newVersion, NSString *updateAvaliableMessage, NSString *theNewVersionMessage);
 
 @end
 
@@ -136,6 +137,11 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)checkVersionWithCompletion:(void (^)(NSString *newVersion, NSString *updateAvaliableMessage, NSString *theNewVersionMessage))completion
+{
+    self.checkVersionBlock = completion;
+}
+
 #pragma mark - Private
 - (void)performVersionCheck
 {
@@ -208,6 +214,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
         [self alertTypeForVersion:currentAppStoreVersion];
         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+        if (self.checkVersionBlock) {
+            self.checkVersionBlock(currentAppStoreVersion, _updateAvailableMessage, _theNewVersionMessage);
+        }
     }
 }
 

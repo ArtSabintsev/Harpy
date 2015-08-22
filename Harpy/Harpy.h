@@ -149,4 +149,6 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 - (void)checkVersionWeekly;
 
+- (void)checkVersionWithCompletion:(void (^)(NSString *newVersion, NSString *updateAvaliableMessage, NSString *theNewVersionMessage))completion;
+
 @end
