@@ -140,6 +140,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)checkVersionWithCompletion:(void (^)(NSString *newVersion, NSString *updateAvaliableMessage, NSString *theNewVersionMessage))completion
 {
     self.checkVersionBlock = completion;
+    [self checkVersion];
 }
 
 #pragma mark - Private
