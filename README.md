@@ -76,7 +76,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 By default, Harpy is configured to use HarpyAlertTypeOption */
 	[[Harpy sharedInstance] setAlertType:<#alert_type#>];
 
-	/* (Optional) If your application is not availabe in the U.S. App Store, you must specify the two-letter
+	/* (Optional) If your application is not available in the U.S. App Store, you must specify the two-letter
 	 country code for the region in which your applicaiton is available. */
 	[[Harpy sharedInstance] setCountryCode:@"<#country_code#>"];
 
