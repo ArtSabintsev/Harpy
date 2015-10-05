@@ -12,6 +12,7 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 
 ### Changelog
 #### 3.4.0
+- Added new delegate method to present update message via custom UI.
 - Added Sample Project
 - Dropped iOS 7 Support
 - Cleaned up codebase
@@ -154,6 +155,12 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 
 	// User did click on button that cancels update dialog
 	- (void)harpyUserDidCancel;
+```
+
+If you would like to use your own UI, please use the following delegate method to obtain the localized update message if a new version is available:
+
+``` obj-c
+- (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message;
 ```
 
 ### Force Localization

@@ -9,11 +9,11 @@
 #import "AppDelegate.h"
 #import "Harpy.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <HarpyDelegate>
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate 
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -27,6 +27,9 @@
     // Set the UIViewController that will present an instance of UIAlertController
     [[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 
+    // (Optional) Set Delegate to track what a user clicked on
+    [[Harpy sharedInstance] setDelegate:self];
+
     // (Optional) The tintColor for the alertController
 //    [[Harpy sharedInstance] setAlertControllerTintColor:[UIColor purpleColor]];
 
@@ -35,7 +38,7 @@
 
     /* (Optional) Set the Alert Type for your app
      By default, Harpy is configured to use HarpyAlertTypeOption */
-//    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeOption];
+    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeOption];
 
     /* (Optional) If your application is not available in the U.S. App Store, you must specify the two-letter
      country code for the region in which your applicaiton is available. */
@@ -43,7 +46,7 @@
 
     /* (Optional) Overides system language to predefined language.
      Please use the HarpyLanguage constants defined in Harpy.h. */
-    [[Harpy sharedInstance] setForceLanguageLocalization:HarpyLanguageRussian];
+//    [[Harpy sharedInstance] setForceLanguageLocalization:HarpyLanguageRussian];
 
     // Perform check for new version of your app
     [[Harpy sharedInstance] checkVersion];
@@ -86,6 +89,32 @@
      Also, performs version check on first launch.
      */
 //    [[Harpy sharedInstance] checkVersion];
+}
+
+#pragma mark - HarpyDelegate
+- (void)harpyDidShowUpdateDialog
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)harpyUserDidLaunchAppStore
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)harpyUserDidSkipVersion
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)harpyUserDidCancel
+{
+    NSLog(@"%s", __FUNCTION__);
+}
+
+- (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message
+{
+    NSLog(@"%@", message);
 }
 
 @end

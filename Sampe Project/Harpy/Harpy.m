@@ -245,8 +245,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+- (UIAlertController *)createAlertController
 {
+
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
                                                                              message:_theNewVersionMessage
                                                                       preferredStyle:UIAlertControllerStyleAlert];
@@ -254,32 +255,48 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         [alertController.view setTintColor:_alertControllerTintColor];
     }
 
+    return alertController;
+}
+
+- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+{
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: {
-                
+
+            UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self updateAlertAction]];
             
             if (_presentingViewController != nil) {
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            }
+
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
             }
             
         } break;
             
         case HarpyAlertTypeOption: {
 
+            UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
             
             if (_presentingViewController != nil) {
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
+
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
+            }
             
         } break;
             
         case HarpyAlertTypeSkip: {
 
+            UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self skipAlertAction]];
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
@@ -288,14 +305,17 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
 
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
+            }
+
         } break;
 
-        case HarpyAlertTypeNone: { // Do Nothing
+        case HarpyAlertTypeNone: { //If the delegate is set, pass a localized update message. Otherwise, do nothing.
+            if ([self.delegate respondsToSelector:@selector(harpyDidDetectNewVersionWithoutAlert:)]) {
+                [self.delegate harpyDidDetectNewVersionWithoutAlert:_theNewVersionMessage];
+            }
         } break;
-    }
-
-    if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
-        [self.delegate harpyDidShowUpdateDialog];
     }
 }
 
