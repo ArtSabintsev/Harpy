@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  Sampe Project
+//  Sample Project
 //
 //  Created by Sabintsev, Arthur on 10/4/15.
 //  Copyright © 2015 Arthur Ariel Sabintsev. All rights reserved.
