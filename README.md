@@ -11,7 +11,7 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.4.0
+#### 3.4.0 and 3.4.1
 - Added new delegate method to present update message via custom UI.
 - Added Sample Project
 - Dropped iOS 7 Support
