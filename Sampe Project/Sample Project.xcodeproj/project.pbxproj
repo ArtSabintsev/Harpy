@@ -283,7 +283,7 @@
 				INFOPLIST_FILE = "Sampe Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sampe-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-Project";
 				PRODUCT_NAME = "Sample Project";
 			};
 			name = Debug;
@@ -295,7 +295,7 @@
 				INFOPLIST_FILE = "Sampe Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sampe-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-Project";
 				PRODUCT_NAME = "Sample Project";
 			};
 			name = Release;

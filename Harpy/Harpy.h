@@ -84,24 +84,30 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic, getter=isDebugEnabled) BOOL debugEnabled;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c). See the @c HarpyAlertType enum above.
- */
-@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
-
-/**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C). See the @c HarpyAlertType enum above.
+ @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c.d). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c.d). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C.d). See the @c HarpyAlertType enum above.
  */
 @property (assign, nonatomic) HarpyAlertType patchUpdateAlertType;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c). See the @c HarpyAlertType enum above.
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.b.c.D). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+@property (assign, nonatomic) HarpyAlertType revisionUpdateAlertType;
+
 
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter

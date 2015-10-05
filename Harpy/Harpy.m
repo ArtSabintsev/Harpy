@@ -335,14 +335,19 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     // Check what version the update is, major, minor or a patch
     NSArray *oldVersionComponents = [[self currentVersion] componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
-    
-    if ([oldVersionComponents count] == 3 && [newVersionComponents count] == 3) {
-        if ([newVersionComponents[0] integerValue] > [oldVersionComponents[0] integerValue]) { // A.b.c
+
+    BOOL oldVersionComponentIsProperFormat = (2 <= [oldVersionComponents count] && [oldVersionComponents count] <= 4);
+    BOOL newVersionComponentIsProperFormat = (2 <= [newVersionComponents count] && [newVersionComponents count] <= 4);
+
+    if (oldVersionComponentIsProperFormat && newVersionComponentIsProperFormat) {
+        if ([newVersionComponents[0] integerValue] > [oldVersionComponents[0] integerValue]) { // A.b.c.d
             if (_majorUpdateAlertType) _alertType = _majorUpdateAlertType;
-        } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c
+        } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c.d
             if (_minorUpdateAlertType) _alertType = _minorUpdateAlertType;
-        } else if ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue]) { // a.b.C
+        } else if ((newVersionComponents.count > 2) && ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue])) { // a.b.C.d
            if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+        } else if ((newVersionComponents.count > 3) && ([newVersionComponents[3] integerValue] > [oldVersionComponents[3] integerValue])) { // a.b.c.D
+            if (_revisionUpdateAlertType) _alertType = _revisionUpdateAlertType;
         }
     }
 }

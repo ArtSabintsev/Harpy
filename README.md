@@ -5,12 +5,19 @@
 ### About
 **Harpy** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application.
 
-This library is built to work with the [Semantic Versioning](http://semver.org/) system.
+Harpy is built to work with the [http://www.semver.org](Semantic Versioning) system.
+- Semantic Versioning is a three number versioning system (e.g., 1.0.0)
+- Harpy also supports two-number versioning (e.g., 1.0)
+- Harpy also supports four-number versioning (e.g., 1.0.0.0)
 
 ### Swift Support
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
+
+### 3.4.2
+- Added support for two-number and four-number versioning systems
+
 #### 3.4.0 and 3.4.1
 - Added new delegate method to present update message via custom UI.
 - Added Sample Project
@@ -134,13 +141,14 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 And you're all set!
 
 ### Differentiated Alerts for Patch, Minor, and Major Updates
-If you would like to set a different type of alert for patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling any of the `checkVersion` methods:
+If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling any of the `checkVersion` methods:
 
 ``` obj-c
 	/* By default, Harpy is configured to use HarpyAlertTypeOption for all version updates */
 	[[Harpy sharedInstance] setPatchUpdateAlertType:<#alert_type#>];
 	[[Harpy sharedInstance] setMinorUpdateAlertType:<#alert_type#>];
 	[[Harpy sharedInstance] setMajorUpdateAlertType:<#alert_type#>];
+	[[Harpy sharedInstance] setRevisionUpdateAlertType:<#alert_type#>];
 ```
 
 ### Optional Delegate and Delegate Methods
