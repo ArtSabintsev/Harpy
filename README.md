@@ -67,6 +67,9 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	// Set the UIViewController that will present an instance of UIAlertController
 	[[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 
+  // (Optional) Set the Delegate to track what a user clicked on, or to use a custom UI to present your message.
+      [[Harpy sharedInstance] setDelegate:self];
+
 	// (Optional) The tintColor for the alertController
 	[[Harpy sharedInstance] setAlertControllerTintColor:@"<#alert_controller_tint_color#>"];
 
@@ -81,7 +84,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 country code for the region in which your applicaiton is available. */
 	[[Harpy sharedInstance] setCountryCode:@"<#country_code#>"];
 
-	/* (Optional) Overides system language to predefined language.
+	/* (Optional) Overrides system language to predefined language.
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
 	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
