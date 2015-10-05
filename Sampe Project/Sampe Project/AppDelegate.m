@@ -64,7 +64,7 @@
 
      Also, performs version check on first launch.
      */
-    [[Harpy sharedInstance] checkVersionDaily];
+//    [[Harpy sharedInstance] checkVersionDaily];
 
     /*
      Perform weekly check for new version of your app
