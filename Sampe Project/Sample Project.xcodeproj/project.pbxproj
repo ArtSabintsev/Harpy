@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55CF3A281BC212E30023B63D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF3A271BC212E30023B63D /* main.m */; };
+		55CF3A2B1BC212E30023B63D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF3A2A1BC212E30023B63D /* AppDelegate.m */; };
+		55CF3A2E1BC212E30023B63D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF3A2D1BC212E30023B63D /* ViewController.m */; };
+		55CF3A311BC212E30023B63D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CF3A2F1BC212E30023B63D /* Main.storyboard */; };
+		55CF3A331BC212E30023B63D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55CF3A321BC212E30023B63D /* Assets.xcassets */; };
+		55CF3A361BC212E30023B63D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55CF3A341BC212E30023B63D /* LaunchScreen.storyboard */; };
+		55CF3A471BC219450023B63D /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55CF3A441BC219450023B63D /* Harpy.bundle */; settings = {ASSET_TAGS = (); }; };
+		55CF3A481BC219450023B63D /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 55CF3A461BC219450023B63D /* Harpy.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		55CF3A231BC212E30023B63D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55CF3A271BC212E30023B63D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		55CF3A291BC212E30023B63D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		55CF3A2A1BC212E30023B63D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		55CF3A2C1BC212E30023B63D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		55CF3A2D1BC212E30023B63D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		55CF3A301BC212E30023B63D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		55CF3A321BC212E30023B63D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		55CF3A351BC212E30023B63D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		55CF3A371BC212E30023B63D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55CF3A441BC219450023B63D /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		55CF3A451BC219450023B63D /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		55CF3A461BC219450023B63D /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55CF3A201BC212E30023B63D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		55CF3A1A1BC212E30023B63D = {
+			isa = PBXGroup;
+			children = (
+				55CF3A431BC219450023B63D /* Harpy */,
+				55CF3A251BC212E30023B63D /* Sampe Project */,
+				55CF3A241BC212E30023B63D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		55CF3A241BC212E30023B63D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55CF3A231BC212E30023B63D /* Sample Project.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55CF3A251BC212E30023B63D /* Sampe Project */ = {
+			isa = PBXGroup;
+			children = (
+				55CF3A291BC212E30023B63D /* AppDelegate.h */,
+				55CF3A2A1BC212E30023B63D /* AppDelegate.m */,
+				55CF3A2C1BC212E30023B63D /* ViewController.h */,
+				55CF3A2D1BC212E30023B63D /* ViewController.m */,
+				55CF3A2F1BC212E30023B63D /* Main.storyboard */,
+				55CF3A321BC212E30023B63D /* Assets.xcassets */,
+				55CF3A341BC212E30023B63D /* LaunchScreen.storyboard */,
+				55CF3A371BC212E30023B63D /* Info.plist */,
+				55CF3A261BC212E30023B63D /* Supporting Files */,
+			);
+			path = "Sampe Project";
+			sourceTree = "<group>";
+		};
+		55CF3A261BC212E30023B63D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55CF3A271BC212E30023B63D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		55CF3A431BC219450023B63D /* Harpy */ = {
+			isa = PBXGroup;
+			children = (
+				55CF3A441BC219450023B63D /* Harpy.bundle */,
+				55CF3A451BC219450023B63D /* Harpy.h */,
+				55CF3A461BC219450023B63D /* Harpy.m */,
+			);
+			path = Harpy;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55CF3A221BC212E30023B63D /* Sample Project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "Sample Project" */;
+			buildPhases = (
+				55CF3A1F1BC212E30023B63D /* Sources */,
+				55CF3A201BC212E30023B63D /* Frameworks */,
+				55CF3A211BC212E30023B63D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Sample Project";
+			productName = "Sampe Project";
+			productReference = 55CF3A231BC212E30023B63D /* Sample Project.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55CF3A1B1BC212E30023B63D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Arthur Ariel Sabintsev";
+				TargetAttributes = {
+					55CF3A221BC212E30023B63D = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "Sample Project" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 55CF3A1A1BC212E30023B63D;
+			productRefGroup = 55CF3A241BC212E30023B63D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55CF3A221BC212E30023B63D /* Sample Project */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55CF3A211BC212E30023B63D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55CF3A471BC219450023B63D /* Harpy.bundle in Resources */,
+				55CF3A361BC212E30023B63D /* LaunchScreen.storyboard in Resources */,
+				55CF3A331BC212E30023B63D /* Assets.xcassets in Resources */,
+				55CF3A311BC212E30023B63D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55CF3A1F1BC212E30023B63D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55CF3A2E1BC212E30023B63D /* ViewController.m in Sources */,
+				55CF3A2B1BC212E30023B63D /* AppDelegate.m in Sources */,
+				55CF3A481BC219450023B63D /* Harpy.m in Sources */,
+				55CF3A281BC212E30023B63D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		55CF3A2F1BC212E30023B63D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55CF3A301BC212E30023B63D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		55CF3A341BC212E30023B63D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55CF3A351BC212E30023B63D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55CF3A381BC212E30023B63D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		55CF3A391BC212E30023B63D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55CF3A3B1BC212E30023B63D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Sampe Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sampe-Project";
+				PRODUCT_NAME = "Sample Project";
+			};
+			name = Debug;
+		};
+		55CF3A3C1BC212E30023B63D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Sampe Project/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sampe-Project";
+				PRODUCT_NAME = "Sample Project";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "Sample Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55CF3A381BC212E30023B63D /* Debug */,
+				55CF3A391BC212E30023B63D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "Sample Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55CF3A3B1BC212E30023B63D /* Debug */,
+				55CF3A3C1BC212E30023B63D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55CF3A1B1BC212E30023B63D /* Project object */;
+}

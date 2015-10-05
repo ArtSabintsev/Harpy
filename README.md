@@ -11,12 +11,14 @@ This library is built to work with the [Semantic Versioning](http://semver.org/)
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
 ### Changelog
-#### 3.3.10
-- Added Latvian and Estonian localization (thanks to  [Tanel Suurhans](https://github.com/tanelsuurhans) and [Jaroslav_](https://github.com/jaroslavas))
+#### 3.4.0
+- Added Sample Project
+- Dropped iOS 7 Support
+- Cleaned up codebase
+- Cleaned up README
 
 ### Features
 - [x] CocoaPods Support
-- [x] Support for `UIAlertController` (iOS 8+) and `UIAlertView` (iOS 7)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 - [x] Localized for 20+ languages
@@ -164,13 +166,6 @@ You can enable it like this:
 ``` obj-c
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
-
-### Testing Harpy
-Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
-
-If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
-
-For your convenience, you may turn on `NSLog()` debugging statements by setting `debugEnabled = true` before calling any of the `checkVersion()` methods.
 
 ### Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert.
