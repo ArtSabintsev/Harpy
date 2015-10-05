@@ -44,7 +44,7 @@ NSString * const HarpyLanguageSpanish               = @"es";
 NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
 
-@interface Harpy() <UIAlertViewDelegate>
+@interface Harpy()
 
 @property (nonatomic, strong) NSDictionary *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
@@ -245,99 +245,77 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+- (UIAlertController *)createAlertController
 {
-    // Initialize UIAlertView & UIAlertController
-    UIAlertView *alertView;
+
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
                                                                              message:_theNewVersionMessage
                                                                       preferredStyle:UIAlertControllerStyleAlert];
     if (_alertControllerTintColor) {
         [alertController.view setTintColor:_alertControllerTintColor];
     }
-    
-    // Get current version
-    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    NSUInteger currentOSVersion = [[versionCompatibility objectAtIndex:0] integerValue];
-    
+
+    return alertController;
+}
+
+- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
+{
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: {
+
+            UIAlertController *alertController = [self createAlertController];
+            [alertController addAction:[self updateAlertAction]];
             
-            if (currentOSVersion > 7) {
-                
-                [alertController addAction:[self updateAlertAction]];
-                
-                if (_presentingViewController != nil) {
-                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-                }
-                
-            } else {
-                
-                alertView = [[UIAlertView alloc] initWithTitle:_updateAvailableMessage
-                                                       message:_theNewVersionMessage
-                                                      delegate:self
-                                             cancelButtonTitle:_updateButtonText
-                                             otherButtonTitles:nil, nil];
+            if (_presentingViewController != nil) {
+                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            }
+
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
             }
             
         } break;
             
         case HarpyAlertTypeOption: {
+
+            UIAlertController *alertController = [self createAlertController];
+            [alertController addAction:[self nextTimeAlertAction]];
+            [alertController addAction:[self updateAlertAction]];
             
-            if (currentOSVersion > 7) {
-                
-                [alertController addAction:[self nextTimeAlertAction]];
-                [alertController addAction:[self updateAlertAction]];
-                
-                if (_presentingViewController != nil) {
-                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-                }
-                
-            } else {
-                
-                alertView = [[UIAlertView alloc] initWithTitle:_updateAvailableMessage
-                                                       message:_theNewVersionMessage
-                                                      delegate:self
-                                             cancelButtonTitle:_nextTimeButtonText
-                                             otherButtonTitles:_updateButtonText, nil];
+            if (_presentingViewController != nil) {
+                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            }
+
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
             }
             
         } break;
             
         case HarpyAlertTypeSkip: {
-            
-            if (currentOSVersion > 7) {
-            
-                [alertController addAction:[self skipAlertAction]];
-                [alertController addAction:[self nextTimeAlertAction]];
-                [alertController addAction:[self updateAlertAction]];
-                
-                if (_presentingViewController != nil) {
-                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-                }
-                
 
-            } else {
-                
-                alertView = [[UIAlertView alloc] initWithTitle:_updateAvailableMessage
-                                                       message:_theNewVersionMessage
-                                                      delegate:self
-                                             cancelButtonTitle:_updateButtonText
-                                             otherButtonTitles:_skipButtonText, _nextTimeButtonText, nil];
+            UIAlertController *alertController = [self createAlertController];
+            [alertController addAction:[self skipAlertAction]];
+            [alertController addAction:[self nextTimeAlertAction]];
+            [alertController addAction:[self updateAlertAction]];
+            
+            if (_presentingViewController != nil) {
+                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
-            
+
+            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+                [self.delegate harpyDidShowUpdateDialog];
+            }
+
         } break;
 
-        case HarpyAlertTypeNone: { // Do Nothing
+        case HarpyAlertTypeNone: { //If the delegate is set, pass a localized update message. Otherwise, do nothing.
+            if ([self.delegate respondsToSelector:@selector(harpyDidDetectNewVersionWithoutAlert:)]) {
+                [self.delegate harpyDidDetectNewVersionWithoutAlert:_theNewVersionMessage];
+            }
         } break;
-    }
-    
-    [alertView show];
-
-    if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
-        [self.delegate harpyDidShowUpdateDialog];
     }
 }
 
@@ -429,50 +407,6 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                                                             }];
     
     return skipAlertAction;
-}
-
-#pragma mark - UIAlertViewDelegate
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    switch ([self alertType]) {
-            
-        case HarpyAlertTypeForce: { // Launch App Store.app
-            [self launchAppStore];
-        } break;
-            
-        case HarpyAlertTypeOption: {
-            
-            if (buttonIndex == 1) { // Launch App Store.app
-                [self launchAppStore];
-            } else { // Ask user on next launch
-                if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
-                    [self.delegate harpyUserDidCancel];
-                }
-            }
-            
-        } break;
-            
-        case HarpyAlertTypeSkip: {
-            
-            if (buttonIndex == 0) { // Skip current version in AppStore
-                [self launchAppStore];
-            } else if (buttonIndex == 1) { // Launch App Store.app
-                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
-                    [self.delegate harpyUserDidSkipVersion];
-                }
-            } else if (buttonIndex == 2) { // Ask user on next launch
-                if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
-                    [self.delegate harpyUserDidCancel];
-                }
-            }
-        } break;
-
-        case HarpyAlertTypeNone: {
-            // Do nothing
-        } break;
-    }
 }
 
 @end

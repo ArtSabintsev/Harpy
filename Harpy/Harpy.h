@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 /// i18n/l10n constants
 FOUNDATION_EXPORT NSString * const HarpyLanguageArabic;
@@ -43,14 +44,15 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 - (void)harpyUserDidLaunchAppStore;     // User did click on button that launched App Store.app
 - (void)harpyUserDidSkipVersion;        // User did click on button that skips version update
 - (void)harpyUserDidCancel;             // User did click on button that cancels update dialog
+- (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message; // Harpy performed version check and did not display alert
 @end
 
 typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
     HarpyAlertTypeForce = 1,    // Forces user to update your app
     HarpyAlertTypeOption,       // (DEFAULT) Presents user with option to update app now or at next launch
-    HarpyAlertTypeSkip,          // Presents User with option to update the app now, at next launch, or to skip this version all together
-    HarpyAlertTypeNone,         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
+    HarpyAlertTypeSkip,         // Presents User with option to update the app now, at next launch, or to skip this version all together
+    HarpyAlertTypeNone          // Don't show the alert type , useful for skipping Patch, Minor, Major updates
 };
 
 @interface Harpy : NSObject
