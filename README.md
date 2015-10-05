@@ -20,8 +20,6 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 - [x] Localized for 20+ languages
-- [x] ~~Check for Supported Devices~~
-	- Removed in 2.7.1. See **Supported Devices Compatibility** section.
 
 ### Screenshots
 
@@ -82,7 +80,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 	/* (Optional) Overides system language to predefined language.
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
-	[[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
+	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
 	// Perform check for new version of your app
 	[[Harpy sharedInstance] checkVersion];
@@ -173,11 +171,6 @@ Temporarily change the version string in Xcode (within the `.xcodeproj`) to an o
 If you currently don't have an app in the store, use the **AppID** for the iTunes Connect App (*376771144*), or any other app, and temporarily change the version string in `.xcodeproj` to an older version than the one that's currently available in the App Store.
 
 For your convenience, you may turn on `NSLog()` debugging statements by setting `debugEnabled = true` before calling any of the `checkVersion()` methods.
-
-### Supported Devices Compatibility
-As of **v2.7.1**, this feature was removed, as Apple  stopped updating the `supportedDevices` key in the iTunes Lookup API route.
-
-<del>Every new release of iOS deprecates support for one or more older device models. Harpy checks to make sure that a user's current device supports the new version of your app. If it it does, the `UIAlertView` pops up as usual. If it does not, no alert is shown. This extra check was added into Harpy after a [lengthy discussion](https://github.com/ArtSabintsev/Harpy/issues/35). A new helper utility, [UIDevice+SupportedDevices](https://github.com/ArtSabintsev/UIDevice-SupportedDevices), came out of this discussion and is included with Harpy.</del>
 
 ### Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert.
