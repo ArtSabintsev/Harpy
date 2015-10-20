@@ -344,10 +344,18 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             if (_majorUpdateAlertType) _alertType = _majorUpdateAlertType;
         } else if ([newVersionComponents[1] integerValue] > [oldVersionComponents[1] integerValue]) { // a.B.c.d
             if (_minorUpdateAlertType) _alertType = _minorUpdateAlertType;
-        } else if ((newVersionComponents.count > 2) && ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue])) { // a.b.C.d
-           if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
-        } else if ((newVersionComponents.count > 3) && ([newVersionComponents[3] integerValue] > [oldVersionComponents[3] integerValue])) { // a.b.c.D
-            if (_revisionUpdateAlertType) _alertType = _revisionUpdateAlertType;
+        } else if (newVersionComponents.count > 2) {
+            if ((oldVersionComponents.count > 2) && ([newVersionComponents[2] integerValue] > [oldVersionComponents[2] integerValue])) { // a.b.C.d
+                if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+            } else { // a.b.C > a.b
+                if (_patchUpdateAlertType) _alertType = _patchUpdateAlertType;
+            }
+        } else if (newVersionComponents.count > 3) {
+            if((oldVersionComponents.count > 3) && ([newVersionComponents[3] integerValue] > [oldVersionComponents[3] integerValue])) { // a.b.c.D
+                if (_revisionUpdateAlertType) _alertType = _revisionUpdateAlertType;
+            } else { // a.b.c.D > a.b.c
+                if (_revisionUpdateAlertType) _alertType = _revisionUpdateAlertType;
+            }
         }
     }
 }
