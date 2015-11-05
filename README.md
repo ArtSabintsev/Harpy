@@ -2,7 +2,7 @@
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
 ---
-### About
+## About
 **Harpy** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application.
 
 Harpy is built to work with the [http://www.semver.org](Semantic Versioning) system.
@@ -10,22 +10,22 @@ Harpy is built to work with the [http://www.semver.org](Semantic Versioning) sys
 - Harpy also supports two-number versioning (e.g., 1.0)
 - Harpy also supports four-number versioning (e.g., 1.0.0.0)
 
-### Swift Support
+## Swift Support
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
-### Changelog
+## Changelog
 
-### 3.4.3
+## 3.4.3
 - Added Malay Localization (thanks to [Zaid M. Said](https://github.com/SentulAsia))
 
 
-### Features
+## Features
 - [x] CocoaPods Support
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
 - [x] Localized for 20+ languages
 
-### Screenshots
+## Screenshots
 
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
@@ -36,17 +36,18 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 ![Optional Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true "Optional Update")
 ![Skipped Update](https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picSkippedUpdate.png?raw=true "Optional Update")
 
-### Installation Instructions
+## Installation Instructions
 
-#### CocoaPods Installation
+### CocoaPods Installation
 ```
 pod 'Harpy'
 ```
 
-#### Manual Installation
+### Manual Installation
 
 Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files.
-### Setup Instructions
+
+## Setup
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
 1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
 1. In your `AppDelegate`, call **only one** of the `checkVersion` methods, as all three perform a check on your application's first launch. Use either:
@@ -134,7 +135,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 And you're all set!
 
-### Differentiated Alerts for Patch, Minor, and Major Updates
+## Differentiated Alerts for Patch, Minor, and Major Updates
 If you would like to set a different type of alert for revision, patch, minor, and/or major updates, simply add one or all of the following *optional* lines to your setup *before* calling any of the `checkVersion` methods:
 
 ``` obj-c
@@ -145,7 +146,7 @@ If you would like to set a different type of alert for revision, patch, minor, a
 	[[Harpy sharedInstance] setRevisionUpdateAlertType:<#alert_type#>];
 ```
 
-### Optional Delegate and Delegate Methods
+## Optional Delegate and Delegate Methods
 If you'd like to handle or track the end-user's behavior, four delegate methods have been made available to you:
 
 ```	obj-c
@@ -168,7 +169,7 @@ If you would like to use your own UI, please use the following delegate method t
 - (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message;
 ```
 
-### Force Localization
+## Force Localization
 Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
@@ -179,8 +180,8 @@ You can enable it like this:
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
 
-### Important Note on App Store Submissions
+## Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert.
 
-### Created and maintained by
+## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/)
