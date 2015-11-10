@@ -11,6 +11,7 @@
 
 /// i18n/l10n constants
 FOUNDATION_EXPORT NSString * const HarpyLanguageArabic;
+FOUNDATION_EXPORT NSString * const HarpyLanguageArmenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageBasque;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseSimplified;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseTraditional;

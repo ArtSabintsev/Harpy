@@ -18,6 +18,7 @@ NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/
 
 /// i18n/l10n constants
 NSString * const HarpyLanguageArabic                = @"ar";
+NSString * const HarpyLanguageArmenian              = @"hy";
 NSString * const HarpyLanguageBasque                = @"eu";
 NSString * const HarpyLanguageChineseSimplified     = @"zh-Hans";
 NSString * const HarpyLanguageChineseTraditional    = @"zh-Hant";

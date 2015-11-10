@@ -1,5 +1,5 @@
 ### Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/)
 
 ### Project Contributors
 - **v1.0.1**
@@ -59,6 +59,9 @@
 - **v3.3.9**
 	- [Tibor Molnár](https://github.com/fatalaa)
 - **v3.3.10**
-	- [Tanel Suurhans](https://github.com/tanelsuurhans) 
+	- [Tanel Suurhans](https://github.com/tanelsuurhans)
 	- [Jaroslav_](https://github.com/jaroslavas)
-	 
+- **v3.4.3**
+	 - [Zaid M. Said](https://github.com/SentulAsia)
+ - **v3.4.4**
+	- [Vahan Margaryan](https://github.com/VahanMargaryan)

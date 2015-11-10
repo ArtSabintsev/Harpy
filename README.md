@@ -13,12 +13,6 @@ Harpy is built to work with the [http://www.semver.org](Semantic Versioning) sys
 ## Swift Support
 Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [here](https://github.com/ArtSabintsev/Siren).
 
-## Changelog
-
-## 3.4.3
-- Added Malay Localization (thanks to [Zaid M. Said](https://github.com/SentulAsia))
-
-
 ## Features
 - [x] CocoaPods Support
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
