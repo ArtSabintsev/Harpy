@@ -341,14 +341,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     // Check what version the update is, major, minor or a patch
     NSArray<NSString *> *oldVersionComponents = [self.currentVersion componentsSeparatedByString:@"."];
     NSArray<NSString *> *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString:@"."];
-    for (NSInteger i = 0; i < maxCount; ++i) {
+    for (NSInteger i = 0; i < maxCount; ++i) {  // ignore numbers after the maxCount-th number
         v0[i] = (i < oldVersionComponents.count) ? oldVersionComponents[i].integerValue : 0; // add 0 if insufficient，不足则补0
-    }
-    for (NSInteger i = 0; i < maxCount; ++i) {
         v1[i] = (i < newVersionComponents.count) ? newVersionComponents[i].integerValue : 0; // add 0 if insufficient，不足则补0
-    }
-
-    for (NSInteger i = 0; i < maxCount; ++i) { // ignore numbers after the maxCount-th number
         if (v1[i] > v0[i]) {
             if (0 != alertType[i]) {
                 self.alertType = alertType[i];
