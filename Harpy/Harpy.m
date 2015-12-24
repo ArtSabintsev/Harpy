@@ -46,7 +46,11 @@ NSString * const HarpyLanguageSpanish               = @"es";
 NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
 
-@interface Harpy()
+/// define low version
+static const CGFloat kLowVersionNum = 7.0f;
+typedef void (^HarpyActionBlockTpye)(void);
+
+@interface Harpy()<UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSDictionary *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
@@ -56,6 +60,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 @property (nonatomic, copy) NSString *updateButtonText;
 @property (nonatomic, copy) NSString *nextTimeButtonText;
 @property (nonatomic, copy) NSString *skipButtonText;
+@property (nonatomic, strong) NSMutableDictionary *alertViewActions; // support low version
 
 @end
 
@@ -246,6 +251,24 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         _skipButtonText = [self localizedStringForKey:@"Skip this version"];
     }
 }
+- (UIAlertView *)createAlertView
+{
+    
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:_updateAvailableMessage message:_theNewVersionMessage delegate:self cancelButtonTitle:@"更新0" otherButtonTitles: nil];
+    UIAlertView *alertView = [[UIAlertView alloc] init];
+    alertView.delegate = self;
+    alertView.title = _updateAvailableMessage;
+    alertView.message = _theNewVersionMessage;
+//    [alertView addButtonWithTitle:@"更新0"];
+//    [alertView addButtonWithTitle:@"hahah1"];
+//    [alertView addButtonWithTitle:@"hahah2"];
+    
+    if (_alertControllerTintColor) {
+        [alertView setTintColor:_alertControllerTintColor];
+    }
+    
+    return alertView;
+}
 
 - (UIAlertController *)createAlertController
 {
@@ -262,17 +285,28 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 - (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
+    // Get System Version
+    CGFloat systemVersion = [self systemVersion];
+    
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
             
         case HarpyAlertTypeForce: {
-
-            UIAlertController *alertController = [self createAlertController];
-            [alertController addAction:[self updateAlertAction]];
-            
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            /** Low Version Support */
+            if (systemVersion <= kLowVersionNum) {
+                UIAlertView *alertView = [self createAlertView];
+                [self updateAlertViewActionWithAlertView:alertView];
+                [alertView show];
+                return;
+            } else {
+                UIAlertController *alertController = [self createAlertController];
+                [alertController addAction:[self updateAlertAction]];
+                
+                if (_presentingViewController != nil) {
+                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+                }
             }
+            
 
             if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
                 [self.delegate harpyDidShowUpdateDialog];
@@ -281,13 +315,20 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         } break;
             
         case HarpyAlertTypeOption: {
-
-            UIAlertController *alertController = [self createAlertController];
-            [alertController addAction:[self nextTimeAlertAction]];
-            [alertController addAction:[self updateAlertAction]];
-            
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            if (systemVersion <= kLowVersionNum) {
+                UIAlertView *alertView = [self createAlertView];
+                [self nextTimeAlertViewActionWithAlertView:alertView];
+                [self updateAlertViewActionWithAlertView:alertView];
+                [alertView show];
+                return;
+            } else {
+                UIAlertController *alertController = [self createAlertController];
+                [alertController addAction:[self nextTimeAlertAction]];
+                [alertController addAction:[self updateAlertAction]];
+                
+                if (_presentingViewController != nil) {
+                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+                }
             }
 
             if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
@@ -297,14 +338,22 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         } break;
             
         case HarpyAlertTypeSkip: {
-
-            UIAlertController *alertController = [self createAlertController];
-            [alertController addAction:[self skipAlertAction]];
-            [alertController addAction:[self nextTimeAlertAction]];
-            [alertController addAction:[self updateAlertAction]];
-            
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+            if (systemVersion <= kLowVersionNum) {
+                UIAlertView *alertView = [self createAlertView];
+                [self skipAlertViewActionWithAlertView:alertView];
+                [self nextTimeAlertViewActionWithAlertView:alertView];
+                [self updateAlertViewActionWithAlertView:alertView];
+                [alertView show];
+                return;
+            } else {
+                UIAlertController *alertController = [self createAlertController];
+                [alertController addAction:[self skipAlertAction]];
+                [alertController addAction:[self nextTimeAlertAction]];
+                [alertController addAction:[self updateAlertAction]];
+                
+                if (_presentingViewController != nil) {
+                    [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+                }
             }
 
             if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
@@ -375,8 +424,42 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSString *path = [[NSBundle bundleWithPath:[self bundlePath]] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"];
     return [[NSBundle bundleWithPath:path] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
 }
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *actionKey = [alertView buttonTitleAtIndex:buttonIndex];
+    HarpyActionBlockTpye block = [self.alertViewActions objectForKey:actionKey];
+    if (block) {
+        block();
+    }
+}
 
-#pragma mark - UIAlertActions
+#pragma mark - UIAlertViewActions(<iOS8)
+- (void)configAlertView:(UIAlertView *)alertView Title:(NSString *) title Action:(void (^)())actionBlock {
+    [alertView addButtonWithTitle:title];
+    self.alertViewActions[title] = [actionBlock copy];
+}
+- (void)updateAlertViewActionWithAlertView:(UIAlertView *)alertView {
+    [self configAlertView:alertView Title:_updateButtonText Action:^{
+        [self launchAppStore];
+    }];
+}
+- (void)nextTimeAlertViewActionWithAlertView:(UIAlertView *)alertView{
+    [self configAlertView:alertView Title:_nextTimeButtonText Action:^{
+        if([self.delegate respondsToSelector:@selector(harpyUserDidCancel)]){
+            [self.delegate harpyUserDidCancel];
+        }
+    }];
+}
+- (void)skipAlertViewActionWithAlertView:(UIAlertView *)alertView{
+    [self configAlertView:alertView Title:_skipButtonText Action:^{
+        [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
+            [self.delegate harpyUserDidSkipVersion];
+        }
+    }];
+}
+#pragma mark - UIAlertViewControllerActions
 - (UIAlertAction *)updateAlertAction
 {
     UIAlertAction *updateAlertAction = [UIAlertAction actionWithTitle:_updateButtonText
@@ -416,4 +499,21 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return skipAlertAction;
 }
 
+- (NSMutableDictionary *)alertViewActions
+{
+    if (_alertViewActions == nil) {
+        _alertViewActions = [[NSMutableDictionary alloc] initWithCapacity:3];
+    }
+    return _alertViewActions;
+}
+
+- (CGFloat)systemVersion
+{
+    static float systemVersion;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        systemVersion = [UIDevice currentDevice].systemVersion.floatValue;
+    });
+    return systemVersion;
+}
 @end
