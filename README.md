@@ -1,6 +1,11 @@
 # Harpy
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
+### new feature（添加的新特性）
+add feature to support ios5-7
+now，it can support iOS5-9
+（基于原作者的基础上适配iOS5-7等低版本iOS系统，现在总体适配iOS5-9）
+
 ---
 ## About
 **Harpy** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application.
