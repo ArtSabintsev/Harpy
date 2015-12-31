@@ -206,7 +206,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion
 {
     // Current installed version is the newest public version or newer (e.g., dev version)
-    if ([[self currentVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+    if ([self.appVersion compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
         [self alertTypeForVersion:currentAppStoreVersion];
         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
@@ -339,7 +339,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSInteger alertType[maxCount] = {self.majorUpdateAlertType, self.minorUpdateAlertType, self.patchUpdateAlertType, self.revisionUpdateAlertType};
 
     // Check what version the update is, major, minor or a patch
-    NSArray<NSString *> *oldVersionComponents = [self.currentVersion componentsSeparatedByString:@"."];
+    NSArray<NSString *> *oldVersionComponents = [self.appVersion componentsSeparatedByString:@"."];
     NSArray<NSString *> *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString:@"."];
     for (NSInteger i = 0; i < maxCount; ++i) {  // ignore numbers after the maxCount-th number
         v0[i] = (i < oldVersionComponents.count) ? oldVersionComponents[i].integerValue : 0; // add 0 if insufficient，不足则补0
@@ -354,9 +354,11 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 }
 
 #pragma mark - NSBundle Strings
-- (NSString *)currentVersion
-{
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+- (NSString *)appVersion {
+    if (_appVersion == nil) {
+        _appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    }
+    return _appVersion;
 }
 
 - (NSString *)bundlePath

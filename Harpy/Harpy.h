@@ -81,6 +81,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appName;
 
 /**
+ @b OPTIONAL: You can provide another version for the app before update, if you need a version like 1.2.3.4, which is not allowed by the App Store.
+ Otherwise, it will be read with the key "CFBundleShortVersionString" from the app's Info.plist.
+ */
+@property (strong, nonatomic) NSString *appVersion;
+
+/**
  @b OPTIONAL: Log Debug information
  */
 @property (assign, nonatomic, getter=isDebugEnabled) BOOL debugEnabled;
