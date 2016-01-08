@@ -24,7 +24,7 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 - The **left picture** forces the user to update the app.
 - The **center picture** gives the user the option to update the app.
 - The **right picture** gives the user the option to skip the current update.
-- These options are controlled by the `HarpyAlertType` typede that is found in `Harpy.h`.
+- These options are controlled by the `HarpyAlertType` enum that is found in `Harpy.h`.
 
 <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picForcedUpdate.png?raw=true" height=480">
 <img src="https://github.com/ArtSabintsev/Harpy/blob/master/samplePictures/picOptionalUpdate.png?raw=true" height=480">
