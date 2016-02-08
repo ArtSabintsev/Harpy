@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+//! Project version number for Harpy.
+FOUNDATION_EXPORT double HarpyVersionNumber;
+
+//! Project version string for Harpy.
+FOUNDATION_EXPORT const unsigned char HarpyVersionString[];
+
 /// i18n/l10n constants
 FOUNDATION_EXPORT NSString * const HarpyLanguageArabic;
 FOUNDATION_EXPORT NSString * const HarpyLanguageArmenian;
