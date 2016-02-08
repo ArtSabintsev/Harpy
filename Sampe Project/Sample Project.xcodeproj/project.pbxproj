@@ -7,18 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5511F2841BC2333700B26A22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F2811BC2333700B26A22 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		5511F2851BC2333700B26A22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F2831BC2333700B26A22 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
-		5511F2871BC2334A00B26A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2861BC2334A00B26A22 /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
-		5511F28B1BC2337B00B26A22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F28A1BC2337B00B26A22 /* main.m */; settings = {ASSET_TAGS = (); }; };
-		5511F28D1BC2338500B26A22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28C1BC2338500B26A22 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
-		5511F2921BC2339900B26A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28E1BC2339900B26A22 /* LaunchScreen.storyboard */; settings = {ASSET_TAGS = (); }; };
-		5511F2931BC2339900B26A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2901BC2339900B26A22 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		552E93821BC22C3000CC732D /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 552E937F1BC22C3000CC732D /* Harpy.bundle */; settings = {ASSET_TAGS = (); }; };
-		552E93831BC22C3000CC732D /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 552E93811BC22C3000CC732D /* Harpy.m */; settings = {ASSET_TAGS = (); }; };
+		550697B61C685420008C5BAF /* Harpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550697AF1C685420008C5BAF /* Harpy.framework */; };
+		550697B71C685420008C5BAF /* Harpy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 550697AF1C685420008C5BAF /* Harpy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		550697BC1C685458008C5BAF /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 552E93811BC22C3000CC732D /* Harpy.m */; };
+		550697BD1C68545B008C5BAF /* Harpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 552E93801BC22C3000CC732D /* Harpy.h */; };
+		550697BE1C68545F008C5BAF /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 552E937F1BC22C3000CC732D /* Harpy.bundle */; };
+		5511F2841BC2333700B26A22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F2811BC2333700B26A22 /* AppDelegate.m */; };
+		5511F2851BC2333700B26A22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F2831BC2333700B26A22 /* ViewController.m */; };
+		5511F2871BC2334A00B26A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2861BC2334A00B26A22 /* Assets.xcassets */; };
+		5511F28B1BC2337B00B26A22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5511F28A1BC2337B00B26A22 /* main.m */; };
+		5511F28D1BC2338500B26A22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28C1BC2338500B26A22 /* Default-568h@2x.png */; };
+		5511F2921BC2339900B26A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28E1BC2339900B26A22 /* LaunchScreen.storyboard */; };
+		5511F2931BC2339900B26A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2901BC2339900B26A22 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		550697B41C685420008C5BAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55CF3A1B1BC212E30023B63D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 550697AE1C685420008C5BAF;
+			remoteInfo = Harpy;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		550697BB1C685420008C5BAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				550697B71C685420008C5BAF /* Harpy.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		550697AF1C685420008C5BAF /* Harpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		550697B31C685420008C5BAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5511F2801BC2333700B26A22 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = "Sample Project/AppDelegate.h"; sourceTree = SOURCE_ROOT; };
 		5511F2811BC2333700B26A22 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = "Sample Project/AppDelegate.m"; sourceTree = SOURCE_ROOT; };
 		5511F2821BC2333700B26A22 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = "Sample Project/ViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -29,39 +58,47 @@
 		5511F28C1BC2338500B26A22 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		5511F28F1BC2339900B26A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sample Project/Base.lproj/LaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		5511F2911BC2339900B26A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Sample Project/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
-		552E937F1BC22C3000CC732D /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
-		552E93801BC22C3000CC732D /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
-		552E93811BC22C3000CC732D /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
+		552E937F1BC22C3000CC732D /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Harpy.bundle; path = ../../Harpy/Harpy.bundle; sourceTree = "<group>"; };
+		552E93801BC22C3000CC732D /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Harpy.h; path = ../../Harpy/Harpy.h; sourceTree = "<group>"; };
+		552E93811BC22C3000CC732D /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Harpy.m; path = ../../Harpy/Harpy.m; sourceTree = "<group>"; };
 		55CF3A231BC212E30023B63D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		55CF3A201BC212E30023B63D /* Frameworks */ = {
+		550697AB1C685420008C5BAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		55CF3A201BC212E30023B63D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550697B61C685420008C5BAF /* Harpy.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		552E937E1BC22C3000CC732D /* Harpy */ = {
+		550697B01C685420008C5BAF /* Harpy */ = {
 			isa = PBXGroup;
 			children = (
 				552E937F1BC22C3000CC732D /* Harpy.bundle */,
 				552E93801BC22C3000CC732D /* Harpy.h */,
 				552E93811BC22C3000CC732D /* Harpy.m */,
+				550697B31C685420008C5BAF /* Info.plist */,
 			);
-			name = Harpy;
-			path = ../Harpy;
+			path = Harpy;
 			sourceTree = "<group>";
 		};
 		55CF3A1A1BC212E30023B63D = {
 			isa = PBXGroup;
 			children = (
-				552E937E1BC22C3000CC732D /* Harpy */,
 				55CF3A251BC212E30023B63D /* Sample Project */,
+				550697B01C685420008C5BAF /* Harpy */,
 				55CF3A241BC212E30023B63D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				55CF3A231BC212E30023B63D /* Sample Project.app */,
+				550697AF1C685420008C5BAF /* Harpy.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,7 +140,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		550697AC1C685420008C5BAF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550697BD1C68545B008C5BAF /* Harpy.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		550697AE1C685420008C5BAF /* Harpy */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 550697BA1C685420008C5BAF /* Build configuration list for PBXNativeTarget "Harpy" */;
+			buildPhases = (
+				550697AA1C685420008C5BAF /* Sources */,
+				550697AB1C685420008C5BAF /* Frameworks */,
+				550697AC1C685420008C5BAF /* Headers */,
+				550697AD1C685420008C5BAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Harpy;
+			productName = Harpy;
+			productReference = 550697AF1C685420008C5BAF /* Harpy.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		55CF3A221BC212E30023B63D /* Sample Project */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "Sample Project" */;
@@ -110,10 +177,12 @@
 				55CF3A1F1BC212E30023B63D /* Sources */,
 				55CF3A201BC212E30023B63D /* Frameworks */,
 				55CF3A211BC212E30023B63D /* Resources */,
+				550697BB1C685420008C5BAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				550697B51C685420008C5BAF /* PBXTargetDependency */,
 			);
 			name = "Sample Project";
 			productName = "Sampe Project";
@@ -129,6 +198,9 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Arthur Ariel Sabintsev";
 				TargetAttributes = {
+					550697AE1C685420008C5BAF = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
 					55CF3A221BC212E30023B63D = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -148,16 +220,24 @@
 			projectRoot = "";
 			targets = (
 				55CF3A221BC212E30023B63D /* Sample Project */,
+				550697AE1C685420008C5BAF /* Harpy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		550697AD1C685420008C5BAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550697BE1C68545F008C5BAF /* Harpy.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55CF3A211BC212E30023B63D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				552E93821BC22C3000CC732D /* Harpy.bundle in Resources */,
 				5511F2871BC2334A00B26A22 /* Assets.xcassets in Resources */,
 				5511F2931BC2339900B26A22 /* Main.storyboard in Resources */,
 				5511F2921BC2339900B26A22 /* LaunchScreen.storyboard in Resources */,
@@ -168,18 +248,33 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		550697AA1C685420008C5BAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550697BC1C685458008C5BAF /* Harpy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55CF3A1F1BC212E30023B63D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				5511F28B1BC2337B00B26A22 /* main.m in Sources */,
 				5511F2851BC2333700B26A22 /* ViewController.m in Sources */,
-				552E93831BC22C3000CC732D /* Harpy.m in Sources */,
 				5511F2841BC2333700B26A22 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		550697B51C685420008C5BAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 550697AE1C685420008C5BAF /* Harpy */;
+			targetProxy = 550697B41C685420008C5BAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5511F28E1BC2339900B26A22 /* LaunchScreen.storyboard */ = {
@@ -201,6 +296,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		550697B81C685420008C5BAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Harpy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Harpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		550697B91C685420008C5BAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Harpy/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Sabintsev.Harpy;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		55CF3A381BC212E30023B63D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -308,6 +446,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		550697BA1C685420008C5BAF /* Build configuration list for PBXNativeTarget "Harpy" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550697B81C685420008C5BAF /* Debug */,
+				550697B91C685420008C5BAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "Sample Project" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -32,12 +32,17 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 
 ## Installation Instructions
 
-### CocoaPods Installation
-```
+### CocoaPods
+``` ruby
 pod 'Harpy'
 ```
 
-### Manual Installation
+### Carthage
+``` swift
+github "ArtSabintsev/Harpy"
+```
+
+### Manual
 
 Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Harpy.m files.
 
