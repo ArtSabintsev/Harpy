@@ -5,7 +5,7 @@
 ## About
 **Harpy** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application.
 
-Harpy is built to work with the [http://www.semver.org](Semantic Versioning) system.
+Harpy is built to work with the [Semantic Versioning](http://www.semver.org) system.
 - Semantic Versioning is a three number versioning system (e.g., 1.0.0)
 - Harpy also supports two-number versioning (e.g., 1.0)
 - Harpy also supports four-number versioning (e.g., 1.0.0.0)
