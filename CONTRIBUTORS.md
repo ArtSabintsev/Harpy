@@ -1,5 +1,5 @@
 ### Created and maintained by
-[Arthur Ariel Sabintsev](http://www.sabintsev.com/) 
+[Arthur Ariel Sabintsev](http://www.sabintsev.com/)
 
 ### Project Contributors
 - **v1.0.1**
@@ -40,3 +40,30 @@
 	- [Patrick Debois](https://github.com/jedi4ever)
 - **v3.1.0**
 	- [Jon Andersen](https://github.com/jonandersen)
+- **v3.1.1**
+	- [burakkilic](https://github.com/burakkilic)
+- **v3.1.2**
+	- [Daniel](https://github.com/danieltskv)
+- **v3.3.0**
+	- [frranck](https://github.com/frranck)
+- **v3.3.1**
+	- [Nathan Hosselton](https://github.com/nathanhosselton)
+- **v3.3.2**
+	- [Jędrek Kostecki](https://github.com/jedrekk)
+- **v3.3.3**
+	- [ipedro](https://github.com/ipedro)
+- **v3.3.4**
+	- [Jaroslav_](https://github.com/jaroslavas)
+- **v3.3.8**
+	- [Parnsind Hantrakool](https://github.com/kong707)
+- **v3.3.9**
+	- [Tibor Molnár](https://github.com/fatalaa)
+- **v3.3.10**
+	- [Tanel Suurhans](https://github.com/tanelsuurhans)
+	- [Jaroslav_](https://github.com/jaroslavas)
+- **v3.4.3**
+	 - [Zaid M. Said](https://github.com/SentulAsia)
+ - **v3.4.4**
+	- [Vahan Margaryan](https://github.com/VahanMargaryan)
+- **v3.4.5**
+ 	- [Justus Kandzi](https://github.com/jkandzi)

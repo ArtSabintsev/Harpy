@@ -7,24 +7,43 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+//! Project version number for Harpy.
+FOUNDATION_EXPORT double HarpyVersionNumber;
+
+//! Project version string for Harpy.
+FOUNDATION_EXPORT const unsigned char HarpyVersionString[];
 
 /// i18n/l10n constants
+FOUNDATION_EXPORT NSString * const HarpyLanguageArabic;
+FOUNDATION_EXPORT NSString * const HarpyLanguageArmenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageBasque;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseSimplified;
 FOUNDATION_EXPORT NSString * const HarpyLanguageChineseTraditional;
 FOUNDATION_EXPORT NSString * const HarpyLanguageDanish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageDutch;
 FOUNDATION_EXPORT NSString * const HarpyLanguageEnglish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageEstonian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageFrench;
 FOUNDATION_EXPORT NSString * const HarpyLanguageGerman;
+FOUNDATION_EXPORT NSString * const HarpyLanguageHebrew;
+FOUNDATION_EXPORT NSString * const HarpyLanguageHungarian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageItalian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageJapanese;
 FOUNDATION_EXPORT NSString * const HarpyLanguageKorean;
-FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguese;
+FOUNDATION_EXPORT NSString * const HarpyLanguageLatvian;
+FOUNDATION_EXPORT NSString * const HarpyLanguageLithuanian;
+FOUNDATION_EXPORT NSString * const HarpyLanguageMalay;
+FOUNDATION_EXPORT NSString * const HarpyLanguagePolish;
+FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazilian;
+FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguesePortugal;
 FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSwedish;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
+FOUNDATION_EXPORT NSString * const HarpyLanguageThai;
+FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 
 @protocol HarpyDelegate <NSObject>
 
@@ -33,14 +52,15 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageSpanish;
 - (void)harpyUserDidLaunchAppStore;     // User did click on button that launched App Store.app
 - (void)harpyUserDidSkipVersion;        // User did click on button that skips version update
 - (void)harpyUserDidCancel;             // User did click on button that cancels update dialog
+- (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message; // Harpy performed version check and did not display alert
 @end
 
 typedef NS_ENUM(NSUInteger, HarpyAlertType)
 {
     HarpyAlertTypeForce = 1,    // Forces user to update your app
     HarpyAlertTypeOption,       // (DEFAULT) Presents user with option to update app now or at next launch
-    HarpyAlertTypeSkip,          // Presents User with option to update the app now, at next launch, or to skip this version all together
-    HarpyAlertTypeNone,         // Don't show the alert type , usefull for skipping Patch ,Minor, Major update
+    HarpyAlertTypeSkip,         // Presents User with option to update the app now, at next launch, or to skip this version all together
+    HarpyAlertTypeNone          // Don't show the alert type , useful for skipping Patch, Minor, Major updates
 };
 
 @interface Harpy : NSObject
@@ -72,24 +92,30 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (assign, nonatomic, getter=isDebugEnabled) BOOL debugEnabled;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c). See the @c HarpyAlertType enum above.
- */
-@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
-
-/**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
  */
 @property (assign, nonatomic) HarpyAlertType alertType;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C). See the @c HarpyAlertType enum above.
+ @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c.d). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c.d). See the @c HarpyAlertType enum above.
+ */
+@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+
+/**
+ @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C.d). See the @c HarpyAlertType enum above.
  */
 @property (assign, nonatomic) HarpyAlertType patchUpdateAlertType;
 
 /**
- @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c). See the @c HarpyAlertType enum above.
+ @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.b.c.D). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+@property (assign, nonatomic) HarpyAlertType revisionUpdateAlertType;
+
 
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter
