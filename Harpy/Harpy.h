@@ -82,6 +82,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) NSString *appID;
 
 /**
+ The current version of your app that is available for download on the App Store
+ */
+@property (nonatomic, copy, readonly) NSString *currentAppStoreVersion;
+
+
+/**
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
  */
 @property (strong, nonatomic) NSString *appName;
@@ -116,7 +122,6 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (assign, nonatomic) HarpyAlertType revisionUpdateAlertType;
 
-
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter
  country code for the region in which your applicaiton is available in.
@@ -132,6 +137,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  @b OPTIONAL: The tintColor for the alertController
  */
 @property (strong, nonatomic) UIColor *alertControllerTintColor;
+
 
 /**
  Harpy's Singleton method
