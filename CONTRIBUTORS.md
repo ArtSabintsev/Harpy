@@ -63,7 +63,7 @@
 	- [Jaroslav_](https://github.com/jaroslavas)
 - **v3.4.3**
 	 - [Zaid M. Said](https://github.com/SentulAsia)
- - **v3.4.4**
+- **v3.4.4**
 	- [Vahan Margaryan](https://github.com/VahanMargaryan)
 - **v3.4.5**
  	- [Justus Kandzi](https://github.com/jkandzi)
