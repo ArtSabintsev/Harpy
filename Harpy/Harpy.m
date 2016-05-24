@@ -362,12 +362,12 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 - (NSString *)bundlePath
 {
-    return [[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"];
+    return [[NSBundle bundleForClass:[self class]] pathForResource:@"Harpy" ofType:@"bundle"];
 }
 
 - (NSString *)localizedStringForKey:(NSString *)stringKey
 {
-    return ([[NSBundle mainBundle] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:[self bundlePath]] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey);
+    return ([[NSBundle bundleForClass:[self class]] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:[self bundlePath]] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey);
 }
 
 - (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey
