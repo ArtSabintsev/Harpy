@@ -67,3 +67,5 @@
 	- [Vahan Margaryan](https://github.com/VahanMargaryan)
 - **v3.4.5**
  	- [Justus Kandzi](https://github.com/jkandzi)
+- **v3.4.8**
+    - [Mark Berner](https://github.com/mark2b)
