@@ -46,6 +46,8 @@ NSString * const HarpyLanguageSpanish               = @"es";
 NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
 
+#define SYSTEM_VERSION_LESS_THAN(v)                    ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @interface Harpy()
 
 @property (nonatomic, strong) NSDictionary *appData;
@@ -173,6 +175,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                 
                                                         // Store version comparison date
                                                         self.lastVersionCheckPerformedOnDate = [NSDate date];
+                                                        
+                                                        // Minimum iOS deployment target required for the newer app version
+                                                        NSArray *minimumOSVersion = [[self.appData valueForKey:@"results"] valueForKey:@"minimumOsVersion"];
+                                                        if (minimumOSVersion.count == 0 || SYSTEM_VERSION_LESS_THAN([minimumOSVersion firstObject])) {
+                                                            return;
+                                                        }
+                                                        
                                                         [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
                                                         [[NSUserDefaults standardUserDefaults] synchronize];
                 
