@@ -68,4 +68,6 @@
 - **v3.4.5**
  	- [Justus Kandzi](https://github.com/jkandzi)
 - **v3.4.8**
-    - [Mark Berner](https://github.com/mark2b)
+  - [Mark Berner](https://github.com/mark2b)
+- **v3.4.10**
+    - [Josip Injic](https://github.com/jinjic)
