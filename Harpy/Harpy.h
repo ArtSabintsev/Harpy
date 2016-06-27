@@ -78,11 +78,6 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (strong, nonatomic) UIViewController *presentingViewController;
 
 /**
- The app id of your app.
- */
-@property (strong, nonatomic) NSString *appID;
-
-/**
  The current version of your app that is available for download on the App Store
  */
 @property (nonatomic, copy, readonly) NSString *currentAppStoreVersion;

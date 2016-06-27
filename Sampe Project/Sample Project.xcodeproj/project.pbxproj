@@ -426,7 +426,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sample Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = "Sample Project";
 			};
 			name = Debug;
@@ -438,7 +438,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Sample Project/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
 				PRODUCT_NAME = "Sample Project";
 			};
 			name = Release;
@@ -453,6 +453,7 @@
 				550697B91C685420008C5BAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "Sample Project" */ = {
 			isa = XCConfigurationList;

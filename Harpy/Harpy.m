@@ -13,8 +13,8 @@ NSString * const HarpyDefaultSkippedVersion         = @"Harpy User Decided To Sk
 NSString * const HarpyDefaultStoredVersionCheckDate = @"Harpy Stored Date From Last Version Check";
 
 /// App Store links
-NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/lookup?id=%@";
-NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?id=%@&country=%@";
+NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/lookup?bundleId=%@";
+NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?bundleId=%@&country=%@";
 
 /// i18n/l10n constants
 NSString * const HarpyLanguageArabic                = @"ar";
@@ -51,6 +51,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 @property (nonatomic, strong) NSDictionary *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
+@property (nonatomic, copy) NSString *appID;
 @property (nonatomic, copy) NSString *currentAppStoreVersion;
 @property (nonatomic, copy) NSString *updateAvailableMessage;
 @property (nonatomic, copy) NSString *theNewVersionMessage;
@@ -86,9 +87,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 #pragma mark - Public
 - (void)checkVersion
 {
-    if (!_appID || !_presentingViewController) {
+    if (!_presentingViewController) {
        
-        NSLog(@"[Harpy]: Please make sure that you have set _appID and _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly");
+        NSLog(@"[Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.");
     
     } else {
         [self performVersionCheck];
@@ -145,9 +146,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     // Create storeString for iTunes Lookup API request
     NSString *storeString = nil;
     if ([self countryCode]) {
-        storeString = [NSString stringWithFormat:HarpyAppStoreLinkCountrySpecific, _appID, _countryCode];
+        storeString = [NSString stringWithFormat:HarpyAppStoreLinkCountrySpecific, [self bundleID], _countryCode];
     } else {
-        storeString = [NSString stringWithFormat:HarpyAppStoreLinkUniversal, _appID];
+        storeString = [NSString stringWithFormat:HarpyAppStoreLinkUniversal, [self bundleID]];
     }
     
     // Initialize storeURL with storeString, and create request object
@@ -359,6 +360,11 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (NSString *)currentVersion
 {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)bundleID
+{
+    return [NSBundle mainBundle].bundleIdentifier;
 }
 
 - (NSString *)bundlePath
