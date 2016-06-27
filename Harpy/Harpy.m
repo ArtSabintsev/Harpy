@@ -45,7 +45,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy()
 
-@property (nonatomic, strong) NSDictionary *appData;
+@property (nonatomic, strong) NSDictionary <NSString *, id> *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
 @property (nonatomic, copy) NSString *appID;
 @property (nonatomic, copy) NSString *currentAppStoreVersion;
@@ -136,7 +136,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-#pragma mark - Private
+#pragma mark - Helpers
 - (void)performVersionCheck
 {
     NSURL *storeURL = [self itunesURL];
@@ -150,35 +150,44 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if ([data length] > 0 && !error) { // Success
-            
-                                                    self.appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            
-                                                    if ([self isDebugEnabled]) {
-                                                        NSLog(@"[Harpy] JSON Results: %@", _appData);
-                                                    }
-            
-                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                
-                                                        // Store version comparison date
-                                                        self.lastVersionCheckPerformedOnDate = [NSDate date];
-                                                        [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
-                                                        [[NSUserDefaults standardUserDefaults] synchronize];
-                
-                                                        /**
-                                                         Current version that has been uploaded to the AppStore.
-                                                         Used to contain all versions, but now only contains the latest version.
-                                                         Still returns an instance of NSArray.
-                                                         */
-                                                        NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
-                
-                                                        if ([versionsInAppStore count]) {
-                                                            _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                                                            [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
-                                                        }
-                                                    });
+                                                    [self parseResults:data];
                                                 }
                                             }];
     [task resume];
+}
+
+- (void)parseResults:(NSData *)data {
+    _appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+
+    if ([self isDebugEnabled]) {
+        NSLog(@"[Harpy] JSON Results: %@", _appData);
+    }
+
+    if ([self isUpdateCompatibleWithDeviceOS:_appData]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+
+            // Store version comparison date
+            self.lastVersionCheckPerformedOnDate = [NSDate date];
+            [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            /**
+             Current version that has been uploaded to the AppStore.
+             Used to contain all versions, but now only contains the latest version.
+             Still returns an instance of NSArray.
+             */
+            NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
+
+            if ([versionsInAppStore count]) {
+                _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
+            }
+        });
+    } else {
+        if ([self isDebugEnabled]) {
+            NSLog(@"[Harpy] Device is incompatible with installed verison of iOS");
+        }
+    }
 }
 
 - (NSURL *)itunesURL {
@@ -197,6 +206,30 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     components.queryItems = items;
 
     return components.URL;
+}
+
+- (BOOL)isUpdateCompatibleWithDeviceOS:(NSDictionary<NSString *, id> *)appData
+{
+    NSArray<NSDictionary<NSString *, id> *> *results = appData[@"results"];
+
+    if (results != nil) {
+        NSString *requiresOSVersion = results[0][@"minimumOsVersion"];
+        if (requiresOSVersion != nil) {
+            NSString *systemVersion = [UIDevice currentDevice].systemVersion;
+            if (
+                ([systemVersion compare:requiresOSVersion options:NSNumericSearch] == NSOrderedDescending) ||
+                ([systemVersion compare:requiresOSVersion options:NSNumericSearch] == NSOrderedSame)
+               ) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
 }
 
 - (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate
@@ -219,11 +252,24 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)launchAppStore
+{
+    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
+    NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+    [[UIApplication sharedApplication] openURL:iTunesURL];
+
+    if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
+        [self.delegate harpyUserDidLaunchAppStore];
+    }
+}
+
+#pragma mark - Alert Management
+
 - (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
 {
     // Check if user decided to skip this version in the past
     NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultSkippedVersion];
-    
+
     if (![storedSkippedVersion isEqualToString:currentAppStoreVersion]) {
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else {
@@ -232,50 +278,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)localizeAlertStringsForCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
-{
-    // Reference App's name
-    _appName = _appName ? _appName : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
-    
-    // Force localization if _forceLanguageLocalization is set
-    if (_forceLanguageLocalization) {
-        _updateAvailableMessage = [self forcedLocalizedStringForKey:@"Update Available"];
-        _theNewVersionMessage = [NSString stringWithFormat:[self forcedLocalizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
-        _updateButtonText = [self forcedLocalizedStringForKey:@"Update"];
-        _nextTimeButtonText = [self forcedLocalizedStringForKey:@"Next time"];
-        _skipButtonText = [self forcedLocalizedStringForKey:@"Skip this version"];
-    } else {
-        _updateAvailableMessage = [self localizedStringForKey:@"Update Available"];
-        _theNewVersionMessage = [NSString stringWithFormat:[self localizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
-        _updateButtonText = [self localizedStringForKey:@"Update"];
-        _nextTimeButtonText = [self localizedStringForKey:@"Next time"];
-        _skipButtonText = [self localizedStringForKey:@"Skip this version"];
-    }
-}
-
-- (UIAlertController *)createAlertController
-{
-
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
-                                                                             message:_theNewVersionMessage
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    if (_alertControllerTintColor) {
-        [alertController.view setTintColor:_alertControllerTintColor];
-    }
-
-    return alertController;
-}
-
 - (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
 {
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
-            
+
         case HarpyAlertTypeForce: {
 
             UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self updateAlertAction]];
-            
+
             if (_presentingViewController != nil) {
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
@@ -283,15 +295,15 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
                 [self.delegate harpyDidShowUpdateDialog];
             }
-            
+
         } break;
-            
+
         case HarpyAlertTypeOption: {
 
             UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
-            
+
             if (_presentingViewController != nil) {
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
@@ -299,16 +311,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
                 [self.delegate harpyDidShowUpdateDialog];
             }
-            
+
         } break;
-            
+
         case HarpyAlertTypeSkip: {
 
             UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self skipAlertAction]];
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
-            
+
             if (_presentingViewController != nil) {
                 [_presentingViewController presentViewController:alertController animated:YES completion:nil];
             }
@@ -327,15 +339,17 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)launchAppStore
+- (UIAlertController *)createAlertController
 {
-    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
-    NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
-    [[UIApplication sharedApplication] openURL:iTunesURL];
 
-    if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
-        [self.delegate harpyUserDidLaunchAppStore];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
+                                                                             message:_theNewVersionMessage
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    if (_alertControllerTintColor) {
+        [alertController.view setTintColor:_alertControllerTintColor];
     }
+
+    return alertController;
 }
 
 - (void)alertTypeForVersion:(NSString *)currentAppStoreVersion
@@ -360,7 +374,29 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)localizeAlertStringsForCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
+{
+    // Reference App's name
+    _appName = _appName ? _appName : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+
+    // Force localization if _forceLanguageLocalization is set
+    if (_forceLanguageLocalization) {
+        _updateAvailableMessage = [self forcedLocalizedStringForKey:@"Update Available"];
+        _theNewVersionMessage = [NSString stringWithFormat:[self forcedLocalizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
+        _updateButtonText = [self forcedLocalizedStringForKey:@"Update"];
+        _nextTimeButtonText = [self forcedLocalizedStringForKey:@"Next time"];
+        _skipButtonText = [self forcedLocalizedStringForKey:@"Skip this version"];
+    } else {
+        _updateAvailableMessage = [self localizedStringForKey:@"Update Available"];
+        _theNewVersionMessage = [NSString stringWithFormat:[self localizedStringForKey:@"A new version of %@ is available. Please update to version %@ now."], _appName, currentAppStoreVersion];
+        _updateButtonText = [self localizedStringForKey:@"Update"];
+        _nextTimeButtonText = [self localizedStringForKey:@"Next time"];
+        _skipButtonText = [self localizedStringForKey:@"Skip this version"];
+    }
+}
+
 #pragma mark - NSBundle Strings
+
 - (NSString *)currentVersion
 {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
