@@ -12,10 +12,6 @@
 NSString * const HarpyDefaultSkippedVersion         = @"Harpy User Decided To Skip Version Update Boolean";
 NSString * const HarpyDefaultStoredVersionCheckDate = @"Harpy Stored Date From Last Version Check";
 
-/// App Store links
-NSString * const HarpyAppStoreLinkUniversal         = @"http://itunes.apple.com/lookup?bundleId=%@";
-NSString * const HarpyAppStoreLinkCountrySpecific   = @"http://itunes.apple.com/lookup?bundleId=%@&country=%@";
-
 /// i18n/l10n constants
 NSString * const HarpyLanguageArabic                = @"ar";
 NSString * const HarpyLanguageArmenian              = @"hy";
