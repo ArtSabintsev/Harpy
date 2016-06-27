@@ -45,6 +45,9 @@
      Please use the HarpyLanguage constants defined in Harpy.h. */
 //    [[Harpy sharedInstance] setForceLanguageLocalization:HarpyLanguageRussian];
 
+    // Turn on Debug statements
+    [[Harpy sharedInstance] setDebugEnabled:true];
+
     // Perform check for new version of your app
     [[Harpy sharedInstance] checkVersion];
 

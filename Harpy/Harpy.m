@@ -143,18 +143,8 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 #pragma mark - Private
 - (void)performVersionCheck
 {
-    // Create storeString for iTunes Lookup API request
-    NSString *storeString = nil;
-    if ([self countryCode]) {
-        storeString = [NSString stringWithFormat:HarpyAppStoreLinkCountrySpecific, [self bundleID], _countryCode];
-    } else {
-        storeString = [NSString stringWithFormat:HarpyAppStoreLinkUniversal, [self bundleID]];
-    }
-    
-    // Initialize storeURL with storeString, and create request object
-    NSURL *storeURL = [NSURL URLWithString:storeString];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:storeURL];
-    [request setHTTPMethod:@"GET"];
+    NSURL *storeURL = [self itunesURL];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:storeURL];
 
     if ([self isDebugEnabled]) {
         NSLog(@"[Harpy] storeURL: %@", storeURL);
@@ -193,6 +183,24 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                                                 }
                                             }];
     [task resume];
+}
+
+- (NSURL *)itunesURL {
+    NSURLComponents *components = [NSURLComponents new];
+    components.scheme = @"https";
+    components.host = @"itunes.apple.com";
+    components.path = @"/lookup";
+
+    NSMutableArray<NSURLQueryItem *> *items = [@[[NSURLQueryItem queryItemWithName:@"bundleId" value:[self bundleID]]] mutableCopy];
+
+    if ([self countryCode]) {
+        NSURLQueryItem *countryQueryItem = [NSURLQueryItem queryItemWithName:@"country" value:_countryCode];
+        [items addObject:countryQueryItem];
+    }
+
+    components.queryItems = items;
+
+    return components.URL;
 }
 
 - (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate
