@@ -24,6 +24,15 @@
 }
 
 
+- (void)testArabicLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageArabic];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"التجديد متوفر"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"المرة التالية"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"تخطى عن هذه النسخة"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"تجديد"]);
+}
+
 - (void)testGermanLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageGerman];
 
