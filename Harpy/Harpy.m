@@ -247,7 +247,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
 
-    if([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
+    if ([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
         [self.delegate harpyUserDidLaunchAppStore];
     }
 }
