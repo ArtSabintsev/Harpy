@@ -60,40 +60,40 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 @implementation Harpy
 
 #pragma mark - Initialization
-+ (Harpy *)sharedInstance
-{
+
++ (Harpy *)sharedInstance {
     static id sharedInstance = nil;
     static dispatch_once_t onceToken;
+
     dispatch_once(&onceToken, ^{
         sharedInstance = [[self alloc] init];
     });
+
     return sharedInstance;
 }
 
-- (id)init
-{
+- (id)init {
     self = [super init];
+
     if (self) {
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
     }
+
     return self;
 }
 
 #pragma mark - Public
-- (void)checkVersion
-{
+
+- (void)checkVersion {
     if (!_presentingViewController) {
-       
         NSLog(@"[Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.");
-    
     } else {
         [self performVersionCheck];
     }
 }
 
-- (void)checkVersionDaily
-{
+- (void)checkVersionDaily {
     /*
      On app's first launch, lastVersionCheckPerformedOnDate isn't set.
      Avoid false-positive fulfilment of second condition in this method.
@@ -114,8 +114,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)checkVersionWeekly
-{
+- (void)checkVersionWeekly {
     /*
      On app's first launch, lastVersionCheckPerformedOnDate isn't set.
      Avoid false-positive fulfilment of second condition in this method.
@@ -137,15 +136,13 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 }
 
 #pragma mark - Helpers
-- (void)performVersionCheck
-{
+
+- (void)performVersionCheck {
     NSURL *storeURL = [self itunesURL];
     NSURLRequest *request = [NSMutableURLRequest requestWithURL:storeURL];
 
-    if ([self isDebugEnabled]) {
-        NSLog(@"[Harpy] storeURL: %@", storeURL);
-    }
-    
+    [self printDebugMessage:[NSString stringWithFormat:@"storeURL: %@", storeURL]];
+
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -159,9 +156,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)parseResults:(NSData *)data {
     _appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
 
-    if ([self isDebugEnabled]) {
-        NSLog(@"[Harpy] JSON Results: %@", _appData);
-    }
+    [self printDebugMessage:[NSString stringWithFormat:@"JSON Results: %@", _appData]];
 
     if ([self isUpdateCompatibleWithDeviceOS:_appData]) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -184,9 +179,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             }
         });
     } else {
-        if ([self isDebugEnabled]) {
-            NSLog(@"[Harpy] Device is incompatible with installed verison of iOS");
-        }
+        [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
     }
 }
 
@@ -208,8 +201,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return components.URL;
 }
 
-- (BOOL)isUpdateCompatibleWithDeviceOS:(NSDictionary<NSString *, id> *)appData
-{
+- (BOOL)isUpdateCompatibleWithDeviceOS:(NSDictionary<NSString *, id> *)appData {
     NSArray<NSDictionary<NSString *, id> *> *results = appData[@"results"];
 
     if (results != nil) {
@@ -232,8 +224,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate
-{
+- (NSUInteger)numberOfDaysElapsedBetweenLastVersionCheckDate {
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [currentCalendar components:NSCalendarUnitDay
                                                       fromDate:[self lastVersionCheckPerformedOnDate]
@@ -242,8 +233,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return [components day];
 }
 
-- (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion
-{
+- (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion {
     // Current installed version is the newest public version or newer (e.g., dev version)
     if ([[self currentVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
@@ -252,8 +242,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)launchAppStore
-{
+- (void)launchAppStore {
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
     [[UIApplication sharedApplication] openURL:iTunesURL];
@@ -265,8 +254,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 #pragma mark - Alert Management
 
-- (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
-{
+- (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion {
     // Check if user decided to skip this version in the past
     NSString *storedSkippedVersion = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultSkippedVersion];
 
@@ -278,8 +266,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion
-{
+- (void)showAlertWithAppStoreVersion:(NSString *)currentAppStoreVersion {
     // Show Appropriate UIAlertView
     switch ([self alertType]) {
 
@@ -339,8 +326,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (UIAlertController *)createAlertController
-{
+- (UIAlertController *)createAlertController {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
                                                                              message:_theNewVersionMessage
@@ -352,8 +338,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return alertController;
 }
 
-- (void)alertTypeForVersion:(NSString *)currentAppStoreVersion
-{
+- (void)alertTypeForVersion:(NSString *)currentAppStoreVersion {
     // Check what version the update is, major, minor or a patch
     NSArray *oldVersionComponents = [[self currentVersion] componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
@@ -374,8 +359,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
-- (void)localizeAlertStringsForCurrentAppStoreVersion:(NSString *)currentAppStoreVersion
-{
+- (void)localizeAlertStringsForCurrentAppStoreVersion:(NSString *)currentAppStoreVersion {
     // Reference App's name
     _appName = _appName ? _appName : [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
 
@@ -397,35 +381,30 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 #pragma mark - NSBundle Strings
 
-- (NSString *)currentVersion
-{
+- (NSString *)currentVersion {
     return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
 }
 
-- (NSString *)bundleID
-{
+- (NSString *)bundleID {
     return [NSBundle mainBundle].bundleIdentifier;
 }
 
-- (NSString *)bundlePath
-{
+- (NSString *)bundlePath {
     return [[NSBundle bundleForClass:[self class]] pathForResource:@"Harpy" ofType:@"bundle"];
 }
 
-- (NSString *)localizedStringForKey:(NSString *)stringKey
-{
+- (NSString *)localizedStringForKey:(NSString *)stringKey {
     return ([[NSBundle bundleForClass:[self class]] pathForResource:@"Harpy" ofType:@"bundle"] ? [[NSBundle bundleWithPath:[self bundlePath]] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"] : stringKey);
 }
 
-- (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey
-{
+- (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey {
     NSString *path = [[NSBundle bundleWithPath:[self bundlePath]] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"];
     return [[NSBundle bundleWithPath:path] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
 }
 
 #pragma mark - UIAlertActions
-- (UIAlertAction *)updateAlertAction
-{
+
+- (UIAlertAction *)updateAlertAction {
     UIAlertAction *updateAlertAction = [UIAlertAction actionWithTitle:_updateButtonText
                                                                 style:UIAlertActionStyleDefault
                                                               handler:^(UIAlertAction *action) {
@@ -435,8 +414,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return updateAlertAction;
 }
 
-- (UIAlertAction *)nextTimeAlertAction
-{
+- (UIAlertAction *)nextTimeAlertAction {
     UIAlertAction *nextTimeAlertAction = [UIAlertAction actionWithTitle:_nextTimeButtonText
                                                                   style:UIAlertActionStyleDefault
                                                                 handler:^(UIAlertAction *action) {
@@ -448,8 +426,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return nextTimeAlertAction;
 }
 
-- (UIAlertAction *)skipAlertAction
-{
+- (UIAlertAction *)skipAlertAction {
     UIAlertAction *skipAlertAction = [UIAlertAction actionWithTitle:_skipButtonText
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
@@ -461,6 +438,16 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                                                             }];
     
     return skipAlertAction;
+}
+
+#pragma mark - Logging
+
+- (void)printDebugMessage:(NSString * _Nonnull)message {
+
+    if ([self isDebugEnabled]) {
+        NSLog(@"[Harpy]: %@", message);
+    }
+
 }
 
 @end
