@@ -167,4 +167,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 - (void)checkVersionWeekly;
 
+/**
+ @b This method is for testing purposes only!
+
+ This method will be used to test all of the string localization.
+ */
+
+- (NSString *)testLocalizedStringForKey:(NSString *)stringKey;
+
 @end

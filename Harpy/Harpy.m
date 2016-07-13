@@ -450,4 +450,10 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 }
 
+#pragma mark - Testing
+
+- (NSString *)testLocalizedStringForKey:(NSString *)stringKey {
+    return [self forcedLocalizedStringForKey:stringKey];
+}
+
 @end

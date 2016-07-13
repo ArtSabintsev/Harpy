@@ -19,7 +19,8 @@
 		5511F28D1BC2338500B26A22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28C1BC2338500B26A22 /* Default-568h@2x.png */; };
 		5511F2921BC2339900B26A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28E1BC2339900B26A22 /* LaunchScreen.storyboard */; };
 		5511F2931BC2339900B26A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2901BC2339900B26A22 /* Main.storyboard */; };
-		55B79D871D36E56C001197C0 /* Sample_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B79D861D36E56C001197C0 /* Sample_ProjectTests.swift */; };
+		55B79D951D36EC23001197C0 /* Sample_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */; };
+		55B79D9C1D36F20E001197C0 /* Harpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550697AF1C685420008C5BAF /* Harpy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,7 @@
 			remoteGlobalIDString = 550697AE1C685420008C5BAF;
 			remoteInfo = Harpy;
 		};
-		55B79D891D36E56C001197C0 /* PBXContainerItemProxy */ = {
+		55B79D971D36EC23001197C0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55CF3A1B1BC212E30023B63D /* Project object */;
 			proxyType = 1;
@@ -69,9 +70,9 @@
 		552E937F1BC22C3000CC732D /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Harpy.bundle; path = ../../Harpy/Harpy.bundle; sourceTree = "<group>"; };
 		552E93801BC22C3000CC732D /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Harpy.h; path = ../../Harpy/Harpy.h; sourceTree = "<group>"; };
 		552E93811BC22C3000CC732D /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Harpy.m; path = ../../Harpy/Harpy.m; sourceTree = "<group>"; };
-		55B79D841D36E56C001197C0 /* Sample ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sample ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55B79D861D36E56C001197C0 /* Sample_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sample_ProjectTests.swift; sourceTree = "<group>"; };
-		55B79D881D36E56C001197C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sample ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample_ProjectTests.m; sourceTree = "<group>"; };
+		55B79D961D36EC23001197C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55CF3A231BC212E30023B63D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -83,10 +84,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55B79D811D36E56C001197C0 /* Frameworks */ = {
+		55B79D8F1D36EC23001197C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B79D9C1D36F20E001197C0 /* Harpy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,11 +114,11 @@
 			path = Harpy;
 			sourceTree = "<group>";
 		};
-		55B79D851D36E56C001197C0 /* Sample ProjectTests */ = {
+		55B79D931D36EC23001197C0 /* Sample ProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				55B79D861D36E56C001197C0 /* Sample_ProjectTests.swift */,
-				55B79D881D36E56C001197C0 /* Info.plist */,
+				55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */,
+				55B79D961D36EC23001197C0 /* Info.plist */,
 			);
 			path = "Sample ProjectTests";
 			sourceTree = "<group>";
@@ -125,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				55CF3A251BC212E30023B63D /* Sample Project */,
+				55B79D931D36EC23001197C0 /* Sample ProjectTests */,
 				550697B01C685420008C5BAF /* Harpy */,
-				55B79D851D36E56C001197C0 /* Sample ProjectTests */,
 				55CF3A241BC212E30023B63D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,7 +138,7 @@
 			children = (
 				55CF3A231BC212E30023B63D /* Sample Project.app */,
 				550697AF1C685420008C5BAF /* Harpy.framework */,
-				55B79D841D36E56C001197C0 /* Sample ProjectTests.xctest */,
+				55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,22 +201,22 @@
 			productReference = 550697AF1C685420008C5BAF /* Harpy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		55B79D831D36E56C001197C0 /* Sample ProjectTests */ = {
+		55B79D911D36EC23001197C0 /* Sample ProjectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55B79D8D1D36E56C001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */;
+			buildConfigurationList = 55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */;
 			buildPhases = (
-				55B79D801D36E56C001197C0 /* Sources */,
-				55B79D811D36E56C001197C0 /* Frameworks */,
-				55B79D821D36E56C001197C0 /* Resources */,
+				55B79D8E1D36EC23001197C0 /* Sources */,
+				55B79D8F1D36EC23001197C0 /* Frameworks */,
+				55B79D901D36EC23001197C0 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				55B79D8A1D36E56C001197C0 /* PBXTargetDependency */,
+				55B79D981D36EC23001197C0 /* PBXTargetDependency */,
 			);
 			name = "Sample ProjectTests";
 			productName = "Sample ProjectTests";
-			productReference = 55B79D841D36E56C001197C0 /* Sample ProjectTests.xctest */;
+			productReference = 55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		55CF3A221BC212E30023B63D /* Sample Project */ = {
@@ -249,7 +251,7 @@
 					550697AE1C685420008C5BAF = {
 						CreatedOnToolsVersion = 7.2.1;
 					};
-					55B79D831D36E56C001197C0 = {
+					55B79D911D36EC23001197C0 = {
 						CreatedOnToolsVersion = 7.3.1;
 						TestTargetID = 55CF3A221BC212E30023B63D;
 					};
@@ -272,7 +274,7 @@
 			projectRoot = "";
 			targets = (
 				55CF3A221BC212E30023B63D /* Sample Project */,
-				55B79D831D36E56C001197C0 /* Sample ProjectTests */,
+				55B79D911D36EC23001197C0 /* Sample ProjectTests */,
 				550697AE1C685420008C5BAF /* Harpy */,
 			);
 		};
@@ -287,7 +289,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55B79D821D36E56C001197C0 /* Resources */ = {
+		55B79D901D36EC23001197C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -316,11 +318,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		55B79D801D36E56C001197C0 /* Sources */ = {
+		55B79D8E1D36EC23001197C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B79D871D36E56C001197C0 /* Sample_ProjectTests.swift in Sources */,
+				55B79D951D36EC23001197C0 /* Sample_ProjectTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,10 +344,10 @@
 			target = 550697AE1C685420008C5BAF /* Harpy */;
 			targetProxy = 550697B41C685420008C5BAF /* PBXContainerItemProxy */;
 		};
-		55B79D8A1D36E56C001197C0 /* PBXTargetDependency */ = {
+		55B79D981D36EC23001197C0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55CF3A221BC212E30023B63D /* Sample Project */;
-			targetProxy = 55B79D891D36E56C001197C0 /* PBXContainerItemProxy */;
+			targetProxy = 55B79D971D36EC23001197C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -412,7 +414,7 @@
 			};
 			name = Release;
 		};
-		55B79D8B1D36E56C001197C0 /* Debug */ = {
+		55B79D9A1D36EC23001197C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -420,14 +422,13 @@
 				INFOPLIST_FILE = "Sample ProjectTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.washingtonpost.Sample-ProjectTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample Project.app/Sample Project";
 			};
 			name = Debug;
 		};
-		55B79D8C1D36E56C001197C0 /* Release */ = {
+		55B79D9B1D36EC23001197C0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -435,7 +436,7 @@
 				INFOPLIST_FILE = "Sample ProjectTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.washingtonpost.Sample-ProjectTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Sample Project.app/Sample Project";
 			};
@@ -557,11 +558,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55B79D8D1D36E56C001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */ = {
+		55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				55B79D8B1D36E56C001197C0 /* Debug */,
-				55B79D8C1D36E56C001197C0 /* Release */,
+				55B79D9A1D36EC23001197C0 /* Debug */,
+				55B79D9B1D36EC23001197C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
