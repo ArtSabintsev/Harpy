@@ -21,9 +21,6 @@
     // Present Window before calling Harpy
     [self.window makeKeyAndVisible];
 
-    // Set the App ID for your app
-    [[Harpy sharedInstance] setAppID:@"376771144"]; // iTunes Connect Mobile App ID
-
     // Set the UIViewController that will present an instance of UIAlertController
     [[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 
@@ -47,6 +44,9 @@
     /* (Optional) Overrides system language to predefined language.
      Please use the HarpyLanguage constants defined in Harpy.h. */
 //    [[Harpy sharedInstance] setForceLanguageLocalization:HarpyLanguageRussian];
+
+    // Turn on Debug statements
+    [[Harpy sharedInstance] setDebugEnabled:true];
 
     // Perform check for new version of your app
     [[Harpy sharedInstance] checkVersion];

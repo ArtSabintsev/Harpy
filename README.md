@@ -1,7 +1,9 @@
 # Harpy
 ### Notify users when a new version of your app is available, and prompt them with the App Store link.
 
+![Travis-CI](https://travis-ci.org/ArtSabintsev/Harpy.svg?branch=master) ![Cocoapods](https://img.shields.io/cocoapods/v/Harpy.svg) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ---
+
 ## About
 **Harpy** checks a user's currently installed version of your iOS app against the version that is currently available in the App Store. If a new version is available, an alert can be presented to the user informing them of the newer version, and giving them the option to update the application.
 
@@ -15,9 +17,12 @@ Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.c
 
 ## Features
 - [x] CocoaPods Support
+- [x] Carthage Support
+- [x] Localized for 20+ languages (See **Localization**)
+- [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
-- [x] Localized for 20+ languages
+- [x] Unit Tests!
 
 ## Screenshots
 
@@ -48,7 +53,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 ## Setup
 1. Import **Harpy.h** into your AppDelegate or Pre-Compiler Header (.pch)
-1. In your `AppDelegate`, set the **appID**, and optionally, you can set the **alertType**.
+1. In your `AppDelegate`, optionally set the **alertType**.
 1. In your `AppDelegate`, call **only one** of the `checkVersion` methods, as all three perform a check on your application's first launch. Use either:
     - `checkVersion` in `application:didFinishLaunchingWithOptions:`
     - `checkVersionDaily` in `applicationDidBecomeActive:`.
@@ -56,14 +61,10 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 
 ``` obj-c
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 	// Present Window before calling Harpy
 	[self.window makeKeyAndVisible];
-
-	// Set the App ID for your app
-	[[Harpy sharedInstance] setAppID:@"<#app_id#>"];
 
 	// Set the UIViewController that will present an instance of UIAlertController
 	[[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
@@ -93,8 +94,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	[[Harpy sharedInstance] checkVersion];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
+- (void)applicationDidBecomeActive:(UIApplication *)application {
 
 	/*
 	 Perform daily check for new version of your app
@@ -116,8 +116,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
+- (void)applicationWillEnterForeground:(UIApplication *)application {
 	/*
 	 Perform check for new version of your app
 	 Useful if user returns to you app from background after being sent tot he App Store,
@@ -168,7 +167,7 @@ If you would like to use your own UI, please use the following delegate method t
 - (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message;
 ```
 
-## Force Localization
+## Localization
 Harpy has localizations for Arabic, Basque, Chinese (Simplified), Chinese (Traditional), Danish, Dutch, English, Estonian, French, German, Hebrew, Hungarian, Italian, Japanese, Korean, Latvian, Lithuanian, Malay, Polish, Portuguese (Brazil), Portuguese (Portugal), Russian, Slovenian, Swedish, Spanish, Thai, and Turkish.
 
 You may want the update dialog to *always* appear in a certain language, ignoring iOS's language setting (e.g. apps released in a specific country).
@@ -178,6 +177,14 @@ You can enable it like this:
 ``` obj-c
 [[Harpy sharedInstance] setForceLanguageLocalization<#HarpyLanguageConstant#>];
 ```
+
+## Device Compatibility
+If an app update is available, Harpy checks to make sure that the version of iOS on the user's device is compatible the one that is required by the app update. For example, if a user has iOS 9 installed on their device, but the app update requires iOS 10, an alert will not be shown. This takes care of the *false positive* case regarding app updating.
+
+## Testing Harpy
+Temporarily change the version string in Xcode (within the `.xcodeproj`) to an older version than the one that's currently available in the App Store. Afterwards, build and run your app, and you should see the alert.
+
+If you currently don't have an app in the store, change your bundleID to one that is already in the store. In the sample app packaged with this librart, we use the [iTunes Connect Mobile](https://itunes.apple.com/us/app/itunes-connect/id376771144?mt=8) app's bundleID: `com.apple.itunesconnect.mobile`.
 
 ## Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert.

@@ -37,7 +37,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageLatvian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageLithuanian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageMalay;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePolish;
-FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazilian;
+FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazil;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguesePortugal;
 FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
@@ -70,17 +70,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  The harpy delegate can be used to know when the update dialog is shown and which action a user took.
  See the protocol declaration above.
  */
-@property (weak, nonatomic) id<HarpyDelegate> delegate;
+@property (nonatomic, weak) id<HarpyDelegate> delegate;
 
 /**
  The UIViewController that will present an instance of UIAlertController
  */
-@property (strong, nonatomic) UIViewController *presentingViewController;
-
-/**
- The app id of your app.
- */
-@property (strong, nonatomic) NSString *appID;
+@property (nonatomic, strong) UIViewController *presentingViewController;
 
 /**
  The current version of your app that is available for download on the App Store
@@ -91,54 +86,55 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 /**
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
  */
-@property (strong, nonatomic) NSString *appName;
+@property (nonatomic, strong) NSString *appName;
 
 /**
  @b OPTIONAL: Log Debug information
  */
-@property (assign, nonatomic, getter=isDebugEnabled) BOOL debugEnabled;
+@property (nonatomic, assign, getter=isDebugEnabled) BOOL debugEnabled;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType alertType;
+@property (nonatomic, assign) HarpyAlertType alertType;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is a major update (e.g. A.b.c.d). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType majorUpdateAlertType;
+@property (nonatomic, assign) HarpyAlertType majorUpdateAlertType;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.B.c.d). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType minorUpdateAlertType;
+@property (nonatomic, assign) HarpyAlertType minorUpdateAlertType;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is a patch update (e.g. a.b.C.d). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType patchUpdateAlertType;
+@property (nonatomic, assign) HarpyAlertType patchUpdateAlertType;
 
 /**
  @b OPTIONAL: The alert type to present to the user when there is a minor update (e.g. a.b.c.D). See the @c HarpyAlertType enum above.
  */
-@property (assign, nonatomic) HarpyAlertType revisionUpdateAlertType;
+@property (nonatomic, assign) HarpyAlertType revisionUpdateAlertType;
 
 /**
  @b OPTIONAL: If your application is not availabe in the U.S. Store, you must specify the two-letter
  country code for the region in which your applicaiton is available in.
  */
-@property (copy, nonatomic) NSString *countryCode;
+@property (nonatomic, copy) NSString *countryCode;
 
 /**
  @b OPTIONAL: Overides system language to predefined language. Please use the @c HarpyLanguage constants defined in @c Harpy.h.
  */
-@property (copy, nonatomic) NSString *forceLanguageLocalization;
+@property (nonatomic, copy) NSString *forceLanguageLocalization;
 
 /**
  @b OPTIONAL: The tintColor for the alertController
  */
-@property (strong, nonatomic) UIColor *alertControllerTintColor;
+@property (nonatomic, strong) UIColor *alertControllerTintColor;
 
+#pragma mark - Methods
 
 /**
  Harpy's Singleton method
@@ -171,5 +167,54 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Do not use this method if you are using @c checkVersion or @c checkVersionDaily.
  */
 - (void)checkVersionWeekly;
+
+#pragma mark - Unit Testing
+
+/**
+ This method was created for unit testing purposes.
+ 
+ It will specifically be used to test the string localizations.
+
+ @param stringKey: The string that should be looked up and localized.
+
+ @return The localized string.
+ */
+
+- (NSString *)testLocalizedStringForKey:(NSString *)stringKey;
+
+/**
+ This method was created for unit testing purposes.
+
+ It will specifically be used to temporarily set the installed version of the app.
+
+ @param version: The temporary version that should be set for the app.
+
+ */
+
+- (void)testSetCurrentInstalledVersion:(NSString *)version;
+
+
+/**
+ This method was created for unit testing purposes.
+
+ It will specifically be used to temporarily set the app store version of the app.
+ 
+ @param version: The temporary version that should be set for the app.
+
+ */
+
+- (void)testSetCurrentAppStoreVersion:(NSString *)version;
+
+/**
+ This method was created for unit testing purposes.
+
+ It will specifically be used to compared the temporary app store version to the temporary installed version.
+
+ @return True if app store version is newer, otherwise false.
+
+ */
+
+- (BOOL)testIsAppStoreVersionNewer;
+
 
 @end
