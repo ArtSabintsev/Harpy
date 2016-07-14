@@ -37,7 +37,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageLatvian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageLithuanian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageMalay;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePolish;
-FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazilian;
+FOUNDATION_EXPORT NSString * const HarpyLanguagePortugueseBrazil;
 FOUNDATION_EXPORT NSString * const HarpyLanguagePortuguesePortugal;
 FOUNDATION_EXPORT NSString * const HarpyLanguageRussian;
 FOUNDATION_EXPORT NSString * const HarpyLanguageSlovenian;
