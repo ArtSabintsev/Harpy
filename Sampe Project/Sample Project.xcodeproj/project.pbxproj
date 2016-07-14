@@ -19,8 +19,8 @@
 		5511F28D1BC2338500B26A22 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28C1BC2338500B26A22 /* Default-568h@2x.png */; };
 		5511F2921BC2339900B26A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F28E1BC2339900B26A22 /* LaunchScreen.storyboard */; };
 		5511F2931BC2339900B26A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5511F2901BC2339900B26A22 /* Main.storyboard */; };
-		55B79D951D36EC23001197C0 /* Sample_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */; };
 		55B79D9C1D36F20E001197C0 /* Harpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 550697AF1C685420008C5BAF /* Harpy.framework */; };
+		55B79DA01D372AD7001197C0 /* HarpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B79D9E1D372AD7001197C0 /* HarpyTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,9 +70,9 @@
 		552E937F1BC22C3000CC732D /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Harpy.bundle; path = ../../Harpy/Harpy.bundle; sourceTree = "<group>"; };
 		552E93801BC22C3000CC732D /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Harpy.h; path = ../../Harpy/Harpy.h; sourceTree = "<group>"; };
 		552E93811BC22C3000CC732D /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Harpy.m; path = ../../Harpy/Harpy.m; sourceTree = "<group>"; };
-		55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sample ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Sample_ProjectTests.m; sourceTree = "<group>"; };
-		55B79D961D36EC23001197C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55B79D921D36EC23001197C0 /* HarpyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarpyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55B79D9E1D372AD7001197C0 /* HarpyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HarpyTests.m; sourceTree = "<group>"; };
+		55B79D9F1D372AD7001197C0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55CF3A231BC212E30023B63D /* Sample Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,20 +114,20 @@
 			path = Harpy;
 			sourceTree = "<group>";
 		};
-		55B79D931D36EC23001197C0 /* Sample ProjectTests */ = {
+		55B79D9D1D372AD7001197C0 /* HarpyTests */ = {
 			isa = PBXGroup;
 			children = (
-				55B79D941D36EC23001197C0 /* Sample_ProjectTests.m */,
-				55B79D961D36EC23001197C0 /* Info.plist */,
+				55B79D9E1D372AD7001197C0 /* HarpyTests.m */,
+				55B79D9F1D372AD7001197C0 /* Info.plist */,
 			);
-			path = "Sample ProjectTests";
+			path = HarpyTests;
 			sourceTree = "<group>";
 		};
 		55CF3A1A1BC212E30023B63D = {
 			isa = PBXGroup;
 			children = (
 				55CF3A251BC212E30023B63D /* Sample Project */,
-				55B79D931D36EC23001197C0 /* Sample ProjectTests */,
+				55B79D9D1D372AD7001197C0 /* HarpyTests */,
 				550697B01C685420008C5BAF /* Harpy */,
 				55CF3A241BC212E30023B63D /* Products */,
 			);
@@ -138,7 +138,7 @@
 			children = (
 				55CF3A231BC212E30023B63D /* Sample Project.app */,
 				550697AF1C685420008C5BAF /* Harpy.framework */,
-				55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */,
+				55B79D921D36EC23001197C0 /* HarpyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,9 +201,9 @@
 			productReference = 550697AF1C685420008C5BAF /* Harpy.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		55B79D911D36EC23001197C0 /* Sample ProjectTests */ = {
+		55B79D911D36EC23001197C0 /* HarpyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */;
+			buildConfigurationList = 55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "HarpyTests" */;
 			buildPhases = (
 				55B79D8E1D36EC23001197C0 /* Sources */,
 				55B79D8F1D36EC23001197C0 /* Frameworks */,
@@ -214,9 +214,9 @@
 			dependencies = (
 				55B79D981D36EC23001197C0 /* PBXTargetDependency */,
 			);
-			name = "Sample ProjectTests";
+			name = HarpyTests;
 			productName = "Sample ProjectTests";
-			productReference = 55B79D921D36EC23001197C0 /* Sample ProjectTests.xctest */;
+			productReference = 55B79D921D36EC23001197C0 /* HarpyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		55CF3A221BC212E30023B63D /* Sample Project */ = {
@@ -274,7 +274,7 @@
 			projectRoot = "";
 			targets = (
 				55CF3A221BC212E30023B63D /* Sample Project */,
-				55B79D911D36EC23001197C0 /* Sample ProjectTests */,
+				55B79D911D36EC23001197C0 /* HarpyTests */,
 				550697AE1C685420008C5BAF /* Harpy */,
 			);
 		};
@@ -322,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55B79D951D36EC23001197C0 /* Sample_ProjectTests.m in Sources */,
+				55B79DA01D372AD7001197C0 /* HarpyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,7 +419,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
-				INFOPLIST_FILE = "Sample ProjectTests/Info.plist";
+				INFOPLIST_FILE = HarpyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
@@ -433,7 +433,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
-				INFOPLIST_FILE = "Sample ProjectTests/Info.plist";
+				INFOPLIST_FILE = HarpyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
@@ -558,13 +558,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "Sample ProjectTests" */ = {
+		55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "HarpyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				55B79D9A1D36EC23001197C0 /* Debug */,
 				55B79D9B1D36EC23001197C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "Sample Project" */ = {
 			isa = XCConfigurationList;
