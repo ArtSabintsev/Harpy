@@ -141,6 +141,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"更新"]);
 }
 
+- (void)testKoreanLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageKorean];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"업데이트 가능"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"다음에"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"이 버전 건너뜀"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"업데이트"]);
+}
+
 - (void)testSpanishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageSpanish];
 
