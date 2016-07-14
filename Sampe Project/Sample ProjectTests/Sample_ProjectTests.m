@@ -249,4 +249,13 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Uppdatera"]);
 }
 
+- (void)testThaiLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageThai];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"มีการอัพเดท"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"ไว้คราวหน้า"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"ข้ามเวอร์ชั่นนี้"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"อัพเดท"]);
+}
+
 @end
