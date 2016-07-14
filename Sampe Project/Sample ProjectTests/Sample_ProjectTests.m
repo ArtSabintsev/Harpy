@@ -258,4 +258,13 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"อัพเดท"]);
 }
 
+- (void)testTurkishLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageTurkish];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Güncelleme Mevcut"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Daha sonra"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Boşver"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Güncelle"]);
+}
+
 @end
