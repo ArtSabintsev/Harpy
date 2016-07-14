@@ -222,6 +222,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Обновить"]);
 }
 
+- (void)testSlovenianLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageSlovenian];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Posodobitev aplikacije"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Naslednjič"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Ne želim"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Namesti"]);
+}
+
 - (void)testSpanishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageSpanish];
 
