@@ -33,6 +33,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"تجديد"]);
 }
 
+- (void)testArmenianLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageArmenian];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Թարմացումը հասանելի Է"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Հաջորդ անգամ"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Բաց թողնել այս տարբերակը"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Թարմացնել"]);
+}
+
 - (void)testBasqueLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageBasque];
 
