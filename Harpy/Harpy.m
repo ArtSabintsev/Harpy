@@ -210,8 +210,8 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (BOOL)isUpdateCompatibleWithDeviceOS:(NSDictionary<NSString *, id> *)appData {
     NSArray<NSDictionary<NSString *, id> *> *results = appData[@"results"];
 
-    if (results != nil) {
-        NSString *requiresOSVersion = results[0][@"minimumOsVersion"];
+    if (results.count > 0) {
+        NSString *requiresOSVersion = [results firstObject][@"minimumOsVersion"];
         if (requiresOSVersion != nil) {
             NSString *systemVersion = [UIDevice currentDevice].systemVersion;
             if (
