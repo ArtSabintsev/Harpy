@@ -175,7 +175,11 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
             if ([versionsInAppStore count]) {
                 _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
+                if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
+                    [self appStoreVersionIsNewer:_currentAppStoreVersion];
+                } else {
+                    [self printDebugMessage:@"Currently installed version is newer."];
+                }
             }
         });
     } else {
@@ -233,13 +237,19 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return [components day];
 }
 
-- (void)checkIfAppStoreVersionIsNewestVersion:(NSString *)currentAppStoreVersion {
+- (BOOL)isAppStoreVersionNewer:(NSString *)currentAppStoreVersion {
     // Current installed version is the newest public version or newer (e.g., dev version)
     if ([[self currentVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
-        [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
-        [self alertTypeForVersion:currentAppStoreVersion];
-        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+        return true;
+    } else {
+        return false;
     }
+}
+
+- (void)appStoreVersionIsNewer:(NSString *)currentAppStoreVersion {
+    [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
+    [self alertTypeForVersion:currentAppStoreVersion];
+    [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
 }
 
 - (void)launchAppStore {
@@ -455,5 +465,14 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (NSString *)testLocalizedStringForKey:(NSString *)stringKey {
     return [self forcedLocalizedStringForKey:stringKey];
 }
+
+- (void)testCurrentAppStoreVersion:(NSString *)version {
+    _currentAppStoreVersion = version;
+}
+
+- (BOOL)testIsAppStoreVersionNewer {
+    return [self isAppStoreVersionNewer:_currentAppStoreVersion];
+}
+
 
 @end
