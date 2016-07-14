@@ -171,7 +171,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 #pragma mark - Unit Testing
 
 /**
- This method is exposed for unit testing purposes. 
+ This method was created for unit testing purposes.
  
  It will specifically be used to test the string localizations.
 
@@ -183,20 +183,32 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 - (NSString *)testLocalizedStringForKey:(NSString *)stringKey;
 
 /**
- This method is exposed for unit testing purposes.
+ This method was created for unit testing purposes.
 
- It will specifically be used to temporarily set the version of the installed app.
+ It will specifically be used to temporarily set the installed version of the app.
+
+ @param version: The temporary version that should be set for the app.
+
+ */
+
+- (void)testSetCurrentInstalledVersion:(NSString *)version;
+
+
+/**
+ This method was created for unit testing purposes.
+
+ It will specifically be used to temporarily set the app store version of the app.
  
  @param version: The temporary version that should be set for the app.
 
  */
 
-- (void)testCurrentAppStoreVersion:(NSString *)version;
+- (void)testSetCurrentAppStoreVersion:(NSString *)version;
 
 /**
- This method is exposed for unit testing purposes.
+ This method was created for unit testing purposes.
 
- It will specifically be used to check if the temproary app store verison that is set in `testLocalizedStringForKey` is newer.
+ It will specifically be used to compared the temporary app store version to the temporary installed version.
 
  @return True if app store version is newer, otherwise false.
 

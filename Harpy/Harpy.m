@@ -45,6 +45,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy()
 
+@property (nonatomic, copy) NSString *currentInstalledVersion;
 @property (nonatomic, strong) NSDictionary <NSString *, id> *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
 @property (nonatomic, copy) NSString *appID;
@@ -78,6 +79,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     if (self) {
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
+        _currentInstalledVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     }
 
     return self;
@@ -239,7 +241,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 - (BOOL)isAppStoreVersionNewer:(NSString *)currentAppStoreVersion {
     // Current installed version is the newest public version or newer (e.g., dev version)
-    if ([[self currentVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
+    if ([[self currentInstalledVersion] compare:currentAppStoreVersion options:NSNumericSearch] == NSOrderedAscending) {
         return true;
     } else {
         return false;
@@ -350,7 +352,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 - (void)alertTypeForVersion:(NSString *)currentAppStoreVersion {
     // Check what version the update is, major, minor or a patch
-    NSArray *oldVersionComponents = [[self currentVersion] componentsSeparatedByString:@"."];
+    NSArray *oldVersionComponents = [[self currentInstalledVersion] componentsSeparatedByString:@"."];
     NSArray *newVersionComponents = [currentAppStoreVersion componentsSeparatedByString: @"."];
 
     BOOL oldVersionComponentIsProperFormat = (2 <= [oldVersionComponents count] && [oldVersionComponents count] <= 4);
@@ -390,10 +392,6 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 }
 
 #pragma mark - NSBundle Strings
-
-- (NSString *)currentVersion {
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-}
 
 - (NSString *)bundleID {
     return [NSBundle mainBundle].bundleIdentifier;
@@ -466,7 +464,11 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     return [self forcedLocalizedStringForKey:stringKey];
 }
 
-- (void)testCurrentAppStoreVersion:(NSString *)version {
+- (void)testSetCurrentInstalledVersion:(NSString *)version {
+    _currentInstalledVersion = version;
+}
+
+- (void)testSetCurrentAppStoreVersion:(NSString *)version {
     _currentAppStoreVersion = version;
 }
 

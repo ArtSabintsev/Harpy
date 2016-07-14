@@ -23,6 +23,34 @@
     _harpy = [Harpy sharedInstance];
 }
 
+- (void)testSingleDigitVersionUpdate {
+    [_harpy testSetCurrentInstalledVersion:@"1"];
+
+    [_harpy testSetCurrentAppStoreVersion:@"2"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+}
+
 
 - (void)testArabicLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageArabic];
