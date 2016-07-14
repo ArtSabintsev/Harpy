@@ -150,6 +150,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"업데이트"]);
 }
 
+- (void)testLithuanianLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageLithuanian];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Atnaujinimas"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Kitą kartą"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Praleisti šią versiją"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Atnaujinti"]);
+}
+
 - (void)testSpanishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageSpanish];
 
