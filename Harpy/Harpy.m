@@ -45,10 +45,10 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 
 @interface Harpy()
 
-@property (nonatomic, copy) NSString *currentInstalledVersion;
 @property (nonatomic, strong) NSDictionary <NSString *, id> *appData;
 @property (nonatomic, strong) NSDate *lastVersionCheckPerformedOnDate;
 @property (nonatomic, copy) NSString *appID;
+@property (nonatomic, copy) NSString *currentInstalledVersion;
 @property (nonatomic, copy) NSString *currentAppStoreVersion;
 @property (nonatomic, copy) NSString *updateAvailableMessage;
 @property (nonatomic, copy) NSString *theNewVersionMessage;

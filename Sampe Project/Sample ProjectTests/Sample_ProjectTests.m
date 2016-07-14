@@ -51,6 +51,89 @@
     XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
 }
 
+- (void)testDoubleDigitVersionUpdate {
+    [_harpy testSetCurrentInstalledVersion:@"1.0"];
+
+    [_harpy testSetCurrentAppStoreVersion:@"2"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+}
+
+- (void)testTripleDigitVersionUpdate {
+    [_harpy testSetCurrentInstalledVersion:@"1.0.0"];
+
+    [_harpy testSetCurrentAppStoreVersion:@"2"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+}
+
+- (void)testQuadrupleDigitVersionUpdate {
+    [_harpy testSetCurrentInstalledVersion:@"1.0.0.0"];
+
+    [_harpy testSetCurrentAppStoreVersion:@"2"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"2.0.0.0"];
+    XCTAssertTrue([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+
+    [_harpy testSetCurrentAppStoreVersion:@"0.0.0.9"];
+    XCTAssertFalse([_harpy testIsAppStoreVersionNewer]);
+}
 
 - (void)testArabicLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageArabic];
