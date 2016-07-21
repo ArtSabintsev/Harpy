@@ -71,3 +71,5 @@
   - [Mark Berner](https://github.com/mark2b)
 - **v3.4.10**
     - [Josip Injic](https://github.com/jinjic)
+- **v4.0.3**
+    - [Nikolay Petrov](https://github.com/nikolay-petrov)
