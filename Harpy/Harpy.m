@@ -293,13 +293,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             UIAlertController *alertController = [self createAlertController];
             [alertController addAction:[self updateAlertAction]];
 
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-            }
-
-            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
-                [self.delegate harpyDidShowUpdateDialog];
-            }
+            [self showAlertController:alertController];
 
         } break;
 
@@ -309,13 +303,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
 
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-            }
-
-            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
-                [self.delegate harpyDidShowUpdateDialog];
-            }
+            [self showAlertController:alertController];
 
         } break;
 
@@ -326,13 +314,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             [alertController addAction:[self nextTimeAlertAction]];
             [alertController addAction:[self updateAlertAction]];
 
-            if (_presentingViewController != nil) {
-                [_presentingViewController presentViewController:alertController animated:YES completion:nil];
-            }
-
-            if([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
-                [self.delegate harpyDidShowUpdateDialog];
-            }
+            [self showAlertController:alertController];
 
         } break;
 
@@ -344,14 +326,26 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     }
 }
 
+- (void)showAlertController:(UIAlertController *)alertController {
+
+    if (_presentingViewController != nil) {
+        [_presentingViewController presentViewController:alertController animated:YES completion:nil];
+
+        if (_alertControllerTintColor) {
+            [alertController.view setTintColor:_alertControllerTintColor];
+        }
+    }
+
+    if ([self.delegate respondsToSelector:@selector(harpyDidShowUpdateDialog)]){
+        [self.delegate harpyDidShowUpdateDialog];
+    }
+}
+
 - (UIAlertController *)createAlertController {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:_updateAvailableMessage
                                                                              message:_theNewVersionMessage
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    if (_alertControllerTintColor) {
-        [alertController.view setTintColor:_alertControllerTintColor];
-    }
 
     return alertController;
 }
