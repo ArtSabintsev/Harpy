@@ -90,6 +90,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)checkVersion {
     if (!_presentingViewController) {
         NSLog(@"[Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.");
+        [self versionCheckExecutedWithoutResults];
     } else {
         [self performVersionCheck];
     }
@@ -108,11 +109,15 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         
         // Perform First Launch Check
         [self checkVersion];
+    } else {
+        [self versionCheckExecutedWithoutResults];
     }
     
     // If daily condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
         [self checkVersion];
+    } else {
+        [self versionCheckExecutedWithoutResults];
     }
 }
 
@@ -129,11 +134,15 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         
         // Perform First Launch Check
         [self checkVersion];
+    } else {
+        [self versionCheckExecutedWithoutResults];
     }
     
     // If weekly condition is satisfied, perform version check 
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
         [self checkVersion];
+    } else {
+        [self versionCheckExecutedWithoutResults];
     }
 }
 
@@ -150,6 +159,8 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if ([data length] > 0 && !error) { // Success
                                                     [self parseResults:data];
+                                                } else {
+                                                    [self versionCheckExecutedWithoutResults];
                                                 }
                                             }];
     [task resume];
@@ -176,16 +187,26 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
 
             if ([versionsInAppStore count]) {
-                _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                _currentAppStoreVersion = versionsInAppStore[0];
                 if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
                     [self appStoreVersionIsNewer:_currentAppStoreVersion];
                 } else {
                     [self printDebugMessage:@"Currently installed version is newer."];
+                    [self versionCheckExecutedWithoutResults];
                 }
+            } else {
+                [self versionCheckExecutedWithoutResults];
             }
         });
     } else {
         [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
+        [self versionCheckExecutedWithoutResults];
+    }
+}
+
+- (void)versionCheckExecutedWithoutResults {
+    if ([self.delegate respondsToSelector:@selector(harpyVersionCheckExecutedWithoutResults)]) {
+        [self.delegate harpyVersionCheckExecutedWithoutResults];
     }
 }
 

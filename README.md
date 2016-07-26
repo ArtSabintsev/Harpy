@@ -159,6 +159,9 @@ If you'd like to handle or track the end-user's behavior, four delegate methods 
 
 	// User did click on button that cancels update dialog
 	- (void)harpyUserDidCancel;
+	
+	// If Harpy not found new version or http request or etc... he just call this method. 
+	- (void)harpyVersionCheckExecutedWithoutResults;
 ```
 
 If you would like to use your own UI, please use the following delegate method to obtain the localized update message if a new version is available:
