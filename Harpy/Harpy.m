@@ -110,15 +110,14 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         // Perform First Launch Check
         [self checkVersion];
     } else {
-        [self versionCheckExecutedWithoutResults];
+        // If daily condition is satisfied, perform version check
+        if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
+            [self checkVersion];
+        } else {
+            [self versionCheckExecutedWithoutResults];
+        }
     }
-    
-    // If daily condition is satisfied, perform version check
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
-        [self checkVersion];
-    } else {
-        [self versionCheckExecutedWithoutResults];
-    }
+
 }
 
 - (void)checkVersionWeekly {
@@ -135,14 +134,12 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         // Perform First Launch Check
         [self checkVersion];
     } else {
-        [self versionCheckExecutedWithoutResults];
-    }
-    
-    // If weekly condition is satisfied, perform version check 
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
-        [self checkVersion];
-    } else {
-        [self versionCheckExecutedWithoutResults];
+        // If weekly condition is satisfied, perform version check
+        if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
+            [self checkVersion];
+        } else {
+            [self versionCheckExecutedWithoutResults];
+        }
     }
 }
 
@@ -273,6 +270,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
      _appID = _appData[@"results"][0][@"trackId"];
 
     if (_appID == nil) {
+        [self versionCheckExecutedWithoutResults];
         [self printDebugMessage:@"appID is nil, which means to the trackId key is missing from the JSON results that Apple returned for your bundleID. If a version of your app is in the store and you are seeing this message, please open up an issue http://github.com/ArtSabintsev/Harpy and provide as much detail about your app as you can. Thanks!"];
     } else {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
@@ -301,6 +299,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else {
         // Don't show alert.
+        [self versionCheckExecutedWithoutResults];
         return;
     }
 }
