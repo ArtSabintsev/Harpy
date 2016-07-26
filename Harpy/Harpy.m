@@ -199,7 +199,7 @@ NSString * const HarpyLanguageTurkish               = @"tr";
             }
         });
     } else {
-        [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
+        [self printDebugMessage:@"Device is incompatible with installed version of iOS"];
         [self versionCheckExecutedWithoutResults];
     }
 }
