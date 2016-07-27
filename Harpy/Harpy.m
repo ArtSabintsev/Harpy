@@ -263,13 +263,14 @@ NSString * const HarpyLanguageTurkish               = @"tr";
 - (void)launchAppStore {
     NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+
     dispatch_async(dispatch_get_main_queue(), ^{
         [[UIApplication sharedApplication] openURL:iTunesURL];
-    });
 
-    if ([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
-        [self.delegate harpyUserDidLaunchAppStore];
-    }
+        if ([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
+            [self.delegate harpyUserDidLaunchAppStore];
+        }
+    });
 }
 
 #pragma mark - Alert Management
