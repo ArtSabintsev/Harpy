@@ -396,4 +396,13 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Güncelle"]);
 }
 
+- (void)testVietnameseLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageVietnamese];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Cập nhật mới"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Lần tới"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Bỏ qua phiên bản này"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Cập nhật"]);
+}
+
 @end

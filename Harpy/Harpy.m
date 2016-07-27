@@ -42,6 +42,7 @@ NSString * const HarpyLanguageSwedish               = @"sv";
 NSString * const HarpyLanguageSpanish               = @"es";
 NSString * const HarpyLanguageThai                  = @"th";
 NSString * const HarpyLanguageTurkish               = @"tr";
+NSString * const HarpyLanguageVietnamese            = @"vi";
 
 @interface Harpy()
 
