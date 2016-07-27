@@ -73,3 +73,6 @@
     - [Josip Injic](https://github.com/jinjic)
 - **v4.0.3**
     - [Nikolay Petrov](https://github.com/nikolay-petrov)
+- **v4.0.4**
+    - [Thi](https://github.com/thii)
+		- [Ilija Puaca](https://github.com/ilijapuaca)
