@@ -76,3 +76,5 @@
 - **v4.0.4**
     - [Thi](https://github.com/thii)
 		- [Ilija Puaca](https://github.com/ilijapuaca)
+- **v4.0.5**
+    - [Kristaps Grinbergs](https://github.com/fassko)
