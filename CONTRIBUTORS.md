@@ -79,3 +79,5 @@
     - [Thi](https://github.com/thii)
 - **v4.0.6**
     - [Kristaps Grinbergs](https://github.com/fassko)
+- **v4.0.7**
+    - [Luciano Nascimento][https://github.com/@lucianocn]
