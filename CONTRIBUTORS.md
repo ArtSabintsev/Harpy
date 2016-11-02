@@ -74,7 +74,7 @@
 - **v4.0.3**
     - [Nikolay Petrov](https://github.com/nikolay-petrov)
 - **v4.0.4**
-		- [Ilija Puaca](https://github.com/ilijapuaca)
+    - [Ilija Puaca](https://github.com/ilijapuaca)
 - **4.0.5**
     - [Thi](https://github.com/thii)
 - **v4.0.6**
