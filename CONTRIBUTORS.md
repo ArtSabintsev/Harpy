@@ -81,3 +81,5 @@
     - [Kristaps Grinbergs](https://github.com/fassko)
 - **v4.0.7**
     - [Luciano Nascimento](https://github.com/@lucianocn)
+- **v4.0.8**
+		- [Vladislav Jevremović](https://github.com/VladislavJevremovic)
