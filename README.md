@@ -168,7 +168,7 @@ If you would like to use your own UI, please use the following delegate method t
 ```
 
 ## Localization
-Harpy is localized for 
+Harpy is localized for
 - Arabic
 - Armenian
 - Basque
@@ -190,6 +190,8 @@ Harpy is localized for
 - Polish
 - Portuguese (Brazil and Portugal)
 - Russian
+- Serbian (Cyrillic)
+- Serbian (Latin)
 - Slovenian
 - Swedish
 - Spanish
