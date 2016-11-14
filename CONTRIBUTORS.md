@@ -83,3 +83,5 @@
     - [Luciano Nascimento](https://github.com/@lucianocn)
 - **v4.0.8**
 		- [Vladislav Jevremović](https://github.com/VladislavJevremovic)
+- **v4.0.9**
+		- [Konstantinos N.](https://github.com/kwstasna)
