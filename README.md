@@ -179,6 +179,7 @@ Harpy is localized for
 - Estonian
 - French
 - German
+- Greek
 - Hebrew
 - Hungarian
 - Italian

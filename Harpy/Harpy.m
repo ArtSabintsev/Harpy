@@ -25,6 +25,7 @@ NSString * const HarpyLanguageEnglish               = @"en";
 NSString * const HarpyLanguageEstonian              = @"et";
 NSString * const HarpyLanguageFrench                = @"fr";
 NSString * const HarpyLanguageGerman                = @"de";
+NSString * const HarpyLanguageGreek                 = @"el";
 NSString * const HarpyLanguageHebrew                = @"he";
 NSString * const HarpyLanguageHungarian             = @"hu";
 NSString * const HarpyLanguageItalian               = @"it";
