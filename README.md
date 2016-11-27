@@ -177,11 +177,13 @@ Harpy is localized for
 - Dutch
 - English
 - Estonian
+- Finnish
 - French
 - German
 - Greek
 - Hebrew
 - Hungarian
+- Indonesian
 - Italian
 - Japanese
 - Korean

@@ -225,6 +225,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Uuenda"]);
 }
 
+- (void)testFinnishLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageFinnish];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Päivitys saatavilla"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Ensi kerralla"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Jätä tämä versio väliin"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Päivitys"]);
+}
+
 - (void)testFrenchLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageFrench];
 
@@ -268,6 +277,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Később"]);
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Ennél a verziónál ne figyelmeztessen"]);
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Frissítés"]);
+}
+
+- (void)testIndoneisanLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageIndonesian];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Pembaruan Tersedia"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Lain kali"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Lewati versi ini"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Perbarui"]);
 }
 
 - (void)testItalianLocalization {
