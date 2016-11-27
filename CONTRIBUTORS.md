@@ -85,4 +85,6 @@
 		- [Vladislav Jevremović](https://github.com/VladislavJevremovic)
 - **v4.0.9**
 		- [Konstantinos N.](https://github.com/kwstasna)
+- **v4.0.10**
 		- [Christoph Mantler](https://github.com/ChrisixFlash)
+>>>>>>> master
