@@ -190,6 +190,7 @@ Harpy is localized for
 - Latvian
 - Lithuanian
 - Malay
+- Norwegian (Bokmål)
 - Polish
 - Portuguese (Brazil and Portugal)
 - Russian

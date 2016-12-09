@@ -70,21 +70,23 @@
 - **v3.4.8**
   - [Mark Berner](https://github.com/mark2b)
 - **v3.4.10**
-    - [Josip Injic](https://github.com/jinjic)
+  - [Josip Injic](https://github.com/jinjic)
 - **v4.0.3**
-    - [Nikolay Petrov](https://github.com/nikolay-petrov)
+  - [Nikolay Petrov](https://github.com/nikolay-petrov)
 - **v4.0.4**
-    - [Ilija Puaca](https://github.com/ilijapuaca)
+  - [Ilija Puaca](https://github.com/ilijapuaca)
 - **4.0.5**
-    - [Thi](https://github.com/thii)
+  - [Thi](https://github.com/thii)
 - **v4.0.6**
-    - [Kristaps Grinbergs](https://github.com/fassko)
+  - [Kristaps Grinbergs](https://github.com/fassko)
 - **v4.0.7**
-    - [Luciano Nascimento](https://github.com/@lucianocn)
+  - [Luciano Nascimento](https://github.com/@lucianocn)
 - **v4.0.8**
-		- [Vladislav Jevremović](https://github.com/VladislavJevremovic)
+	- [Vladislav Jevremović](https://github.com/VladislavJevremovic)
 - **v4.0.9**
-		- [Konstantinos N.](https://github.com/kwstasna)
+	- [Konstantinos N.](https://github.com/kwstasna)
 - **v4.0.10**
-		- [Christoph Mantler](https://github.com/ChrisixFlash)
->>>>>>> master
+	- [Christoph Mantler](https://github.com/ChrisixFlash)
+- **v4.0.11**
+	- [Christoph Mantler](https://github.com/ChrisixFlash)
+	- [Pietro D'Alessandro](https://github.com/xedla)

@@ -342,6 +342,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Muat turun"]);
 }
 
+- (void)testNorwegianLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageNorwegian];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Oppdatering tilgjengelig"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Neste gang"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Hopp over denne versjonen"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Oppdater"]);
+}
+
 - (void)testPolishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguagePolish];
 
