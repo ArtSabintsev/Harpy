@@ -1,7 +1,7 @@
 # Harpy
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-![Travis-CI](https://travis-ci.org/ArtSabintsev/Harpy.svg?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)]() [![CocoaPods](https://img.shields.io/cocoapods/dm/Harpy.svg)]()
+[![Travis-CI](https://travis-ci.org/ArtSabintsev/Harpy.svg?branch=master)](https://travis-ci.org/ArtSabintsev/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dm/Harpy.svg)](https://cocoapods.org/pods/Harpy)
 ---
 
 ## About
