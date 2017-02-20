@@ -13,7 +13,7 @@ Harpy is built to work with the [Semantic Versioning](http://www.semver.org) sys
 - Harpy also supports four-number versioning (e.g., 1.0.0.0)
 
 ## Swift Support
-Harpy has been ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [**here**](https://github.com/ArtSabintsev/Siren).
+Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [**here**](https://github.com/ArtSabintsev/Siren).
 
 ## Features
 - [x] CocoaPods Support
