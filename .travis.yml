@@ -1,6 +1,0 @@
-language: objective-c
-
-osx_image: xcode8.2
-
-notifications:
-  email: false
