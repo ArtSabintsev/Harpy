@@ -1,0 +1,16 @@
+PODS:
+  - Harpy (4.0.11)
+
+DEPENDENCIES:
+  - Harpy (from `../`)
+
+EXTERNAL SOURCES:
+  Harpy:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Harpy: 4afe4976f2bcf61bd25969ecb266dd17043d065a
+
+PODFILE CHECKSUM: c99224180302bad8d64726ea6badf0608e2c660c
+
+COCOAPODS: 1.1.1

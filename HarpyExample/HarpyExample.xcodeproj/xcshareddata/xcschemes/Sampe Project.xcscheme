@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "550697AE1C685420008C5BAF"
-               BuildableName = "Harpy.framework"
-               BlueprintName = "Harpy"
-               ReferencedContainer = "container:Sample Project.xcodeproj">
+               BlueprintIdentifier = "55CF3A221BC212E30023B63D"
+               BuildableName = "HarpyExample.app"
+               BlueprintName = "HarpyExample"
+               ReferencedContainer = "container:HarpyExample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "55B79D911D36EC23001197C0"
+               BuildableName = "HarpyExampleTests.xctest"
+               BlueprintName = "HarpyExampleTests"
+               ReferencedContainer = "container:HarpyExample.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "55CF3A221BC212E30023B63D"
+            BuildableName = "HarpyExample.app"
+            BlueprintName = "HarpyExample"
+            ReferencedContainer = "container:HarpyExample.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -42,15 +61,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "550697AE1C685420008C5BAF"
-            BuildableName = "Harpy.framework"
-            BlueprintName = "Harpy"
-            ReferencedContainer = "container:Sample Project.xcodeproj">
+            BlueprintIdentifier = "55CF3A221BC212E30023B63D"
+            BuildableName = "HarpyExample.app"
+            BlueprintName = "HarpyExample"
+            ReferencedContainer = "container:HarpyExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -60,15 +80,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "550697AE1C685420008C5BAF"
-            BuildableName = "Harpy.framework"
-            BlueprintName = "Harpy"
-            ReferencedContainer = "container:Sample Project.xcodeproj">
+            BlueprintIdentifier = "55CF3A221BC212E30023B63D"
+            BuildableName = "HarpyExample.app"
+            BlueprintName = "HarpyExample"
+            ReferencedContainer = "container:HarpyExample.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

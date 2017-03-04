@@ -1,0 +1,6 @@
+framework module Harpy {
+  umbrella header "Harpy-umbrella.h"
+
+  export *
+  module * { export * }
+}

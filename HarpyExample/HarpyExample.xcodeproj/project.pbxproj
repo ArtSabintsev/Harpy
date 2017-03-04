@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		55B03A871E6A7A7200BE8DAC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A841E6A7A7200BE8DAC /* AppDelegate.m */; };
+		55B03A881E6A7A7200BE8DAC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A861E6A7A7200BE8DAC /* ViewController.m */; };
+		55B03A8C1E6A7A7F00BE8DAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A8A1E6A7A7F00BE8DAC /* main.m */; };
+		55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */; };
+		55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */; };
+		55B03A951E6A7AD400BE8DAC /* HarpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A931E6A7AD400BE8DAC /* HarpyTests.m */; };
+		68CD5419311537B94D152D0A /* Pods_HarpyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */; };
+		FAECDE2572B427D74BB6D90D /* Pods_HarpyExample_HarpyExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		55B79D971D36EC23001197C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55CF3A1B1BC212E30023B63D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55CF3A221BC212E30023B63D;
+			remoteInfo = "Sample Project";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		550697BB1C685420008C5BAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		55B03A831E6A7A7200BE8DAC /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = HarpyExample/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		55B03A841E6A7A7200BE8DAC /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = HarpyExample/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		55B03A851E6A7A7200BE8DAC /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = HarpyExample/ViewController.h; sourceTree = SOURCE_ROOT; };
+		55B03A861E6A7A7200BE8DAC /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = HarpyExample/ViewController.m; sourceTree = SOURCE_ROOT; };
+		55B03A891E6A7A7F00BE8DAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarpyExample/Info.plist; sourceTree = SOURCE_ROOT; };
+		55B03A8A1E6A7A7F00BE8DAC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HarpyExample/main.m; sourceTree = SOURCE_ROOT; };
+		55B03A8E1E6A7A8500BE8DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HarpyExample/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
+		55B03A901E6A7A8500BE8DAC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HarpyExample/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
+		55B03A931E6A7AD400BE8DAC /* HarpyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HarpyTests.m; path = HarpyExampleTests/HarpyTests.m; sourceTree = SOURCE_ROOT; };
+		55B03A941E6A7AD400BE8DAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarpyExampleTests/Info.plist; sourceTree = SOURCE_ROOT; };
+		55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarpyExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		55CF3A231BC212E30023B63D /* HarpyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample.debug.xcconfig"; sourceTree = "<group>"; };
+		D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HarpyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample-HarpyExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample-HarpyExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HarpyExample_HarpyExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		55B79D8F1D36EC23001197C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAECDE2572B427D74BB6D90D /* Pods_HarpyExample_HarpyExampleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55CF3A201BC212E30023B63D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				68CD5419311537B94D152D0A /* Pods_HarpyExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A2E192D951DFB4AEE67DA8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */,
+				E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55B79D9D1D372AD7001197C0 /* HarpyExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				55B03A931E6A7AD400BE8DAC /* HarpyTests.m */,
+				55B03A941E6A7AD400BE8DAC /* Info.plist */,
+			);
+			name = HarpyExampleTests;
+			path = HarpyTests;
+			sourceTree = "<group>";
+		};
+		55CF3A1A1BC212E30023B63D = {
+			isa = PBXGroup;
+			children = (
+				55CF3A251BC212E30023B63D /* HarpyExample */,
+				55B79D9D1D372AD7001197C0 /* HarpyExampleTests */,
+				55CF3A241BC212E30023B63D /* Products */,
+				A1FAD94223BC30C98077754B /* Pods */,
+				1A2E192D951DFB4AEE67DA8B /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		55CF3A241BC212E30023B63D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55CF3A231BC212E30023B63D /* HarpyExample.app */,
+				55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		55CF3A251BC212E30023B63D /* HarpyExample */ = {
+			isa = PBXGroup;
+			children = (
+				55B03A831E6A7A7200BE8DAC /* AppDelegate.h */,
+				55B03A841E6A7A7200BE8DAC /* AppDelegate.m */,
+				55B03A851E6A7A7200BE8DAC /* ViewController.h */,
+				55B03A861E6A7A7200BE8DAC /* ViewController.m */,
+				55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */,
+				55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */,
+				55CF3A261BC212E30023B63D /* Supporting Files */,
+			);
+			name = HarpyExample;
+			path = "Sampe Project";
+			sourceTree = "<group>";
+		};
+		55CF3A261BC212E30023B63D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				55B03A891E6A7A7F00BE8DAC /* Info.plist */,
+				55B03A8A1E6A7A7F00BE8DAC /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A1FAD94223BC30C98077754B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */,
+				FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */,
+				DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */,
+				E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		55B79D911D36EC23001197C0 /* HarpyExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "HarpyExampleTests" */;
+			buildPhases = (
+				B6F0320959A6FF7934521D1F /* [CP] Check Pods Manifest.lock */,
+				55B79D8E1D36EC23001197C0 /* Sources */,
+				55B79D8F1D36EC23001197C0 /* Frameworks */,
+				55B79D901D36EC23001197C0 /* Resources */,
+				F535D0D689D25C9979E29CAF /* [CP] Embed Pods Frameworks */,
+				1E9AC706CF01052034807F5D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				55B79D981D36EC23001197C0 /* PBXTargetDependency */,
+			);
+			name = HarpyExampleTests;
+			productName = "Sample ProjectTests";
+			productReference = 55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		55CF3A221BC212E30023B63D /* HarpyExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "HarpyExample" */;
+			buildPhases = (
+				5517EB14A0BDB1241321C8F0 /* [CP] Check Pods Manifest.lock */,
+				55CF3A1F1BC212E30023B63D /* Sources */,
+				55CF3A201BC212E30023B63D /* Frameworks */,
+				55CF3A211BC212E30023B63D /* Resources */,
+				550697BB1C685420008C5BAF /* Embed Frameworks */,
+				D1DEAB734D4AAFDE89D241D4 /* [CP] Embed Pods Frameworks */,
+				70E7747081BCB0133E0A5591 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HarpyExample;
+			productName = "Sampe Project";
+			productReference = 55CF3A231BC212E30023B63D /* HarpyExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		55CF3A1B1BC212E30023B63D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Arthur Ariel Sabintsev";
+				TargetAttributes = {
+					55B79D911D36EC23001197C0 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = HT94948NDD;
+						TestTargetID = 55CF3A221BC212E30023B63D;
+					};
+					55CF3A221BC212E30023B63D = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = HT94948NDD;
+					};
+				};
+			};
+			buildConfigurationList = 55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "HarpyExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 55CF3A1A1BC212E30023B63D;
+			productRefGroup = 55CF3A241BC212E30023B63D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				55CF3A221BC212E30023B63D /* HarpyExample */,
+				55B79D911D36EC23001197C0 /* HarpyExampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		55B79D901D36EC23001197C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55CF3A211BC212E30023B63D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */,
+				55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E9AC706CF01052034807F5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5517EB14A0BDB1241321C8F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		70E7747081BCB0133E0A5591 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6F0320959A6FF7934521D1F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D1DEAB734D4AAFDE89D241D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F535D0D689D25C9979E29CAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		55B79D8E1D36EC23001197C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55B03A951E6A7AD400BE8DAC /* HarpyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		55CF3A1F1BC212E30023B63D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55B03A871E6A7A7200BE8DAC /* AppDelegate.m in Sources */,
+				55B03A8C1E6A7A7F00BE8DAC /* main.m in Sources */,
+				55B03A881E6A7A7200BE8DAC /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		55B79D981D36EC23001197C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55CF3A221BC212E30023B63D /* HarpyExample */;
+			targetProxy = 55B79D971D36EC23001197C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55B03A8E1E6A7A8500BE8DAC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				55B03A901E6A7A8500BE8DAC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		55B79D9A1D36EC23001197C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				INFOPLIST_FILE = HarpyExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HarpyExample.app/HarpyExample";
+			};
+			name = Debug;
+		};
+		55B79D9B1D36EC23001197C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				INFOPLIST_FILE = HarpyExampleTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sabintsev.Sample-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HarpyExample.app/HarpyExample";
+			};
+			name = Release;
+		};
+		55CF3A381BC212E30023B63D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		55CF3A391BC212E30023B63D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		55CF3A3B1BC212E30023B63D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				INFOPLIST_FILE = "$(SRCROOT)/HarpyExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_NAME = HarpyExample;
+			};
+			name = Debug;
+		};
+		55CF3A3C1BC212E30023B63D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HT94948NDD;
+				INFOPLIST_FILE = "$(SRCROOT)/HarpyExample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.itunesconnect.mobile;
+				PRODUCT_NAME = HarpyExample;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "HarpyExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55B79D9A1D36EC23001197C0 /* Debug */,
+				55B79D9B1D36EC23001197C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55CF3A1E1BC212E30023B63D /* Build configuration list for PBXProject "HarpyExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55CF3A381BC212E30023B63D /* Debug */,
+				55CF3A391BC212E30023B63D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "HarpyExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55CF3A3B1BC212E30023B63D /* Debug */,
+				55CF3A3C1BC212E30023B63D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 55CF3A1B1BC212E30023B63D /* Project object */;
+}

@@ -1,0 +1,6 @@
+framework module Pods_HarpyExample_HarpyExampleTests {
+  umbrella header "Pods-HarpyExample-HarpyExampleTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
