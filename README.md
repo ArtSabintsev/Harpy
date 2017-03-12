@@ -1,7 +1,7 @@
 # Harpy
 ### Notify users when a new version of your app is available and prompt them to upgrade.
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dm/Harpy.svg)](https://cocoapods.org/pods/Harpy)
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58c4d37980c4290100790f8c&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58c4d37980c4290100790f8c/build/latest?branch=master) [![CocoaPods](https://img.shields.io/cocoapods/v/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dt/Harpy.svg)](https://cocoapods.org/pods/Harpy) [![CocoaPods](https://img.shields.io/cocoapods/dm/Harpy.svg)](https://cocoapods.org/pods/Harpy)
 ---
 
 ## About
