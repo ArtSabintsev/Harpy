@@ -13,8 +13,8 @@
 		55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */; };
 		55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */; };
 		55B03A951E6A7AD400BE8DAC /* HarpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A931E6A7AD400BE8DAC /* HarpyTests.m */; };
-		68CD5419311537B94D152D0A /* Pods_HarpyExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */; };
-		FAECDE2572B427D74BB6D90D /* Pods_HarpyExample_HarpyExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */; };
+		8EF96B121E83356D005BE6FE /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EF96B0F1E83356D005BE6FE /* Harpy.bundle */; };
+		8EF96B131E83356D005BE6FE /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF96B111E83356D005BE6FE /* Harpy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,12 +53,9 @@
 		55B03A941E6A7AD400BE8DAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarpyExampleTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarpyExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55CF3A231BC212E30023B63D /* HarpyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample.debug.xcconfig"; sourceTree = "<group>"; };
-		D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HarpyExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample-HarpyExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
-		E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample-HarpyExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests.release.xcconfig"; sourceTree = "<group>"; };
-		E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HarpyExample_HarpyExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HarpyExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample.release.xcconfig"; sourceTree = "<group>"; };
+		8EF96B0F1E83356D005BE6FE /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		8EF96B101E83356D005BE6FE /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		8EF96B111E83356D005BE6FE /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +63,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAECDE2572B427D74BB6D90D /* Pods_HarpyExample_HarpyExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,22 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68CD5419311537B94D152D0A /* Pods_HarpyExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A2E192D951DFB4AEE67DA8B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D884EFA4685DB45EBD1674F7 /* Pods_HarpyExample.framework */,
-				E300D21B0741F0706BFB5117 /* Pods_HarpyExample_HarpyExampleTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		55B79D9D1D372AD7001197C0 /* HarpyExampleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,8 +92,6 @@
 				55CF3A251BC212E30023B63D /* HarpyExample */,
 				55B79D9D1D372AD7001197C0 /* HarpyExampleTests */,
 				55CF3A241BC212E30023B63D /* Products */,
-				A1FAD94223BC30C98077754B /* Pods */,
-				1A2E192D951DFB4AEE67DA8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +107,7 @@
 		55CF3A251BC212E30023B63D /* HarpyExample */ = {
 			isa = PBXGroup;
 			children = (
+				8EF96B0E1E83356D005BE6FE /* Harpy */,
 				55B03A831E6A7A7200BE8DAC /* AppDelegate.h */,
 				55B03A841E6A7A7200BE8DAC /* AppDelegate.m */,
 				55B03A851E6A7A7200BE8DAC /* ViewController.h */,
@@ -144,15 +129,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A1FAD94223BC30C98077754B /* Pods */ = {
+		8EF96B0E1E83356D005BE6FE /* Harpy */ = {
 			isa = PBXGroup;
 			children = (
-				CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */,
-				FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */,
-				DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */,
-				E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */,
+				8EF96B0F1E83356D005BE6FE /* Harpy.bundle */,
+				8EF96B101E83356D005BE6FE /* Harpy.h */,
+				8EF96B111E83356D005BE6FE /* Harpy.m */,
 			);
-			name = Pods;
+			name = Harpy;
+			path = ../../Harpy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,12 +147,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55B79D991D36EC23001197C0 /* Build configuration list for PBXNativeTarget "HarpyExampleTests" */;
 			buildPhases = (
-				B6F0320959A6FF7934521D1F /* [CP] Check Pods Manifest.lock */,
 				55B79D8E1D36EC23001197C0 /* Sources */,
 				55B79D8F1D36EC23001197C0 /* Frameworks */,
 				55B79D901D36EC23001197C0 /* Resources */,
-				F535D0D689D25C9979E29CAF /* [CP] Embed Pods Frameworks */,
-				1E9AC706CF01052034807F5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,13 +165,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55CF3A3A1BC212E30023B63D /* Build configuration list for PBXNativeTarget "HarpyExample" */;
 			buildPhases = (
-				5517EB14A0BDB1241321C8F0 /* [CP] Check Pods Manifest.lock */,
 				55CF3A1F1BC212E30023B63D /* Sources */,
 				55CF3A201BC212E30023B63D /* Frameworks */,
 				55CF3A211BC212E30023B63D /* Resources */,
 				550697BB1C685420008C5BAF /* Embed Frameworks */,
-				D1DEAB734D4AAFDE89D241D4 /* [CP] Embed Pods Frameworks */,
-				70E7747081BCB0133E0A5591 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,104 +232,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */,
+				8EF96B121E83356D005BE6FE /* Harpy.bundle in Resources */,
 				55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1E9AC706CF01052034807F5D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		5517EB14A0BDB1241321C8F0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		70E7747081BCB0133E0A5591 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6F0320959A6FF7934521D1F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D1DEAB734D4AAFDE89D241D4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample/Pods-HarpyExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F535D0D689D25C9979E29CAF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HarpyExample-HarpyExampleTests/Pods-HarpyExample-HarpyExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55B79D8E1D36EC23001197C0 /* Sources */ = {
@@ -367,6 +254,7 @@
 			files = (
 				55B03A871E6A7A7200BE8DAC /* AppDelegate.m in Sources */,
 				55B03A8C1E6A7A7F00BE8DAC /* main.m in Sources */,
+				8EF96B131E83356D005BE6FE /* Harpy.m in Sources */,
 				55B03A881E6A7A7200BE8DAC /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,7 +291,6 @@
 /* Begin XCBuildConfiguration section */
 		55B79D9A1D36EC23001197C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE68FEA7A106752B23E7A170 /* Pods-HarpyExample-HarpyExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -419,7 +306,6 @@
 		};
 		55B79D9B1D36EC23001197C0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E23D8D7A703E04C7CD4E8D73 /* Pods-HarpyExample-HarpyExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -519,7 +405,6 @@
 		};
 		55CF3A3B1BC212E30023B63D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA6E58C18F6E079E9D4B0B2D /* Pods-HarpyExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HT94948NDD;
@@ -533,7 +418,6 @@
 		};
 		55CF3A3C1BC212E30023B63D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FAD2715CEC3D08A766DD7769 /* Pods-HarpyExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = HT94948NDD;
