@@ -97,6 +97,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 - (void)checkVersion {
     if (!_presentingViewController) {
         NSLog(@"[Harpy]: Please make sure that you have set _presentationViewController before calling checkVersion, checkVersionDaily, or checkVersionWeekly.");
+        [self versionCheckExecutedWithoutResults];
     } else {
         [self performVersionCheck];
     }
@@ -115,12 +116,15 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         
         // Perform First Launch Check
         [self checkVersion];
+    } else {
+        // If daily condition is satisfied, perform version check
+        if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
+            [self checkVersion];
+        } else {
+            [self versionCheckExecutedWithoutResults];
+        }
     }
-    
-    // If daily condition is satisfied, perform version check
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
-        [self checkVersion];
-    }
+
 }
 
 - (void)checkVersionWeekly {
@@ -136,11 +140,13 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         
         // Perform First Launch Check
         [self checkVersion];
-    }
-    
-    // If weekly condition is satisfied, perform version check 
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
-        [self checkVersion];
+    } else {
+        // If weekly condition is satisfied, perform version check
+        if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
+            [self checkVersion];
+        } else {
+            [self versionCheckExecutedWithoutResults];
+        }
     }
 }
 
@@ -157,6 +163,8 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                                             completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                                                 if ([data length] > 0 && !error) { // Success
                                                     [self parseResults:data];
+                                                } else {
+                                                    [self versionCheckExecutedWithoutResults];
                                                 }
                                             }];
     [task resume];
@@ -183,16 +191,26 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
 
             if ([versionsInAppStore count]) {
-                _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                _currentAppStoreVersion = versionsInAppStore[0];
                 if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
                     [self appStoreVersionIsNewer:_currentAppStoreVersion];
                 } else {
                     [self printDebugMessage:@"Currently installed version is newer."];
+                    [self versionCheckExecutedWithoutResults];
                 }
+            } else {
+                [self versionCheckExecutedWithoutResults];
             }
         });
     } else {
-        [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
+        [self printDebugMessage:@"Device is incompatible with installed version of iOS"];
+        [self versionCheckExecutedWithoutResults];
+    }
+}
+
+- (void)versionCheckExecutedWithoutResults {
+    if ([self.delegate respondsToSelector:@selector(harpyVersionCheckExecutedWithoutResults)]) {
+        [self.delegate harpyVersionCheckExecutedWithoutResults];
     }
 }
 
@@ -259,6 +277,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
      _appID = _appData[@"results"][0][@"trackId"];
 
     if (_appID == nil) {
+        [self versionCheckExecutedWithoutResults];
         [self printDebugMessage:@"appID is nil, which means to the trackId key is missing from the JSON results that Apple returned for your bundleID. If a version of your app is in the store and you are seeing this message, please open up an issue http://github.com/ArtSabintsev/Harpy and provide as much detail about your app as you can. Thanks!"];
     } else {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
@@ -290,6 +309,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         [self showAlertWithAppStoreVersion:currentAppStoreVersion];
     } else {
         // Don't show alert.
+        [self versionCheckExecutedWithoutResults];
         return;
     }
 }
