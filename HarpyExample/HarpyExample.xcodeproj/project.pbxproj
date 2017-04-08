@@ -13,8 +13,8 @@
 		55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */; };
 		55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */; };
 		55B03A951E6A7AD400BE8DAC /* HarpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A931E6A7AD400BE8DAC /* HarpyTests.m */; };
-		8EF96B121E83356D005BE6FE /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8EF96B0F1E83356D005BE6FE /* Harpy.bundle */; };
-		8EF96B131E83356D005BE6FE /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF96B111E83356D005BE6FE /* Harpy.m */; };
+		8E78694D1E98B842001B4BBB /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E78694A1E98B842001B4BBB /* Harpy.bundle */; };
+		8E78694E1E98B842001B4BBB /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E78694C1E98B842001B4BBB /* Harpy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,9 +53,9 @@
 		55B03A941E6A7AD400BE8DAC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HarpyExampleTests/Info.plist; sourceTree = SOURCE_ROOT; };
 		55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarpyExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55CF3A231BC212E30023B63D /* HarpyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8EF96B0F1E83356D005BE6FE /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
-		8EF96B101E83356D005BE6FE /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
-		8EF96B111E83356D005BE6FE /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
+		8E78694A1E98B842001B4BBB /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
+		8E78694B1E98B842001B4BBB /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		8E78694C1E98B842001B4BBB /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +89,7 @@
 		55CF3A1A1BC212E30023B63D = {
 			isa = PBXGroup;
 			children = (
+				8E7869491E98B842001B4BBB /* Harpy */,
 				55CF3A251BC212E30023B63D /* HarpyExample */,
 				55B79D9D1D372AD7001197C0 /* HarpyExampleTests */,
 				55CF3A241BC212E30023B63D /* Products */,
@@ -107,7 +108,6 @@
 		55CF3A251BC212E30023B63D /* HarpyExample */ = {
 			isa = PBXGroup;
 			children = (
-				8EF96B0E1E83356D005BE6FE /* Harpy */,
 				55B03A831E6A7A7200BE8DAC /* AppDelegate.h */,
 				55B03A841E6A7A7200BE8DAC /* AppDelegate.m */,
 				55B03A851E6A7A7200BE8DAC /* ViewController.h */,
@@ -129,15 +129,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8EF96B0E1E83356D005BE6FE /* Harpy */ = {
+		8E7869491E98B842001B4BBB /* Harpy */ = {
 			isa = PBXGroup;
 			children = (
-				8EF96B0F1E83356D005BE6FE /* Harpy.bundle */,
-				8EF96B101E83356D005BE6FE /* Harpy.h */,
-				8EF96B111E83356D005BE6FE /* Harpy.m */,
+				8E78694A1E98B842001B4BBB /* Harpy.bundle */,
+				8E78694B1E98B842001B4BBB /* Harpy.h */,
+				8E78694C1E98B842001B4BBB /* Harpy.m */,
 			);
 			name = Harpy;
-			path = ../../Harpy;
+			path = ../Harpy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */,
-				8EF96B121E83356D005BE6FE /* Harpy.bundle in Resources */,
+				8E78694D1E98B842001B4BBB /* Harpy.bundle in Resources */,
 				55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +254,7 @@
 			files = (
 				55B03A871E6A7A7200BE8DAC /* AppDelegate.m in Sources */,
 				55B03A8C1E6A7A7F00BE8DAC /* main.m in Sources */,
-				8EF96B131E83356D005BE6FE /* Harpy.m in Sources */,
+				8E78694E1E98B842001B4BBB /* Harpy.m in Sources */,
 				55B03A881E6A7A7200BE8DAC /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
