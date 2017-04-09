@@ -28,7 +28,7 @@
     [[Harpy sharedInstance] setDelegate:self];
 
     // (Optional) When this is set, the alert will only show up if the current version has already been released for X days.
-    /// By default, this value is set to 1 (day) to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
+    // By default, this value is set to 1 (day) to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
 //    [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:3];
 
     // (Optional) The tintColor for the alertController
