@@ -178,8 +178,13 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 
             NSDictionary<NSString *, id> *results = [self.appData valueForKey:@"results"];
 
-            NSString *releaseDate = [results valueForKey:@"currentVersionReleaseDate"];
-            
+            NSString *releaseDateString = [[results valueForKey:@"currentVersionReleaseDate"] objectAtIndex:0];
+            NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
+            if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
+                NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                [self printDebugMessage:message];
+                return;
+            }
 
             /**
              Current version that has been uploaded to the AppStore.
@@ -407,7 +412,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
 }
 
-#pragma mark - NSBundle Strings
+#pragma mark - NSBundle
 
 - (NSString *)bundleID {
     return [NSBundle mainBundle].bundleIdentifier;
@@ -424,6 +429,22 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 - (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey {
     NSString *path = [[NSBundle bundleWithPath:[self bundlePath]] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"];
     return [[NSBundle bundleWithPath:path] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
+}
+
+#pragma mark - NSDate
+
+- (NSInteger)daysSinceDate:(NSDate *)date {
+    NSCalendar *calendar = NSCalendar.currentCalendar;
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:date toDate:[NSDate new] options:0];
+    return components.day;
+}
+
+- (NSInteger)daysSinceDateString:(NSString *)dateString {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    NSLog(@"%@", dateString);
+    NSDate *releaseDate = [dateFormatter dateFromString:dateString];
+    return [self daysSinceDate:releaseDate];
 }
 
 #pragma mark - UIAlertActions
