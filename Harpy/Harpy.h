@@ -141,6 +141,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (nonatomic, strong) UIColor *alertControllerTintColor;
 
+/**
+ @b OPTIONAL: The tintColor for the alertController
+ */
+@property (nonatomic, assign) NSUInteger showAlertAfterCurrentVersionHasBeenReleasedForDays;
+
 #pragma mark - Methods
 
 /**

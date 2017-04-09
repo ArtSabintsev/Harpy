@@ -87,6 +87,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
         _currentInstalledVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        _showAlertAfterCurrentVersionHasBeenReleasedForDays = 1;
     }
 
     return self;
@@ -175,12 +176,17 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
+            NSDictionary<NSString *, id> *results = [self.appData valueForKey:@"results"];
+
+            NSString *releaseDate = [results valueForKey:@"currentVersionReleaseDate"];
+            
+
             /**
              Current version that has been uploaded to the AppStore.
              Used to contain all versions, but now only contains the latest version.
              Still returns an instance of NSArray.
              */
-            NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
+            NSArray *versionsInAppStore = [results valueForKey:@"version"];
 
             if ([versionsInAppStore count]) {
                 _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
