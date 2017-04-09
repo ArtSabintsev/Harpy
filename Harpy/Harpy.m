@@ -178,12 +178,22 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 
             NSDictionary<NSString *, id> *results = [self.appData valueForKey:@"results"];
 
+            /**
+             Checks to see when the latest version of the app was released.
+             If the release date is greater-than-or-equal-to `_showAlertAfterCurrentVersionHasBeenReleasedForDays`,
+             the user will prompted to update their app (if the version is newer - checked later on in this method).
+             */
+
             NSString *releaseDateString = [[results valueForKey:@"currentVersionReleaseDate"] objectAtIndex:0];
-            NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
-            if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
-                NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
-                [self printDebugMessage:message];
+            if (releaseDateString == nil) {
                 return;
+            } else {
+                NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
+                if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
+                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                    [self printDebugMessage:message];
+                    return;
+                }
             }
 
             /**
@@ -191,19 +201,23 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
              Used to contain all versions, but now only contains the latest version.
              Still returns an instance of NSArray.
              */
-            NSArray *versionsInAppStore = [results valueForKey:@"version"];
 
-            if ([versionsInAppStore count]) {
-                _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
-                    [self appStoreVersionIsNewer:_currentAppStoreVersion];
-                } else {
-                    [self printDebugMessage:@"Currently installed version is newer."];
+            NSArray *versionsInAppStore = [results valueForKey:@"version"];
+            if (versionsInAppStore == nil) {
+                return;
+            } else {
+                if ([versionsInAppStore count]) {
+                    _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
+                        [self appStoreVersionIsNewer:_currentAppStoreVersion];
+                    } else {
+                        [self printDebugMessage:@"Currently installed version is newer."];
+                    }
                 }
             }
         });
     } else {
-        [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
+        [self printDebugMessage:@"Device is incompatible with installed verison of iOS."];
     }
 }
 
