@@ -87,6 +87,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         _alertType = HarpyAlertTypeOption;
         _lastVersionCheckPerformedOnDate = [[NSUserDefaults standardUserDefaults] objectForKey:HarpyDefaultStoredVersionCheckDate];
         _currentInstalledVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+        _showAlertAfterCurrentVersionHasBeenReleasedForDays = 1;
     }
 
     return self;
@@ -175,24 +176,48 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
+            NSDictionary<NSString *, id> *results = [self.appData valueForKey:@"results"];
+
+            /**
+             Checks to see when the latest version of the app was released.
+             If the release date is greater-than-or-equal-to `_showAlertAfterCurrentVersionHasBeenReleasedForDays`,
+             the user will prompted to update their app (if the version is newer - checked later on in this method).
+             */
+
+            NSString *releaseDateString = [[results valueForKey:@"currentVersionReleaseDate"] objectAtIndex:0];
+            if (releaseDateString == nil) {
+                return;
+            } else {
+                NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
+                if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
+                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                    [self printDebugMessage:message];
+                    return;
+                }
+            }
+
             /**
              Current version that has been uploaded to the AppStore.
              Used to contain all versions, but now only contains the latest version.
              Still returns an instance of NSArray.
              */
-            NSArray *versionsInAppStore = [[self.appData valueForKey:@"results"] valueForKey:@"version"];
 
-            if ([versionsInAppStore count]) {
-                _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
-                    [self appStoreVersionIsNewer:_currentAppStoreVersion];
-                } else {
-                    [self printDebugMessage:@"Currently installed version is newer."];
+            NSArray *versionsInAppStore = [results valueForKey:@"version"];
+            if (versionsInAppStore == nil) {
+                return;
+            } else {
+                if ([versionsInAppStore count]) {
+                    _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
+                        [self appStoreVersionIsNewer:_currentAppStoreVersion];
+                    } else {
+                        [self printDebugMessage:@"Currently installed version is newer."];
+                    }
                 }
             }
         });
     } else {
-        [self printDebugMessage:@"Device is incompatible with installed verison of iOS"];
+        [self printDebugMessage:@"Device is incompatible with installed verison of iOS."];
     }
 }
 
@@ -401,7 +426,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
 }
 
-#pragma mark - NSBundle Strings
+#pragma mark - NSBundle
 
 - (NSString *)bundleID {
     return [NSBundle mainBundle].bundleIdentifier;
@@ -418,6 +443,22 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 - (NSString *)forcedLocalizedStringForKey:(NSString *)stringKey {
     NSString *path = [[NSBundle bundleWithPath:[self bundlePath]] pathForResource:[self forceLanguageLocalization] ofType:@"lproj"];
     return [[NSBundle bundleWithPath:path] localizedStringForKey:stringKey value:stringKey table:@"HarpyLocalizable"];
+}
+
+#pragma mark - NSDate
+
+- (NSInteger)daysSinceDate:(NSDate *)date {
+    NSCalendar *calendar = NSCalendar.currentCalendar;
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay fromDate:date toDate:[NSDate new] options:0];
+    return components.day;
+}
+
+- (NSInteger)daysSinceDateString:(NSString *)dateString {
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
+    NSLog(@"%@", dateString);
+    NSDate *releaseDate = [dateFormatter dateFromString:dateString];
+    return [self daysSinceDate:releaseDate];
 }
 
 #pragma mark - UIAlertActions

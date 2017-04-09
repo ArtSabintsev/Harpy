@@ -141,6 +141,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (nonatomic, strong) UIColor *alertControllerTintColor;
 
+/**
+ @b OPTIONAL: Delays the update prompt by a specific number of days. By default, this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
+ */
+@property (nonatomic, assign) NSUInteger showAlertAfterCurrentVersionHasBeenReleasedForDays;
+
 #pragma mark - Methods
 
 /**
