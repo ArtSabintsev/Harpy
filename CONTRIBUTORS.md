@@ -89,4 +89,7 @@
 	- [Christoph Mantler](https://github.com/ChrisixFlash)
 - **v4.0.11**
 	- [Christoph Mantler](https://github.com/ChrisixFlash)
-	- [Pietro D'Alessandro](https://github.com/xedla)
+	- [xedla](https://github.com/xedla)
+- **v4.1.1**
+  - [Txai Wieser](https://github.com/txaiwieser)
+	- [Ilija Puaca](https://github.com/ilijapuaca)
