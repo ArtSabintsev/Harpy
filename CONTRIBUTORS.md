@@ -92,4 +92,6 @@
 	- [xedla](https://github.com/xedla)
 - **v4.1.1**
   - [Txai Wieser](https://github.com/txaiwieser)
-	- [Ilija Puaca](https://github.com/ilijapuaca)
+  - [Ilija Puaca](https://github.com/ilijapuaca)
+- **4.1.2**
+  - [premyslvlcek](https://github.com/premyslvlcek)
