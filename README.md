@@ -175,6 +175,8 @@ Harpy is localized for
 - Armenian
 - Basque
 - Chinese (Simplified and Traditional)
+- Croatian
+- Czech
 - Danish
 - Dutch
 - English
@@ -198,8 +200,8 @@ Harpy is localized for
 - Russian
 - Serbian (Cyrillic and Latin)
 - Slovenian
-- Swedish
 - Spanish
+- Swedish
 - Thai
 - Turkish
 - Vietnamese

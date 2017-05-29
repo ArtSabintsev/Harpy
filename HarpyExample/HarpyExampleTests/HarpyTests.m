@@ -189,6 +189,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Ažuriraj"]);
 }
 
+- (void)testCzechLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageCzech];
+
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Aktualizace dostupná"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Příště"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Přeskočit tuto verzi"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Aktualizovat"]);
+}
+
 - (void)testDanishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageDanish];
 
