@@ -195,6 +195,7 @@ Harpy is localized for
 - Lithuanian
 - Malay
 - Norwegian (Bokmål)
+- Persian (Iran, Afghanistan, Persian)
 - Polish
 - Portuguese (Brazil and Portugal)
 - Russian
