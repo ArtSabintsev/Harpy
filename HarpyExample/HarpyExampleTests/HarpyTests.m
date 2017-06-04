@@ -360,6 +360,33 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Oppdater"]);
 }
 
+- (void)testPersianLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguagePersian];
+    
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"بروزرسانی در دسترس"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"دفعه بعد"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"رد این نسخه"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"بروزرسانی"]);
+}
+
+- (void)testPersianAfghanistanLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguagePersianAfghanistan];
+    
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"بروزرسانی در دسترس"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"دگر بار"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"رد این نسخه"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"بروزرسانی"]);
+}
+
+- (void)testPersianIranLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguagePersianIran];
+    
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"بروزرسانی در دسترس"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"دفعه بعد"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"رد این نسخه"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"بروزرسانی"]);
+}
+
 - (void)testPolishLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguagePolish];
 
