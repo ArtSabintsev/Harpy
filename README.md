@@ -226,5 +226,8 @@ If you currently don't have an app in the store, change your bundleID to one tha
 ## Important Note on App Store Submissions
 The App Store reviewer will **not** see the alert.
 
+## Phased Releases
+In 2017, Apple announced the [ability to rollout app updates gradually (a.k.a. Phased Releases)](https://itunespartner.apple.com/en/apps/faq/Managing%20Your%20Apps_Submission%20Process). Harpy will continue to work as it has in the past, presenting an update modal to _all_ users. If you opt-in to a phased rollout for a specific version, you will need to remotely disable Harpy until the rollout is done.
+
 ## Created and maintained by
 [Arthur Ariel Sabintsev](http://www.sabintsev.com/)
