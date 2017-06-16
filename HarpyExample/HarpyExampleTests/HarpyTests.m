@@ -486,6 +486,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Güncelle"]);
 }
 
+- (void)testUrduLocalization {
+    [_harpy setForceLanguageLocalization:HarpyLanguageUrdu];
+    
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"نیا اپڈیٹ"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"اگلی مرتبہ"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"اس ورزن کو چھوڑ دیں"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"اپڈیٹ کریں"]);
+}
+
 - (void)testVietnameseLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageVietnamese];
 
