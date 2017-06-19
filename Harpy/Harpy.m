@@ -460,6 +460,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 
 - (NSInteger)daysSinceDateString:(NSString *)dateString {
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
     dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     NSDate *releaseDate = [dateFormatter dateFromString:dateString];
     return [self daysSinceDate:releaseDate];
