@@ -99,3 +99,5 @@
   - [Seyed Mojtaba Hosseini Zeidabadi](https://github.com/MojtabaHs)
 - **4.1.4**
   - [Chanchal Raj](https://github.com/RajChanchal)
+- **4.1.4**
+  - [Ryoh Tsukahara](https://github.com/nixnoughtnothing)
