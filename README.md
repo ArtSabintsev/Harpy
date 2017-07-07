@@ -92,7 +92,8 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
 	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
-        /* (OPTIONAL): Delays the update prompt by a specific number of days. By default, this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
+        /* (OPTIONAL): Delays the update prompt by a specific number of days. By default, 
+	this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.*/
    [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:<#Int#>];
 
 	// Perform check for new version of your app
