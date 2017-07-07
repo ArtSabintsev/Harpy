@@ -68,11 +68,11 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	[[Harpy sharedInstance] setPresentingViewController:_window.rootViewController];
 
     // (Optional) Set the Delegate to track what a user clicked on, or to use a custom UI to present your message.
-    [[Harpy sharedInstance] setDelegate:self];
+       [[Harpy sharedInstance] setDelegate:self];
 
     // (Optional) When this is set, the alert will only show up if the current version has already been released for X days.
     // By default, this value is set to 1 (day) to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.
-    [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:3];
+       [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:3];
 
 	// (Optional) The tintColor for the alertController
 	[[Harpy sharedInstance] setAlertControllerTintColor:@"<#alert_controller_tint_color#>"];
@@ -92,9 +92,9 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
 	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
-        /* (OPTIONAL): Delays the update prompt by a specific number of days. By default, 
+        /* (Optional): Delays the update prompt by a specific number of days. By default, 
 	this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.*/
-   [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:<#Int#>];
+       [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:<#Int#>];
 
 	// Perform check for new version of your app
 	[[Harpy sharedInstance] checkVersion];
