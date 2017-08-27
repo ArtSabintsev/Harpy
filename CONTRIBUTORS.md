@@ -101,3 +101,5 @@
   - [Chanchal Raj](https://github.com/RajChanchal)
 - **4.1.5**
   - [Ryoh Tsukahara](https://github.com/nixnoughtnothing)
+- **4.1.6**
+  - [Ryoh Tsukahara](https://github.com/nixnoughtnothing)
