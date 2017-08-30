@@ -11,6 +11,7 @@ Harpy is built to work with the [Semantic Versioning](http://www.semver.org) sys
 - Semantic Versioning is a three number versioning system (e.g., 1.0.0)
 - Harpy also supports two-number versioning (e.g., 1.0)
 - Harpy also supports four-number versioning (e.g., 1.0.0.0)
+- Harpy only works with numbers.
 
 ## Swift Support
 Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [**here**](https://github.com/ArtSabintsev/Siren).
