@@ -302,7 +302,11 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
 
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] openURL:iTunesURL];
+        if (@available(iOS 10.0, *)) {
+            [[UIApplication sharedApplication] openURL:iTunesURL options:@{} completionHandler:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:iTunesURL];
+        }
 
         if ([self.delegate respondsToSelector:@selector(harpyUserDidLaunchAppStore)]){
             [self.delegate harpyUserDidLaunchAppStore];

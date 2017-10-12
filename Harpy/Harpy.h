@@ -192,7 +192,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  
  It will specifically be used to test the string localizations.
 
- @param stringKey: The string that should be looked up and localized.
+ @param stringKey The string that should be looked up and localized.
 
  @return The localized string.
  */
@@ -204,7 +204,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 
  It will specifically be used to temporarily set the installed version of the app.
 
- @param version: The temporary version that should be set for the app.
+ @param version The temporary version that should be set for the app.
 
  */
 
@@ -216,7 +216,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 
  It will specifically be used to temporarily set the app store version of the app.
  
- @param version: The temporary version that should be set for the app.
+ @param version The temporary version that should be set for the app.
 
  */
 
