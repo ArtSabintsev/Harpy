@@ -486,6 +486,15 @@
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Güncelle"]);
 }
 
+- (void)testUkrainianLocalization    {
+    [_harpy setForceLanguageLocalization:HarpyLanguage];
+    
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Доступне Оновлення"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Наступного разу"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Skip this version"] isEqualToString:@"Пропустити версію"]);
+    XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update"] isEqualToString:@"Оновити"]);
+}
+
 - (void)testUrduLocalization {
     [_harpy setForceLanguageLocalization:HarpyLanguageUrdu];
     
