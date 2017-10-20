@@ -487,7 +487,7 @@
 }
 
 - (void)testUkrainianLocalization    {
-    [_harpy setForceLanguageLocalization:HarpyLanguage];
+    [_harpy setForceLanguageLocalization:HarpyLanguageUkrainian];
     
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Update Available"] isEqualToString:@"Доступне Оновлення"]);
     XCTAssertTrue([[_harpy testLocalizedStringForKey:@"Next time"] isEqualToString:@"Наступного разу"]);
