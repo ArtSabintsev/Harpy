@@ -103,3 +103,5 @@
   - [Ryoh Tsukahara](https://github.com/nixnoughtnothing)
 - **4.1.6**
   - [Ryoh Tsukahara](https://github.com/nixnoughtnothing)
+- **4.1.8**
+  - [Dmytro Cheverda](https://github.com/dimacheverda)
