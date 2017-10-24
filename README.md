@@ -210,6 +210,7 @@ Harpy is localized for
 - Swedish
 - Thai
 - Turkish
+- Ukrainian
 - Urdu
 - Vietnamese
 
