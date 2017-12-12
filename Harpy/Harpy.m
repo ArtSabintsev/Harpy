@@ -125,7 +125,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
     
     // If daily condition is satisfied, perform version check
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
+    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] >= 1) {
         [self checkVersion];
     }
 }
@@ -146,7 +146,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
     
     // If weekly condition is satisfied, perform version check 
-    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 7) {
+    if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] >= 7) {
         [self checkVersion];
     }
 }
