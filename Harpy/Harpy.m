@@ -299,7 +299,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 }
 
 - (void)launchAppStore {
-    NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
+    NSString *iTunesString = self.launchAppStoreURL ? : [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", [self appID]];
     NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
 
     dispatch_async(dispatch_get_main_queue(), ^{
