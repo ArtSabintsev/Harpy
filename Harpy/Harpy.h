@@ -152,6 +152,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (nonatomic, assign) NSUInteger showAlertAfterCurrentVersionHasBeenReleasedForDays;
 
+/**
+ @b OPTIONAL: Custom URL for launching App Store.app
+ */
+@property (nonatomic, strong) NSString *launchAppStoreURL;
+
 #pragma mark - Methods
 
 /**
