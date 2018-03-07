@@ -195,8 +195,8 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                 return;
             } else {
                 NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
-                if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
-                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                if (!(daysSinceRelease >= self.showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
+                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)self.showAlertAfterCurrentVersionHasBeenReleasedForDays];
                     [self printDebugMessage:message];
                     return;
                 }
@@ -213,9 +213,9 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                 return;
             } else {
                 if ([versionsInAppStore count]) {
-                    _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
-                        [self appStoreVersionIsNewer:_currentAppStoreVersion];
+                    self.currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    if ([self isAppStoreVersionNewer:self.currentAppStoreVersion]) {
+                        [self appStoreVersionIsNewer:self.currentAppStoreVersion];
                     } else {
                         [self printDebugMessage:@"Currently installed version is newer."];
                     }
@@ -499,7 +499,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     UIAlertAction *skipAlertAction = [UIAlertAction actionWithTitle:_skipButtonText
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
-                                                                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
+                                                                [[NSUserDefaults standardUserDefaults] setObject:self.currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                                                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                                                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                                                                     [self.delegate harpyUserDidSkipVersion];
