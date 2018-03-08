@@ -116,14 +116,14 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
      Also, performs version check on first launch.
      */
     if (![self lastVersionCheckPerformedOnDate]) {
-        
+
         // Set Initial Date
         self.lastVersionCheckPerformedOnDate = [NSDate date];
-        
+
         // Perform First Launch Check
         [self checkVersion];
     }
-    
+
     // If daily condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] >= 1) {
         [self checkVersion];
@@ -137,15 +137,15 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
      Also, performs version check on first launch.
      */
     if (![self lastVersionCheckPerformedOnDate]) {
-        
+
         // Set Initial Date
         self.lastVersionCheckPerformedOnDate = [NSDate date];
-        
+
         // Perform First Launch Check
         [self checkVersion];
     }
-    
-    // If weekly condition is satisfied, perform version check 
+
+    // If weekly condition is satisfied, perform version check
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] >= 7) {
         [self checkVersion];
     }
@@ -175,10 +175,13 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     [self printDebugMessage:[NSString stringWithFormat:@"JSON Results: %@", _appData]];
 
     if ([self isUpdateCompatibleWithDeviceOS:_appData]) {
+
+        __typeof__(self) __weak weakSelf = self;
+
         dispatch_async(dispatch_get_main_queue(), ^{
 
             // Store version comparison date
-            self.lastVersionCheckPerformedOnDate = [NSDate date];
+            weakSelf.lastVersionCheckPerformedOnDate = [NSDate date];
             [[NSUserDefaults standardUserDefaults] setObject:[self lastVersionCheckPerformedOnDate] forKey:HarpyDefaultStoredVersionCheckDate];
             [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -194,9 +197,9 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             if (releaseDateString == nil) {
                 return;
             } else {
-                NSInteger daysSinceRelease = [self daysSinceDateString:releaseDateString];
-                if (!(daysSinceRelease >= _showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
-                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)_showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                NSInteger daysSinceRelease = [weakSelf daysSinceDateString:releaseDateString];
+                if (!(daysSinceRelease >= weakSelf.showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
+                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)weakSelf.showAlertAfterCurrentVersionHasBeenReleasedForDays];
                     [self printDebugMessage:message];
                     return;
                 }
@@ -213,9 +216,9 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                 return;
             } else {
                 if ([versionsInAppStore count]) {
-                    _currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
-                    if ([self isAppStoreVersionNewer:_currentAppStoreVersion]) {
-                        [self appStoreVersionIsNewer:_currentAppStoreVersion];
+                    weakSelf.currentAppStoreVersion = [versionsInAppStore objectAtIndex:0];
+                    if ([weakSelf isAppStoreVersionNewer:weakSelf.currentAppStoreVersion]) {
+                        [weakSelf appStoreVersionIsNewer:weakSelf.currentAppStoreVersion];
                     } else {
                         [self printDebugMessage:@"Currently installed version is newer."];
                     }
@@ -255,7 +258,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             if (
                 ([systemVersion compare:requiresOSVersion options:NSNumericSearch] == NSOrderedDescending) ||
                 ([systemVersion compare:requiresOSVersion options:NSNumericSearch] == NSOrderedSame)
-               ) {
+                ) {
                 return true;
             } else {
                 return false;
@@ -287,7 +290,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
 }
 
 - (void)appStoreVersionIsNewer:(NSString *)currentAppStoreVersion {
-     _appID = _appData[@"results"][0][@"trackId"];
+    _appID = _appData[@"results"][0][@"trackId"];
 
     if (_appID == nil) {
         [self printDebugMessage:@"appID is nil, which means to the trackId key is missing from the JSON results that Apple returned for your bundleID. If a version of your app is in the store and you are seeing this message, please open up an issue http://github.com/ArtSabintsev/Harpy and provide as much detail about your app as you can. Thanks!"];
@@ -479,7 +482,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                                                               handler:^(UIAlertAction *action) {
                                                                   [self launchAppStore];
                                                               }];
-    
+
     return updateAlertAction;
 }
 
@@ -491,21 +494,23 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
                                                                         [self.delegate harpyUserDidCancel];
                                                                     }
                                                                 }];
-    
+
     return nextTimeAlertAction;
 }
 
 - (UIAlertAction *)skipAlertAction {
+    __typeof__(self) __weak weakSelf = self;
+
     UIAlertAction *skipAlertAction = [UIAlertAction actionWithTitle:_skipButtonText
                                                               style:UIAlertActionStyleDefault
                                                             handler:^(UIAlertAction *action) {
-                                                                [[NSUserDefaults standardUserDefaults] setObject:_currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
+                                                                [[NSUserDefaults standardUserDefaults] setObject:weakSelf.currentAppStoreVersion forKey:HarpyDefaultSkippedVersion];
                                                                 [[NSUserDefaults standardUserDefaults] synchronize];
                                                                 if([self.delegate respondsToSelector:@selector(harpyUserDidSkipVersion)]){
                                                                     [self.delegate harpyUserDidSkipVersion];
                                                                 }
                                                             }];
-    
+
     return skipAlertAction;
 }
 
