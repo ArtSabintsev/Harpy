@@ -12,11 +12,10 @@
 		55B03A8C1E6A7A7F00BE8DAC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B03A8A1E6A7A7F00BE8DAC /* main.m */; };
 		55B03A911E6A7A8500BE8DAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8D1E6A7A8500BE8DAC /* LaunchScreen.storyboard */; };
 		55B03A921E6A7A8500BE8DAC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B03A8F1E6A7A8500BE8DAC /* Main.storyboard */; };
-		8E2206551F8EE724003FB62C /* Harpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E2206531F8EE724003FB62C /* Harpy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E2206581F8EE724003FB62C /* Harpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2206511F8EE724003FB62C /* Harpy.framework */; };
 		8E2206591F8EE724003FB62C /* Harpy.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2206511F8EE724003FB62C /* Harpy.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8E22065D1F8EE730003FB62C /* Harpy.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8E78694A1E98B842001B4BBB /* Harpy.bundle */; };
-		8E22065E1F8EE732003FB62C /* Harpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E78694B1E98B842001B4BBB /* Harpy.h */; };
+		8E22065E1F8EE732003FB62C /* Harpy.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E78694B1E98B842001B4BBB /* Harpy.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8E22065F1F8EE735003FB62C /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E78694C1E98B842001B4BBB /* Harpy.m */; };
 		8EE663A81F99AF2900DACA88 /* HarpyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE663A61F99AF1D00DACA88 /* HarpyTests.m */; };
 		8EE663AC1F99B29400DACA88 /* Harpy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E2206511F8EE724003FB62C /* Harpy.framework */; };
@@ -65,7 +64,6 @@
 		55B79D921D36EC23001197C0 /* HarpyExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HarpyExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55CF3A231BC212E30023B63D /* HarpyExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarpyExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E2206511F8EE724003FB62C /* Harpy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Harpy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E2206531F8EE724003FB62C /* Harpy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
 		8E2206541F8EE724003FB62C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E78694A1E98B842001B4BBB /* Harpy.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Harpy.bundle; sourceTree = "<group>"; };
 		8E78694B1E98B842001B4BBB /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 		8E2206521F8EE724003FB62C /* Harpy */ = {
 			isa = PBXGroup;
 			children = (
-				8E2206531F8EE724003FB62C /* Harpy.h */,
 				8E2206541F8EE724003FB62C /* Info.plist */,
 			);
 			path = Harpy;
@@ -190,7 +187,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E2206551F8EE724003FB62C /* Harpy.h in Headers */,
 				8E22065E1F8EE732003FB62C /* Harpy.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
