@@ -110,3 +110,5 @@
 	- [Attia Mo](https://github.com/AttiaMo)
 - **4.1.10**
   - [liyangdal](https://github.com/liyangdal)
+- **4.1.12**
+  - [Tom Clark](https://github.com/iamtomcat)
