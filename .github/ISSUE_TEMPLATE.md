@@ -20,5 +20,7 @@ Please delete this text before submitting a new issue.
 
 Common Issue #4:
 > "Infinite Loop Updates"
-On rare occasion, Apple may update their App Store JSON _faster_ than the binary appears in the App Store. Due to this issue, developers who make use of the `.force` option may be prompting their users with app updates whenever launching the app, effectively creating an infinite loop until the binary appears. This issue has been addressed and baked into v2.0.0+ of Harpy's sister library, [Siren](https://github.com/ArtSabintsev/Siren). Please make use of Siren instead of Harpy if your user's have experienced this issue. 
+
+On rare occasion, Apple may update their App Store JSON _faster_ than the binary appears in the App Store. Due to this issue, developers who make use of the `.force` option may be prompting their users with app updates whenever launching the app, effectively creating an infinite loop until the binary appears. To fix this issue, set the `setShowAlertAfterCurrentVersionHasBeenReleasedForDays` variable to a value greater than 0. By default, it's set to 1 to avoid this issue, as the alert does not show until 24-hours/1-day has passed
+
 ======
