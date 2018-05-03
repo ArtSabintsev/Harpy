@@ -199,7 +199,7 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
             } else {
                 NSInteger daysSinceRelease = [weakSelf daysSinceDateString:releaseDateString];
                 if (!(daysSinceRelease >= weakSelf.showAlertAfterCurrentVersionHasBeenReleasedForDays)) {
-                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Siren cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)weakSelf.showAlertAfterCurrentVersionHasBeenReleasedForDays];
+                    NSString *message = [NSString stringWithFormat:@"Your app has been released for %ld days, but Harpy cannot prompt the user until %lu days have passed.", (long)daysSinceRelease, (unsigned long)weakSelf.showAlertAfterCurrentVersionHasBeenReleasedForDays];
                     [self printDebugMessage:message];
                     return;
                 }

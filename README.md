@@ -14,7 +14,7 @@ Harpy is built to work with the [Semantic Versioning](http://www.semver.org) sys
 - Harpy only works with numbers.
 
 ## Swift Support
-Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren) and it can be found [**here**](https://github.com/ArtSabintsev/Siren).
+Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/GetAaron). We've called the new project [**Siren**](https://github.com/ArtSabintsev/Siren).
 
 ## Features
 - [x] CocoaPods Support
@@ -93,7 +93,7 @@ Copy the 'Harpy' folder into your Xcode project. It contains the Harpy.h and Har
 	 Please use the HarpyLanguage constants defined in Harpy.h. */
 	[[Harpy sharedInstance] setForceLanguageLocalization:<#HarpyLanguageConstant#>];
 
-        /* (Optional): Delays the update prompt by a specific number of days. By default, 
+        /* (Optional): Delays the update prompt by a specific number of days. By default,
 	this value is set to 1 day to avoid an issue where Apple updates the JSON faster than the app binary propogates to the App Store.*/
         [[Harpy sharedInstance] setShowAlertAfterCurrentVersionHasBeenReleasedForDays:<#Int#>];
 
