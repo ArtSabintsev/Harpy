@@ -19,7 +19,7 @@ Harpy was ported to Swift by myself and [**Aaron Brager**](http://twitter.com/Ge
 ## Features
 - [x] CocoaPods Support
 - [x] Carthage Support
-- [x] Localized for 30+ languages (See **Localization**)
+- [x] Localized for 40+ languages (See **Localization**)
 - [x] Pre-Update Device Compatibility Check (See **Device Compatibility**)
 - [x] Three types of alerts (see **Screenshots & Alert Types**)
 - [x] Optional delegate methods (see **Optional Delegate** section)
