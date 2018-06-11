@@ -112,3 +112,5 @@
   - [liyangdal](https://github.com/liyangdal)
 - **4.1.12**
   - [Tom Clark](https://github.com/iamtomcat)
+- **4.1.14**
+  - [Oleg](https://github.com/suzhaev)
