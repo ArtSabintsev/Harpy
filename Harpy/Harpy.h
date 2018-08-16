@@ -107,6 +107,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
 @property (nonatomic, assign, getter=isDebugEnabled) BOOL debugEnabled;
 
 /**
+ There are instances where there are different builds of the app used in development e.g Alpha and Beta builds. In order to accomodate this we allow overriding the bundle id only when debugging is enabled.
+ @b OPTIONAL: Specify a specific bundle id to be queried in the App Store. Applies only when @c debugEnabled is true.
+ */
+@property (nonatomic, assign) NSString *debugWithBundleID;
+
+/**
  @b OPTIONAL: The alert type to present to the user when there is an update. See the @c HarpyAlertType enum above.
  */
 @property (nonatomic, assign) HarpyAlertType alertType;

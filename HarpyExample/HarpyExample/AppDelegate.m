@@ -51,6 +51,11 @@
 
     // Turn on Debug statements
     [[Harpy sharedInstance] setDebugEnabled:true];
+    
+    /* (Optional) The debugWithBundleID overrides the bundle id to be queried in the App Store
+        This only takes effect if debugEnabled is true.
+        For demo purposes, we used Twitter's bundle id -> com.atebits.Tweetie2 */
+//      [Harpy sharedInstance].debugWithBundleID = @"com.atebits.Tweetie2";
 
     // Perform check for new version of your app
     [[Harpy sharedInstance] checkVersion];
