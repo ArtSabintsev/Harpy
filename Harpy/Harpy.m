@@ -151,6 +151,11 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
 }
 
+- (void)resetSkipVersionStatus {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:HarpyDefaultSkippedVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #pragma mark - Helpers
 
 - (void)performVersionCheck {
