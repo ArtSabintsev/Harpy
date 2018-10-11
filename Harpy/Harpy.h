@@ -186,6 +186,11 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 - (void)checkVersionWeekly;
 
+/**
+ Reset version skipped status
+ */
+- (void)resetSkipVersionStatus;
+
 #pragma mark - Unit Testing
 
 /**
