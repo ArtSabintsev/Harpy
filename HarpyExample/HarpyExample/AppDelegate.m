@@ -39,7 +39,8 @@
 
     /* (Optional) Set the Alert Type for your app
      By default, Harpy is configured to use HarpyAlertTypeOption */
-    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeOption];
+    [[Harpy sharedInstance] setAlertType:HarpyAlertTypeSkip];
+    //[Harpy sharedInstance].minimumAppVersionToForceUserToUpdate = @"1.0.1";
 
     /* (Optional) If your application is not available in the U.S. App Store, you must specify the two-letter
      country code for the region in which your applicaiton is available. */

@@ -151,10 +151,6 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
 }
 
-- (void)resetSkipVersionStatus {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:HarpyDefaultSkippedVersion];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 #pragma mark - Helpers
 
@@ -294,6 +290,16 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
     }
 }
 
+- (BOOL) isUserSetForcedVersionNewer {
+    // Current installed version is the newest public version or newer (e.g., dev version)
+    if ([[self currentInstalledVersion] compare:self.minimumAppVersionToForceUserToUpdate options:NSNumericSearch] == NSOrderedAscending) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 - (void)appStoreVersionIsNewer:(NSString *)currentAppStoreVersion {
     _appID = _appData[@"results"][0][@"trackId"];
 
@@ -301,8 +307,14 @@ NSString * const HarpyLanguageVietnamese            = @"vi";
         [self printDebugMessage:@"appID is nil, which means to the trackId key is missing from the JSON results that Apple returned for your bundleID. If a version of your app is in the store and you are seeing this message, please open up an issue http://github.com/ArtSabintsev/Harpy and provide as much detail about your app as you can. Thanks!"];
     } else {
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
-        [self alertTypeForVersion:currentAppStoreVersion];
-        [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+        
+        if([self isUserSetForcedVersionNewer]) {
+            _alertType = HarpyAlertTypeForce;
+            [self showAlertWithAppStoreVersion:currentAppStoreVersion];
+        } else {
+            [self alertTypeForVersion:currentAppStoreVersion];
+            [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
+        }
     }
 }
 
