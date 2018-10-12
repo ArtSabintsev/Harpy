@@ -95,6 +95,12 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 @property (nonatomic, copy, readonly) NSString *currentAppStoreVersion;
 
+/**
+ Minimum app version to force user to if not already updated
+ This will bypass alertType & skip version settings
+ */
+@property (nonatomic, copy) NSString *minimumAppVersionToForceUserToUpdate;
+
 
 /**
  @b OPTIONAL: The preferred name for the app. This name will be displayed in the @c UIAlertView in place of the bundle name.
@@ -185,6 +191,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  Do not use this method if you are using @c checkVersion or @c checkVersionDaily.
  */
 - (void)checkVersionWeekly;
+
 
 #pragma mark - Unit Testing
 
