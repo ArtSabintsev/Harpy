@@ -192,6 +192,7 @@ typedef NS_ENUM(NSUInteger, HarpyAlertType)
  */
 - (void)checkVersionWeekly;
 
+
 #pragma mark - Unit Testing
 
 /**
