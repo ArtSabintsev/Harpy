@@ -1,4 +1,4 @@
-# After 6 years of Harpy and 4 years of [Siren](https://github.com/ArtSabintsev/Siren), I have decided to deprecate Harpy in favor of Siren. Why? Siren is written in Swift and has a feature set that is far superior to Harpy. [More information can be found on this Medium post](https://link.medium.com/jE1FGj1DYS). The repository will live in, however, there will be no further updates and no transfers of the codebase at this time.
+# After 6 years of Harpy and 4 years of [Siren](https://github.com/ArtSabintsev/Siren), I have decided to deprecate Harpy in favor of Siren. Why? Siren is written in Swift and has a feature set that is superior to that of Harpy. [More information can be found on this Medium post](https://link.medium.com/jE1FGj1DYS). The repository will live on, however, there will be no further updates and no transfers of the codebase at this time.
 
 ---
 
